@@ -13,3 +13,4 @@ Principal - Uma aplicação destinada a procura de bares, bebidas ou zonas atrav
 
 
 Secundário - Adicionar "reviews" aos bares, bebidas e zonas com o fim de criar uma ideia de "custo-benéfício" ao utilizador.
+             Adicionar contactos de cada bar e alguma informação sobre o staff.
