@@ -12,4 +12,4 @@ Cenarios para a aplicação serão:
 Principal - Uma aplicação destinada a procura de bares, bebidas ou zonas através de uma base de dados preenchida pelos utilizadores da região com o objetivo de informar os preços de diversos locais em sua região.
 
 
-Secundário - Adicionar "reviews" aos bares, bebidas e zonas com o fim de criar uma ideia de "custo-benéfício" ao utilizador.
+Secundário - Adicionar "reviews" aos bares, bebidas e zonas com o fim de criar uma ideia de "custo-benéfício" ao utilizador. Também pretendemos adicionar os contactos dos bares, informaçao da staff e localização.
