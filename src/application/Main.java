@@ -1,42 +1,33 @@
 package application;
 
+import java.io.IOException;
+
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.scene.layout.StackPane;
 
-public class Main extends Application{
+public class Main extends Application {
 
-	Button button, button2;
 	Stage window;
-	Scene scene1,scene2;
+	
+	JDBC jdbc;
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage) throws IOException {
 		window = primaryStage;
-		button = new Button();
-		button2 = new Button();
+		window.setTitle("PubFinder");
 		
-		button.setText("ClickMe");
-		button.setOnAction(e -> window.setScene(scene2));
 		
-		StackPane layout = new StackPane();
-		layout.getChildren().add(button);
-		scene1 = new Scene(layout,300,200);
-
+		Pane root = FXMLLoader.load(getClass().getResource("login/LoginScreen.fxml"));
 		
-
-		button2.setText("ClickMe to Go back");
-		button2.setOnAction(e -> window.setScene(scene1));
-		StackPane layout2 = new StackPane();
-		layout2.getChildren().add(button2);
-		scene2= new Scene(layout2, 500,500);
+		Scene scene = new Scene(root, 575, 55);
 		
-		window.setScene(scene1);
+		window.setScene(scene);
 		window.show();
 	}
-	
-	public static void main(String [] args) {
+
+	public static void main(String[] args) {
 		launch(args);
 	}
 }
