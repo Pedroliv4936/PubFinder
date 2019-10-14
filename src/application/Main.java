@@ -27,6 +27,7 @@ public class Main extends Application {
 		Scene loginScene = new Scene(loginPane, 575, 55);
 		Scene mainScene = new Scene(mainPane);
 		
+		
 		loginWindow.setScene(loginScene);
 		mainWindow.setScene(mainScene);
 		mainWindow.show();
