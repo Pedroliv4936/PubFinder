@@ -33,7 +33,10 @@ public class Main extends Application {
 		mainWindow.show();
 		loginWindow.show();
 	}
-
+	
+	public static void createNewWindow() {
+		
+	}
 	public static void main(String[] args) {
 		launch(args);
 	}

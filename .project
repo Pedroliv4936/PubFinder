@@ -22,6 +22,11 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>lib/GoogleMapView.java</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Programming/GMapsFX/src/main/java/com/lynden/gmapsfx/GoogleMapView.java</locationURI>
+		</link>
+		<link>
 			<name>lib/mysql-connector-java-8.0.17.jar</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/Programming/JDBC/mysql-connector-java-8.0.17.jar</locationURI>
