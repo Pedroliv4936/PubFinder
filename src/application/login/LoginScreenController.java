@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import application.JDBC;
+import application.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,12 +18,20 @@ public class LoginScreenController {
 	@FXML TextField usernameField;
 	@FXML PasswordField passwordField;
 	
-	Stage mainStage;
-	
 	JDBC jdbc;
 	
 	@FXML
-	public void onLoginButtonClicked() throws IOException {
+	public void onLoginButtonClicked() {
+		connectDB();
+		if(jdbc.isConnected())
+			try {
+				Main.createNewWindow("login/MainScreen.fxml");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	}
+
+	private void connectDB() {
 		jdbc = new JDBC();
 		
 		String username = usernameField.getText();
@@ -37,6 +46,5 @@ public class LoginScreenController {
 		}
 		
 		jdbc.disconnectDb();
-		
 	}
 }
