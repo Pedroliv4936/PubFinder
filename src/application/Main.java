@@ -10,21 +10,27 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-	Stage window;
+	Stage loginWindow, mainWindow;
 	
-	JDBC jdbc;
+
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-		window = primaryStage;
-		window.setTitle("PubFinder");
+		loginWindow = new Stage();
 		
+		mainWindow = primaryStage;
+		mainWindow.setTitle("PubFinder");
+		loginWindow.setTitle("Login");
 		
-		Pane root = FXMLLoader.load(getClass().getResource("login/LoginScreen.fxml"));
+		Pane mainPane = FXMLLoader.load(getClass().getResource("login/mainStage.fxml"));
+		Pane loginPane = FXMLLoader.load(getClass().getResource("login/LoginScreen.fxml"));
 		
-		Scene scene = new Scene(root, 575, 55);
+		Scene loginScene = new Scene(loginPane, 575, 55);
+		Scene mainScene = new Scene(mainPane);
 		
-		window.setScene(scene);
-		window.show();
+		loginWindow.setScene(loginScene);
+		mainWindow.setScene(mainScene);
+		mainWindow.show();
+		loginWindow.show();
 	}
 
 	public static void main(String[] args) {
