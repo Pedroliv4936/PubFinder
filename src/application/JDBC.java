@@ -11,7 +11,7 @@ import javafx.collections.ObservableList;
 
 public class JDBC {
 
-	private static final String CONN = "jdbc:mysql://localhost:3306/mydb";
+	private static final String CONN = "jdbc:mysql://192.168.1.93/mydb";
 
 	Connection con = null;
 	Statement stmt = null;
@@ -36,6 +36,7 @@ public class JDBC {
 	
 	public void disconnectDb() {
 		try {
+			if(con!=null)
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
