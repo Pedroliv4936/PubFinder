@@ -21,7 +21,7 @@ public class Main extends Application {
 		mainWindow.setTitle("PubFinder");
 		loginWindow.setTitle("Login");
 		
-		Pane mainPane = FXMLLoader.load(getClass().getResource("login/mainStage.fxml"));
+		Pane mainPane = FXMLLoader.load(getClass().getResource("login/MainScreen.fxml"));
 		Pane loginPane = FXMLLoader.load(getClass().getResource("login/LoginScreen.fxml"));
 		
 		Scene loginScene = new Scene(loginPane, 575, 55);

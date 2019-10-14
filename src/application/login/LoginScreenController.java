@@ -30,9 +30,13 @@ public class LoginScreenController {
 		
 		try {
 			jdbc.dbConnect(username, password);
+			
+			System.out.println("Connected as " + username);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		jdbc.disconnectDb();
 		
 	}
 }
