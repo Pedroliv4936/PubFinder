@@ -16,11 +16,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-	Stage loginWindow, mainWindow;
-	
-
 	@Override
 	public void start(Stage primaryStage) throws IOException {
+<<<<<<< HEAD
 		loginWindow = new Stage();
 		
 		mainWindow = primaryStage;
@@ -37,6 +35,25 @@ public class Main extends Application {
 		mainWindow.setScene(mainScene);
 		mainWindow.show();
 		loginWindow.show();
+=======
+		primaryStage.setTitle("Login");
+
+		Pane root = FXMLLoader.load(getClass().getResource("login/LoginScreen.fxml"));
+
+		Scene scene = new Scene(root);
+
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+
+	public static void createNewWindow(String fxmlLocation) throws IOException {
+		Stage window = new Stage();
+		Pane root = FXMLLoader.load(Main.class.getResource(fxmlLocation));
+		Scene scene = new Scene(root);
+
+		window.setScene(scene);
+		window.show();
+>>>>>>> branch 'master' of https://github.com/Pedroliv4936/PubFinder.git
 	}
 
 	public static void main(String[] args) {
