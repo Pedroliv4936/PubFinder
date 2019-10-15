@@ -1,12 +1,18 @@
 package application;
 
 import java.io.IOException;
-
+import javafx.application.Application;
+import static javafx.application.Application.launch;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
 
 public class Main extends Application {
 
@@ -26,7 +32,6 @@ public class Main extends Application {
 		
 		Scene loginScene = new Scene(loginPane, 575, 55);
 		Scene mainScene = new Scene(mainPane);
-		
 		
 		loginWindow.setScene(loginScene);
 		mainWindow.setScene(mainScene);

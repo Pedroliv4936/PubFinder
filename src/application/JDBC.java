@@ -11,7 +11,7 @@ import javafx.collections.ObservableList;
 
 public class JDBC {
 
-	private static final String CONN = "jdbc:mysql://192.168.1.93/mydb";
+	private static final String CONN = "jdbc:mysql://178.166.38.153:3306/mydb";
 
 	Connection con = null;
 	Statement stmt = null;
