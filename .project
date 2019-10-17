@@ -20,16 +20,4 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>lib/mysql-connector-java-8.0.17.jar</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Programming/JDBC/mysql-connector-java-8.0.17.jar</locationURI>
-		</link>
-		<link>
-			<name>lib/fonts/Montserrat-Regular.ttf</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/%C3%81rea%20de%20Trabalho/Montserrat-Regular.ttf</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>

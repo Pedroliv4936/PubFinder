@@ -9,6 +9,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+	
+	private static Stage currentStage;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -17,6 +19,8 @@ public class Main extends Application {
 		Pane root = FXMLLoader.load(getClass().getResource("login/LoginScreen.fxml"));
 
 		Scene scene = new Scene(root);
+		
+		currentStage = primaryStage;
 
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -29,6 +33,10 @@ public class Main extends Application {
 
 		window.setScene(scene);
 		window.show();
+	}
+	
+	public static Stage getCurrentStage() {
+		return currentStage;
 	}
 
 	public static void main(String[] args) {
