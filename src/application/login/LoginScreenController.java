@@ -18,35 +18,14 @@ public class LoginScreenController {
 	@FXML TextField usernameField;
 	@FXML PasswordField passwordField;
 	
-	JDBC jdbc;
-	
 	@FXML
 	public void onLoginButtonClicked() {
-		connectDB();
-		if(jdbc.isConnected()) {
-			Main.getCurrentStage().close();
-			try {
-				Main.createNewWindow("login/MainScreen.fxml");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	private void connectDB() {
-		jdbc = new JDBC();
-		
 		String username = usernameField.getText();
 		String password = passwordField.getText();
-		
-		try {
-			jdbc.dbConnect(username, password);
-			
-			System.out.println("Connected as " + username);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		Main.connectDB(username, password);
+		if(Main.getJDBC().isConnected()) {
+			Main.getCurrentStage().close();
+			Main.createNewWindow("login/MainScreen.fxml", "beerIcon.png");
 		}
-		
-		jdbc.disconnectDb();
 	}
 }
