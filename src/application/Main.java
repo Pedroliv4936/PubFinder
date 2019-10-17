@@ -30,7 +30,7 @@ public class Main extends Application {
 		Stage window = new Stage();
 		Pane root = FXMLLoader.load(Main.class.getResource(fxmlLocation));
 		Scene scene = new Scene(root);
-
+		currentStage= window;
 		window.setScene(scene);
 		window.show();
 	}

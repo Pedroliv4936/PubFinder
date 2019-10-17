@@ -24,11 +24,11 @@ public class LoginScreenController {
 	public void onLoginButtonClicked() {
 		connectDB();
 		if(jdbc.isConnected()) {
+			Main.getCurrentStage().close();
 			try {
 				Main.createNewWindow("login/MainScreen.fxml");
 			} catch (IOException e) {
 				e.printStackTrace();
-			Main.getCurrentStage().close();
 			}
 		}
 	}
