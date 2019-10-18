@@ -1,25 +1,28 @@
-.tab-pane .tab-header-area .tab-header-background {
+#tabPane .tab-header-area .tab-header-background {
     -fx-opacity: null;
 }
 
-.tab-pane
+#tabPane
 {
     -fx-tab-min-width:90px;
 }
 
 .tab{
     -fx-background-insets: 0 1 0 1,0,0;
+   	-fx-faint-focus-color: transparent;
 }
-.tab-pane .tab
+#tabPane .tab
 {
     -fx-background-color: #3c3c3c;
 
 }
 
-.tab-pane .tab:selected
+#tabPane .tab:selected
 {
-    -fx-background-color: #3c3c3c;
+    -fx-background-color: #4a4a4a;
+    -fx-border-color: null;
 }
+
 
 .tab .tab-label { 
     -fx-alignment: CENTER;
