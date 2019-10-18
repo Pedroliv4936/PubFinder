@@ -1,48 +1,39 @@
-#tabPane .tab-header-area .tab-header-background {
-    -fx-opacity: null;
-}
-
-#tabPane
+@font-face 
 {
-    -fx-tab-min-width:90px;
+	src: url("ProductSansRegular.ttf");
 }
 
-.tab{
-    -fx-background-insets: 0 1 0 1,0,0;
-   	-fx-faint-focus-color: transparent;
+.view {
+	-fx-font-family: "Product Sans";
 }
-#tabPane .tab
-{
-    -fx-background-color: #3c3c3c;
-
-}
-
-#tabPane .tab:selected
-{
-    -fx-background-color: #4a4a4a;
-    -fx-border-color: null;
+#searchField{
+	-fx-border-radius: 5px;
+	-fx-background-radius: 5px;
+	-fx-background-color: #353535;
+	-fx-effect: dropshadow(three-pass-box, rgba(255,255,255,0.2), 10, 0, 0, 0);
+	-fx-prompt-text-fill: rgba(255,255,255,0.2);
+	-fx-opacity:86%;
+	-fx-padding: 4.83px 4.83px 4.83px 43px; 
 }
 
-
-.tab .tab-label { 
-    -fx-alignment: CENTER;
-    -fx-text-fill: #ffdb58;
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
+#lupaImage{
+	-fx-opacity: 0.2;
 }
 
-.tab:selected .tab-label { 
-    -fx-alignment: CENTER;
-    -fx-text-fill: #ffdb58;
+#searchField:selected{
+	-fx-background-color: #000000;
 }
 
-@font-face {
-	font-family: MontSerrat;
-    src: url('Montserrat-Regular.ttf');
+#addInformation{
+	-fx-background-color:#ffe400;
+	-fx-border-radius:20px;
+	-fx-background-radius: 20px;
+	-fx-opacity:75%;
+	-fx-text-fill: #282828;
+	-fx-effect: dropshadow(three-pass-box,black, 10, 0.5, 0, 0);
+	-fx-padding: 7.5px 7.5px 7.5px 30px; 
 }
 
-#sceneTitle{
-	-fx-font-family: MontSerrat;
-	-fx-font-size: 40px;
-	-fx-text-fill: #ffdb58;
+#headerPane{
+	-fx-background-color: #282828;
 }

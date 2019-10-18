@@ -1,55 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+    Copyright (c) 2017, Gluon and/or its affiliates.
+    All rights reserved. Use is subject to license terms.
+
+    This file is available and licensed under the following license:
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions
+    are met:
+
+   - Redistributions of source code must retain the above copyright
+     notice, this list of conditions and the following disclaimer.
+   - Redistributions in binary form must reproduce the above copyright
+     notice, this list of conditions and the following disclaimer in
+     the documentation and/or other materials provided with the distribution.
+   - Neither the name of Oracle Corporation and Gluon nor the names of its
+     contributors may be used to endorse or promote products derived
+     from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import com.gluonhq.charm.glisten.mvc.View?>
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="759.0" prefWidth="1176.0" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.controllers.MainScreenController">
+<View fx:id="mainView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <AnchorPane prefHeight="616.0" prefWidth="889.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="759.0" fitWidth="1176.0" layoutX="-242.0" layoutY="-92.0" pickOnBounds="true">
+            <ImageView fitHeight="607.0" fitWidth="336.0" layoutX="-1.0" layoutY="-108.0" pickOnBounds="true">
                <image>
-                  <Image url="@../../../lib/img/lisbonMap.png" />
+                  <Image url="@../../../lib/img/lisbonMapMobile.png" />
                </image>
             </ImageView>
-            <HBox layoutX="-242.0" layoutY="611.0" minHeight="34.0" minWidth="880.0" opacity="0.8" prefHeight="56.0" prefWidth="1176.0" style="-fx-background-color: BLACK;" />
-            <JFXTextField fx:id="searchField" focusColor="#ffdb55" layoutX="154.0" layoutY="38.0" opacity="0.7" prefHeight="49.0" prefWidth="512.0" promptText="Comece a procurar..." />
-            <JFXButton layoutX="378.0" layoutY="101.0" />
+            <JFXTextField fx:id="searchField" focusColor="#ffe400" layoutX="54.0" layoutY="27.0" prefHeight="34.0" prefWidth="224.0" promptText="Procure  por  Bares/Bebidas" unFocusColor="#353535">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </JFXTextField>
+            <JFXButton fx:id="addInformation" graphicTextGap="10.0" layoutX="64.0" layoutY="377.0" lineSpacing="5.0" prefHeight="34.0" prefWidth="210.0" text=" Adicionar  Bares/Bebidas" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="377.0" />
+            <ImageView fitHeight="32.0" fitWidth="26.0" layoutX="79.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../lib/img/plus-icon-transparent-19.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="lupaImage" fitHeight="25.0" fitWidth="38.0" layoutX="58.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../lib/img/Lupa%20Pesquisa.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </center>
    <top>
-      <HBox opacity="0.8" prefHeight="92.0" prefWidth="1188.0" style="-fx-background-color: BLACK;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="headerPane" prefHeight="101.0" prefWidth="344.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="92.0" prefWidth="1194.0">
-               <children>
-                  <Label fx:id="sceneTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="73.0" layoutY="-2.0" prefHeight="94.0" prefWidth="1115.0" text="Pub Finder" />
-               </children>
-            </AnchorPane>
-         </children></HBox>
+            <ImageView fitHeight="81.0" fitWidth="108.0" layoutX="124.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../MockUp%20projeto/LogoPubFinder.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </top>
-   <left>
-      <JFXTabPane fx:id="tabPane" opacity="0.88" prefHeight="667.0" prefWidth="244.0" style="-fx-background-color: Black;" BorderPane.alignment="CENTER">
-         <tabs>
-            <Tab text="Bares">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="130.0" />
-              </content>
-            </Tab>
-            <Tab text="Bebidas">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
-            </Tab>
-         </tabs>
-      </JFXTabPane>
-   </left>
-</BorderPane>
+</View>
