@@ -1,17 +1,9 @@
-package application.login;
+package application.views.controllers;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
-import application.JDBC;
 import application.Main;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 public class LoginScreenController {
 
@@ -25,7 +17,7 @@ public class LoginScreenController {
 		Main.connectDB(username, password);
 		if(Main.getJDBC().isConnected()) {
 			Main.getCurrentStage().close();
-			Main.createNewWindow("login/MainScreen.fxml", "beerIcon.png");
+			Main.createNewWindow("views/MainScreen.fxml", "beerIcon.png");
 		}
 	}
 }

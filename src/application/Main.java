@@ -3,6 +3,8 @@ package application;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import com.lynden.gmapsfx.GoogleMapView;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -20,7 +22,7 @@ public class Main extends Application {
 		jdbc= new JDBC();
 		primaryStage.setTitle("Login");
 		primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("keyIcon.png")));
-		Pane root = FXMLLoader.load(getClass().getResource("login/LoginScreen.fxml"));
+		Pane root = FXMLLoader.load(getClass().getResource("views/MainScreen.fxml"));
 
 		Scene scene = new Scene(root);
 		
@@ -58,9 +60,9 @@ public class Main extends Application {
 			System.out.println("Connected as " + username);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		
-		jdbc.disconnectDb();
+		}finally {
+			jdbc.disconnectDb();
+		}		
 	}
 	
 	
