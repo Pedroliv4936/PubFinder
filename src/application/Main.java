@@ -22,7 +22,8 @@ public class Main extends Application {
 		jdbc= new JDBC();
 		primaryStage.setTitle("Login");
 		primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("keyIcon.png")));
-		Pane root = FXMLLoader.load(getClass().getResource("/PubFinder/src/application/views/MainScreen.fxml"));
+		
+		Pane root = FXMLLoader.load(getClass().getResource("views/MainScreen.fxml"));
 
 		Scene scene = new Scene(root);
 		
@@ -40,7 +41,7 @@ public class Main extends Application {
 		window.setTitle("Pub Finder");
 		Pane root=null;
 		try {
-			root = FXMLLoader.load(Main.class.getResource(fxmlLocation));
+			root = FXMLLoader.load(Main.class.getResource("views/MainScreen.fxml"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
