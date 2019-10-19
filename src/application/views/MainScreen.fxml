@@ -36,32 +36,37 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<View fx:id="mainView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+
+<View maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane minHeight="600.0" minWidth="335.0" prefHeight="600.0" prefWidth="335.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="607.0" fitWidth="336.0" layoutX="-1.0" layoutY="-108.0" pickOnBounds="true">
+            <ImageView fx:id="onClickButton" fitHeight="650.0" fitWidth="335.0" layoutY="-51.0" pickOnBounds="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-51.0">
                <image>
                   <Image url="@../../../lib/img/lisbonMapMobile.png" />
                </image>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
             </ImageView>
-            <JFXTextField fx:id="searchField" focusColor="#ffe400" layoutX="54.0" layoutY="27.0" prefHeight="34.0" prefWidth="224.0" promptText="Procure  por  Bares/Bebidas" unFocusColor="#353535">
+            <JFXTextField fx:id="searchField" focusColor="#ffe400" layoutX="57.0" layoutY="69.0" prefHeight="34.0" prefWidth="224.0" promptText="Procure  por  Bares/Bebidas" unFocusColor="#353535">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </JFXTextField>
-            <JFXButton fx:id="addInformation" graphicTextGap="10.0" layoutX="64.0" layoutY="377.0" lineSpacing="5.0" prefHeight="34.0" prefWidth="210.0" text=" Adicionar  Bares/Bebidas" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="377.0" />
-            <ImageView fitHeight="32.0" fitWidth="26.0" layoutX="79.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
+            <JFXButton fx:id="addInformation" graphicTextGap="10.0" layoutX="54.0" layoutY="471.0" lineSpacing="5.0" onAction="#onClickButton" prefHeight="35.0" prefWidth="210.0" text=" Adicionar  Bares/Bebidas" AnchorPane.bottomAnchor="94.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="71.0" AnchorPane.topAnchor="471.0" />
+            <ImageView fitHeight="32.0" fitWidth="26.0" layoutX="66.0" layoutY="476.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../lib/img/plus-icon-transparent-19.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="lupaImage" fitHeight="25.0" fitWidth="38.0" layoutX="58.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="lupaImage" fitHeight="25.0" fitWidth="42.0" layoutX="235.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../lib/img/Lupa%20Pesquisa.png" />
                </image>
@@ -70,7 +75,7 @@
       </AnchorPane>
    </center>
    <top>
-      <AnchorPane fx:id="headerPane" prefHeight="101.0" prefWidth="344.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="headerPane" prefHeight="101.0" prefWidth="344.0" style="-fx-background-color: #353535;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="81.0" fitWidth="108.0" layoutX="124.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                <image>

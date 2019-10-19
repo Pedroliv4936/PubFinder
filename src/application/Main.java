@@ -26,6 +26,7 @@ public class Main extends Application {
 
 		Scene scene = new Scene(root);
 		
+		
 		currentStage = primaryStage;
 
 		primaryStage.setScene(scene);
@@ -73,4 +74,5 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
 }

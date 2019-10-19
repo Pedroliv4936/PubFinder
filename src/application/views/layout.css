@@ -13,7 +13,7 @@
 	-fx-effect: dropshadow(three-pass-box, rgba(255,255,255,0.2), 10, 0, 0, 0);
 	-fx-prompt-text-fill: rgba(255,255,255,0.2);
 	-fx-opacity:86%;
-	-fx-padding: 4.83px 4.83px 4.83px 43px; 
+	-fx-padding: 4.83px 4.83px 4.83px 10px; 
 }
 
 #lupaImage{
