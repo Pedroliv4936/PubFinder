@@ -14,11 +14,7 @@ public class MainScreenController {
 	ImageView template;
 	
 	@FXML
-	GoogleMapView gMaps;
-	
-	@FXML
 	private void initialize() {
-		gMaps= new GoogleMapView("en-US", "CViCBkpkN8Zj6SsHkY0zNUG2qBE=");
 	}
 
 	@FXML

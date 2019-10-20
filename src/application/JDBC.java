@@ -13,16 +13,16 @@ public class JDBC {
 
 	private static final String CONN = "jdbc:mysql://localhost:3306/aula";
 
-	Connection con = null;
+	static Connection con = null;
 	Statement stmt = null;
 	ResultSet rs = null;
 	
-	boolean connected;
+	static boolean connected;
 
 	public JDBC() {
 	}
 
-	public void dbConnect(String username, String password) throws SQLException {
+	public static void dbConnect(String username, String password) throws SQLException {
 
 		try {
 			con = DriverManager.getConnection(CONN, username, password);
@@ -43,7 +43,7 @@ public class JDBC {
 		}
 	}
 	
-	public boolean isConnected() {
+	public static boolean isConnected() {
 		return connected;
 	}
 }

@@ -1,5 +1,8 @@
 package application.views;
 
+import java.sql.SQLException;
+
+import application.JDBC;
 import application.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -14,8 +17,12 @@ public class LoginScreenController {
 	public void onLoginButtonClicked() {
 		String username = usernameField.getText();
 		String password = passwordField.getText();
-		Main.connectDB(username, password);
-		if(Main.getJDBC().isConnected()) {
+		try {
+			JDBC.dbConnect(username, password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if(JDBC.isConnected()) {
 			Main.getCurrentStage().close();
 			Main.createNewWindow("views/MainScreen.fxml", "beerIcon.png");
 		}
