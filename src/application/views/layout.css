@@ -4,7 +4,7 @@
 
 .view {
 	-fx-font-family: "Product Sans";
-	-fx-background-image:url("darkModeMap.png"); 
+	-fx-background-image:url("imgs/darkModeMap.png"); 
 }
 
 
@@ -17,20 +17,20 @@
 	-fx-background-color: #282828;
 }
 
-#menuBarButton{
-	-fx-background-image:url("menuBebidasIcon.png");
+#bebidasButton{
+	-fx-background-image:url("imgs/menuBebidasIcon.png");
 	-fx-background-color:transparent;
 	-fx-min-width:30px;
 }
 
 #userButton{
-	-fx-background-image:url("deufaultUserIcon.png");
+	-fx-background-image:url("imgs/deufaultUserIcon.png");
 	-fx-background-color:transparent;
 	-fx-min-width:30px;
 }
 
 #logoButton{
-	-fx-background-image:url("logoPubFinder.png");
+	-fx-background-image:url("imgs/logoPubFinder.png");
 	-fx-background-color:transparent;
 }
 
