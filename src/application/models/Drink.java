@@ -7,8 +7,10 @@ public class Drink extends Entity{
 	private double price;
 	private Image icon;
 	
-	public Drink(int id, String name, double rating) {
+	public Drink(int id, String name, double rating, double price, Image icon) {
 		super(id, name, rating);
+		this.price = price;
+		this.icon = icon;
 	}
 	
 	public void showDrinkInfo() {
