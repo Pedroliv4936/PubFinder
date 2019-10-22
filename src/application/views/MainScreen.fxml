@@ -36,24 +36,26 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <View maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.MainScreenController">
    <top>
-      <HBox fx:id="topHBox" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" prefHeight="129.0" prefWidth="335.0" style="-fx-background-color: #282828;" BorderPane.alignment="CENTER">
+      <HBox fx:id="topHBox" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" prefHeight="104.09" prefWidth="280.0" style="-fx-background-color: #282828;" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton fx:id="menuBarButton" minWidth="24.0" prefHeight="57.0" prefWidth="64.0" text=" ">
+            <JFXButton fx:id="menuBarButton" minWidth="34.0" prefHeight="33.0" prefWidth="33.0" text=" ">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>
             </JFXButton>
             <Region minWidth="20.5" prefHeight="94.0" prefWidth="20.5" HBox.hgrow="ALWAYS" />
-            <JFXButton fx:id="logoButton" prefHeight="98.0" prefWidth="113.0" text=" " />
+            <JFXButton fx:id="logoButton" prefHeight="85.0" prefWidth="85.0" text=" " />
             <Region minWidth="20.5" prefHeight="200.0" prefWidth="20.5" HBox.hgrow="ALWAYS" />
-            <JFXButton prefHeight="60.0" prefWidth="63.0">
+            <JFXButton fx:id="userButton" prefHeight="30.0" prefWidth="30.0" text=" ">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
@@ -64,20 +66,38 @@
    <center>
       <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXTextField fx:id="searchField" focusColor="#ffe400" prefHeight="34.0" prefWidth="224.0" promptText="Procure  por  Bares/Bebidas" unFocusColor="#353535" VBox.vgrow="ALWAYS">
+            <JFXTextField fx:id="searchField" focusColor="#ffe400" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.897" prefWidth="267.6" promptText="Procure  por  Bares..." unFocusColor="#353535" VBox.vgrow="ALWAYS">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <VBox.margin>
-                  <Insets top="40.0" />
+                  <Insets top="23.51" />
                </VBox.margin>
             </JFXTextField>
-            <Region minHeight="300.0" minWidth="200.0" prefHeight="300.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-            <JFXButton fx:id="addInformation" graphicTextGap="10.0" lineSpacing="5.0" onAction="#onClickButton" prefHeight="35.0" prefWidth="210.0" text=" Adicionar  Bares/Bebidas">
+            <Region minHeight="10.0" minWidth="200.0" prefHeight="256.0" prefWidth="200.0" VBox.vgrow="SOMETIMES" />
+            <JFXButton fx:id="addInformation" buttonType="RAISED" graphicTextGap="10.0" lineSpacing="5.0" onAction="#onClickButton" prefHeight="36.0" prefWidth="205.0" text=" Adicionar Informação">
                <VBox.margin>
-                  <Insets bottom="85.0" />
+                  <Insets bottom="15.1" />
                </VBox.margin>
             </JFXButton>
+            <StackPane alignment="BOTTOM_CENTER" prefHeight="61.23" prefWidth="335.0">
+               <children>
+                  <Button fx:id="leftBarPanel" mnemonicParsing="false" prefHeight="42.35" prefWidth="194.337" text=" ">
+                     <StackPane.margin>
+                        <Insets left="8.033" right="150.0" />
+                     </StackPane.margin>
+                  </Button>
+                  <Button fx:id="rightBarPanel" mnemonicParsing="false" prefHeight="42.35" prefWidth="194.337" text=" ">
+                     <StackPane.margin>
+                        <Insets left="150.0" right="8.033" />
+                     </StackPane.margin>
+                  </Button>
+                  <Button fx:id="frontBarPanel" mnemonicParsing="false" prefHeight="168.0" prefWidth="225.0" text=" " />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="-1.0" />
+               </VBox.margin>
+            </StackPane>
          </children>
       </VBox>
    </center>
