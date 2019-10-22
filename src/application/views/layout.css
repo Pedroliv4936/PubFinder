@@ -5,7 +5,23 @@
 
 .view {
 	-fx-font-family: "Product Sans";
+	-fx-background-image:url("lisbonMap.png"); 
 }
+
+#topHbox{
+	-fx-background-color: #282828;
+}
+
+#menuBarButton{
+	-fx-background-image:url("menuBebidasIcon.png");
+	-fx-background-color:transparent;
+}
+
+#logoButton{
+	-fx-background-image:url("logoPubFinder.png");
+	-fx-background-color:transparent;
+}
+
 #searchField{
 	-fx-border-radius: 5px;
 	-fx-background-radius: 5px;

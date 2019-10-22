@@ -10,8 +10,6 @@ public class MainScreenController {
 
 	@FXML
 	JFXTextField searchField;
-	@FXML
-	ImageView template;
 	
 	@FXML
 	private void initialize() {

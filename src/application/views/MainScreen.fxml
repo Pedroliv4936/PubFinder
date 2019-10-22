@@ -36,52 +36,49 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.geometry.Rectangle2D?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 
-<View maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.MainScreenController">
-   <center>
-      <AnchorPane minHeight="600.0" minWidth="335.0" prefHeight="600.0" prefWidth="335.0" BorderPane.alignment="CENTER">
+<View maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.MainScreenController">
+   <top>
+      <HBox fx:id="topHBox" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" prefHeight="129.0" prefWidth="335.0" style="-fx-background-color: #282828;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="onClickButton" fitHeight="650.0" fitWidth="335.0" layoutY="-51.0" pickOnBounds="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-51.0">
-               <image>
-                  <Image url="@../../../lib/img/lisbonMapMobile.png" />
-               </image>
-               <viewport>
-                  <Rectangle2D />
-               </viewport>
-            </ImageView>
-            <JFXTextField fx:id="searchField" focusColor="#ffe400" layoutX="57.0" layoutY="69.0" prefHeight="34.0" prefWidth="224.0" promptText="Procure  por  Bares/Bebidas" unFocusColor="#353535">
+            <JFXButton fx:id="menuBarButton" minWidth="24.0" prefHeight="57.0" prefWidth="64.0" text=" ">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </JFXButton>
+            <Region minWidth="20.5" prefHeight="94.0" prefWidth="20.5" HBox.hgrow="ALWAYS" />
+            <JFXButton fx:id="logoButton" prefHeight="98.0" prefWidth="104.0" />
+            <Region minWidth="20.5" prefHeight="200.0" prefWidth="20.5" HBox.hgrow="ALWAYS" />
+            <JFXButton prefHeight="60.0" prefWidth="63.0">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </JFXButton>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXTextField fx:id="searchField" focusColor="#ffe400" prefHeight="34.0" prefWidth="224.0" promptText="Procure  por  Bares/Bebidas" unFocusColor="#353535" VBox.vgrow="ALWAYS">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
             </JFXTextField>
-            <JFXButton fx:id="addInformation" graphicTextGap="10.0" layoutX="54.0" layoutY="471.0" lineSpacing="5.0" onAction="#onClickButton" prefHeight="35.0" prefWidth="210.0" text=" Adicionar  Bares/Bebidas" AnchorPane.bottomAnchor="94.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="71.0" AnchorPane.topAnchor="471.0" />
-            <ImageView fitHeight="32.0" fitWidth="26.0" layoutX="66.0" layoutY="476.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../lib/img/plus-icon-transparent-19.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="lupaImage" fitHeight="25.0" fitWidth="42.0" layoutX="235.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../lib/img/Lupa%20Pesquisa.png" />
-               </image>
-            </ImageView>
+            <Region minHeight="300.0" minWidth="200.0" prefHeight="300.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+            <JFXButton fx:id="addInformation" graphicTextGap="10.0" lineSpacing="5.0" onAction="#onClickButton" prefHeight="35.0" prefWidth="210.0" text=" Adicionar  Bares/Bebidas">
+               <VBox.margin>
+                  <Insets bottom="85.0" />
+               </VBox.margin>
+            </JFXButton>
          </children>
-      </AnchorPane>
+      </VBox>
    </center>
-   <top>
-      <AnchorPane fx:id="headerPane" prefHeight="101.0" prefWidth="344.0" style="-fx-background-color: #353535;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="81.0" fitWidth="108.0" layoutX="124.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../MockUp%20projeto/LogoPubFinder.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-   </top>
 </View>
