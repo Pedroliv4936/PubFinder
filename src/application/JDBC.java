@@ -22,7 +22,7 @@ public class JDBC {
 	public JDBC() {
 	}
 
-	public static void dbConnect(String username, String password) throws SQLException {
+	public static void  dbConnect(String username, String password) throws SQLException {
 
 		try {
 			con = DriverManager.getConnection(CONN, username, password);
