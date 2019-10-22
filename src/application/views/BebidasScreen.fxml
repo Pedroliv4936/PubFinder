@@ -1,8 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import com.gluonhq.charm.glisten.mvc.View?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-</AnchorPane>
-
+<View maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.MenuBebidasController">
+   <top>
+      <HBox fx:id="topHBox" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" prefHeight="104.09" prefWidth="280.0" style="-fx-background-color: #282828;" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="bebidasButton" minWidth="34.0" onAction="#openDrinksPage" prefHeight="33.0" prefWidth="33.0" stylesheets="@layout.css" text=" ">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </JFXButton>
+            <Region minWidth="20.5" prefHeight="94.0" prefWidth="20.5" HBox.hgrow="ALWAYS" />
+            <JFXButton fx:id="logoButton" onAction="#openMainPage" prefHeight="85.0" prefWidth="85.0" stylesheets="@layout.css" text=" " />
+            <Region minWidth="20.5" prefHeight="200.0" prefWidth="20.5" HBox.hgrow="ALWAYS" />
+            <JFXButton fx:id="userButton" onAction="#openUserPage" prefHeight="30.0" prefWidth="30.0" stylesheets="@layout.css" text=" ">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </JFXButton>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #353535;" BorderPane.alignment="CENTER">
+         <children>
+            <ListView fx:id="DrinkList" prefHeight="410.0" prefWidth="255.0" style="-fx-opacity: 0.2;">
+               <VBox.margin>
+                  <Insets bottom="40.0" left="40.0" right="40.0" top="50.0" />
+               </VBox.margin>
+            </ListView>
+         </children>
+      </VBox>
+   </center>
+</View>

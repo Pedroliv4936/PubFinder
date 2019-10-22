@@ -18,7 +18,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		primaryStage.setTitle("Login");
 		primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("keyIcon.png")));
-		Pane root = FXMLLoader.load(getClass().getResource("views/LoginScreen.fxml"));
+		Pane root = FXMLLoader.load(getClass().getResource("views/MainScreen.fxml"));
 
 		Scene scene = new Scene(root);
 		
