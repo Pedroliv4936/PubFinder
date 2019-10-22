@@ -1,0 +1,56 @@
+@font-face 
+{
+	src: url("ProductSansRegular.ttf");
+}
+
+.view {
+	-fx-font-family: "Product Sans";
+	-fx-background-image:url("lisbonMap.png"); 
+}
+
+#topHbox{
+	-fx-background-color: #282828;
+}
+
+#menuBarButton{
+	-fx-background-image:url("menuBebidasIcon.png");
+	-fx-background-color:transparent;
+}
+
+#logoButton{
+	-fx-background-image:url("logoPubFinder.png");
+	-fx-background-color:transparent;
+}
+
+#searchField{
+	-fx-border-radius: 5px;
+	-fx-background-radius: 5px;
+	-fx-background-color: #353535;
+	-fx-effect: dropshadow(three-pass-box, rgba(255,255,255,0.2), 10, 0, 0, 0);
+	-fx-prompt-text-fill: rgba(255,255,255,0.2);
+	-fx-opacity:86%;
+	-fx-padding: 4.83px 4.83px 4.83px 10px; 
+}
+
+#lupaImage{
+	-fx-opacity: 0.2;
+}
+
+#searchField:selected{
+	-fx-background-color: #000000;
+}
+
+#addInformation{
+	-fx-background-color:#ffe400;
+	-fx-border-radius:20px;
+	-fx-background-radius: 20px;
+	-fx-opacity:75%;
+	-fx-text-fill: #282828;
+	-fx-effect: dropshadow(three-pass-box,black, 10, 0.5, 0, 0);
+	-fx-padding: 7.5px 7.5px 7.5px 30px; 
+}
+
+
+#headerPane{
+	-fx-background-color: #282828;
+}
