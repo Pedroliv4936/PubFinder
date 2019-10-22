@@ -4,7 +4,7 @@
 
 .view {
 	-fx-font-family: "Product Sans";
-	-fx-background-image:url("imgs/darkModeMap.png"); 
+	-fx-background-image:url("imgs/lisbonMap.png"); 
 }
 
 
@@ -13,7 +13,7 @@
 	-fx-background-radius: 5px;
 }
 #VBox{
-	-fx-opacity:0.98;
+	-fx-opacity:0.97;
 }
 
 #LoginButton{
