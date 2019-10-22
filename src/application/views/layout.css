@@ -1,11 +1,16 @@
-@font-face 
-{
+@font-face{
 	src: url("ProductSansRegular.ttf");
 }
 
 .view {
 	-fx-font-family: "Product Sans";
-	-fx-background-image:url("lisbonMap.png"); 
+	-fx-background-image:url("darkModeMap.png"); 
+}
+
+
+.textField{
+	-fx-border-radius: 5px;
+	-fx-background-radius: 5px;
 }
 #VBox{
 	-fx-opacity:0.98;
@@ -30,6 +35,13 @@
 #menuBarButton{
 	-fx-background-image: url("menuBebidasIcon.png");
 	-fx-background-color:transparent;
+	-fx-min-width:30px;
+}
+
+#userButton{
+	-fx-background-image:url("deufaultUserIcon.png");
+	-fx-background-color:transparent;
+	-fx-min-width:30px;
 }
 
 #logoButton{
@@ -38,21 +50,22 @@
 }
 
 #searchField{
-	-fx-border-radius: 5px;
-	-fx-background-radius: 5px;
 	-fx-background-color: #353535;
 	-fx-effect: dropshadow(three-pass-box, rgba(255,255,255,0.2), 10, 0, 0, 0);
 	-fx-prompt-text-fill: rgba(255,255,255,0.2);
+	-fx-text-fill:rgba(255,255,255,0.2);
 	-fx-opacity:86%;
-	-fx-padding: 4.83px 4.83px 4.83px 10px; 
-}
-
-#lupaImage{
-	-fx-opacity: 0.2;
+	-fx-padding: 4.83px 4.83px 4.83px 45px; 
+	-fx-border-color:transparent;
+	-fx-font-size: 18;
 }
 
 #searchField:selected{
 	-fx-background-color: #000000;
+}
+
+#lupaImage{
+	-fx-opacity: 0.2;
 }
 
 #addInformation{
@@ -65,7 +78,9 @@
 	-fx-padding: 7.5px 7.5px 7.5px 30px; 
 }
 
-
-#headerPane{
-	-fx-background-color: #282828;
+#frontBarPanel, #leftBarPanel, #rightBarPanel{
+	-fx-background-color:#353535;
+	-fx-border-radius:5px;
+	-fx-background-radius:5px;
+	-fx-effect: dropshadow(three-pass-box,rgba(255,255,255,0.2), 5, 0, 0, 0);
 }
