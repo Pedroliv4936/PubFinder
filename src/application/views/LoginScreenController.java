@@ -14,7 +14,7 @@ public class LoginScreenController {
 	@FXML PasswordField passwordField;
 	
 	@FXML
-	public void onLoginButtonClicked() {
+	public void login() {
 		String username = usernameField.getText();
 		String password = passwordField.getText();
 		try {
@@ -24,7 +24,7 @@ public class LoginScreenController {
 		}
 		if(JDBC.isConnected()) {
 			Main.getCurrentStage().close();
-			Main.createNewWindow("views/MainScreen.fxml", "beerIcon.png");
+			Main.createNewWindow("views/MainScreen.fxml");
 		}
 	}
 }

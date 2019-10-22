@@ -60,6 +60,10 @@ public class Main extends Application {
 		window.show();
 	}
 	
+	public static void createNewWindow(String fxmlLocation) {
+		createNewWindow(fxmlLocation, "views/imgs/logoPubFinder.png");
+	}
+	
 	public static Stage getCurrentStage() {
 		return currentStage;
 	}
