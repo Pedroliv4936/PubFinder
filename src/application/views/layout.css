@@ -7,18 +7,34 @@
 	-fx-font-family: "Product Sans";
 	-fx-background-image:url("lisbonMap.png"); 
 }
+#VBox{
+	-fx-opacity:0.98;
+}
 
+#LoginButton{
+	-fx-background-radius:20px;
+	-fx-border-radius:20px;
+	-fx-opacity:85%;
+	-fx-text-fill:white;
+}
+
+#RegisterButton{
+	-fx-background-radius:20px;
+	-fx-border-radius:20px;
+	-fx-opacity:85%;
+	-fx-text-fill:white;
+}
 #topHbox{
 	-fx-background-color: #282828;
 }
 
 #menuBarButton{
-	-fx-background-image:url("menuBebidasIcon.png");
+	-fx-background-image: url("menuBebidasIcon.png");
 	-fx-background-color:transparent;
 }
 
 #logoButton{
-	-fx-background-image:url("logoPubFinder.png");
+	-fx-background-image: url("logoPubFinder.png");
 	-fx-background-color:transparent;
 }
 
