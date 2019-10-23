@@ -85,4 +85,8 @@
 	-fx-effect: dropshadow(three-pass-box,rgba(255,255,255,0.2), 5, 0, 0, 0);
 }
 #pageName{
+	-fx-text-fill:#ffe400;
+	-fx-font-size: 27;
+	-fx-stroke: #000000;
+	-fx-stroke-width: 3px;
 }

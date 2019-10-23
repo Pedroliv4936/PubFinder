@@ -18,7 +18,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		primaryStage.setTitle("Login");
 		primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("keyIcon.png")));
-		Pane root = FXMLLoader.load(getClass().getResource("views/MainScreen.fxml"));
+		Pane root = FXMLLoader.load(getClass().getResource("views/Header.fxml"));
 
 		Scene scene = new Scene(root);
 		
@@ -61,7 +61,7 @@ public class Main extends Application {
 	}
 	
 	public static void createNewWindow(String fxmlLocation) {
-		createNewWindow(fxmlLocation, "views/imgs/logoPubFinder.png");
+		createNewWindow(fxmlLocation, "views/res/imgs/logoPubFinder.png");
 	}
 	
 	public static Stage getCurrentStage() {

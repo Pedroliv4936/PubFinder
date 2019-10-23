@@ -15,20 +15,4 @@ public class MenuBebidasController {
 	@FXML
 	private void initialize() {
 	}
-
-	@FXML
-	private void openDrinksPage() {
-		Main.changeScene("views/BebidasScreen.fxml");
-	}
-	
-	@FXML
-	private void openMainPage() {
-		Main.changeScene("views/MainScreen.fxml");
-	}
-	
-	@FXML
-	private void openUserPage() {
-		Main.changeScene("views/UserScreen.fxml");
-	}
-	
 }
