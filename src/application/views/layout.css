@@ -1,10 +1,10 @@
 @font-face{
-	src: url("ProductSansRegular.ttf");
+	src: url("res/font/ProductSansRegular.ttf");
 }
 
 .view {
 	-fx-font-family: "Product Sans";
-	-fx-background-image:url("imgs/lisbonMap.png"); 
+	-fx-background-image:url("res/imgs/lisbonMap.png"); 
 }
 
 
@@ -33,19 +33,19 @@
 }
 
 #bebidasButton{
-	-fx-background-image:url("imgs/menuBebidasIcon.png");
+	-fx-background-image:url("res/imgs/menuBebidasIcon.png");
 	-fx-background-color:transparent;
 	-fx-min-width:30px;
 }
 
 #userButton{
-	-fx-background-image:url("imgs/deufaultUserIcon.png");
+	-fx-background-image:url("res/imgs/deufaultUserIcon.png");
 	-fx-background-color:transparent;
 	-fx-min-width:30px;
 }
 
 #logoButton{
-	-fx-background-image:url("imgs/logoPubFinder.png");
+	-fx-background-image:url("res/imgs/logoPubFinder.png");
 	-fx-background-color:transparent;
 }
 
