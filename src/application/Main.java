@@ -50,7 +50,6 @@ public class Main extends Application {
 		try {
 			root = FXMLLoader.load(Main.class.getResource(fxmlLocation));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Scene scene = new Scene(root);

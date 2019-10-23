@@ -15,15 +15,15 @@
    <top>
       <HBox fx:id="topHBox" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" prefHeight="104.09" prefWidth="280.0" style="-fx-background-color: #282828;" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton fx:id="bebidasButton" minWidth="34.0" onAction="#openDrinksPage" prefHeight="33.0" prefWidth="33.0" stylesheets="@layout.css" text=" ">
+            <JFXButton fx:id="bebidasButton" minWidth="34.0" prefHeight="33.0" prefWidth="33.0" stylesheets="@layout.css" text=" ">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>
             </JFXButton>
             <Region minWidth="20.5" prefHeight="94.0" prefWidth="20.5" HBox.hgrow="ALWAYS" />
-            <JFXButton fx:id="logoButton" onAction="#openMainPage" prefHeight="85.0" prefWidth="85.0" stylesheets="@layout.css" text=" " />
+            <JFXButton fx:id="logoButton" prefHeight="85.0" prefWidth="85.0" stylesheets="@layout.css" text=" " />
             <Region minWidth="20.5" prefHeight="200.0" prefWidth="20.5" HBox.hgrow="ALWAYS" />
-            <JFXButton fx:id="userButton" onAction="#openUserPage" prefHeight="30.0" prefWidth="30.0" stylesheets="@layout.css" text=" ">
+            <JFXButton fx:id="userButton" prefHeight="30.0" prefWidth="30.0" stylesheets="@layout.css" text=" ">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>

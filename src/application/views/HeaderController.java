@@ -13,8 +13,6 @@ import javafx.scene.layout.Pane;
 public class HeaderController {
 
 	@FXML
-	JFXTextField searchField;
-	@FXML
 	JFXButton bebidasButton,logoButton,userButton;
 	@FXML
 	Pane contentPane;
@@ -43,7 +41,7 @@ public class HeaderController {
 		changeContent("UserScreen.fxml");
 	}
 	
-	private void changeContent(String fxmlLocation) {
+	public void changeContent(String fxmlLocation) {
 		try {
 			Pane newLoadedFxml = FXMLLoader.load(getClass().getResource(fxmlLocation));
 			contentPane.getChildren().clear();
