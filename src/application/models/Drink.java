@@ -20,7 +20,6 @@ public class Drink extends Entity{
 		System.out.println("Price" + price);
 		System.out.println("Image path" + icon);
 	}
-
 	public double getPrice() {
 		return price;
 	}
