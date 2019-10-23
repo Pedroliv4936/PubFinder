@@ -34,5 +34,8 @@ public class MainScreenController {
 		Main.changeScene("views/UserScreen.fxml");
 	}
 	
-	
+	@FXML
+	private void openInformationPage() {
+		Main.changeScene("views/AddInformationScreen.fxml");
+	}
 }

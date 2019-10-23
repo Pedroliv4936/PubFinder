@@ -13,22 +13,22 @@
 
 <View maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.LoginScreenController">
    <center>
-      <VBox id="VBox" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #353535;" stylesheets="@layout.css" BorderPane.alignment="CENTER">
+      <VBox id="VBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #353535;" stylesheets="@layout.css" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="182.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@imgs/logoPubFinder.png" />
+                  <Image url="@res/imgs/logoPubFinder.png" />
                </image>
                <VBox.margin>
-                  <Insets left="75.0" right="75.0" top="50.0" />
+                  <Insets />
                </VBox.margin>
             </ImageView>
-            <JFXTextField fx:id="usernameField" focusColor="WHITE" opacity="0.43" promptText="Username" style="-fx-background-color: #353535; -fx-border-width: 2; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white;" unFocusColor="#353535">
+            <JFXTextField fx:id="usernameField" focusColor="WHITE" maxHeight="62.0" maxWidth="590.0" opacity="0.43" prefHeight="31.0" prefWidth="295.0" promptText="Username" style="-fx-background-color: #353535; -fx-border-width: 2; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white;" unFocusColor="#353535" VBox.vgrow="NEVER">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" top="50.0" />
                </VBox.margin>
             </JFXTextField>
-            <JFXPasswordField fx:id="passwordField" focusColor="WHITE" opacity="0.43" promptText="Password" style="-fx-border-width: 2; -fx-border-color: white; -fx-border-radius: 5; -fx-background-color: #353535; -fx-text-fill: white;">
+            <JFXPasswordField fx:id="passwordField" focusColor="WHITE" maxHeight="62.0" maxWidth="590.0" opacity="0.43" prefHeight="31.0" prefWidth="295.0" promptText="Password" style="-fx-border-width: 2; -fx-border-color: white; -fx-border-radius: 5; -fx-background-color: #353535; -fx-text-fill: white;" VBox.vgrow="NEVER">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" top="20.0" />
                </VBox.margin>
