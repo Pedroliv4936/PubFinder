@@ -23,15 +23,6 @@ public class Pub extends Entity{
 			System.out.println("Id: " + id);
 			System.out.println("Name" + name);
 			System.out.println("Rating" + rating);
-			System.out.println("Bar onde é vendido: " + pub);
-	}
-
-	public Pub getPub() {
-		return pub;
-	}
-	
-	public void setPub(Pub pub) {
-		this.pub = pub;
 	}
 	
 	public String getAddress() {

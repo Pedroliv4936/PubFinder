@@ -6,11 +6,13 @@ public class Drink extends Entity{
 
 	private double price;
 	private Image icon;
+	private Pub pub;
 	
-	public Drink(int id, String name, double rating, double price, Image icon) {
+	public Drink(int id, String name, double rating, double price, Image icon, Pub pub) {
 		super(id, name, rating);
 		this.price = price;
 		this.icon = icon;
+		this.pub = pub;
 	}
 	
 	public void showDrinkInfo() {
@@ -19,7 +21,17 @@ public class Drink extends Entity{
 		System.out.println("Rating" + rating);
 		System.out.println("Price" + price);
 		System.out.println("Image path" + icon);
+		System.out.println("Bar onde é vendido: " + pub);
 	}
+	
+	public Pub getPub() {
+		return pub;
+	}
+
+	public void setPub(Pub pub) {
+		this.pub = pub;
+	}
+
 	public double getPrice() {
 		return price;
 	}
