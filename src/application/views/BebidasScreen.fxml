@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="335.0" style="-fx-background-color: #353535;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.MenuBebidasController">
+   <children>
+      <StackPane prefHeight="33.0" prefWidth="365.0">
+         <children>
+            <ImageView fitHeight="55.0" fitWidth="334.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@res/imgs/container%20Nome.png" />
+               </image>
+            </ImageView>
+            <Label style="-fx-text-fill: #ffe400;" text="Bebidas" textFill="#ffe400">
+               <font>
+                  <Font name="Product Sans" size="27.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+      <VBox alignment="TOP_CENTER" prefHeight="115.0" prefWidth="365.0">
+         <VBox.margin>
+            <Insets left="24.008" right="24.008" top="5.0" />
+         </VBox.margin>
+         <children>
+            <Label style="-fx-text-fill: #ffe400;" text="Favoritos" />
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+         </children>
+      </VBox>
+      <TableView fx:id="publistTV" prefHeight="284.0" prefWidth="317.0">
+        <columns>
+          <TableColumn fx:id="imageColumn" prefWidth="75.0" text="Imagem" />
+          <TableColumn fx:id="drinkColumn" prefWidth="75.0" text="Bebida" />
+            <TableColumn fx:id="barColumn" prefWidth="75.0" text="Bar" />
+            <TableColumn fx:id="priceColumn" prefWidth="75.0" text="Preço" />
+        </columns>
+         <VBox.margin>
+            <Insets left="24.008" right="24.008" top="10.0" />
+         </VBox.margin>
+      </TableView>
+   </children>
+</VBox>
