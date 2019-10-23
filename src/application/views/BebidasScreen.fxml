@@ -3,7 +3,9 @@
 <?import com.gluonhq.charm.glisten.mvc.View?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -32,11 +34,27 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #353535;" BorderPane.alignment="CENTER">
          <children>
-            <ListView fx:id="DrinkList" prefHeight="410.0" prefWidth="255.0" style="-fx-opacity: 0.2;">
+            <VBox prefHeight="91.0" prefWidth="335.0">
                <VBox.margin>
-                  <Insets bottom="40.0" left="40.0" right="40.0" top="50.0" />
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
-            </ListView>
+               <children>
+                  <Label prefHeight="18.0" prefWidth="64.0" text="Favourites" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+               <VBox.margin>
+                  <Insets left="40.0" right="40.0" top="50.0" />
+               </VBox.margin>
+            </TableView>
          </children>
       </VBox>
    </center>
