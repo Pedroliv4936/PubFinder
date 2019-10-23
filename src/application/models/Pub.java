@@ -11,12 +11,11 @@ public class Pub extends Entity{
 	private Pub pub;
 	
 	public Pub(int id, String name, double rating, String address,
-					ObservableList<Drink> drinks, ObservableList<Image> images, Pub pub) {
+					ObservableList<Drink> drinks, ObservableList<Image> images) {
 		super(id, name, rating);
 		this.address = address;
 		this.drinks = drinks;
 		this.images = images;
-		this.pub = pub;
 	}
 	
 	public void showPubIndo() {

@@ -16,8 +16,11 @@ public static ObservableList<Pub> getPubList (){
 
 static {
 	ObservableList<Drink> pedroDrinks = FXCollections.observableArrayList();
-	pedroDrinks.add(new Drink(0,"Vodka",4.5,2.5,null));
-	pubList.add(new Pub(1,"Bar do Pedro", 4.5, "Lar das laranjas", pedroDrinks, null));
-	
+	ObservableList<Drink> francoDrinks = FXCollections.observableArrayList();
+	Pub barDoPedro = new Pub(1,"Bar do Pedro", 4.5, "Lar das laranjas", pedroDrinks, null);
+	Pub barDoFranco = new Pub(69, "Bar do Franco", 5, "Casa do Franco", francoDrinks, null);
+	pedroDrinks.add(new Drink(0,"Vodka",4.5,2.5,null, barDoPedro));
+	francoDrinks.addAll(new Drink(0, "Vodka", 3 , 1.5, null, barDoFranco), new Drink(1, "Cerveja", 3.5, 0.5, null, barDoFranco));
+	pubList.addAll(barDoPedro, barDoFranco);
 }
 }

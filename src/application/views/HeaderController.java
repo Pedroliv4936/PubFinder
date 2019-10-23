@@ -3,12 +3,11 @@ package application.views;
 import java.io.IOException;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 
-import application.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 
 public class HeaderController {
 
@@ -19,7 +18,7 @@ public class HeaderController {
 	@FXML
 	private void initialize() {
 		try {
-			Pane newLoadedFxml = FXMLLoader.load(getClass().getResource("MainScreenContent.fxml"));
+			Pane newLoadedFxml =  FXMLLoader.load(getClass().getResource("MainScreenContent.fxml"));
 			contentPane.getChildren().add(newLoadedFxml);
 		} catch (IOException e) {
 			e.printStackTrace();

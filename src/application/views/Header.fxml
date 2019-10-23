@@ -61,6 +61,6 @@
       </HBox>
    </top>
    <center>
-      <Pane fx:id="contentPane" prefHeight="495.0" prefWidth="335.0" BorderPane.alignment="CENTER" />
+      <Pane fx:id="contentPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="335.0" BorderPane.alignment="CENTER" />
    </center>
 </View>
