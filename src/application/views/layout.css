@@ -2,7 +2,7 @@
 	src: url("res/font/ProductSansRegular.ttf");
 }
 
-.borderPane {
+.root {
 	-fx-font-family: "Product Sans";
 	-fx-background-image:url("res/imgs/lisbonMap.png"); 
 }

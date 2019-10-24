@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 
-<HBox alignment="CENTER" prefHeight="103.59" prefWidth="335.0" style="-fx-background-color: #282828;" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.HeaderController">
+<HBox alignment="CENTER" prefHeight="103.59" prefWidth="335.0" style="-fx-background-color: #282828;" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.DefaultHeaderController">
    <children>
       <JFXButton fx:id="bebidasButton" minWidth="34.0" onAction="#openDrinksPage" prefHeight="33.0" prefWidth="33.0" text=" ">
          <HBox.margin>
