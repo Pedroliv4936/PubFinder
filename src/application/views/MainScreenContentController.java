@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 
-public class MainScreenController {
+public class MainScreenContentController {
 
 	@FXML
 	JFXTextField searchField;
@@ -16,6 +16,7 @@ public class MainScreenController {
 	
 	@FXML
 	private void addInformation() {
-	ScreenManager.setScreen("Header.fxml", "AddInformationScreen");
+	ScreenManager.setScreen("DefaultHeader.fxml", "AddInformationScreen");
 	}
+	
 }
