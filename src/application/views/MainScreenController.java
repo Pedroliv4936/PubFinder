@@ -16,6 +16,6 @@ public class MainScreenController {
 	
 	@FXML
 	private void addInformation() {
-	ScreenManager.setScreen("Header.fxml", "AddInformationScreen");
+	ScreenManager.setScreen("Header.fxml", "AddInformationScreen.fxml");
 	}
 }

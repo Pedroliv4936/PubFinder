@@ -16,6 +16,12 @@
 	-fx-opacity:0.97;
 }
 
+#observationBox{
+	-fx-background-color:#353535;
+	-fx-control-inner-background:#353535;
+	 -fx-highlight-fill: #353535; 
+}
+
 #LoginButton{
 	-fx-background-radius:20px;
 	-fx-border-radius:20px;
