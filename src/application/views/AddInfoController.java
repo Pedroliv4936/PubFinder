@@ -10,7 +10,6 @@ public class AddInfoController {
 	
 	@FXML
 	private void initialize() {
-		ScreenManager.setScreen("Header.fxml", "AddInformationScreen.fxml");
 
 	}
 }
