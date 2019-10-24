@@ -2,24 +2,30 @@ package application.views;
 
 import java.io.IOException;
 
+import com.gluonhq.charm.glisten.mvc.View;
 import com.jfoenix.controls.JFXButton;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
 
 public class HeaderController {
 
 	@FXML
-	JFXButton bebidasButton,logoButton,userButton;
+	JFXButton bebidasButton, logoButton, userButton;
 	@FXML
-	Pane contentPane;
+	View contentPane;
+	@FXML
+	View headerPane;
+
 	@FXML
 	private void initialize() {
 		try {
-			Pane newLoadedFxml =  FXMLLoader.load(getClass().getResource("MainScreenContent.fxml"));
-			contentPane.getChildren().add(newLoadedFxml);
+			Pane contentFXML = FXMLLoader.load(getClass().getResource("MainScreenContent.fxml"));
+			Pane headerFXML = FXMLLoader.load(getClass().getResource("Header.fxml"));
+			contentPane.setCenter(contentFXML);
+			headerPane.setTop(headerFXML);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -29,22 +35,31 @@ public class HeaderController {
 	private void openDrinksPage() {
 		changeContent("BebidasScreen.fxml");
 	}
-	
+
 	@FXML
 	private void openMainPage() {
 		changeContent("MainScreenContent.fxml");
 	}
-	
+
 	@FXML
 	private void openUserPage() {
 		changeContent("UserScreen.fxml");
 	}
-	
-	public void changeContent(String fxmlLocation) {
+
+	private void changeContent(String fxmlLocation) {
 		try {
-			Pane newLoadedFxml = FXMLLoader.load(getClass().getResource(fxmlLocation));
-			contentPane.getChildren().clear();
-			contentPane.getChildren().add(newLoadedFxml);
+			Pane contentFXML = FXMLLoader.load(getClass().getResource(fxmlLocation));
+			contentPane.setCenter(contentFXML);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	private void changeHeader(String fxmlLocation) {
+		try {
+			Pane headerFXML = FXMLLoader.load(getClass().getResource(fxmlLocation));
+			headerPane.setTop(headerFXML);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -24,6 +24,10 @@ public abstract class Entity {
 	}
 	
 	public void rate(double rating) {
-		
+		this.rating=rating;
+	}
+	
+	public double getRating() {
+		return rating;
 	}
 }

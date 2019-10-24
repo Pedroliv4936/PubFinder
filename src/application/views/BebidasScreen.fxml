@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="335.0" style="-fx-background-color: #353535;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.MenuBebidasController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="335.0" style="-fx-background-color: #353535;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.MenuBebidasController">
    <children>
       <StackPane prefHeight="33.0" prefWidth="365.0">
          <children>
@@ -50,10 +50,10 @@
       </VBox>
       <TableView fx:id="publistTV" prefHeight="284.0" prefWidth="317.0">
         <columns>
-          <TableColumn fx:id="imageColumn" prefWidth="75.0" text="Imagem" />
-          <TableColumn fx:id="drinkColumn" prefWidth="75.0" text="Bebida" />
-            <TableColumn fx:id="barColumn" prefWidth="75.0" text="Bar" />
-            <TableColumn fx:id="priceColumn" prefWidth="75.0" text="Preço" />
+          <TableColumn fx:id="drinkColumn" prefWidth="72.0" text="Bebida" />
+            <TableColumn fx:id="barColumn" prefWidth="87.0" text="Bar" />
+            <TableColumn fx:id="ratingColumn" prefWidth="49.0" text="Avaliação" />
+            <TableColumn fx:id="priceColumn" prefWidth="78.0" text="Preço" />
         </columns>
          <VBox.margin>
             <Insets left="24.008" right="24.008" top="10.0" />
