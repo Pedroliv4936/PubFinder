@@ -24,7 +24,6 @@ public class LoginScreenController {
 		}
 		if(JDBC.isConnected()) {
 			Main.getCurrentStage().close();
-			Main.createNewWindow("views/MainScreen.fxml");
 		}
 	}
 }
