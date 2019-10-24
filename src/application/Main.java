@@ -17,21 +17,14 @@ public class Main extends Application {
 	
 	private static BorderPane borderPane;
 	
+	private ScreenManager screenManager;
+	
+	
+	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-		primaryStage.setTitle("Login");
-		primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("keyIcon.png")));
-		
-		borderPane = new BorderPane(); 
-		borderPane.setTop(FXMLLoader.load(Main.class.getResource("views/Header.fxml")));
-		Scene scene = new Scene(borderPane,335, 600);
-		
-		currentScene = scene;
-		currentStage = primaryStage;
-
-		primaryStage.setScene(scene);
-		primaryStage.show();
-
+	screenManager= new ScreenManager();
+	screenManager.start(primaryStage);
 	}
 	
 	public static BorderPane getBorderPane() {

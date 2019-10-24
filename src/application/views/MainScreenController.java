@@ -2,6 +2,7 @@ package application.views;
 
 import com.jfoenix.controls.JFXTextField;
 
+import application.ScreenManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
@@ -15,6 +16,6 @@ public class MainScreenController {
 	
 	@FXML
 	private void addInformation() {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("Header.fxml"));
+	ScreenManager.setScreen("Header.fxml", "AddInformationScreen");
 	}
 }
