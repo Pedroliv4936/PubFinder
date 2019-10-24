@@ -22,27 +22,23 @@
 	-fx-opacity:85%;
 	-fx-text-fill:white;
 }
-#voltarButton{
-	-fx-background-image:url("res/imgs/Botao_voltar.png");
-	-fx-background-color:transparent;
-	-fx-min-width:30px;
-}
-#bebidasButtonUser{
-	-fx-background-image:url("res/imgs/menuBebidasIcon.png");
-	-fx-background-color:transparent;
-	-fx-min-width:30px;
-}
 
+#voltarButton{
+	-fx-background-image:url("res/imgs/botao_voltar.png");
+	-fx-background-color:transparent;
+	-fx-min-width:30px;
+}
 #RegisterButton{
 	-fx-background-radius:20px;
 	-fx-border-radius:20px;
 	-fx-opacity:85%;
 }
+
 #topHbox{
 	-fx-background-color: #282828;
 }
 
-#bebidasButton{
+#bebidasButton, #bebidasButtonUser{
 	-fx-background-image:url("res/imgs/menuBebidasIcon.png");
 	-fx-background-color:transparent;
 	-fx-min-width:30px;
