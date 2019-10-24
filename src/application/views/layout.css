@@ -22,6 +22,16 @@
 	-fx-opacity:85%;
 	-fx-text-fill:white;
 }
+#voltarButton{
+	-fx-background-image:url("res/imgs/Botao_voltar.png");
+	-fx-background-color:transparent;
+	-fx-min-width:30px;
+}
+#bebidasButtonUser{
+	-fx-background-image:url("res/imgs/menuBebidasIcon.png");
+	-fx-background-color:transparent;
+	-fx-min-width:30px;
+}
 
 #RegisterButton{
 	-fx-background-radius:20px;
