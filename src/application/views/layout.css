@@ -20,6 +20,17 @@
 	-fx-opacity:0.97;
 }
 
+#bebidasFavoritasUser {
+	-fx-border-width:2px;
+	-fx-background-color: transparent;
+	-fx-border-color:white;
+	-fx-border-radius:5px;
+	-fx-text-fill:white;
+	-fx-background-radius:8px;
+	-fx-opacity:0.43;
+	
+}
+
 #observationBox{
 	-fx-background-color:#353535;
 	-fx-control-inner-background:#353535;
