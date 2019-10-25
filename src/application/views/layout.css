@@ -6,6 +6,28 @@
 	-fx-font-family: "Product Sans";
 }
 
+.check-box .box {
+-fx-background-color: transparent;
+-fx-border-color:black;
+-fx-border-radius:3px; 
+-fx-border-width:3px; 
+-fx-text-fill:black;
+}
+
+#rememberChoice, #autoLogin {
+	-fx-text-fill:black;
+}
+
+.check-box:selected .mark {
+
+-fx-background-color: white;
+
+}
+
+.check-box:selected .box {
+
+-fx-background-color: transparent;
+}
 
 .text-field {
 	-fx-border-width:2px;
@@ -14,7 +36,6 @@
 	-fx-border-radius:5px;
 	-fx-text-fill:white;
 	-fx-background-radius:8px;
-	-fx-opacity:0.43;
 }
 
 #barField, #comboBox1{
@@ -57,10 +78,6 @@
 	-fx-background-radius:2px ;
 	-fx-border-width:2px;
 	-fx-border-color:white;
-}
-
-#VBox{
-	-fx-opacity:0.97;
 }
 
 #vbox {
