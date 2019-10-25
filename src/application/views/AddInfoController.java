@@ -13,7 +13,7 @@ import javafx.fxml.FXML;
 
 public class AddInfoController {
 	@FXML
-	JFXTextField tipo,preÃ§o;
+	JFXTextField tipo,preço;
 	JFXComboBox<Pub> barField;
 	JFXComboBox<String> tipoField;
 	JFXTextArea observacoes;

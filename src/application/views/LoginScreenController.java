@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import application.JDBC;
 import application.Main;
+import application.ScreenManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -23,7 +24,7 @@ public class LoginScreenController {
 			e.printStackTrace();
 		}
 		if(JDBC.isConnected()) {
-			Main.getCurrentStage().close();
+			ScreenManager.setContent(ScreenManager.MAIN_SCREEN);
 		}
 	}
 }
