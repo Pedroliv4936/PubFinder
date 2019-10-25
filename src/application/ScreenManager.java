@@ -14,6 +14,8 @@ public class ScreenManager {
 	private static BorderPane borderPane;
 	
 	public static final String MAIN_SCREEN = "views/MainScreenContent.fxml";
+	
+	public static final String DRINK_SCREEN = "views/BebidasScreen.fxml";
 
 	public ScreenManager() {
 	}
@@ -23,8 +25,7 @@ public class ScreenManager {
 		primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("keyIcon.png")));
 
 		borderPane = new BorderPane();
-		borderPane.setTop(FXMLLoader.load(getClass().getResource("views/DefaultHeader.fxml")));
-		borderPane.setCenter(FXMLLoader.load(getClass().getResource("views/BebidasScreen.fxml")));
+		setScreen(null, "views/LoginScreen.fxml");
 		borderPane.getStylesheets().add(getClass().getResource("views/borderPane.css").toExternalForm());
 		Scene scene = new Scene(borderPane, 335, 600);
 		
@@ -38,8 +39,7 @@ public class ScreenManager {
 		primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("keyIcon.png")));
 
 		borderPane = new BorderPane();
-		borderPane.setTop(FXMLLoader.load(Main.class.getResource("views/DefaultHeader.fxml")));
-		borderPane.setCenter(FXMLLoader.load(getClass().getResource("views/MainScreenContent.fxml")));
+		setScreen(null, "views/LoginScreen.fxml");
 		borderPane.getStylesheets().add(getClass().getResource("views/layout.css").toExternalForm());
 		Scene scene = new Scene(borderPane, 335, 600);
 		
@@ -67,13 +67,18 @@ public class ScreenManager {
 	}
 
 	public static void setScreen(String headerFXML, String contentFXML) {
+		if (headerFXML != null) {
 		setHeader(headerFXML);
+		}else
+		{
+			borderPane.getChildren().clear();
+		}
 		setContent(contentFXML);
 	}
 	
 	public static void setScreen(String fxmlLocation) {
 		setScreen("views/DefaultHeader.fxml", fxmlLocation);
 	}
-
+	
 
 }
