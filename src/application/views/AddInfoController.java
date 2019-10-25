@@ -24,9 +24,4 @@ public class AddInfoController {
 	private void initialize() {
 	
 	}
-	private void NomeBar() {
-	}
-	private void tipoField() {
-		tipoField.getItems().addAll("Discoteca","Pub","Salão de Jogos");
-	}
 }
