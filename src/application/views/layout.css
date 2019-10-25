@@ -38,7 +38,12 @@
 	-fx-background-radius:8px;
 }
 
-#barField, #comboBox1{
+#editableButton{
+	-fx-background-image:url('res/imgs/plus-icon-transparent-19.png');
+	-fx-background-color:transparent;
+}
+
+#barField, #tipoField{
 	-fx-border-width:2px;
 	-fx-border-radius:5;
 	-fx-background-radius:8;

@@ -7,30 +7,32 @@ import com.jfoenix.controls.JFXTextField;
 
 import application.model.DAO.PubDAO;
 import application.models.Pub;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 
 public class AddInfoController {
 	@FXML
 	JFXTextField preco;
 	@FXML
-	JFXComboBox<String> barField;
-	JFXComboBox<String> tipoField;
+	JFXComboBox<String> barField, tipoField;
 	JFXTextArea observacoes;
 	JFXButton enviar;
+	double precoBebida;
 
 	@FXML
 	private void initialize() {
+		tipoField.getItems().addAll("Discoteca", "Bar","Sala de Jogos");
 		for (Pub pub : PubDAO.getPubList()) {
 			barField.getItems().add(pub.getName());
 		}
 		
 	}
-
+	@FXML
+	private void editableButton() {
+		barField.setEditable(!barField.isEditable());
+	}
 	@FXML
 	private void adicionarInfo() {
-		System.out.print("ssds");
-		barField.setEditable(!barField.isEditable());
+		precoBebida=Double.parseDouble(preco.getText());
+		System.out.println(precoBebida);
 	}
 }
