@@ -17,10 +17,9 @@ public class AddInfoController {
 	JFXTextArea observacoes;
 	JFXButton enviar;
 	double precoBebida;
-
 	@FXML
 	private void initialize() {
-		tipoField.getItems().addAll("Discoteca", "Bar","Sala de Jogos");
+		tipoField.getItems().addAll("Discoteca", "Bar","Salao de Jogos");
 		for (Pub pub : PubDAO.getPubList()) {
 			barField.getItems().add(pub.getName());
 		}
@@ -33,6 +32,10 @@ public class AddInfoController {
 	@FXML
 	private void adicionarInfo() {
 		precoBebida=Double.parseDouble(preco.getText());
+		System.out.println(barField.getValue());
+		System.out.println(tipoField.getValue());
 		System.out.println(precoBebida);
+		System.out.println(observacoes.getText().replaceAll("\n"," "));		
+		
 	}
 }
