@@ -16,9 +16,17 @@ public class LoginScreenController {
 		String username = usernameField.getText();
 		String password = passwordField.getText();
 		
-		if(loginDAO.connect(username, password)) {
+		if(loginDAO.connect(username, password) == 0) {
 			ScreenManager.setScreen(ScreenManager.MAIN_SCREEN);
-		}
-		
+		}else
+			if(loginDAO.connect(username, password) == 1) {
+				ScreenManager.setScreen(ScreenManager.MAIN_SCREEN);
+			}else
+			if(loginDAO.connect(username, password) == 2) {
+				
+			}else
+				if(loginDAO.connect(username, password) == 3) {
+					
+				}
 	}
 }
