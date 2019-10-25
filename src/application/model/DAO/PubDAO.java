@@ -5,9 +5,9 @@ import application.models.Drink;
 import application.models.Pub;
 import javafx.collections.ObservableList;
 
-public class PubListDAO {
+public class PubDAO {
 	
-private PubListDAO() {}
+private PubDAO() {}
 private static ObservableList<Pub> pubList= FXCollections.observableArrayList();
 
 public static ObservableList<Pub> getPubList (){

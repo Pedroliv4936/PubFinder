@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="TOP_CENTER" prefHeight="224.9797680064742" prefWidth="335.0" spacing="39.65470731049366" style="-fx-background-color: #282828;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.HeaderController">
+<HBox alignment="TOP_CENTER" prefHeight="224.9797680064742" prefWidth="335.0" spacing="39.65470731049366" style="-fx-background-color: #282828;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.UserHeaderController">
    <children>
       <JFXButton fx:id="bebidasButtonUser" minWidth="30.0" onAction="#openDrinksPage" prefHeight="33.0" prefWidth="33.0" style="-fx-min-width: 30;" stylesheets="@layout.css" text=" ">
          <HBox.margin>
@@ -30,7 +30,7 @@
             </Label>
          </children>
       </VBox>
-      <JFXButton fx:id="voltarButton" onAction="#openMainPage" prefHeight="33.0" prefWidth="33.0" style="-fx-background-image: url('res/imgs/botao_voltar.pngres/imgs/botao_voltar.png');" stylesheets="@layout.css" text=" ">
+      <JFXButton fx:id="returnButton" onAction="#openMainPage" prefHeight="33.0" prefWidth="33.0" text=" ">
          <HBox.margin>
             <Insets top="125.0" />
          </HBox.margin>

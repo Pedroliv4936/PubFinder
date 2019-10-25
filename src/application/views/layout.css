@@ -4,13 +4,17 @@
 
 .root {
 	-fx-font-family: "Product Sans";
-	-fx-background-image:url("res/imgs/lisbonMap.png"); 
 }
 
 
-.textField{
-	-fx-border-radius: 5px;
-	-fx-background-radius: 5px;
+.text-field {
+	-fx-border-width:2px;
+	-fx-background-color: transparent;
+	-fx-border-color:white;
+	-fx-border-radius:5px;
+	-fx-text-fill:white;
+	-fx-background-radius:8px;
+	-fx-opacity:0.43;
 }
 #VBox{
 	-fx-opacity:0.97;
@@ -29,11 +33,12 @@
 	-fx-text-fill:white;
 }
 
-#voltarButton{
-	-fx-background-image:url("res/imgs/botao_voltar.png");
+#returnButton {
+	-fx-background-image:url("res/imgs/returnButton.png");
 	-fx-background-color:transparent;
 	-fx-min-width:30px;
 }
+
 #RegisterButton{
 	-fx-background-radius:20px;
 	-fx-border-radius:20px;
@@ -62,6 +67,8 @@
 }
 
 #searchField{
+	-fx-border-radius: 5px;
+	-fx-background-radius: 5px;
 	-fx-background-color: #353535;
 	-fx-effect: dropshadow(three-pass-box, rgba(255,255,255,0.2), 10, 0, 0, 0);
 	-fx-prompt-text-fill: rgba(255,255,255,0.2);
