@@ -5,7 +5,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
-import application.model.DAO.PubDAO;
+import application.models.DAO.PubDAO;
 import application.models.Pub;
 import javafx.fxml.FXML;
 

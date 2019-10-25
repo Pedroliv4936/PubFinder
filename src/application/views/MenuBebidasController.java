@@ -2,9 +2,8 @@ package application.views;
 
 import com.jfoenix.controls.JFXButton;
 
-import application.model.DAO.PubDAO;
-import application.models.Drink;
-import javafx.beans.property.ReadOnlyObjectWrapper;
+import application.models.DrinkForPub;
+import application.models.DAO.DrinkDAO;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -17,27 +16,24 @@ public class MenuBebidasController {
 	@FXML
 	JFXButton bebidasButton, logoButton, userButton;
 	@FXML
-	TableView<Drink> publistTV;
+	TableView<DrinkForPub> publistTV;
 	@FXML
-	TableColumn<Drink, String> drinkColumn;
+	TableColumn<DrinkForPub, String> drinkColumn;
 	@FXML
-	TableColumn<Drink, String> barColumn;
+	TableColumn<DrinkForPub, String> barColumn;
 	@FXML
-	TableColumn<Drink, Double> priceColumn;
+	TableColumn<DrinkForPub, Double> priceColumn;
 	@FXML
-	TableColumn<Drink, Double> ratingColumn;
+	TableColumn<DrinkForPub, Double> ratingColumn;
 	@FXML
 	HBox hBox;
 
 	@FXML
-	private void initialize() {
-		drinkColumn.setCellValueFactory(new PropertyValueFactory<Drink, String>("name"));
-		barColumn.setCellValueFactory(cellData ->  new ReadOnlyStringWrapper(cellData.getValue().getPub().getName()));
-		priceColumn.setCellValueFactory(new PropertyValueFactory<Drink, Double>("Price"));
-		ratingColumn.setCellValueFactory(cellData ->   new ReadOnlyObjectWrapper<>(cellData.getValue().getRating()));
-		for (int i = 0; i < PubDAO.getPubList().size(); i++) {
-			publistTV.getItems().addAll(PubDAO.getPubList().get(i).getDrinks());
-		}
+	private void initialize() {		
+		drinkColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDrink().getName()));
+		barColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getPub().getName()));
+		priceColumn.setCellValueFactory(new PropertyValueFactory<DrinkForPub, Double>("price"));
+		ratingColumn.setCellValueFactory(new PropertyValueFactory<DrinkForPub, Double>("rating"));
+		publistTV.setItems(DrinkDAO.getDrinkList());
 	}
-
 }

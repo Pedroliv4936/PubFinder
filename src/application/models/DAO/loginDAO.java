@@ -1,4 +1,4 @@
-package application.model.DAO;
+package application.models.DAO;
 
 import java.sql.Date;
 
