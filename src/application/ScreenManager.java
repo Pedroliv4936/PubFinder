@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 public class ScreenManager {
 
 	private static BorderPane borderPane;
+	
+	public static final String MAIN_SCREEN = "views/MainScreenContent.fxml";
 
 	public ScreenManager() {
 	}
@@ -23,8 +25,8 @@ public class ScreenManager {
 		borderPane = new BorderPane();
 		borderPane.setTop(FXMLLoader.load(getClass().getResource("views/DefaultHeader.fxml")));
 		borderPane.setCenter(FXMLLoader.load(getClass().getResource("views/BebidasScreen.fxml")));
-		borderPane.getStylesheets().add(getClass().getResource("views/borderPaneLayout.css").toExternalForm());
-		Scene scene = new Scene(borderPane, 400, 600);
+		borderPane.getStylesheets().add(getClass().getResource("views/borderPane.css").toExternalForm());
+		Scene scene = new Scene(borderPane, 335, 600);
 		
 		primaryStage.setScene(scene);
 		primaryStage.show();

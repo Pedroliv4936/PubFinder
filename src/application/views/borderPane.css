@@ -4,6 +4,7 @@
 
 .root {
 	-fx-font-family: "Product Sans";
+	-fx-background-image:url("res/imgs/lisbonMap.png"); 
 }
 
 
@@ -18,10 +19,6 @@
 }
 #VBox{
 	-fx-opacity:0.97;
-}
-
-#vbox {
-	-fx-background-image:url("res/imgs/lisbonMap.png"); 
 }
 
 #bebidasFavoritasUser {
