@@ -1,5 +1,6 @@
 package application.views;
 
+import application.ScreenManager;
 import application.model.DAO.loginDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -15,6 +16,9 @@ public class LoginScreenController {
 		String username = usernameField.getText();
 		String password = passwordField.getText();
 		
-		loginDAO.connect(username, password);
+		if(loginDAO.connect(username, password)) {
+			ScreenManager.setScreen(ScreenManager.MAIN_SCREEN);
+		}
+		
 	}
 }
