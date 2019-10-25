@@ -18,8 +18,6 @@ public class AddInfoController {
 	JFXComboBox<String> tipoField;
 	JFXTextArea observacoes;
 	JFXButton enviar;
-	
-	String nomeBar,tipoBebida,preçoEntrada,observações;
 	@FXML
 	private void initialize() {
 	
