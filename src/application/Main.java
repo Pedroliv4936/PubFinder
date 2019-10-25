@@ -23,8 +23,10 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-	screenManager= new ScreenManager();
-	screenManager.start(primaryStage);
+
+		screenManager= new ScreenManager();
+		screenManager.start(primaryStage);
+
 	}
 	
 	public static BorderPane getBorderPane() {

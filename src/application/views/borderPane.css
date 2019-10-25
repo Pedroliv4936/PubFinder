@@ -4,6 +4,7 @@
 
 .root {
 	-fx-font-family: "Product Sans";
+	-fx-background-image:url("res/imgs/lisbonMap.png"); 
 }
 
 
@@ -16,51 +17,8 @@
 	-fx-background-radius:8px;
 	-fx-opacity:0.43;
 }
-#tipo{
-	-fx-border-width:2px;
-	-fx-border-radius:5;
-	-fx-background-radius:8;
-	-fx-background-color:#353535;
-	-fx-text-fill:white;
-	-fx-prompt-text-fill:white;
-	-fx-border-color:white;
-}
-#comboBox{
-	-fx-border-width:2px;
-	-fx-border-radius:5;
-	-fx-background-radius:8;
-	-fx-background-color:#353535;
-	-fx-text-fill:white;
-	-fx-prompt-text-fill:white;
-	-fx-border-color:white;
-}
-
-#comprovativo{
-	-fx-border-width:2px;
-	-fx-border-radius:5;
-	-fx-background-radius:8;
-	-fx-background-color:#353535;
-	-fx-text-fill:white;
-	-fx-prompt-text-fill:white;
-	-fx-border-color:white;
-}
-
-#preco{
-	-fx-border-width:2px;
-	-fx-border-radius:5;
-	-fx-background-radius:8;
-	-fx-background-color:#353535;
-	-fx-text-fill:white;
-	-fx-prompt-text-fill:white;
-	-fx-border-color:white;
-}
-
 #VBox{
 	-fx-opacity:0.97;
-}
-
-#vbox {
-	-fx-background-image:url("res/imgs/lisbonMap.png"); 
 }
 
 #bebidasFavoritasUser {
