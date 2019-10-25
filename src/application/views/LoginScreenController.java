@@ -1,10 +1,6 @@
 package application.views;
 
-import java.sql.SQLException;
-
-import application.JDBC;
-import application.Main;
-import application.ScreenManager;
+import application.model.DAO.loginDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -18,13 +14,7 @@ public class LoginScreenController {
 	public void login() {
 		String username = usernameField.getText();
 		String password = passwordField.getText();
-		try {
-			JDBC.dbConnect(username, password);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		if(JDBC.isConnected()) {
-			ScreenManager.setContent(ScreenManager.MAIN_SCREEN);
-		}
+		
+		loginDAO.connect(username, password);
 	}
 }
