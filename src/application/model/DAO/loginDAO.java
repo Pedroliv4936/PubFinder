@@ -26,7 +26,7 @@ public class loginDAO {
 
 	static {
 		userList.add(new User(0, "Franco", "piriurna", "franco123", "francozalamena@gmail.com", new Date(10, 10, 10)));
-		userList.add(new User(0, "Pedrp", "yuri", "pedro123", "pedro@gmail.com", new Date(11, 11, 11)));
+		userList.add(new User(0, "Pedro", "yuri", "pedro123", "pedro@gmail.com", new Date(11, 11, 11)));
 	}
 
 }

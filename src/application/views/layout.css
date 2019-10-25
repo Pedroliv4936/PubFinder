@@ -17,7 +17,7 @@
 	-fx-opacity:0.43;
 }
 
-#comboBox, #comboBox1{
+#barField, #comboBox1{
 	-fx-border-width:2px;
 	-fx-border-radius:5;
 	-fx-background-radius:8;
@@ -26,7 +26,10 @@
 	-fx-prompt-text-fill:white;
 	-fx-border-color:white;
 }
-
+.combo-box .cell{
+	-fx-text-fill:white;
+	-fx-background-color:#353535;
+}
 #addFilesButton{
 	-fx-border-width:2px;
 	-fx-border-radius:5;
@@ -82,7 +85,6 @@
 	-fx-background-radius:20px;
 	-fx-border-radius:20px;
 	-fx-opacity:85%;
-	-fx-text-fill:white;
 }
 
 #returnButton {
