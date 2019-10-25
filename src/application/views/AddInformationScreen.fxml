@@ -30,7 +30,7 @@
             <Insets top="-30.0" />
          </VBox.margin>
       </StackPane>
-      <JFXComboBox fx:id="comboBox" editable="true" focusColor="#353535" opacity="0.43" prefHeight="28.0" prefWidth="354.0" promptText="Nome do Bar" stylesheets="@layout.css" unFocusColor="#353535">
+      <JFXComboBox fx:id="barField" editable="true" focusColor="#353535" opacity="0.43" prefHeight="28.0" prefWidth="354.0" promptText="Nome do Bar" stylesheets="@layout.css" unFocusColor="#353535">
          <VBox.margin>
             <Insets left="20.0" right="20.0" top="20.0" />
          </VBox.margin>
@@ -40,7 +40,7 @@
             <Insets left="20.0" right="20.0" />
          </VBox.margin>
       </JFXComboBox>
-      <JFXTextField fx:id="preco" alignment="TOP_LEFT" focusColor="WHITE" opacity="0.43" promptText="Preço" style="-fx-border-width: 2px; -fx-background-color: #353535; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white; -fx-background-radius: 8;" unFocusColor="#353535">
+      <JFXTextField fx:id="preco" alignment="TOP_LEFT" focusColor="WHITE" onAction="#adicionarInfo" opacity="0.43" promptText="Preço" style="-fx-border-width: 2px; -fx-background-color: #353535; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white; -fx-background-radius: 8;" unFocusColor="#353535">
          <font>
             <Font size="14.0" />
          </font>
@@ -76,7 +76,7 @@
             <JFXTextArea fx:id="observationBox" focusColor="WHITE" opacity="0.43" promptText="Observações..." stylesheets="@layout.css" unFocusColor="#353535" />
          </children>
       </HBox>
-      <JFXButton alignment="CENTER" onAction="#enviar" prefHeight="32.0" prefWidth="317.0" style="-fx-background-color: #ffe400; -fx-background-radius: 20; -fx-border-radius: 20; -fx-text-fill: #282828;" text="Enviar">
+      <JFXButton alignment="CENTER" onAction="#adicionarInfo" prefHeight="32.0" prefWidth="317.0" style="-fx-background-color: #ffe400; -fx-background-radius: 20; -fx-border-radius: 20; -fx-text-fill: #282828;" text="Enviar">
          <VBox.margin>
             <Insets left="60.0" right="60.0" top="10.0" />
          </VBox.margin>
