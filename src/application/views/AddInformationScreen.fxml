@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
@@ -26,23 +27,17 @@
             </ImageView>
          </children>
       </StackPane>
-      <JFXTextField alignment="TOP_LEFT" focusColor="WHITE" opacity="0.43" promptText="Nome do Bar" style="-fx-border-width: 2px; -fx-background-color: #353535; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white; -fx-background-radius: 8;" unFocusColor="#353535">
-         <font>
-            <Font size="14.0" />
-         </font>
+      <JFXComboBox fx:id="comboBox" editable="true" focusColor="#353535" opacity="0.43" prefHeight="28.0" prefWidth="354.0" promptText="Nome do Bar" stylesheets="@layout.css" unFocusColor="#353535">
          <VBox.margin>
             <Insets left="20.0" right="20.0" top="40.0" />
          </VBox.margin>
-      </JFXTextField>
-      <JFXTextField alignment="TOP_LEFT" focusColor="WHITE" opacity="0.43" promptText="Tipo" style="-fx-border-width: 2px; -fx-background-color: #353535; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white; -fx-background-radius: 8;" unFocusColor="#353535">
-         <font>
-            <Font size="14.0" />
-         </font>
+      </JFXComboBox>
+      <JFXComboBox fx:id="tipo" focusColor="#353535" opacity="0.43" prefHeight="28.0" prefWidth="322.0" promptText="Tipo" stylesheets="@layout.css" unFocusColor="#353535">
          <VBox.margin>
             <Insets left="20.0" right="20.0" top="20.0" />
          </VBox.margin>
-      </JFXTextField>
-      <JFXTextField alignment="TOP_LEFT" focusColor="WHITE" opacity="0.43" promptText="Preço" style="-fx-border-width: 2px; -fx-background-color: #353535; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white; -fx-background-radius: 8;" unFocusColor="#353535">
+      </JFXComboBox>
+      <JFXTextField fx:id="preco" alignment="TOP_LEFT" focusColor="WHITE" opacity="0.43" promptText="Preço" style="-fx-border-width: 2px; -fx-background-color: #353535; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white; -fx-background-radius: 8;" unFocusColor="#353535">
          <font>
             <Font size="14.0" />
          </font>
@@ -52,7 +47,7 @@
       </JFXTextField>
       <HBox alignment="TOP_CENTER" prefHeight="67.0" prefWidth="335.0">
          <children>
-            <JFXTextField alignment="TOP_LEFT" focusColor="WHITE" opacity="0.43" prefHeight="29.0" prefWidth="197.0" promptText="Comprovativo" style="-fx-border-width: 2px; -fx-background-color: #353535; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white; -fx-background-radius: 8;" unFocusColor="#353535">
+            <JFXTextField fx:id="comprovativo" alignment="TOP_LEFT" focusColor="WHITE" opacity="0.43" prefHeight="29.0" prefWidth="197.0" promptText="Comprovativo" style="-fx-border-width: 2px; -fx-background-color: #353535; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white; -fx-background-radius: 8;" unFocusColor="#353535">
                <font>
                   <Font size="14.0" />
                </font>
