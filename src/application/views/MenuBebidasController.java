@@ -2,7 +2,7 @@ package application.views;
 
 import com.jfoenix.controls.JFXButton;
 
-import application.model.DAO.PubListDAO;
+import application.model.DAO.PubDAO;
 import application.models.Drink;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 
 public class MenuBebidasController {
 
@@ -25,6 +26,8 @@ public class MenuBebidasController {
 	TableColumn<Drink, Double> priceColumn;
 	@FXML
 	TableColumn<Drink, Double> ratingColumn;
+	@FXML
+	HBox hBox;
 
 	@FXML
 	private void initialize() {
@@ -32,8 +35,8 @@ public class MenuBebidasController {
 		barColumn.setCellValueFactory(cellData ->  new ReadOnlyStringWrapper(cellData.getValue().getPub().getName()));
 		priceColumn.setCellValueFactory(new PropertyValueFactory<Drink, Double>("Price"));
 		ratingColumn.setCellValueFactory(cellData ->   new ReadOnlyObjectWrapper<>(cellData.getValue().getRating()));
-		for (int i = 0; i < PubListDAO.getPubList().size(); i++) {
-			publistTV.getItems().addAll(PubListDAO.getPubList().get(i).getDrinks());
+		for (int i = 0; i < PubDAO.getPubList().size(); i++) {
+			publistTV.getItems().addAll(PubDAO.getPubList().get(i).getDrinks());
 		}
 	}
 
