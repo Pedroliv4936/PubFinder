@@ -27,6 +27,16 @@
 	-fx-border-color:white;
 }
 
+#addFilesButton{
+	-fx-border-width:2px;
+	-fx-border-radius:5;
+	-fx-background-radius:8;
+	-fx-background-color:#353535;
+	-fx-text-fill:white;
+	-fx-prompt-text-fill:white;
+	-fx-border-color:white;
+}
+
 #comprovativo{
 	-fx-border-width:2px;
 	-fx-border-radius:5;

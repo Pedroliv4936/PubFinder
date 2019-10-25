@@ -13,13 +13,18 @@ import javafx.fxml.FXML;
 
 public class AddInfoController {
 	@FXML
-	JFXTextField tipo,preço;
+	JFXTextField tipo,precoField;
 	JFXComboBox<Pub> barField;
 	JFXComboBox<String> tipoField;
 	JFXTextArea observacoes;
 	JFXButton enviar;
+	String preco;
 	@FXML
 	private void initialize() {
 	
+	}
+	private void enviar() {
+		preco=precoField.getText();
+		System.out.print(preco);
 	}
 }
