@@ -3,9 +3,11 @@ package application.models.DAO;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Properties;
 
 import com.google.gson.Gson;
+import com.mysql.cj.protocol.Resultset;
 
 import application.models.Drink;
 import application.models.DrinkForPub;

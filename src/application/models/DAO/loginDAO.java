@@ -12,6 +12,16 @@ public class loginDAO {
 	
 	private static ObservableList<Admin> adminList = FXCollections.observableArrayList();
 	
+	private static User logedinUser;
+	
+	public static User getLogedinUser() {
+		return logedinUser;
+	}
+
+	public static void setLogedinUser(User logedinUser) {
+		loginDAO.logedinUser = logedinUser;
+	}
+
 	public static ObservableList<Admin> getAdminList() {
 		return adminList;
 	}
@@ -32,6 +42,7 @@ public class loginDAO {
 		for(User user : userList) {
 			if(user.getUsername().equals(username)) {
 				if(user.getPassword().equals(password)) {
+					setLogedinUser(user);
 					return 0;
 				}else {
 					return 3;
@@ -41,6 +52,7 @@ public class loginDAO {
 		for(Admin admin : adminList) {
 			if(admin.getUsername().equals(username)) {
 				if(admin.getPassword().equals(password)) {
+					setLogedinUser(admin);
 					return 1;
 				}else {
 					return 3;
@@ -51,8 +63,8 @@ public class loginDAO {
 	}
 
 	static {
-		userList.add(new User(0, "Franco", "piriurna", "franco123", "francozalamena@gmail.com", new Date(10, 10, 10)));
-		userList.add(new User(0, "Pedro", "yuri", "pedro123", "pedro@gmail.com", new Date(11, 11, 11)));
+		adminList.add(new Admin(0, "Franco", "piriurna", "franco123", "francozalamena@gmail.com", new Date(10, 10, 10)));
+		userList.add(new User(0, "Pedro", "yuri", "rabanete", "pedro@gmail.com", new Date(11, 11, 11)));
 	}
 
 }

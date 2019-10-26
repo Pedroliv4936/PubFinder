@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -18,12 +19,13 @@
             <Image url="@res/imgs/logoPubFinder.png" />
          </image>
          <VBox.margin>
-            <Insets />
+            <Insets bottom="40.0" />
          </VBox.margin>
       </ImageView>
+      <Label fx:id="loginFeedback" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="239.0" text=" " />
       <JFXTextField fx:id="usernameField" focusColor="WHITE" maxHeight="62.0" maxWidth="590.0" opacity="0.43" prefHeight="31.0" prefWidth="295.0" promptText="Username" style="-fx-background-color: #353535; -fx-border-width: 2; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white;" unFocusColor="#353535" VBox.vgrow="NEVER">
          <VBox.margin>
-            <Insets left="20.0" right="20.0" top="50.0" />
+            <Insets left="20.0" right="20.0" top="5.0" />
          </VBox.margin>
       </JFXTextField>
       <JFXPasswordField fx:id="passwordField" focusColor="WHITE" maxHeight="62.0" maxWidth="590.0" opacity="0.43" prefHeight="31.0" prefWidth="295.0" promptText="Password" style="-fx-border-width: 2; -fx-border-color: white; -fx-border-radius: 5; -fx-background-color: #353535; -fx-text-fill: white;" VBox.vgrow="NEVER">

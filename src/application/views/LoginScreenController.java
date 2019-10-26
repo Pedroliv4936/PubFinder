@@ -10,14 +10,16 @@ import application.ScreenManager;
 import application.models.DAO.loginDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 
 public class LoginScreenController {
 
 	@FXML TextField usernameField;
 	@FXML PasswordField passwordField;
-	
+	@FXML Label loginFeedback;
 	@FXML CheckBox rememberChoice;
 	@FXML CheckBox autoLogin;
 	
@@ -62,11 +64,12 @@ public class LoginScreenController {
 			if(loginDAO.connect(username, password) == 1) {
 				ScreenManager.setScreen(ScreenManager.MAIN_SCREEN);
 			}else
+				loginFeedback.setTextFill(Color.RED);
 			if(loginDAO.connect(username, password) == 2) {
-				
+				loginFeedback.setText("Wrong username");
 			}else
 				if(loginDAO.connect(username, password) == 3) {
-					
+					loginFeedback.setText("Wrong Password");
 				}
 
 	}

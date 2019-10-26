@@ -56,7 +56,7 @@
 	-fx-text-fill:white;
 	-fx-background-color:#353535;
 }
-#addFilesButton{
+#addFilesButton, #addBarButton{
 	-fx-border-width:2px;
 	-fx-border-radius:5;
 	-fx-background-radius:8;
@@ -163,7 +163,7 @@
 	-fx-opacity: 0.2;
 }
 
-#addInformation{
+#addInformation, #checkNewRequests{
 	-fx-background-color:#ffe400;
 	-fx-border-radius:20px;
 	-fx-background-radius: 20px;

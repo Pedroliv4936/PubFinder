@@ -18,7 +18,12 @@
             <Insets top="23.51" />
          </VBox.margin>
       </JFXTextField>
-      <Region minHeight="10.0" minWidth="200.0" prefHeight="256.0" prefWidth="200.0" VBox.vgrow="SOMETIMES" />
+      <Region minHeight="10.0" minWidth="200.0" prefHeight="223.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+      <JFXButton fx:id="checkNewRequests" buttonType="RAISED" graphicTextGap="10.0" lineSpacing="5.0" onAction="#checkNewRequests" prefHeight="36.0" prefWidth="205.0" style="-fx-background-color: RED;" text="Check New Requests">
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </JFXButton>
       <JFXButton fx:id="addInformation" buttonType="RAISED" graphicTextGap="10.0" lineSpacing="5.0" onAction="#addInformation" prefHeight="36.0" prefWidth="205.0" text=" Adicionar Informação">
          <VBox.margin>
             <Insets bottom="15.1" />
