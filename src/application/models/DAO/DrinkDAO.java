@@ -9,6 +9,12 @@ public class DrinkDAO {
 
 	private static ObservableList<DrinkForPub> drinkList = FXCollections.observableArrayList();
 
+	private static ObservableList<DrinkForPub> pendingDrinkList = FXCollections.observableArrayList();
+
+	public static ObservableList<DrinkForPub> getPendingDrinkList() {
+		return pendingDrinkList;
+	}
+
 	public static ObservableList<DrinkForPub> getDrinkList() {
 		return drinkList;
 	}

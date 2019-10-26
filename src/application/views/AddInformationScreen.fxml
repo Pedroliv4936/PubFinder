@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="495.0" prefWidth="335.0" spacing="20.0" style="-fx-background-color: #353535;" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.AddInfoController">
+<VBox alignment="CENTER" prefHeight="495.0" prefWidth="335.0" spacing="20.0" style="-fx-background-color: #353535;" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane prefHeight="47.0" prefWidth="335.0">
          <children>
@@ -89,7 +89,7 @@
             <JFXTextArea fx:id="observationBox" focusColor="WHITE" opacity="0.43" promptText="Observações..." stylesheets="@layout.css" unFocusColor="#353535" />
          </children>
       </HBox>
-      <JFXButton alignment="CENTER" onAction="#adicionarInfo" prefHeight="32.0" prefWidth="317.0" style="-fx-background-color: #ffe400; -fx-background-radius: 20; -fx-border-radius: 20; -fx-text-fill: #282828;" text="Enviar">
+      <JFXButton alignment="CENTER" onAction="#sendInfo" prefHeight="32.0" prefWidth="317.0" style="-fx-background-color: #ffe400; -fx-background-radius: 20; -fx-border-radius: 20; -fx-text-fill: #282828;" text="Enviar">
          <VBox.margin>
             <Insets left="60.0" right="60.0" top="10.0" />
          </VBox.margin>

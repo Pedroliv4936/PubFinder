@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="TOP_CENTER" prefHeight="224.9797680064742" prefWidth="335.0" spacing="39.65470731049366" style="-fx-background-color: #282828;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.UserHeaderController">
+<HBox alignment="TOP_CENTER" prefHeight="224.9797680064742" prefWidth="335.0" spacing="39.65470731049366" style="-fx-background-color: #282828;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <JFXButton fx:id="bebidasButtonUser" minWidth="30.0" onAction="#openDrinksScreen" prefHeight="33.0" prefWidth="33.0" style="-fx-min-width: 30;" stylesheets="@layout.css" text=" ">
          <HBox.margin>

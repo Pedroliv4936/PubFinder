@@ -89,7 +89,7 @@
 	-fx-background-image:url("res/imgs/lisbonMap.png"); 
 }
 
-#bebidasFavoritasUser {
+#bebidasFavoritasUser, #bebidasFavoritas {
 	-fx-border-width:2px;
 	-fx-background-color: transparent;
 	-fx-border-color:white;
@@ -97,8 +97,8 @@
 	-fx-text-fill:white;
 	-fx-background-radius:8px;
 	-fx-opacity:0.43;
-	
 }
+
 .text-area, .text-area .viewport, .text-area .content {
     -fx-background-color: transparent ;
 }
@@ -162,14 +162,16 @@
 #lupaImage{
 	-fx-opacity: 0.2;
 }
-
-#addInformation, #checkNewRequests{
+.button{
 	-fx-background-color:#ffe400;
 	-fx-border-radius:20px;
 	-fx-background-radius: 20px;
 	-fx-opacity:75%;
 	-fx-text-fill: #282828;
 	-fx-effect: dropshadow(three-pass-box,black, 10, 0.5, 0, 0);
+}
+
+#addInformation, #checkNewRequests{
 	-fx-padding: 7.5px 7.5px 7.5px 30px; 
 }
 

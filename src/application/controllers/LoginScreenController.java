@@ -1,4 +1,4 @@
-package application.views;
+package application.controllers;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -59,10 +59,10 @@ public class LoginScreenController {
 		String username = usernameField.getText();
 		String password = passwordField.getText();
 		if(loginDAO.connect(username, password) == 0) {
-			ScreenManager.setScreen(ScreenManager.MAIN_SCREEN);
+			ScreenManager.setScreen(ScreenManager.DEFAULT_HEADER, ScreenManager.MAIN_SCREEN_CONTENT, new DefaultHeaderController(), new MainScreenContentController());
 		}else
 			if(loginDAO.connect(username, password) == 1) {
-				ScreenManager.setScreen(ScreenManager.MAIN_SCREEN);
+				ScreenManager.setScreen(ScreenManager.DEFAULT_HEADER, ScreenManager.MAIN_SCREEN_CONTENT,new DefaultHeaderController(), new MainScreenContentController());
 			}else
 				loginFeedback.setTextFill(Color.RED);
 			if(loginDAO.connect(username, password) == 2) {

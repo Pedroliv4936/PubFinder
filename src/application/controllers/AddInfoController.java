@@ -1,4 +1,4 @@
-package application.views;
+package application.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -74,11 +74,11 @@ public class AddInfoController {
 	}
 
 	@FXML
-	private void adicionarInfo() {
+	private void sendInfo() {
 		if (barField.isEditable()) {
-			PubDAO.getPubList().add(new Pub(0, barField.getPromptText(), 2, "Iade Building", null, null));
+			PubDAO.getPendingPubs().add(new Pub(0, barField.getPromptText(), 2, "Iade Building", null, null));
 		}else {
-			DrinkDAO.getDrinkList().add(new DrinkForPub(null, null, 0, 0));
+			DrinkDAO.getPendingDrinkList().add(new DrinkForPub(null, null, 0, 0));
 		}
 	}
 }

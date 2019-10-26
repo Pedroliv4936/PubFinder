@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="335.0" spacing="35.0" style="-fx-background-color: #353535;" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <StackPane prefHeight="49.0" prefWidth="335.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="235.0" style="-fx-text-fill: #ffe400; -fx-font-size: 27px;" text="Pedidos Pendentes">
+               <graphic>
+                  <ImageView fitHeight="54.0" fitWidth="345.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@res/imgs/container%20Nome.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+         </children>
+      </StackPane>
+      <ListView opacity="0.49" prefHeight="310.0" prefWidth="335.0" style="-fx-background-color: #353535; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 5px;">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </ListView>
+      <JFXButton alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="140.0" style="-fx-background-color: #00ff00;" text="Accept" />
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" />
+   </padding>
+</VBox>

@@ -1,4 +1,4 @@
-package application.views;
+package application.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -27,12 +27,12 @@ public class MainScreenContentController {
 	
 	@FXML
 	private void checkNewRequests() {
-		
+		ScreenManager.setScreen(ScreenManager.DEFAULT_HEADER, "views/CheckNewRequests.fxml", new DefaultHeaderController(), new CheckNewRequestsController());
 	}
 	
 	@FXML
 	private void addInformation() {
-	ScreenManager.setScreen("views/AddInformationScreen.fxml");
+	ScreenManager.setScreen(ScreenManager.DEFAULT_HEADER, "views/AddInformationScreen.fxml", new DefaultHeaderController(), new AddInfoController());
 	}
 	
 }
