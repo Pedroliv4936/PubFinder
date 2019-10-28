@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="335.0" spacing="35.0" style="-fx-background-color: #353535;" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane prefHeight="49.0" prefWidth="335.0">
@@ -25,12 +24,12 @@
             </Label>
          </children>
       </StackPane>
-      <ListView opacity="0.49" prefHeight="310.0" prefWidth="335.0" style="-fx-background-color: #353535; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 5px;">
+      <ListView fx:id="pendingPubRequestsLV" opacity="0.49" prefHeight="310.0" prefWidth="335.0" style="-fx-background-color: #353535; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 5px;">
          <VBox.margin>
             <Insets />
          </VBox.margin>
       </ListView>
-      <JFXButton alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="140.0" style="-fx-background-color: #00ff00;" text="Accept" />
+      <JFXButton fx:id="accept" alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="140.0" style="-fx-background-color: #00ff00;" text="Accept" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" />

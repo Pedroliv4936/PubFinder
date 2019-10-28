@@ -33,12 +33,12 @@
             <Insets top="-50.0" />
          </VBox.margin>
       </StackPane>
-      <HBox alignment="CENTER" prefHeight="35.0" prefWidth="354.0">
+      <HBox fx:id="barHbox" alignment="CENTER" prefHeight="35.0" prefWidth="354.0">
          <children>
             <JFXComboBox fx:id="barField" focusColor="#353535" opacity="0.43" prefHeight="35.0" prefWidth="244.0" promptText="Nome do Bar" stylesheets="@layout.css" unFocusColor="#353535" />
             <StackPane prefHeight="35.0" prefWidth="36.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="48.0" style="-fx-text-fill: wHITE;" text="NEW" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="48.0" style="-fx-text-fill: White;" text="NEW" />
                   <Button fx:id="addBarButton" alignment="TOP_CENTER" contentDisplay="CENTER" minWidth="50.0" mnemonicParsing="false" onAction="#addNewBar" opacity="0.43" prefHeight="34.0" prefWidth="50.0" style="-fx-font-size: 15;" stylesheets="@layout.css" text=" ">
                      <font>
                         <Font name="Product Sans" size="13.0" />
@@ -53,7 +53,7 @@
             <Insets left="20.0" right="20.0" />
          </VBox.margin>
       </JFXComboBox>
-      <JFXTextField fx:id="preco" alignment="TOP_LEFT" focusColor="WHITE" onAction="#adicionarInfo" opacity="0.43" promptText="Preço" style="-fx-border-width: 2px; -fx-background-color: #353535; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white; -fx-background-radius: 8;" unFocusColor="#353535">
+      <JFXTextField fx:id="preco" alignment="TOP_LEFT" focusColor="WHITE" opacity="0.43" promptText="Preço" style="-fx-border-width: 2px; -fx-background-color: #353535; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white; -fx-background-radius: 8;" unFocusColor="#353535">
          <font>
             <Font size="14.0" />
          </font>
