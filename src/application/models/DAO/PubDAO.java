@@ -3,11 +3,9 @@ package application.models.DAO;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Properties;
 
 import com.google.gson.Gson;
-import com.mysql.cj.protocol.Resultset;
 
 import application.models.Drink;
 import application.models.DrinkForPub;
@@ -32,7 +30,6 @@ public class PubDAO {
 	}
 
 	public void loadDatabase() throws FileNotFoundException, IOException {
-		Gson gson = new Gson();
 
 		Properties p = new Properties();
 		p.load(new FileReader("pubs.list"));
