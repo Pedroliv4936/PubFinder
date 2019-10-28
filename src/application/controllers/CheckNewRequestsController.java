@@ -13,7 +13,6 @@ public class CheckNewRequestsController {
 	
 	@FXML
 	private void initialize() {
-		pendingPubRequestsLV.setSelectionModel(MultipleSelectionModel<Pub>);
 		pendingPubRequestsLV.setCellFactory(param -> new ListCell<Pub>() {
 			@Override
             protected void updateItem(Pub item, boolean empty) {
