@@ -12,8 +12,9 @@ import com.lynden.gmapsfx.javascript.object.Marker;
 import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 
 import application.ScreenManager;
-import application.models.DAO.loginDAO;
+import application.models.DAO.LoginDAO;
 import javafx.fxml.FXML;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class MainScreenContentController implements MapComponentInitializedListener {
@@ -24,7 +25,13 @@ public class MainScreenContentController implements MapComponentInitializedListe
 	VBox vbox;
 	
 	@FXML
+	StackPane backStackPane;
+	
+	@FXML
 	JFXButton checkNewRequests;
+	
+	@FXML
+	JFXButton addInformation;
 	
 	private GoogleMapView mapView;
     
@@ -33,13 +40,15 @@ public class MainScreenContentController implements MapComponentInitializedListe
 	@FXML
 	private void initialize() {
 		
-		vbox.getChildren().clear();
-		mapView = new GoogleMapView("en-US", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
-		vbox.getChildren().add(mapView);
+		backStackPane.getChildren().clear();
+		mapView = new GoogleMapView("en-US", "xxxxx");
+		backStackPane.getChildren().addAll(mapView, vbox);
+		backStackPane.setPickOnBounds(false);
+		vbox.setPickOnBounds(false);
 		mapView.addMapInitializedListener(this);
-		/*if(!loginDAO.getAdminList().contains(loginDAO.getLogedinUser())) {
+		if(!LoginDAO.getAdminList().contains(LoginDAO.getLogedinUser())) {
 			vbox.getChildren().remove(checkNewRequests);
-		}*/
+		}
 	}
 	
 	@FXML
@@ -55,11 +64,11 @@ public class MainScreenContentController implements MapComponentInitializedListe
 	@Override
 	public void mapInitialized() {
 		
-		  LatLong joeSmithLocation = new LatLong(47.6097, -122.3331);
+		  LatLong joeSmithLocation = new LatLong(38.707438, -9.152532);
 		  //Set the initial properties of the map.
 	        MapOptions mapOptions = new MapOptions();
 	        
-	        mapOptions.center(new LatLong(47.6097, -122.3331))
+	        mapOptions.center(new LatLong(38.707438, -9.152532))
 	                .mapType(MapTypeIdEnum.ROADMAP)
 	                .overviewMapControl(false)
 	                .panControl(false)

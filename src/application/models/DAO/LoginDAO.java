@@ -7,7 +7,7 @@ import application.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class loginDAO {
+public class LoginDAO {
 	private static ObservableList<User> userList = FXCollections.observableArrayList();
 	
 	private static ObservableList<Admin> adminList = FXCollections.observableArrayList();
@@ -19,7 +19,7 @@ public class loginDAO {
 	}
 
 	public static void setLogedinUser(User logedinUser) {
-		loginDAO.logedinUser = logedinUser;
+		LoginDAO.logedinUser = logedinUser;
 	}
 
 	public static ObservableList<Admin> getAdminList() {

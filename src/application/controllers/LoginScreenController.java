@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import application.ScreenManager;
-import application.models.DAO.loginDAO;
+import application.models.DAO.LoginDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -58,17 +58,17 @@ public class LoginScreenController {
 		getSelections();
 		String username = usernameField.getText();
 		String password = passwordField.getText();
-		if(loginDAO.connect(username, password) == 0) {
+		if(LoginDAO.connect(username, password) == 0) {
 			ScreenManager.setScreen(ScreenManager.DEFAULT_HEADER, ScreenManager.MAIN_SCREEN_CONTENT, new DefaultHeaderController(), new MainScreenContentController());
 		}else
-			if(loginDAO.connect(username, password) == 1) {
+			if(LoginDAO.connect(username, password) == 1) {
 				ScreenManager.setScreen(ScreenManager.DEFAULT_HEADER, ScreenManager.MAIN_SCREEN_CONTENT,new DefaultHeaderController(), new MainScreenContentController());
 			}else
 				loginFeedback.setTextFill(Color.RED);
-			if(loginDAO.connect(username, password) == 2) {
+			if(LoginDAO.connect(username, password) == 2) {
 				loginFeedback.setText("Wrong username");
 			}else
-				if(loginDAO.connect(username, password) == 3) {
+				if(LoginDAO.connect(username, password) == 3) {
 					loginFeedback.setText("Wrong Password");
 				}
 
