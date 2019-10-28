@@ -8,11 +8,12 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ScreenManager {
 
-	private static BorderPane borderPane;
+	private static VBox vBox;
 
 	public static final String MAIN_SCREEN_CONTENT = "views/MainScreenContent.fxml";
 
@@ -27,28 +28,28 @@ public class ScreenManager {
 		primaryStage.setTitle("PubFinder");
 		primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("views/res/imgs/logoPubFinder.png")));
 
-		borderPane = new BorderPane();
+		vBox = new VBox();
 		setScreen(null, "views/LoginScreen.fxml", null, new LoginScreenController());
-		borderPane.getStylesheets().add(getClass().getResource("views/layout.css").toExternalForm());
-		Scene scene = new Scene(borderPane, 335, 600);
+		vBox.getStylesheets().add(getClass().getResource("views/layout.css").toExternalForm());
+		Scene scene = new Scene(vBox, 335, 600);
 
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
 	}
 
-	public static void setContent(String contentFxmlLocation, Object contentController) {
+	private static void setContent(String contentFxmlLocation, Object contentController) {
 		FXMLLoader loader = new FXMLLoader(ScreenManager.class.getResource(contentFxmlLocation));
 		try {
 			loader.setController(contentController);
 			Pane root = loader.load();
-			borderPane.setCenter(root);
+			vBox.getChildren().add(root);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static void setHeader(String headerFxmlLocation, Object headerController) {
+	private static void setHeader(String headerFxmlLocation, Object headerController) {
 		FXMLLoader loader = new FXMLLoader(Main.class.getResource(headerFxmlLocation));
 		loader.setController(headerController);
 		Pane root = null;
@@ -57,14 +58,14 @@ public class ScreenManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		borderPane.setTop(root);
+		vBox.getChildren().add(root);
 	}
 
-	public static void setScreen(String headerFXML, String contentFXML, Object headerController, Object contentController) {
+	public static void setScreen(String headerFXML, String contentFXML, Object headerController,
+			Object contentController) {
+		vBox.getChildren().clear();
 		if (headerFXML != null) {
 			setHeader(headerFXML, headerController);
-		} else {
-			borderPane.getChildren().clear();
 		}
 		setContent(contentFXML, contentController);
 	}
