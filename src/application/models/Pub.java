@@ -9,10 +9,18 @@ public class Pub extends Entity{
 	private ObservableList<DrinkForPub> drinks;
 	private ObservableList<Image> images;
 	private double rating;
+	private double price;
+	private String type;
 	
-	public Pub(int id, String name, double rating, String address,
+	public static final String DISCOTECA = "Discoteca";
+	public static final String BAR = "Bar";
+	public static final String SALAO_DE_JOGOS = "Salao de jogos";
+	
+	public Pub(int id, String name, String type, double price, double rating, String address,
 					ObservableList<DrinkForPub> drinks, ObservableList<Image> images) {
 		super(id, name);
+		this.price = price;
+		this.type = type;
 		this.rating = rating;
 		this.address = address;
 		this.drinks = drinks;

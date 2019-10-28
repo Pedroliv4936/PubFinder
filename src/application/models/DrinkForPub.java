@@ -14,7 +14,7 @@ public class DrinkForPub {
 		this.price = price;
 	}
 
-	public Drink getDrink() {
+	public Drink getDrinkType() {
 		return drink;
 	}
 

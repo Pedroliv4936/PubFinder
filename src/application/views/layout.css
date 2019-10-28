@@ -29,6 +29,7 @@
 -fx-background-color: transparent;
 }
 
+
 .text-field {
 	-fx-border-width:2px;
 	-fx-background-color: transparent;
@@ -43,7 +44,7 @@
 	-fx-background-color:transparent;
 }
 
-#barField, #tipoField{
+#pubType, #drinkType, #pubOptions, #pubNameField {
 	-fx-border-width:2px;
 	-fx-border-radius:5;
 	-fx-background-radius:8;
@@ -52,6 +53,7 @@
 	-fx-prompt-text-fill:white;
 	-fx-border-color:white;
 }
+
 
 .combo-box .cell{
 	-fx-text-fill:white;
@@ -77,7 +79,7 @@
 	-fx-border-color:white;
 }
 
-#preco,#observationBox{
+#priceField,#observationBox{
 	-fx-prompt-text-fill:white;
 	-fx-text-fill:white;
 	-fx-border-radius:2px;

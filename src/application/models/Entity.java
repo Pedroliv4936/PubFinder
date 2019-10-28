@@ -13,7 +13,7 @@ public abstract class Entity {
 		return id;
 	}
 	
-	public String getName() {
+	public String toString() {
 		return name;
 	}
 	

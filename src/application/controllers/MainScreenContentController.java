@@ -41,7 +41,7 @@ public class MainScreenContentController implements MapComponentInitializedListe
 	private void initialize() {
 		
 		backStackPane.getChildren().clear();
-		mapView = new GoogleMapView("en-US", "xxxxx");
+		mapView = new GoogleMapView("en-US", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
 		backStackPane.getChildren().addAll(mapView, vbox);
 		backStackPane.setPickOnBounds(false);
 		vbox.setPickOnBounds(false);
@@ -58,7 +58,7 @@ public class MainScreenContentController implements MapComponentInitializedListe
 	
 	@FXML
 	private void addInformation() {
-	ScreenManager.setScreen(ScreenManager.DEFAULT_HEADER, "views/AddInformationScreen.fxml", new DefaultHeaderController(), new AddInfoController());
+	ScreenManager.setScreen(ScreenManager.DEFAULT_HEADER, "views/AddInfoContainer.fxml", new DefaultHeaderController(), new AddInfoController());
 	}
 
 	@Override
