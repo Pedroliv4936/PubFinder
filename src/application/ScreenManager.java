@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -44,6 +45,7 @@ public class ScreenManager {
 			loader.setController(contentController);
 			Pane root = loader.load();
 			vBox.getChildren().add(root);
+			VBox.setVgrow(root, Priority.ALWAYS);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
