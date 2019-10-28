@@ -6,19 +6,20 @@ import javafx.scene.image.Image;
 public class Pub extends Entity{
 
 	private String address;
-	private ObservableList<Drink> drinks;
+	private ObservableList<DrinkForPub> drinks;
 	private ObservableList<Image> images;
-	private Pub pub;
+	private double rating;
 	
 	public Pub(int id, String name, double rating, String address,
-					ObservableList<Drink> drinks, ObservableList<Image> images) {
-		super(id, name, rating);
+					ObservableList<DrinkForPub> drinks, ObservableList<Image> images) {
+		super(id, name);
+		this.rating = rating;
 		this.address = address;
 		this.drinks = drinks;
 		this.images = images;
 	}
 	
-	public void showPubIndo() {
+	public void showPubInfo() {
 			System.out.println("Id: " + id);
 			System.out.println("Name" + name);
 			System.out.println("Rating" + rating);
@@ -32,11 +33,11 @@ public class Pub extends Entity{
 		this.address = address;
 	}
 
-	public ObservableList<Drink> getDrinks() {
+	public ObservableList<DrinkForPub> getDrinks() {
 		return drinks;
 	}
 
-	public void setDrinks(ObservableList<Drink> drinks) {
+	public void setDrinks(ObservableList<DrinkForPub> drinks) {
 		this.drinks = drinks;
 	}
 

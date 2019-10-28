@@ -1,4 +1,4 @@
-package application.views;
+package application.controllers;
 
 public class UserScreenController {
 

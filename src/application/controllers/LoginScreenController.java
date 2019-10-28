@@ -1,4 +1,4 @@
-package application.views;
+package application.controllers;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -7,17 +7,19 @@ import java.io.IOException;
 import java.util.Properties;
 
 import application.ScreenManager;
-import application.model.DAO.loginDAO;
+import application.models.DAO.loginDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 
 public class LoginScreenController {
 
 	@FXML TextField usernameField;
 	@FXML PasswordField passwordField;
-	
+	@FXML Label loginFeedback;
 	@FXML CheckBox rememberChoice;
 	@FXML CheckBox autoLogin;
 	
@@ -25,7 +27,7 @@ public class LoginScreenController {
 	public void initialize () {
 		Properties p = new Properties();
 		try {
-			p.load(new FileReader("choicheBoxes.properties"));
+			p.load(new FileReader("src/application/models/DAO/loginInfo.properties"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -57,16 +59,17 @@ public class LoginScreenController {
 		String username = usernameField.getText();
 		String password = passwordField.getText();
 		if(loginDAO.connect(username, password) == 0) {
-			ScreenManager.setScreen(ScreenManager.MAIN_SCREEN);
+			ScreenManager.setScreen(ScreenManager.DEFAULT_HEADER, ScreenManager.MAIN_SCREEN_CONTENT, new DefaultHeaderController(), new MainScreenContentController());
 		}else
 			if(loginDAO.connect(username, password) == 1) {
-				ScreenManager.setScreen(ScreenManager.MAIN_SCREEN);
+				ScreenManager.setScreen(ScreenManager.DEFAULT_HEADER, ScreenManager.MAIN_SCREEN_CONTENT,new DefaultHeaderController(), new MainScreenContentController());
 			}else
+				loginFeedback.setTextFill(Color.RED);
 			if(loginDAO.connect(username, password) == 2) {
-				
+				loginFeedback.setText("Wrong username");
 			}else
 				if(loginDAO.connect(username, password) == 3) {
-					
+					loginFeedback.setText("Wrong Password");
 				}
 
 	}
@@ -81,7 +84,7 @@ public class LoginScreenController {
 			p.setProperty("option1", "0");
 		}
 		try {
-			p.store(new FileWriter("choicheBoxes.properties"), "");
+			p.store(new FileWriter("src/application/models/DAO/loginInfo.properties"), "");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}		
@@ -93,7 +96,7 @@ public class LoginScreenController {
 			p.setProperty("option2", "0");
 		}
 		try {
-			p.store(new FileWriter("choicheBoxes.properties"), "");
+			p.store(new FileWriter("src/application/models/DAO/loginInfo.properties"), "");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -15,11 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="495.0" prefWidth="335.0" spacing="20.0" style="-fx-background-color: #353535;" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.views.AddInfoController">
+<VBox alignment="CENTER" prefHeight="495.0" prefWidth="335.0" spacing="20.0" style="-fx-background-color: #353535;" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane prefHeight="47.0" prefWidth="335.0">
          <children>
-            <Label fx:id="pageName" contentDisplay="CENTER" prefHeight="33.0" prefWidth="258.0" text="Adicionar Bar/Bebida" />
+            <Label fx:id="pageName" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="258.0" text="Adicionar Bebida" />
             <ImageView fitHeight="55.0" fitWidth="334.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@res/imgs/container%20Nome.png" />
@@ -33,10 +33,19 @@
             <Insets top="-50.0" />
          </VBox.margin>
       </StackPane>
-      <HBox alignment="TOP_CENTER" prefHeight="35.0" prefWidth="335.0" spacing="20.0">
+      <HBox alignment="CENTER" prefHeight="35.0" prefWidth="354.0">
          <children>
-            <JFXComboBox fx:id="barField" editable="true" focusColor="#353535" opacity="0.43" prefHeight="35.0" prefWidth="219.0" promptText="Nome do Bar" stylesheets="@layout.css" unFocusColor="#353535" />
-            <JFXButton fx:id="editableButton" stylesheets="@layout.css" text="  " />
+            <JFXComboBox fx:id="barField" focusColor="#353535" opacity="0.43" prefHeight="35.0" prefWidth="244.0" promptText="Nome do Bar" stylesheets="@layout.css" unFocusColor="#353535" />
+            <StackPane prefHeight="35.0" prefWidth="36.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="48.0" style="-fx-text-fill: wHITE;" text="NEW" />
+                  <Button fx:id="addBarButton" alignment="TOP_CENTER" contentDisplay="CENTER" minWidth="50.0" mnemonicParsing="false" onAction="#addNewBar" opacity="0.43" prefHeight="34.0" prefWidth="50.0" style="-fx-font-size: 15;" stylesheets="@layout.css" text=" ">
+                     <font>
+                        <Font name="Product Sans" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </StackPane>
          </children>
       </HBox>
       <JFXComboBox fx:id="tipoField" focusColor="#353535" opacity="0.43" prefHeight="28.0" prefWidth="354.0" promptText="Tipo" stylesheets="@layout.css" unFocusColor="#353535">
@@ -80,7 +89,7 @@
             <JFXTextArea fx:id="observationBox" focusColor="WHITE" opacity="0.43" promptText="Observações..." stylesheets="@layout.css" unFocusColor="#353535" />
          </children>
       </HBox>
-      <JFXButton alignment="CENTER" onAction="#adicionarInfo" prefHeight="32.0" prefWidth="317.0" style="-fx-background-color: #ffe400; -fx-background-radius: 20; -fx-border-radius: 20; -fx-text-fill: #282828;" text="Enviar">
+      <JFXButton alignment="CENTER" onAction="#sendInfo" prefHeight="32.0" prefWidth="317.0" style="-fx-background-color: #ffe400; -fx-background-radius: 20; -fx-border-radius: 20; -fx-text-fill: #282828;" text="Enviar">
          <VBox.margin>
             <Insets left="60.0" right="60.0" top="10.0" />
          </VBox.margin>

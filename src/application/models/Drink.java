@@ -3,44 +3,25 @@ package application.models;
 import javafx.scene.image.Image;
 
 public class Drink extends Entity{
-
-	private double price;
 	private Image icon;
-	private Pub pub;
-	private String pubName;
 	
-	public Drink(int id, String name, double rating, double price, Image icon, Pub pub) {
-		super(id, name, rating);
-		this.price = price;
+	public static final Drink VODKA = new Drink(0, "Vodka", null);
+	public static final Drink COPO_CERVEJA = new Drink(1, "Copo de cerveja", null);
+	public static final Drink CANECA_CERVEJA = new Drink(2, "Caneca de Cerveja", null);
+	public static final Drink SIDRA = new Drink(3, "Sidra", null);
+	public static final Drink GIN = new Drink(4, "Gin", null);
+	
+	private Drink(int id, String name, Image icon) {
+		super(id, name);
 		this.icon = icon;
-		this.pub = pub;
-		pubName = pub.getName();
 	}
 	
 	public void showDrinkInfo() {
 		System.out.println("Id: " + id);
 		System.out.println("Name" + name);
-		System.out.println("Rating" + rating);
-		System.out.println("Price" + price);
 		System.out.println("Image path" + icon);
-		System.out.println("Bar onde é vendido: " + pubName);
 	}
 	
-	public Pub getPub() {
-		return pub;
-	}
-
-	public void setPub(Pub pub) {
-		this.pub = pub;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
 
 	public Image getIcon() {
 		return icon;

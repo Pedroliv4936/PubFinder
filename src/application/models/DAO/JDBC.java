@@ -1,4 +1,4 @@
-package application;
+package application.models.DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,9 +13,9 @@ public class JDBC {
 
 	private static final String CONN = "jdbc:mysql://localhost:3306/teste";
 
-	static Connection con = null;
-	Statement stmt = null;
-	ResultSet rs = null;
+	private static Connection con = null;
+	private static Statement stmt = null;
+	private static ResultSet rs = null;
 	
 	static boolean connected;
 
@@ -34,6 +34,42 @@ public class JDBC {
 		}
 	}
 	
+	public static void getPubs() throws SQLException {
+
+	}
+	
+	public static void setCon(Connection con) {
+		JDBC.con = con;
+	}
+
+	public static void setStmt(Statement stmt) {
+		JDBC.stmt = stmt;
+	}
+
+	public static void setRs(ResultSet rs) {
+		JDBC.rs = rs;
+	}
+
+	public static void setConnected(boolean connected) {
+		JDBC.connected = connected;
+	}
+
+	public static String getConn() {
+		return CONN;
+	}
+
+	public static Connection getCon() {
+		return con;
+	}
+
+	public static Statement getStmt() {
+		return stmt;
+	}
+
+	public static ResultSet getRs() {
+		return rs;
+	}
+
 	public void disconnectDb() {
 		try {
 			if(con!=null)
