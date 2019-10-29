@@ -41,7 +41,7 @@ public class MainScreenContentController implements MapComponentInitializedListe
 	private void initialize() {
 		
 		backStackPane.getChildren().clear();
-		mapView = new GoogleMapView("en-US", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
+		mapView = new GoogleMapView("en-US", "xx");
 		backStackPane.getChildren().addAll(mapView, vbox);
 		backStackPane.setPickOnBounds(false);
 		vbox.setPickOnBounds(false);
