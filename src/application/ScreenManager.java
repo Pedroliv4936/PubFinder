@@ -3,10 +3,10 @@ package application;
 import java.io.IOException;
 
 import application.controllers.LoginScreenController;
+import application.views.ScreenContainer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -16,12 +16,6 @@ public class ScreenManager {
 
 	private static VBox vBox;
 
-	public static final String MAIN_SCREEN_CONTENT = "views/MainScreenContent.fxml";
-
-	public static final String DRINK_SCREEN_CONTENT = "views/BebidasScreen.fxml";
-
-	public static final String DEFAULT_HEADER = "views/DefaultHeader.fxml";
-
 	public ScreenManager() {
 	}
 
@@ -30,7 +24,7 @@ public class ScreenManager {
 		primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("views/res/imgs/logoPubFinder.png")));
 
 		vBox = new VBox();
-		setScreen(null, "views/LoginScreen.fxml", null, new LoginScreenController());
+		setScreen(new ScreenContainer(null, "views/LoginScreen.fxml", null, new LoginScreenController()));
 		vBox.getStylesheets().add(getClass().getResource("views/layout.css").toExternalForm());
 		Scene scene = new Scene(vBox, 335, 600);
 
@@ -63,13 +57,12 @@ public class ScreenManager {
 		vBox.getChildren().add(root);
 	}
 
-	public static void setScreen(String headerFXML, String contentFXML, Object headerController,
-			Object contentController) {
+	public static void setScreen(ScreenContainer screenContainer) {
 		vBox.getChildren().clear();
-		if (headerFXML != null) {
-			setHeader(headerFXML, headerController);
+		if (screenContainer.getHeaderFXML() != null) {
+			setHeader(screenContainer.getHeaderFXML(), screenContainer.getHeaderController());
 		}
-		setContent(contentFXML, contentController);
+		setContent(screenContainer.getContentFXML(), screenContainer.getContentController());
 	}
 
 }

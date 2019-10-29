@@ -8,7 +8,7 @@ import javafx.collections.ObservableList;
 
 public class DrinkDAO {
 
-	private static ObservableList<DrinkForPub> drinksInPubsList = FXCollections.observableArrayList();
+	private static ObservableList<DrinkForPub> drinksInPubs = FXCollections.observableArrayList();
 	
 	private static ObservableList<Drink> drinkList = FXCollections.observableArrayList();
 
@@ -20,15 +20,33 @@ public class DrinkDAO {
 	}
 
 	public static ObservableList<DrinkForPub> getDrinksInPubs() {
-		return drinksInPubsList;
+		return drinksInPubs;
+	}
+	
+	public static Drink getDrinkTypeByName(String drinkName) {
+		for(Drink drink : drinkList) {
+			if(drinkName.equals(drink.toString())) {
+				return drink;
+			}
+		}
+		return null;
+	}
+	
+	public static Drink getDrinkTypeById(int id) {
+		for(Drink drink : drinkList) {
+			if(id == drink.getId()) {
+				return drink;
+			}
+		}
+		return null;
 	}
 	
 	public static void addDrinkFromPub(DrinkForPub drink) {
-		drinksInPubsList.add(drink);
+		drinksInPubs.add(drink);
 	}
 	
 	public static void removeDrinkFromPub(DrinkForPub drink) {
-		drinksInPubsList.remove(drink);
+		drinksInPubs.remove(drink);
 	}
 	
 	public static ObservableList<Drink> getDrinkList() {
@@ -44,20 +62,33 @@ public class DrinkDAO {
 	}
 	
 	public static void aproveDrink(DrinkForPub drink) {
-		drinksInPubsList.add(drink);
+		drinksInPubs.add(drink);
 		pendingDrinkList.remove(drink);
 	}
 	
 	public static void aproveDrinks(ObservableList<DrinkForPub> drinks) {
-		drinksInPubsList.addAll(drinks);
+		drinksInPubs.addAll(drinks);
 		pendingDrinkList.removeAll(drinks);
 	}
 	
 	static {
 		drinkList.addAll(Drink.CANECA_CERVEJA, Drink.COPO_CERVEJA, Drink.VODKA, Drink.SIDRA, Drink.GIN);
 		
-		for(Pub pub:PubDAO.getPubList()) {
-			drinksInPubsList.addAll(pub.getDrinks());
-		}
+		ObservableList<DrinkForPub> pedroDrinks = FXCollections.observableArrayList();
+		ObservableList<DrinkForPub> francoDrinks = FXCollections.observableArrayList();
+		
+		pedroDrinks.addAll(new DrinkForPub(Drink.VODKA, PubDAO.getPubList().get(0), Math.random() * 5, Math.random() * 10),
+				new DrinkForPub(Drink.COPO_CERVEJA, PubDAO.getPubList().get(0), Math.random() * 5, Math.random() * 10),
+				new DrinkForPub(Drink.CANECA_CERVEJA, PubDAO.getPubList().get(0), Math.random() * 5, Math.random() * 10),
+				new DrinkForPub(Drink.GIN, PubDAO.getPubList().get(0), Math.random() * 5, Math.random() * 10),
+				new DrinkForPub(Drink.SIDRA, PubDAO.getPubList().get(0), Math.random() * 5, Math.random() * 10));
+
+		francoDrinks.addAll(new DrinkForPub(Drink.VODKA, PubDAO.getPubList().get(1), Math.random() * 5, Math.random() * 10),
+				new DrinkForPub(Drink.COPO_CERVEJA, PubDAO.getPubList().get(1), Math.random() * 5, Math.random() * 10),
+				new DrinkForPub(Drink.CANECA_CERVEJA, PubDAO.getPubList().get(1), Math.random() * 5, Math.random() * 10),
+				new DrinkForPub(Drink.GIN, PubDAO.getPubList().get(1), Math.random() * 5, Math.random() * 10),
+				new DrinkForPub(Drink.SIDRA, PubDAO.getPubList().get(1), Math.random() * 5, Math.random() * 10));
+		drinksInPubs.addAll(pedroDrinks);
+		drinksInPubs.addAll(francoDrinks);
 	}
 }

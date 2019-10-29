@@ -8,6 +8,7 @@ import java.util.Properties;
 
 import application.ScreenManager;
 import application.models.DAO.LoginDAO;
+import application.views.ScreenContainer;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -59,10 +60,10 @@ public class LoginScreenController {
 		String username = usernameField.getText();
 		String password = passwordField.getText();
 		if(LoginDAO.connect(username, password) == 0) {
-			ScreenManager.setScreen(ScreenManager.DEFAULT_HEADER, ScreenManager.MAIN_SCREEN_CONTENT, new DefaultHeaderController(), new MainScreenContentController());
+			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 		}else
 			if(LoginDAO.connect(username, password) == 1) {
-				ScreenManager.setScreen(ScreenManager.DEFAULT_HEADER, ScreenManager.MAIN_SCREEN_CONTENT,new DefaultHeaderController(), new MainScreenContentController());
+				ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 			}else
 				loginFeedback.setTextFill(Color.RED);
 			if(LoginDAO.connect(username, password) == 2) {

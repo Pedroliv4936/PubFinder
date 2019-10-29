@@ -1,18 +1,19 @@
 package application.controllers;
 
 import application.ScreenManager;
+import application.views.ScreenContainer;
 import javafx.fxml.FXML;
 
 public class UserHeaderController {
 
 	@FXML
 	private void openDrinksScreen(){
-		ScreenManager.setScreen(ScreenManager.DEFAULT_HEADER, ScreenManager.DRINK_SCREEN_CONTENT,new DefaultHeaderController(), new MenuBebidasController());
+		ScreenManager.setScreen(ScreenContainer.MENU_BEBIDAS);
 	}
 	
 	@FXML
 	private void openMainScreen() {
-		ScreenManager.setScreen(ScreenManager.DEFAULT_HEADER, ScreenManager.MAIN_SCREEN_CONTENT, new DefaultHeaderController(), new MainScreenContentController());
+		ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 	}
 	
 }

@@ -13,10 +13,11 @@ public class User {
 	private String email;
 	private Date birthday;
 	private FavoriteDrinkList favoriteDrinks;
+	private boolean admin;
 	
 	
 	public User(int id, String name, String username,
-					String password, String email, Date birthday) {
+					String password, String email, Date birthday, boolean admin) {
 		favoriteDrinks = new FavoriteDrinkList(name);
 		this.id = id;
 		this.name = name;
@@ -24,6 +25,11 @@ public class User {
 		this.password = password;
 		this.email = email;
 		this.birthday = birthday;
+		this.admin = admin;
+	}
+	
+	public boolean isAdmin() {
+		return admin;
 	}
 	
 	public FavoriteDrinkList getFavoriteDrinkList() {

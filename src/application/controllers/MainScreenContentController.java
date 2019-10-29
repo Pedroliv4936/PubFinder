@@ -13,6 +13,7 @@ import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 
 import application.ScreenManager;
 import application.models.DAO.LoginDAO;
+import application.views.ScreenContainer;
 import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -22,7 +23,7 @@ public class MainScreenContentController implements MapComponentInitializedListe
 	@FXML
 	JFXTextField searchField;
 	@FXML
-	VBox vbox;
+	VBox vbox, buttonsVbox;
 	
 	@FXML
 	StackPane backStackPane;
@@ -39,26 +40,24 @@ public class MainScreenContentController implements MapComponentInitializedListe
 	
 	@FXML
 	private void initialize() {
-		
 		backStackPane.getChildren().clear();
-		mapView = new GoogleMapView("en-US", "xx");
+		mapView = new GoogleMapView("en-US", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
 		backStackPane.getChildren().addAll(mapView, vbox);
+		if(!LoginDAO.getLogedinUser().isAdmin())
+		buttonsVbox.getChildren().remove(checkNewRequests);
 		backStackPane.setPickOnBounds(false);
 		vbox.setPickOnBounds(false);
 		mapView.addMapInitializedListener(this);
-		if(!LoginDAO.getAdminList().contains(LoginDAO.getLogedinUser())) {
-			vbox.getChildren().remove(checkNewRequests);
-		}
 	}
 	
 	@FXML
 	private void checkNewRequests() {
-		ScreenManager.setScreen(ScreenManager.DEFAULT_HEADER, "views/CheckNewRequests.fxml", new DefaultHeaderController(), new CheckNewRequestsController());
+		ScreenManager.setScreen(ScreenContainer.CHECK_NEW_REQUESTS);
 	}
 	
 	@FXML
 	private void addInformation() {
-	ScreenManager.setScreen(ScreenManager.DEFAULT_HEADER, "views/AddInfoContainer.fxml", new DefaultHeaderController(), new AddInfoController());
+	ScreenManager.setScreen(ScreenContainer.ADD_INFO);
 	}
 
 	@Override

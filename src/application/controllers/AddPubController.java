@@ -5,11 +5,13 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
+import application.ScreenManager;
 import application.models.Drink;
 import application.models.DrinkForPub;
 import application.models.Pub;
 import application.models.DAO.DrinkDAO;
 import application.models.DAO.PubDAO;
+import application.views.ScreenContainer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -54,5 +56,6 @@ public class AddPubController {
 			Double price = Double.parseDouble(priceField.getText());
 			PubDAO.addPendingPub(new Pub(0, name, type, price, 2, "Iade Building", null, null));
 			System.out.println(name + " Adicionado à lista de espera");
+			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 	}
 }

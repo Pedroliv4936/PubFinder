@@ -29,8 +29,8 @@ public class Pub extends Entity{
 	
 	public void showPubInfo() {
 			System.out.println("Id: " + id);
-			System.out.println("Name" + name);
-			System.out.println("Rating" + rating);
+			System.out.println("Name: " + name);
+			System.out.println("Rating: " + rating);
 	}
 	
 	public String getAddress() {

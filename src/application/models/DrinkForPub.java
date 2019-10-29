@@ -14,11 +14,11 @@ public class DrinkForPub {
 		this.price = price;
 	}
 	
-	public void showDrinkInformation() {
-		System.out.println("Drink type" + drink.toString());
-		System.out.println("Pub selling" + pub.toString());
-		System.out.println("Rating" + getRating());
-		System.out.println("Price" + getPrice());
+	public void showDrinkInfo() {
+		System.out.println("Drink type " + drink.toString());
+		System.out.println("Pub selling " + pub.toString());
+		System.out.println("Rating " + getRating());
+		System.out.println("Price " + getPrice());
 	}
 
 	public String toString() {

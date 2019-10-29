@@ -3,14 +3,10 @@ package application.models.DAO;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Properties;
 
 import com.google.gson.Gson;
-import com.mysql.cj.protocol.Resultset;
 
-import application.models.Drink;
-import application.models.DrinkForPub;
 import application.models.Pub;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,6 +25,24 @@ public class PubDAO {
 	
 	public static ObservableList<Pub> getPendingPubs() {
 		return pendingPubList;
+	}
+	
+	public static Pub getPubById(int id) {
+		for(Pub pub: pubList) {
+			if(id == pub.getId()) {
+				return pub;
+			}
+		}
+		return null;
+	}
+	
+	public static Pub getPubByName(String name) {
+		for(Pub pub: pubList) {
+			if(name.equals(pub.toString())) {
+				return pub;
+			}
+		}
+		return null;
 	}
 	
 	public static void addPub(Pub pub) {
@@ -61,22 +75,8 @@ public class PubDAO {
 	}
 
 	static {
-		ObservableList<DrinkForPub> pedroDrinks = FXCollections.observableArrayList();
-		ObservableList<DrinkForPub> francoDrinks = FXCollections.observableArrayList();
-		Pub barDoPedro = new Pub(1, "Bar do Pedro", Pub.DISCOTECA, 10, 0, "Lar das laranjas", pedroDrinks, null);
-		Pub barDoFranco = new Pub(69, "Bar do Franco", Pub.BAR, 0, 0, "Casa do Franco", francoDrinks, null);
-
-		pedroDrinks.addAll(new DrinkForPub(Drink.VODKA, barDoPedro, Math.random() * 5, Math.random() * 10),
-				new DrinkForPub(Drink.COPO_CERVEJA, barDoPedro, Math.random() * 5, Math.random() * 10),
-				new DrinkForPub(Drink.CANECA_CERVEJA, barDoPedro, Math.random() * 5, Math.random() * 10),
-				new DrinkForPub(Drink.GIN, barDoPedro, Math.random() * 5, Math.random() * 10),
-				new DrinkForPub(Drink.SIDRA, barDoPedro, Math.random() * 5, Math.random() * 10));
-
-		francoDrinks.addAll(new DrinkForPub(Drink.VODKA, barDoFranco, Math.random() * 5, Math.random() * 10),
-				new DrinkForPub(Drink.COPO_CERVEJA, barDoFranco, Math.random() * 5, Math.random() * 10),
-				new DrinkForPub(Drink.CANECA_CERVEJA, barDoFranco, Math.random() * 5, Math.random() * 10),
-				new DrinkForPub(Drink.GIN, barDoFranco, Math.random() * 5, Math.random() * 10),
-				new DrinkForPub(Drink.SIDRA, barDoFranco, Math.random() * 5, Math.random() * 10));
+		Pub barDoPedro = new Pub(1, "Bar do Pedro", Pub.DISCOTECA, 10, 0, "Lar das laranjas", null, null);
+		Pub barDoFranco = new Pub(69, "Bar do Franco", Pub.BAR, 0, 0, "Casa do Franco", null, null);
 
 		pubList.addAll(barDoPedro, barDoFranco);
 	}
