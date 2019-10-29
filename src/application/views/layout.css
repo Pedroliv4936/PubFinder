@@ -13,6 +13,38 @@
 -fx-border-width:3px; 
 -fx-text-fill:black;
 }
+#scrollPane {
+    -fx-background-color: #353535;
+}
+.scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #ffe400;
+    -fx-background-radius: 5em;
+}
+
+#birthday{
+	-fx-border-width:2px;
+	-fx-background-color: transparent;
+	-fx-border-color:white;
+	-fx-border-radius:5px;
+	-fx-text-fill:white;
+	-fx-background-radius:8px;
+	-jfx-default-color:#ffe400;
+}
 
 #rememberChoice, #autoLogin {
 	-fx-text-fill:black;
@@ -84,10 +116,6 @@
 	-fx-background-radius:2px ;
 	-fx-border-width:2px;
 	-fx-border-color:white;
-}
-
-#vbox {
-	-fx-background-image:url("res/imgs/lisbonMap.png"); 
 }
 
 #bebidasFavoritasUser, #bebidasFavoritas {

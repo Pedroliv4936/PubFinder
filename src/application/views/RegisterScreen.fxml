@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" stylesheets="@layout.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+   <content>
+      <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="335.0" spacing="40.0" style="-fx-background-color: #353535;" stylesheets="@layout.css">
+         <children>
+            <JFXTextField focusColor="#353535" promptText="Nome de Usuário" stylesheets="@layout.css" unFocusColor="#353535">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" top="100.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField focusColor="#353535" promptText="Password" stylesheets="@layout.css" unFocusColor="#353535">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField focusColor="#353535" promptText="Confirmar Password" stylesheets="@layout.css" unFocusColor="#353535">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField focusColor="#353535" promptText="E-mail" stylesheets="@layout.css" unFocusColor="#353535">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXDatePicker fx:id="birthday" prefHeight="29.0" prefWidth="378.0" promptText="Data de Aniversário" stylesheets="@layout.css">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+            </JFXDatePicker>
+            <JFXButton fx:id="submitButton" opacity="0.43" prefWidth="150.0" stylesheets="@layout.css" text="Submeter" />
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>
