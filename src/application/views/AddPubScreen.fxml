@@ -24,7 +24,7 @@
             <Insets left="20.0" right="20.0" />
          </VBox.margin>
       </JFXComboBox>
-      <JFXTextField fx:id="preco" alignment="TOP_LEFT" focusColor="WHITE" opacity="0.43" promptText="Preço" style="-fx-border-width: 2px; -fx-background-color: #353535; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white; -fx-background-radius: 8;" unFocusColor="#353535">
+      <JFXTextField fx:id="priceField" alignment="TOP_LEFT" focusColor="WHITE" opacity="0.43" promptText="Preço" style="-fx-border-width: 2px; -fx-background-color: #353535; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white; -fx-background-radius: 8;" unFocusColor="#353535">
          <font>
             <Font size="14.0" />
          </font>

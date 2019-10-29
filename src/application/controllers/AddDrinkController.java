@@ -14,6 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 
 public class AddDrinkController {
+	
 	@FXML
 	JFXComboBox<Drink> drinkType;
 	
@@ -57,6 +58,8 @@ public class AddDrinkController {
 				drinkChosen = drink;
 			}
 		}
-		DrinkDAO.addPendingDrink(new DrinkForPub(drinkChosen, pubOptions.getValue() , 4, Double.parseDouble(priceField.getText())));
+		DrinkForPub newDrink = new DrinkForPub(Drink.CANECA_CERVEJA, pubOptions.getValue() , 4, Double.parseDouble(priceField.getText()));
+		newDrink.showDrinkInformation();
+		DrinkDAO.addPendingDrink(newDrink);
 	}
 }

@@ -49,7 +49,10 @@ public class AddPubController {
 
 	@FXML
 	private void sendInfo() {
-			PubDAO.addPendingPub(new Pub(0, barName.getText(), pubType.getValue(), Double.parseDouble(priceField.getText()), 2, "Iade Building", null, null));
-			System.out.println(barName.getText() + " Adicionado à lista de espera");
+			String name = barName.getText();
+			String type = pubType.getValue();
+			Double price = Double.parseDouble(priceField.getText());
+			PubDAO.addPendingPub(new Pub(0, name, type, price, 2, "Iade Building", null, null));
+			System.out.println(name + " Adicionado à lista de espera");
 	}
 }
