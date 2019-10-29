@@ -6,54 +6,20 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="495.0" prefWidth="335.0" spacing="20.0" style="-fx-background-color: #353535;" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" prefHeight="445.0" prefWidth="335.0" spacing="20.0" style="-fx-background-color: #353535;" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <StackPane prefHeight="47.0" prefWidth="335.0">
-         <children>
-            <Label fx:id="pageName" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="258.0" text="Adicionar Bebida" />
-            <ImageView fitHeight="55.0" fitWidth="334.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@res/imgs/container%20Nome.png" />
-               </image>
-               <StackPane.margin>
-                  <Insets />
-               </StackPane.margin>
-            </ImageView>
-         </children>
-         <VBox.margin>
-            <Insets top="-50.0" />
-         </VBox.margin>
-      </StackPane>
-      <HBox fx:id="barHbox" alignment="CENTER" prefHeight="35.0" prefWidth="354.0">
-         <children>
-            <JFXComboBox fx:id="barField" focusColor="#353535" opacity="0.43" prefHeight="35.0" prefWidth="244.0" promptText="Nome do Bar" stylesheets="@layout.css" unFocusColor="#353535" />
-            <StackPane prefHeight="35.0" prefWidth="36.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="48.0" style="-fx-text-fill: White;" text="NEW" />
-                  <Button fx:id="addBarButton" alignment="TOP_CENTER" contentDisplay="CENTER" minWidth="50.0" mnemonicParsing="false" onAction="#addNewBar" opacity="0.43" prefHeight="34.0" prefWidth="50.0" style="-fx-font-size: 15;" stylesheets="@layout.css" text=" ">
-                     <font>
-                        <Font name="Product Sans" size="13.0" />
-                     </font>
-                  </Button>
-               </children>
-            </StackPane>
-         </children>
-      </HBox>
-      <JFXComboBox fx:id="tipoField" focusColor="#353535" opacity="0.43" prefHeight="28.0" prefWidth="354.0" promptText="Tipo" stylesheets="@layout.css" unFocusColor="#353535">
+      <JFXComboBox fx:id="pubOptions" focusColor="#353535" opacity="0.43" prefWidth="295.0" promptText="Nome do Bar" stylesheets="@layout.css" unFocusColor="#353535" />
+      <JFXComboBox fx:id="drinkType" focusColor="#353535" opacity="0.43" prefHeight="28.0" prefWidth="295.0" promptText="Tipo" stylesheets="@layout.css" unFocusColor="#353535">
          <VBox.margin>
             <Insets left="20.0" right="20.0" />
          </VBox.margin>
       </JFXComboBox>
-      <JFXTextField fx:id="preco" alignment="TOP_LEFT" focusColor="WHITE" opacity="0.43" promptText="Preço" style="-fx-border-width: 2px; -fx-background-color: #353535; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white; -fx-background-radius: 8;" unFocusColor="#353535">
+      <JFXTextField fx:id="priceField" alignment="TOP_LEFT" focusColor="WHITE" opacity="0.43" promptText="Preço" style="-fx-border-width: 2px; -fx-background-color: #353535; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white; -fx-background-radius: 8;" unFocusColor="#353535">
          <font>
             <Font size="14.0" />
          </font>

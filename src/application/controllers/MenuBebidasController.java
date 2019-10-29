@@ -30,10 +30,10 @@ public class MenuBebidasController {
 
 	@FXML
 	private void initialize() {		
-		drinkColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDrink().getName()));
-		barColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getPub().getName()));
+		drinkColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDrinkType().toString()));
+		barColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getPub().toString()));
 		priceColumn.setCellValueFactory(new PropertyValueFactory<DrinkForPub, Double>("price"));
 		ratingColumn.setCellValueFactory(new PropertyValueFactory<DrinkForPub, Double>("rating"));
-		publistTV.setItems(DrinkDAO.getDrinkList());
+		publistTV.setItems(DrinkDAO.getDrinksInPubs());
 	}
 }

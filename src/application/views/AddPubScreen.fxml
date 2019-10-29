@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="445.0" prefWidth="335.0" spacing="20.0" style="-fx-background-color: #353535;" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="barName" alignment="BOTTOM_LEFT" opacity="0.43" prefWidth="295.0" promptText="Nome do Bar...">
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+      </TextField>
+      <JFXComboBox fx:id="pubType" focusColor="#353535" opacity="0.43" prefHeight="28.0" prefWidth="295.0" promptText="Tipo" stylesheets="@layout.css" unFocusColor="#353535">
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+      </JFXComboBox>
+      <JFXTextField fx:id="priceField" alignment="TOP_LEFT" focusColor="WHITE" opacity="0.43" promptText="Preço" style="-fx-border-width: 2px; -fx-background-color: #353535; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white; -fx-background-radius: 8;" unFocusColor="#353535">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+      </JFXTextField>
+      <HBox alignment="TOP_CENTER" prefHeight="36.0" prefWidth="335.0">
+         <children>
+            <JFXTextField fx:id="comprovativo" alignment="TOP_LEFT" focusColor="WHITE" opacity="0.43" prefHeight="33.0" prefWidth="189.0" promptText="Comprovativo" style="-fx-border-width: 2px; -fx-background-color: #353535; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white; -fx-background-radius: 8;" unFocusColor="#353535">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </JFXTextField>
+            <Button fx:id="addFilesButton" alignment="TOP_CENTER" mnemonicParsing="false" opacity="0.43" prefHeight="34.0" prefWidth="99.0" stylesheets="@layout.css" text="Add Files">
+               <HBox.margin>
+                  <Insets left="10.0" right="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Product Sans" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <HBox prefHeight="102.0" prefWidth="295.0">
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+         <children>
+            <JFXTextArea fx:id="observationBox" focusColor="WHITE" opacity="0.43" promptText="Observações..." stylesheets="@layout.css" unFocusColor="#353535" />
+         </children>
+      </HBox>
+      <JFXButton alignment="CENTER" onAction="#sendInfo" prefHeight="32.0" prefWidth="317.0" style="-fx-background-color: #ffe400; -fx-background-radius: 20; -fx-border-radius: 20; -fx-text-fill: #282828;" text="Enviar">
+         <VBox.margin>
+            <Insets left="60.0" right="60.0" top="10.0" />
+         </VBox.margin>
+         <effect>
+            <DropShadow radius="17.545" width="51.18" />
+         </effect>
+      </JFXButton>
+   </children>
+</VBox>

@@ -13,8 +13,19 @@ public class DrinkForPub {
 		this.rating = rating;
 		this.price = price;
 	}
+	
+	public void showDrinkInformation() {
+		System.out.println("Drink type" + drink.toString());
+		System.out.println("Pub selling" + pub.toString());
+		System.out.println("Rating" + getRating());
+		System.out.println("Price" + getPrice());
+	}
 
-	public Drink getDrink() {
+	public String toString() {
+		return drink.toString();
+	}
+	
+	public Drink getDrinkType() {
 		return drink;
 	}
 

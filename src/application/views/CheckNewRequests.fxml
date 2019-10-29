@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.StackPane?>
@@ -24,12 +26,21 @@
             </Label>
          </children>
       </StackPane>
-      <ListView fx:id="pendingPubRequestsLV" opacity="0.49" prefHeight="310.0" prefWidth="335.0" style="-fx-background-color: #353535; -fx-border-color: white; -fx-border-width: 3px; -fx-border-radius: 5px;">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </ListView>
-      <JFXButton onAction="#accept" alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="140.0" style="-fx-background-color: #00ff00;" text="Accept" />
+      <JFXTabPane prefHeight="312.0" prefWidth="295.0">
+         <tabs>
+            <Tab fx:id = "drinkTab" text="Bebidas Pendentes">
+               <content>
+                  <ListView fx:id="drinkLV" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab fx:id = "pubTab" text="Bares Pendetes">
+               <content>
+                  <ListView fx:id="pubLV" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+      <JFXButton alignment="CENTER" contentDisplay="CENTER" onAction="#accept" prefHeight="39.0" prefWidth="140.0" style="-fx-background-color: #00ff00;" text="Accept" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" />
