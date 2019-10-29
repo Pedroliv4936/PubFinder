@@ -68,7 +68,6 @@ public class PubDAO {
 	}
 
 	public void loadDatabase() throws FileNotFoundException, IOException {
-		Gson gson = new Gson();
 
 		Properties p = new Properties();
 		p.load(new FileReader("pubs.list"));
