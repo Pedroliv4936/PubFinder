@@ -36,6 +36,10 @@
     -fx-background-radius: 5em;
 }
 
+#LabelRegisterScreen{
+	-fx-text-fill:#ffe400;
+}
+
 #birthday{
 	-fx-border-width:2px;
 	-fx-background-color: transparent;
