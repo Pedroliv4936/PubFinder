@@ -29,7 +29,7 @@
             <Insets />
          </VBox.margin>
       </ListView>
-      <JFXButton fx:id="accept" alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="140.0" style="-fx-background-color: #00ff00;" text="Accept" />
+      <JFXButton onAction="#accept" alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="140.0" style="-fx-background-color: #00ff00;" text="Accept" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" />
