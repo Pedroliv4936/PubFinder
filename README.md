@@ -10,7 +10,7 @@
 - [x] Integração com GMapsFX
 - [x] Possibilidade de Utilizador se cadastrar no programa.
 - [ ] Possibilidade do Administrador visualizar informações extras sobre pedidos pendentes
-- [ ] Possibilidade de utilizador adicionar localização do bar no mapa, adicionando um pin aonde foi escolhido
+- [ ] Possibilidade de utilizador adicionar localização do bar no mapa, adicionando um pin onde foi escolhido
 - [ ] Utilização de paineis inferiores da tela inicial para mostrar informações de bares proximos
 - [ ] Adiçao de procura de bares por nome
 - [ ] Possibilidade de selecionar bar individualmente e ver suas informações 
