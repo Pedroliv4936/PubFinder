@@ -1,11 +1,22 @@
 ![Imgur](https://i.imgur.com/ICdGFvx.png)
 
-#  Status do Projeto
+#  ROADMAP
 
 - [x] Mockup Projeto: PubFinderMockUp.pdf
 - [x] Diagrama de Classes: PubFinderClassDiagram.png
 - [x] Diagrama de entidade e relacionamento: EntidadesERelacionamento.png
-- [ ] Entrega Código do projeto
+- [x] Adição de base de dados interativa, a qual permite adição de bares e bebidas
+- [x] Possibilidade do Administrador ver e aprovar bebidas e bares submetidos
+- [x] Integração com GMapsFX
+- [x] Possibilidade de Utilizador se cadastrar no programa.
+- [ ] Possibilidade do Administrador visualizar informações extras sobre pedidos pendentes
+- [ ] Possibilidade de utilizador adicionar localização do bar no mapa, adicionando um pin aonde foi escolhido
+- [ ] Utilização de paineis inferiores da tela inicial para mostrar informações de bares proximos
+- [ ] Adiçao de procura de bares por nome
+- [ ] Possibilidade de selecionar bar individualmente e ver suas informações 
+- [ ] Adição de imagens representativas de cada bebida em nossa base de dados
+- [ ] Possibilidade de ver localização atual do utilizador em tempo real (OPCIONAL)
+- [ ] Estilização do Projeto conforme mockup do projeto
 - [ ] Disponibilização da aplicação ao público
 
 ## Descrição
