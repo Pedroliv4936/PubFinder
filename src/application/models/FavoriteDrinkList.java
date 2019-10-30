@@ -20,7 +20,7 @@ public class FavoriteDrinkList {
 		this.drinks = drinks;
 	}
 
-	public String getName() {
+	public String toString() {
 		return name;
 	}
 

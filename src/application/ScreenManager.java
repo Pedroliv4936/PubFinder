@@ -5,6 +5,7 @@ import java.io.IOException;
 import application.controllers.LoginScreenController;
 import application.views.ScreenContainer;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
@@ -37,7 +38,7 @@ public class ScreenManager {
 		FXMLLoader loader = new FXMLLoader(ScreenManager.class.getResource(contentFxmlLocation));
 		try {
 			loader.setController(contentController);
-			Pane root = loader.load();
+			Parent root = loader.load();
 			vBox.getChildren().add(root);
 			VBox.setVgrow(root, Priority.ALWAYS);
 		} catch (IOException e) {

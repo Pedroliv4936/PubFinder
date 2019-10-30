@@ -3,6 +3,7 @@ package application.models.DAO;
 import java.sql.Date;
 
 import application.models.Admin;
+import application.models.FavoriteDrinkList;
 import application.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +29,11 @@ public class LoginDAO {
 
 	public static ObservableList<User> getUserList(){
 		return userList;
+	}
+	
+	public static void addUser(User user, FavoriteDrinkList favoriteDrinks) {
+		userList.add(user);
+		user.setFavoriteDrinkList(favoriteDrinks);
 	}
 	
 	

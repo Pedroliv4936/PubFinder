@@ -5,6 +5,7 @@ import application.controllers.CheckNewRequestsController;
 import application.controllers.DefaultHeaderController;
 import application.controllers.MainScreenContentController;
 import application.controllers.MenuBebidasController;
+import application.controllers.RegisterScreenController;
 import application.controllers.UserHeaderController;
 import application.controllers.UserScreenController;
 
@@ -18,6 +19,7 @@ public class ScreenContainer {
 	public static final ScreenContainer USER_SCREEN = new ScreenContainer("views/UserHeader.fxml", "views/UserScreen.fxml", new UserHeaderController(), new UserScreenController());
 	public static final ScreenContainer ADD_INFO = new ScreenContainer("views/DefaultHeader.fxml", "views/AddInfo.fxml", new DefaultHeaderController(), new AddInfoController());
 	public static final ScreenContainer CHECK_NEW_REQUESTS = new ScreenContainer("views/DefaultHeader.fxml", "views/CheckNewRequests.fxml", new DefaultHeaderController(), new CheckNewRequestsController());
+	public static final ScreenContainer REGISTER = new ScreenContainer(null, "views/RegisterScreen.fxml", null, new RegisterScreenController());
 	
 	public ScreenContainer(String headerFXML, String contentFXML, Object headerController, Object contentController) {
 		this.headerFXML = headerFXML;

@@ -74,6 +74,11 @@ public class LoginScreenController {
 				}
 
 	}
+	
+	@FXML
+	public void register() {
+		ScreenManager.setScreen(ScreenContainer.REGISTER);
+	}
 
 	private void getSelections() {
 		Properties p = new Properties();
