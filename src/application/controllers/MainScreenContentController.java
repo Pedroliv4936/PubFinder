@@ -12,7 +12,9 @@ import com.lynden.gmapsfx.javascript.object.Marker;
 import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 
 import application.ScreenManager;
+import application.models.Pub;
 import application.models.DAO.LoginDAO;
+import application.models.DAO.PubDAO;
 import application.views.ScreenContainer;
 import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;
@@ -53,6 +55,12 @@ public class MainScreenContentController implements MapComponentInitializedListe
 	@FXML
 	private void checkNewRequests() {
 		ScreenManager.setScreen(ScreenContainer.CHECK_NEW_REQUESTS);
+	}
+	
+	@FXML
+	private void searchForPub() {
+		Pub resultPub;
+		resultPub = PubDAO.getPubByName(searchField.getText());
 	}
 	
 	@FXML

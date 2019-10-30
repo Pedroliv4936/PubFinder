@@ -6,6 +6,10 @@
 	-fx-font-family: "Product Sans";
 }
 
+.button {
+	-fx-background-color: #353535;
+}
+
 .check-box .box {
 -fx-background-color: transparent;
 -fx-border-color:black;
