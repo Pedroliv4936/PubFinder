@@ -8,7 +8,7 @@ public class FavoriteDrinkList {
 	private ObservableList<Drink> drinks;
 
 	public FavoriteDrinkList(String name, ObservableList<Drink> drinks) {
-		this.name = name;
+		this.name = name + " Favorite Drinks";
 		this.drinks = drinks;
 	}
 
@@ -20,7 +20,7 @@ public class FavoriteDrinkList {
 		this.drinks = drinks;
 	}
 
-	public String getName() {
+	public String toString() {
 		return name;
 	}
 

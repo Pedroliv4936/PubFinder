@@ -3,6 +3,8 @@ package application.models.DAO;
 import java.sql.Date;
 
 import application.models.Admin;
+import application.models.Drink;
+import application.models.FavoriteDrinkList;
 import application.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +30,10 @@ public class LoginDAO {
 
 	public static ObservableList<User> getUserList(){
 		return userList;
+	}
+	
+	public static void addUser(User user) {
+		userList.add(user);
 	}
 	
 	
@@ -63,8 +69,15 @@ public class LoginDAO {
 	}
 
 	static {
-		adminList.add(new Admin(0, "Franco", "piriurna", "franco123", "francozalamena@gmail.com", new Date(10, 10, 10)));
-		userList.add(new User(0, "Pedro", "yuri", "rabanete", "pedro@gmail.com", new Date(11, 11, 11), false));
+		ObservableList<Drink> francoDrinks = FXCollections.observableArrayList();
+		francoDrinks.add(Drink.SIDRA);
+		francoDrinks.add(Drink.GIN);
+		francoDrinks.add(Drink.CANECA_CERVEJA);
+		francoDrinks.add(Drink.COPO_CERVEJA);
+		francoDrinks.add(Drink.VODKA);
+		FavoriteDrinkList francoFavoriteList = new FavoriteDrinkList("Franco",francoDrinks);
+		adminList.add(new Admin(0, "Franco", "piriurna", "franco123", "francozalamena@gmail.com", new Date(10, 10, 10), francoFavoriteList));
+		userList.add(new User(0, "Pedro", "yuri", "rabanete", "pedro@gmail.com", new Date(11, 11, 11), francoFavoriteList, false));
 	}
 
 }

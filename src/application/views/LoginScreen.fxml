@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="600.0" prefWidth="335.0" style="-fx-background-color: #353535;" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="335.0" style="-fx-background-color: #353535;" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="182.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -54,7 +54,7 @@
             <Font name="Product Sans" size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton id="RegisterButton" fx:id="RegisterButton" graphicTextGap="10.0" lineSpacing="5.0" prefHeight="35.0" prefWidth="295.0" style="-fx-background-color: #ffe400;" stylesheets="@layout.css" text="Registrar-me" wrapText="true">
+      <JFXButton id="RegisterButton" fx:id="RegisterButton" graphicTextGap="10.0" lineSpacing="5.0" onAction="#register" prefHeight="35.0" prefWidth="295.0" style="-fx-background-color: #ffe400;" stylesheets="@layout.css" text="Registrar-me" wrapText="true">
          <font>
             <Font name="Product Sans" size="14.0" />
          </font>

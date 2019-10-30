@@ -16,12 +16,14 @@ import application.models.Pub;
 import application.models.DAO.LoginDAO;
 import application.models.DAO.PubDAO;
 import application.views.ScreenContainer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class MainScreenContentController implements MapComponentInitializedListener {
-
+	
 	@FXML
 	JFXTextField searchField;
 	@FXML
@@ -70,14 +72,22 @@ public class MainScreenContentController implements MapComponentInitializedListe
 
 	@Override
 	public void mapInitialized() {
-		
-		  LatLong joeSmithLocation = new LatLong(38.707438, -9.152532);
+		ObservableList<Marker> pubMarkers = FXCollections.observableArrayList();
+		for(Pub pub : PubDAO.getPubList()) {
+			LatLong latLong = new LatLong(pub.getxCoord(), pub.getyCoord());
+	        MarkerOptions markerOptions = new MarkerOptions();
+	        markerOptions.position(latLong);
+	        Marker newPubMarker = new Marker(markerOptions);
+	        pubMarkers.add(newPubMarker);
+	        System.out.println();
+			System.out.println("Pub with coordinates : " + pub.getxCoord() + " and " + pub.getyCoord() + " added to map");
+		}
 		  //Set the initial properties of the map.
 	        MapOptions mapOptions = new MapOptions();
 	        
 	        mapOptions.center(new LatLong(38.707438, -9.152532))
 	                .mapType(MapTypeIdEnum.ROADMAP)
-	                .overviewMapControl(false)
+	                .overviewMapControl(true)
 	                .panControl(false)
 	                .rotateControl(false)
 	                .scaleControl(false)
@@ -87,10 +97,7 @@ public class MainScreenContentController implements MapComponentInitializedListe
 	                   
 	        map = mapView.createMap(mapOptions);
 	        //Add markers to the map
-	        MarkerOptions markerOptions1 = new MarkerOptions();
-	        markerOptions1.position(joeSmithLocation);
-	        Marker joeSmithMarker = new Marker(markerOptions1);
-	        map.addMarker( joeSmithMarker );
+	        map.addMarkers(pubMarkers);
 
 				  
 	}

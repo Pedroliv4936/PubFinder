@@ -22,7 +22,7 @@ public class DrinkForPub {
 	}
 
 	public String toString() {
-		return drink.toString() + " Preço: €" + price + "(" + pub.toString() + ")";
+		return drink.toString() + " €" + price + "(" + pub.toString() + ")";
 	}
 	
 	public Drink getDrinkType() {

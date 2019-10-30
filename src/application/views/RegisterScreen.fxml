@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.CheckBox?>
@@ -15,9 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="335.0" stylesheets="@layout.css" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="335.0" spacing="40.0" style="-fx-background-color: #353535;" stylesheets="@layout.css">
+      <VBox alignment="TOP_CENTER" prefHeight="783.0" prefWidth="335.0" spacing="22.0" style="-fx-background-color: #353535;" stylesheets="@layout.css">
          <children>
             <ImageView fitHeight="195.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
@@ -27,37 +28,37 @@
                   <Image url="@res/imgs/logoPubFinder.png" />
                </image>
             </ImageView>
-            <Label fx:id="LabelRegisterScreen" alignment="CENTER" prefHeight="0.0" prefWidth="172.0" stylesheets="@layout.css" text="Register Screen" textAlignment="CENTER">
+            <Label fx:id="LabelRegisterScreen" alignment="CENTER" prefHeight="23.0" prefWidth="160.0" stylesheets="@layout.css" text="Register Screen" textAlignment="CENTER">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <JFXTextField focusColor="#353535" promptText="Nome de Usuário" stylesheets="@layout.css" unFocusColor="#353535">
+            <JFXTextField fx:id="username" focusColor="#353535" opacity="0.43" promptText="Nome de Usuário" stylesheets="@layout.css" unFocusColor="#353535">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" top="20.0" />
                </VBox.margin>
             </JFXTextField>
-            <JFXTextField focusColor="#353535" promptText="Password" stylesheets="@layout.css" unFocusColor="#353535">
+            <JFXPasswordField fx:id="password1" promptText="Password">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+            </JFXPasswordField>
+            <JFXPasswordField fx:id="password2" promptText="Confirm Password">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+            </JFXPasswordField>
+            <JFXTextField fx:id="userMail" focusColor="#353535" opacity="0.43" promptText="E-mail" stylesheets="@layout.css" unFocusColor="#353535">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
             </JFXTextField>
-            <JFXTextField focusColor="#353535" promptText="Confirmar Password" stylesheets="@layout.css" unFocusColor="#353535">
-               <VBox.margin>
-                  <Insets left="20.0" right="20.0" />
-               </VBox.margin>
-            </JFXTextField>
-            <JFXTextField focusColor="#353535" promptText="E-mail" stylesheets="@layout.css" unFocusColor="#353535">
-               <VBox.margin>
-                  <Insets left="20.0" right="20.0" />
-               </VBox.margin>
-            </JFXTextField>
-            <JFXDatePicker fx:id="birthday" prefHeight="29.0" prefWidth="378.0" promptText="Data de Aniversário" stylesheets="@layout.css">
+            <JFXDatePicker fx:id="birthday" opacity="0.43" prefHeight="29.0" prefWidth="378.0" promptText="Data de Aniversário" style="-fx-prompt-text-fill: White;" stylesheets="@layout.css">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
             </JFXDatePicker>
-            <GridPane gridLinesVisible="true" hgap="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="134.0" prefWidth="292.0" vgap="3.0">
+            <GridPane fx:id="favoriteDrinksSelection" alignment="CENTER" gridLinesVisible="true" hgap="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="134.0" prefWidth="292.0" style="-fx-font-size: 13px; -fx-border-color: transparent;" vgap="3.0">
               <columnConstraints>
                 <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -66,23 +67,19 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <children>
-                  <CheckBox mnemonicParsing="false" prefHeight="24.0" prefWidth="70.0" text="Sidra" textAlignment="CENTER" textFill="#ffe400" />
-                  <CheckBox mnemonicParsing="false" prefHeight="24.0" prefWidth="83.0" text="Cerveja" textAlignment="CENTER" textFill="#ffe400" GridPane.columnIndex="1" />
-                  <CheckBox mnemonicParsing="false" prefHeight="24.0" prefWidth="70.0" text="Whisky" textAlignment="CENTER" textFill="#ffe400" GridPane.rowIndex="1" />
-                  <CheckBox mnemonicParsing="false" prefHeight="24.0" prefWidth="70.0" text="Vodka" textAlignment="CENTER" textFill="#ffe400" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <CheckBox mnemonicParsing="false" prefHeight="24.0" prefWidth="70.0" text="Rum" textAlignment="CENTER" textFill="#ffe400" GridPane.rowIndex="2" />
-                  <CheckBox mnemonicParsing="false" prefHeight="24.0" prefWidth="144.0" text="Caneca de Cerveja" textAlignment="CENTER" textFill="#ffe400" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <CheckBox mnemonicParsing="false" prefHeight="24.0" prefWidth="93.0" text="Caipirinha" textAlignment="CENTER" textFill="#ffe400" GridPane.rowIndex="3" />
-                  <CheckBox mnemonicParsing="false" prefHeight="24.0" prefWidth="70.0" text="Outros" textAlignment="CENTER" textFill="#ffe400" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <CheckBox fx:id="sidra" mnemonicParsing="false" prefHeight="24.0" prefWidth="70.0" text="Sidra" textAlignment="CENTER" textFill="#ffe400" />
+                  <CheckBox fx:id="cerveja" mnemonicParsing="false" prefHeight="27.0" prefWidth="142.0" text="Copo de Cerveja" textAlignment="CENTER" textFill="#ffe400" GridPane.columnIndex="1" />
+                  <CheckBox fx:id="vodka" mnemonicParsing="false" prefHeight="27.0" prefWidth="130.0" text="Vodka" textAlignment="CENTER" textFill="#ffe400" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <CheckBox fx:id="gin" mnemonicParsing="false" prefHeight="24.0" prefWidth="70.0" text="Gin" textAlignment="CENTER" textFill="#ffe400" GridPane.rowIndex="2" />
+                  <CheckBox fx:id="canecaCerveja" mnemonicParsing="false" prefHeight="27.0" prefWidth="161.0" text="Caneca de Cerveja" textAlignment="CENTER" textFill="#ffe400" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <JFXButton fx:id="submitButton" opacity="0.43" prefWidth="150.0" stylesheets="@layout.css" text="Submeter" />
+            <JFXButton fx:id="submitButton" onAction="#submit" opacity="0.43" prefWidth="150.0" stylesheets="@layout.css" text="Submeter" />
          </children>
       </VBox>
    </content>

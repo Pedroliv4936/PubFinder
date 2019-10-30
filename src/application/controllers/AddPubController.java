@@ -35,6 +35,9 @@ public class AddPubController {
 	
 	@FXML
 	TextField barName;
+	
+	@FXML
+	TextField pubXCoord, pubYCoord;
 
 	@FXML
 	private void initialize() {
@@ -54,7 +57,9 @@ public class AddPubController {
 			String name = barName.getText();
 			String type = pubType.getValue();
 			Double price = Double.parseDouble(priceField.getText());
-			PubDAO.addPendingPub(new Pub(0, name, type, price, 2, "Iade Building", null, null));
+			Double pubXCoordinate = Double.parseDouble(pubXCoord.getText());
+			Double pubYCoordinate = Double.parseDouble(pubYCoord.getText());
+			PubDAO.addPendingPub(new Pub(0, name, type, price, 2, "Iade Building", pubXCoordinate, pubYCoordinate, null, null));
 			System.out.println(name + " Adicionado à lista de espera");
 			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 	}

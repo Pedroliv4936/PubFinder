@@ -17,8 +17,8 @@ public class User {
 	
 	
 	public User(int id, String name, String username,
-					String password, String email, Date birthday, boolean admin) {
-		favoriteDrinks = new FavoriteDrinkList(name);
+					String password, String email, Date birthday, FavoriteDrinkList favoriteDrinks, boolean admin) {
+		this.favoriteDrinks = favoriteDrinks;
 		this.id = id;
 		this.name = name;
 		this.username = username;
@@ -46,7 +46,7 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
+	public String toString() {
 		return name;
 	}
 	public void setName(String name) {

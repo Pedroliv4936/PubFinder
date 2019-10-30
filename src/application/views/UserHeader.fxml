@@ -23,7 +23,7 @@
                   <Image url="@../../../lib/img/user.png" />
                </image>
             </ImageView>
-            <Label style="-fx-text-fill: #ffe400;" text="Label">
+            <Label fx:id="user_name" style="-fx-text-fill: #ffe400;" text="Label">
                <font>
                   <Font size="20.0" />
                </font>

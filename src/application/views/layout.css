@@ -17,6 +17,22 @@
 -fx-border-width:3px; 
 -fx-text-fill:black;
 }
+
+.text-field {
+	-fx-border-color: White;
+	-fx-border-style:solid;
+	-fx-text-fill:WHITE;
+	-fx-prompt-text-fill:WHITE;
+	-fx-opacity:43%;
+}
+
+.text-field:disabled {
+	-fx-border-color: White;
+	-fx-border-style:solid;
+	-fx-text-fill:WHITE;
+	-fx-opacity:43%;
+}
+
 #scrollPane {
     -fx-background-color: #353535;
 }

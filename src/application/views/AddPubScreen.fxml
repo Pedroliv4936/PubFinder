@@ -52,12 +52,21 @@
             </Button>
          </children>
       </HBox>
+      <HBox prefHeight="36.0" prefWidth="335.0" spacing="10.0">
+         <children>
+            <TextField fx:id="pubXCoord" promptText="x Coordinate" />
+            <TextField fx:id="pubYCoord" promptText="y Coordinate" />
+         </children>
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+      </HBox>
       <HBox prefHeight="102.0" prefWidth="295.0">
          <VBox.margin>
             <Insets left="20.0" right="20.0" />
          </VBox.margin>
          <children>
-            <JFXTextArea fx:id="observationBox" focusColor="WHITE" opacity="0.43" promptText="Observações..." stylesheets="@layout.css" unFocusColor="#353535" />
+            <JFXTextArea fx:id="observationBox" focusColor="WHITE" opacity="0.43" prefWidth="295.0" promptText="Observações..." stylesheets="@layout.css" unFocusColor="#353535" />
          </children>
       </HBox>
       <JFXButton alignment="CENTER" onAction="#sendInfo" prefHeight="32.0" prefWidth="317.0" style="-fx-background-color: #ffe400; -fx-background-radius: 20; -fx-border-radius: 20; -fx-text-fill: #282828;" text="Enviar">
@@ -69,4 +78,7 @@
          </effect>
       </JFXButton>
    </children>
+   <padding>
+      <Insets bottom="20.0" top="10.0" />
+   </padding>
 </VBox>
