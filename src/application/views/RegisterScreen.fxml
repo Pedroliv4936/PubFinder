@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.CheckBox?>
@@ -32,22 +33,22 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="UserName" focusColor="#353535" opacity="0.43" promptText="Nome de Usuário" stylesheets="@layout.css" unFocusColor="#353535">
+            <JFXTextField fx:id="username" focusColor="#353535" opacity="0.43" promptText="Nome de Usuário" stylesheets="@layout.css" unFocusColor="#353535">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" top="20.0" />
                </VBox.margin>
             </JFXTextField>
-            <JFXTextField fx:id="Password1" focusColor="#353535" opacity="0.43" promptText="Password" stylesheets="@layout.css" unFocusColor="#353535">
+            <JFXPasswordField fx:id="password1" promptText="Password">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
-            </JFXTextField>
-            <JFXTextField focusColor="#353535" opacity="0.43" promptText="Confirmar Password" stylesheets="@layout.css" unFocusColor="#353535">
+            </JFXPasswordField>
+            <JFXPasswordField fx:id="password2" promptText="Confirm Password">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
-            </JFXTextField>
-            <JFXTextField fx:id="UserMail" focusColor="#353535" opacity="0.43" promptText="E-mail" stylesheets="@layout.css" unFocusColor="#353535">
+            </JFXPasswordField>
+            <JFXTextField fx:id="userMail" focusColor="#353535" opacity="0.43" promptText="E-mail" stylesheets="@layout.css" unFocusColor="#353535">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
@@ -82,7 +83,7 @@
                   <CheckBox fx:id="outros" mnemonicParsing="false" prefHeight="24.0" prefWidth="70.0" text="Outros" textAlignment="CENTER" textFill="#ffe400" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
-            <JFXButton fx:id="submitButton" opacity="0.43" prefWidth="150.0" stylesheets="@layout.css" text="Submeter" />
+            <JFXButton fx:id="submitButton" onAction="#submit" opacity="0.43" prefWidth="150.0" stylesheets="@layout.css" text="Submeter" />
          </children>
       </VBox>
    </content>
