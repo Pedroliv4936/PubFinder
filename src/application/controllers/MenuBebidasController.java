@@ -2,14 +2,19 @@ package application.controllers;
 
 import com.jfoenix.controls.JFXButton;
 
+import application.models.Drink;
 import application.models.DrinkForPub;
 import application.models.DAO.DrinkDAO;
+import application.models.DAO.LoginDAO;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 
 public class MenuBebidasController {
 
@@ -26,8 +31,10 @@ public class MenuBebidasController {
 	@FXML
 	TableColumn<DrinkForPub, Double> ratingColumn;
 	@FXML
+	GridPane bebidasFavoritas;
+	@FXML
 	HBox hBox;
-
+	
 	@FXML
 	private void initialize() {		
 		drinkColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDrinkType().toString()));
@@ -35,5 +42,21 @@ public class MenuBebidasController {
 		priceColumn.setCellValueFactory(new PropertyValueFactory<DrinkForPub, Double>("price"));
 		ratingColumn.setCellValueFactory(new PropertyValueFactory<DrinkForPub, Double>("rating"));
 		publistTV.setItems(DrinkDAO.getDrinksInPubs());
+		setFavoriteDrinks();
+	}
+	private void setFavoriteDrinks() {
+		int columnIndex=0,rowIndex=0;
+		for(Drink drink: LoginDAO.getLogedinUser().getFavoriteDrinkList().getDrinks()) {
+			CheckBox newCheckBox= new CheckBox(drink.toString());
+			newCheckBox.setUserData(drink);
+			newCheckBox.setTextFill(Color.WHITE);
+			bebidasFavoritas.add(newCheckBox, columnIndex,rowIndex);
+			if(columnIndex<1) {
+				columnIndex++;
+			}else {
+				columnIndex=0;
+				rowIndex++;
+			}
+		}
 	}
 }
