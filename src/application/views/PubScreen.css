@@ -1,0 +1,11 @@
+.root {
+	-fx-font-family: "Product Sans";
+}
+
+.button {
+	-fx-background-color: #353535;
+}
+
+.label {
+	-fx-text-fill: #ffe400;
+}

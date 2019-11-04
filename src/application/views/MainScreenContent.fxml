@@ -19,7 +19,7 @@
                   <Insets top="-246.5" />
                </VBox.margin>
             </JFXTextField>
-            <VBox fx:id="buttonsVbox" alignment="CENTER" prefHeight="98.0" prefWidth="208.0">
+            <VBox fx:id="buttonsVbox" alignment="CENTER" prefHeight="102.0" prefWidth="208.0">
                <children>
                   <JFXButton fx:id="checkNewRequests" buttonType="RAISED" graphicTextGap="10.0" lineSpacing="5.0" onAction="#checkNewRequests" prefHeight="36.0" prefWidth="205.0" style="-fx-background-color: RED;" text="Check New Requests">
                      <VBox.margin>

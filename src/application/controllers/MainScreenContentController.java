@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
+import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.GoogleMap;
 import com.lynden.gmapsfx.javascript.object.LatLong;
 import com.lynden.gmapsfx.javascript.object.MapOptions;
@@ -21,6 +22,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import netscape.javascript.JSObject;
 
 public class MainScreenContentController implements MapComponentInitializedListener {
 	
@@ -45,13 +47,18 @@ public class MainScreenContentController implements MapComponentInitializedListe
 	@FXML
 	private void initialize() {
 		backStackPane.getChildren().clear();
-		mapView = new GoogleMapView("en-US", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
+		mapView = new GoogleMapView("pt-BR", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
 		backStackPane.getChildren().addAll(mapView, vbox);
 		if(!LoginDAO.getLogedinUser().isAdmin())
 		buttonsVbox.getChildren().remove(checkNewRequests);
 		backStackPane.setPickOnBounds(false);
 		vbox.setPickOnBounds(false);
 		mapView.addMapInitializedListener(this);
+		
+	}
+	
+	private void loadBarInfo() {
+		
 	}
 	
 	@FXML
@@ -72,17 +79,19 @@ public class MainScreenContentController implements MapComponentInitializedListe
 
 	@Override
 	public void mapInitialized() {
+        MarkerOptions markerOptions = new MarkerOptions();
 		ObservableList<Marker> pubMarkers = FXCollections.observableArrayList();
 		for(Pub pub : PubDAO.getPubList()) {
 			LatLong latLong = new LatLong(pub.getxCoord(), pub.getyCoord());
-	        MarkerOptions markerOptions = new MarkerOptions();
 	        markerOptions.position(latLong);
 	        Marker newPubMarker = new Marker(markerOptions);
+	        newPubMarker.setTitle(pub.toString() + " Marker");
 	        pubMarkers.add(newPubMarker);
 	        System.out.println();
 			System.out.println("Pub with coordinates : " + pub.getxCoord() + " and " + pub.getyCoord() + " added to map");
 		}
 		  //Set the initial properties of the map.
+		
 	        MapOptions mapOptions = new MapOptions();
 	        
 	        mapOptions.center(new LatLong(38.707438, -9.152532))
