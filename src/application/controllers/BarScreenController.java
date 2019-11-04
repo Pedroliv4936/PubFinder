@@ -72,14 +72,13 @@ public class BarScreenController {
 		drinkInfo1.getChildren().clear();
 		drinkInfo2.getChildren().clear();
 		drinkInfo3.getChildren().clear();
-
+		availableDrinks = selectedPub.getDrinks();
 		FXMLLoader drinkInfo1Loader = new FXMLLoader(Main.class.getResource("views/AvailableDrinks.fxml"));
 		FXMLLoader drinkInfo2Loader = new FXMLLoader(Main.class.getResource("views/AvailableDrinks.fxml"));
 		FXMLLoader drinkInfo3Loader = new FXMLLoader(Main.class.getResource("views/AvailableDrinks.fxml"));
-		System.out.println(selectedPub.getDrinks().get(0));
-		drinkInfo1Loader.setController(new DrinkInfoController(selectedPub.getDrinks().get(0)));
-		drinkInfo2Loader.setController(new DrinkInfoController(selectedPub.getDrinks().get(1)));
-		drinkInfo3Loader.setController(new DrinkInfoController(selectedPub.getDrinks().get(2)));
+		drinkInfo1Loader.setController(new DrinkInfoController(selectedPub.getDrinks().get(index)));
+		drinkInfo2Loader.setController(new DrinkInfoController(selectedPub.getDrinks().get(index + 1)));
+		drinkInfo3Loader.setController(new DrinkInfoController(selectedPub.getDrinks().get(index + 2)));
 
 		try {
 			drinkInfo1.getChildren().add((Pane) drinkInfo1Loader.load());
