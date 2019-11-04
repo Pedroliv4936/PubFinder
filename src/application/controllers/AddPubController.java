@@ -59,7 +59,7 @@ public class AddPubController {
 			Double price = Double.parseDouble(priceField.getText());
 			Double pubXCoordinate = Double.parseDouble(pubXCoord.getText());
 			Double pubYCoordinate = Double.parseDouble(pubYCoord.getText());
-			PubDAO.addPendingPub(new Pub(0, name, type, price, 2, "Iade Building", pubXCoordinate, pubYCoordinate, null, null));
+			PubDAO.addPendingPub(new Pub(0, name, type, price, 2, "Iade Building", pubXCoordinate, pubYCoordinate, null));
 			System.out.println(name + " Adicionado à lista de espera");
 			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 	}

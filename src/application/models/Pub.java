@@ -1,5 +1,6 @@
 package application.models;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
@@ -17,8 +18,8 @@ public class Pub extends Entity {
 	public static final String BAR = "Bar";
 	public static final String SALAO_DE_JOGOS = "Salao de jogos";
 
-	public Pub(int id, String name, String type, double price, double rating, String address, double xCoord, double yCoord,
-			ObservableList<DrinkForPub> drinks, ObservableList<Image> images) {
+	public Pub(int id, String name, String type, double price, double rating, String address, double xCoord,
+			double yCoord, ObservableList<Image> images) {
 		super(id, name);
 		this.price = price;
 		this.type = type;
@@ -26,10 +27,11 @@ public class Pub extends Entity {
 		this.address = address;
 		this.xCoord = xCoord;
 		this.yCoord = yCoord;
-		this.drinks = drinks;
+		ObservableList<DrinkForPub> pubDrinks = FXCollections.observableArrayList();
+		drinks = pubDrinks;
 		this.images = images;
 	}
-	
+
 	public String getPubInfo() {
 		return name + " (" + type + ")" + " preco: " + price;
 	}

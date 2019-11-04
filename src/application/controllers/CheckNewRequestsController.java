@@ -9,6 +9,7 @@ import application.views.ScreenContainer;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.Tab;
 
 public class CheckNewRequestsController {
@@ -33,8 +34,11 @@ public class CheckNewRequestsController {
 		});
 		pubLV.setItems(PubDAO.getPendingPubs());
 		drinkLV.setItems(DrinkDAO.getPendingDrinkList());
+		pubLV.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		drinkLV.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 	}
 
+	
 	@FXML
 	private void accept() {
 		System.out.println();
