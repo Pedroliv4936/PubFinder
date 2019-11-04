@@ -205,7 +205,7 @@
 	-fx-prompt-text-fill: rgba(255,255,255,0.2);
 	-fx-text-fill:rgba(255,255,255,0.2);
 	-fx-opacity:86%;
-	-fx-padding: 4.83px 4.83px 4.83px 45px; 
+	-fx-padding: 4.83px 4.83px 4.83px 4.83px; 
 	-fx-border-color:transparent;
 	-fx-font-size: 18;
 }

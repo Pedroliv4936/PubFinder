@@ -72,7 +72,7 @@ public class LoginScreenController {
 				if(LoginDAO.connect(username, password) == 3) {
 					loginFeedback.setText("Wrong Password");
 				}
-			System.out.println("Usuario logado como: " + LoginDAO.getLogedinUser().toString());
+			System.out.println("Usuario logado como: " + LoginDAO.getLogedinUser().getUsername());
 	}
 	
 	@FXML

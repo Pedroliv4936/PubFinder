@@ -1,10 +1,14 @@
 package application.controllers;
 
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import org.controlsfx.control.textfield.TextFields;
+
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
-import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.GoogleMap;
 import com.lynden.gmapsfx.javascript.object.LatLong;
 import com.lynden.gmapsfx.javascript.object.MapOptions;
@@ -20,14 +24,16 @@ import application.views.ScreenContainer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import netscape.javascript.JSObject;
 
-public class MainScreenContentController implements MapComponentInitializedListener {
+public class MainScreenContentController implements MapComponentInitializedListener, Initializable {
 	
 	@FXML
-	JFXTextField searchField;
+	TextField searchField;
+	
 	@FXML
 	VBox vbox, buttonsVbox;
 	
@@ -44,32 +50,16 @@ public class MainScreenContentController implements MapComponentInitializedListe
     
     private GoogleMap map;
 	
-	@FXML
-	private void initialize() {
-		backStackPane.getChildren().clear();
-		mapView = new GoogleMapView("pt-BR", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
-		backStackPane.getChildren().addAll(mapView, vbox);
-		if(!LoginDAO.getLogedinUser().isAdmin())
-		buttonsVbox.getChildren().remove(checkNewRequests);
-		backStackPane.setPickOnBounds(false);
-		vbox.setPickOnBounds(false);
-		mapView.addMapInitializedListener(this);
-		
-	}
-	
-	private void loadBarInfo() {
-		
-	}
 	
 	@FXML
 	private void checkNewRequests() {
 		ScreenManager.setScreen(ScreenContainer.CHECK_NEW_REQUESTS);
 	}
 	
-	@FXML
-	private void searchForPub() {
-		Pub resultPub;
-		resultPub = PubDAO.getPubByName(searchField.getText());
+	private ArrayList<String> possiblePubs() {
+		ArrayList<String> possiblePubNames = new ArrayList<>();
+		
+		return possiblePubNames; 
 	}
 	
 	@FXML
@@ -106,9 +96,31 @@ public class MainScreenContentController implements MapComponentInitializedListe
 	                   
 	        map = mapView.createMap(mapOptions);
 	        //Add markers to the map
-	        map.addMarkers(pubMarkers);
+	        map.addMarkers(pubMarkers);  
+	}
 
-				  
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		ArrayList<String> autoCompletePubs = new ArrayList<>();
+		for(Pub pub : PubDAO.getPubList()) {
+			autoCompletePubs.add(pub.toString());
+			System.out.println(pub.toString());
+		}
+		TextFields.bindAutoCompletion(searchField, autoCompletePubs);
+		backStackPane.getChildren().clear();
+		mapView = new GoogleMapView("pt-BR", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
+		backStackPane.getChildren().addAll(mapView, vbox);
+		if(!LoginDAO.getLogedinUser().isAdmin())
+		buttonsVbox.getChildren().remove(checkNewRequests);
+		backStackPane.setPickOnBounds(false);
+		vbox.setPickOnBounds(false);
+		mapView.addMapInitializedListener(this);
+		
 	}
 	
+	@FXML
+	public void openPub() {
+		Pub searchenPub = PubDAO.getPubByName(searchField.getText());
+		ScreenManager.setScreen(new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml", new DefaultHeaderController(), new BarScreenController(searchenPub)));
+	}
 }
