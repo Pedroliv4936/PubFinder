@@ -6,19 +6,13 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
 import application.ScreenManager;
-import application.models.Drink;
-import application.models.DrinkForPub;
 import application.models.Pub;
-import application.models.DAO.DrinkDAO;
 import application.models.DAO.PubDAO;
 import application.views.ScreenContainer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 
 public class AddPubController {
 	@FXML
@@ -37,7 +31,7 @@ public class AddPubController {
 	TextField barName;
 	
 	@FXML
-	TextField pubXCoord, pubYCoord;
+	TextField pubXCoord, pubYCoord, pubOpens,pubCloses;
 
 	@FXML
 	private void initialize() {
@@ -59,8 +53,16 @@ public class AddPubController {
 			Double price = Double.parseDouble(priceField.getText());
 			Double pubXCoordinate = Double.parseDouble(pubXCoord.getText());
 			Double pubYCoordinate = Double.parseDouble(pubYCoord.getText());
-			PubDAO.addPendingPub(new Pub(0, name, type, price, 2, "Iade Building", pubXCoordinate, pubYCoordinate, null));
-			System.out.println(name + " Adicionado à lista de espera");
+			Integer openHour = Integer.parseInt(pubOpens.getText(0, 1));
+			Integer openMin = Integer.parseInt(pubOpens.getText(3, 4));
+			String openTime= (openHour + ":"+ openMin);
+			
+			Integer closeHour= Integer.parseInt(pubCloses.getText(0, 1));
+			Integer closeMin= Integer.parseInt(pubCloses.getText(3, 4));
+			String closeTime= (closeHour + ":" + closeMin);
+			PubDAO.addPendingPub(new Pub(0, name, type, price, 2, "Iade Building", pubXCoordinate, pubYCoordinate, openTime,closeTime, null));
+			System.out.println(name + " Adicionado ï¿½ lista de espera");
+
 			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 	}
 }

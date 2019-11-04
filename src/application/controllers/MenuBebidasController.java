@@ -55,6 +55,7 @@ public class MenuBebidasController {
 			CheckBox newCheckBox= new CheckBox(drink.toString());
 			newCheckBox.setUserData(drink);
 			newCheckBox.setTextFill(Color.WHITE);
+			System.out.println(drink+ " foi adicionado");
 			bebidasFavoritas.add(newCheckBox, columnIndex,rowIndex);
 			if(columnIndex<1) {
 				columnIndex++;

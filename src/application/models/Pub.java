@@ -13,13 +13,14 @@ public class Pub extends Entity {
 	private double price;
 	private String type;
 	private double xCoord, yCoord;
+	private String openTime,closeTime;
 
 	public static final String DISCOTECA = "Discoteca";
 	public static final String BAR = "Bar";
 	public static final String SALAO_DE_JOGOS = "Salao de jogos";
 
 	public Pub(int id, String name, String type, double price, double rating, String address, double xCoord,
-			double yCoord, ObservableList<Image> images) {
+			double yCoord, String openTime, String closeTime, ObservableList<Image> images) {
 		super(id, name);
 		this.price = price;
 		this.type = type;
@@ -29,6 +30,8 @@ public class Pub extends Entity {
 		this.yCoord = yCoord;
 		ObservableList<DrinkForPub> pubDrinks = FXCollections.observableArrayList();
 		drinks = pubDrinks;
+		this.openTime=openTime;
+		this.closeTime=closeTime;
 		this.images = images;
 	}
 
@@ -92,6 +95,22 @@ public class Pub extends Entity {
 
 	public double getyCoord() {
 		return yCoord;
+	}
+
+	public String getOpenTime() {
+		return openTime;
+	}
+
+	public void setOpenTime(String openTime) {
+		this.openTime = openTime;
+	}
+
+	public String getCloseTime() {
+		return closeTime;
+	}
+
+	public void setCloseTime(String closeTime) {
+		this.closeTime = closeTime;
 	}
 
 	public void setyCoord(double yCoord) {
