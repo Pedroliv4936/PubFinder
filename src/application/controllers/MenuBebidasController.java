@@ -39,15 +39,15 @@ public class MenuBebidasController {
 	
 	@FXML
 	private void initialize() {		
-		publistTV.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-		        openBarInfo(newSelection);
-		});
 		drinkColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDrinkType().toString()));
 		barColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getPub().toString()));
 		priceColumn.setCellValueFactory(new PropertyValueFactory<DrinkForPub, Double>("price"));
 		ratingColumn.setCellValueFactory(new PropertyValueFactory<DrinkForPub, Double>("rating"));
 		publistTV.setItems(DrinkDAO.getDrinksInPubs());
 		setFavoriteDrinks();
+		publistTV.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+	        openBarInfo(newSelection);
+	});
 	}
 	private void setFavoriteDrinks() {
 		int columnIndex=0,rowIndex=0;
