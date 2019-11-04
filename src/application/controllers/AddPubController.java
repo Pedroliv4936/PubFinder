@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import com.mysql.cj.x.protobuf.MysqlxCrud.Insert;
 
 import application.ScreenManager;
 import application.models.Pub;
@@ -54,8 +53,14 @@ public class AddPubController {
 			Double price = Double.parseDouble(priceField.getText());
 			Double pubXCoordinate = Double.parseDouble(pubXCoord.getText());
 			Double pubYCoordinate = Double.parseDouble(pubYCoord.getText());
-			Int openHour = (pubOpens.getText(0, 1));
-			PubDAO.addPendingPub(new Pub(0, name, type, price, 2, "Iade Building", pubXCoordinate, pubYCoordinate, null, null));
+			Integer openHour = Integer.parseInt(pubOpens.getText(0, 1));
+			Integer openMin = Integer.parseInt(pubOpens.getText(3, 4));
+			String openTime= (openHour + ":"+ openMin);
+			
+			Integer closeHour= Integer.parseInt(pubCloses.getText(0, 1));
+			Integer closeMin= Integer.parseInt(pubCloses.getText(3, 4));
+			String closeTime= (closeHour + ":" + closeMin);
+			PubDAO.addPendingPub(new Pub(0, name, type, price, 2, "Iade Building", pubXCoordinate, pubYCoordinate, openTime,closeTime, null, null));
 			System.out.println(name + " Adicionado � lista de espera");
 			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 	}

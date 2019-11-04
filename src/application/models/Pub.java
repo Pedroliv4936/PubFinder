@@ -12,12 +12,13 @@ public class Pub extends Entity {
 	private double price;
 	private String type;
 	private double xCoord, yCoord;
+	private String openTime,closeTime;
 
 	public static final String DISCOTECA = "Discoteca";
 	public static final String BAR = "Bar";
 	public static final String SALAO_DE_JOGOS = "Salao de jogos";
 
-	public Pub(int id, String name, String type, double price, double rating, String address, double xCoord, double yCoord,
+	public Pub(int id, String name, String type, double price, double rating, String address, double xCoord, double yCoord, String openTime, String closeTime,
 			ObservableList<DrinkForPub> drinks, ObservableList<Image> images) {
 		super(id, name);
 		this.price = price;
@@ -26,6 +27,8 @@ public class Pub extends Entity {
 		this.address = address;
 		this.xCoord = xCoord;
 		this.yCoord = yCoord;
+		this.openTime=openTime;
+		this.closeTime=closeTime;
 		this.drinks = drinks;
 		this.images = images;
 	}
@@ -86,6 +89,22 @@ public class Pub extends Entity {
 
 	public double getyCoord() {
 		return yCoord;
+	}
+
+	public String getOpenTime() {
+		return openTime;
+	}
+
+	public void setOpenTime(String openTime) {
+		this.openTime = openTime;
+	}
+
+	public String getCloseTime() {
+		return closeTime;
+	}
+
+	public void setCloseTime(String closeTime) {
+		this.closeTime = closeTime;
 	}
 
 	public void setyCoord(double yCoord) {
