@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="335.0" stylesheets="@layout.css" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="335.0" stylesheets="@layout.css" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <VBox alignment="TOP_CENTER" prefHeight="783.0" prefWidth="335.0" spacing="22.0" style="-fx-background-color: #353535;" stylesheets="@layout.css">
          <children>
@@ -33,31 +33,38 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="username" focusColor="#353535" opacity="0.43" promptText="Nome de Usuário" stylesheets="@layout.css" unFocusColor="#353535">
+            <VBox fx:id="vBoxTextField" alignment="CENTER" prefHeight="287.0" prefWidth="335.0" spacing="20.0" stylesheets="@layout.css">
+               <children>
+                  <JFXTextField fx:id="username" focusColor="#353535" opacity="0.43" promptText="Nome de Usuário" stylesheets="@layout.css" unFocusColor="#353535">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXPasswordField fx:id="password1" opacity="0.43" promptText="Password">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </JFXPasswordField>
+                  <JFXPasswordField fx:id="password2" opacity="0.43" promptText="Confirm Password">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </JFXPasswordField>
+                  <JFXTextField fx:id="userMail" focusColor="#353535" opacity="0.43" promptText="E-mail" stylesheets="@layout.css" unFocusColor="#353535">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXDatePicker fx:id="birthday" opacity="0.43" prefHeight="29.0" prefWidth="378.0" promptText="Data de Aniversário" style="-fx-prompt-text-fill: White;" stylesheets="@layout.css">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </JFXDatePicker>
+               </children>
                <VBox.margin>
-                  <Insets left="20.0" right="20.0" top="20.0" />
+                  <Insets />
                </VBox.margin>
-            </JFXTextField>
-            <JFXPasswordField fx:id="password1" promptText="Password">
-               <VBox.margin>
-                  <Insets left="20.0" right="20.0" />
-               </VBox.margin>
-            </JFXPasswordField>
-            <JFXPasswordField fx:id="password2" promptText="Confirm Password">
-               <VBox.margin>
-                  <Insets left="20.0" right="20.0" />
-               </VBox.margin>
-            </JFXPasswordField>
-            <JFXTextField fx:id="userMail" focusColor="#353535" opacity="0.43" promptText="E-mail" stylesheets="@layout.css" unFocusColor="#353535">
-               <VBox.margin>
-                  <Insets left="20.0" right="20.0" />
-               </VBox.margin>
-            </JFXTextField>
-            <JFXDatePicker fx:id="birthday" opacity="0.43" prefHeight="29.0" prefWidth="378.0" promptText="Data de Aniversário" style="-fx-prompt-text-fill: White;" stylesheets="@layout.css">
-               <VBox.margin>
-                  <Insets left="20.0" right="20.0" />
-               </VBox.margin>
-            </JFXDatePicker>
+            </VBox>
             <GridPane fx:id="favoriteDrinksSelection" alignment="CENTER" gridLinesVisible="true" hgap="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="134.0" prefWidth="292.0" style="-fx-font-size: 13px; -fx-border-color: transparent;" vgap="3.0">
               <columnConstraints>
                 <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

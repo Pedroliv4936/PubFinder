@@ -13,8 +13,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 public class RegisterScreenController {
 	@FXML
@@ -53,7 +56,7 @@ public class RegisterScreenController {
 		LoginDAO.addUser(user);
 		ScreenManager.setScreen(ScreenContainer.LOGIN);
 		} else {
-			System.out.println("Passwords do not match");
+			System.out.println("Passwords do not match ");
 		}
 		}
 }
