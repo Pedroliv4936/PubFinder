@@ -10,10 +10,11 @@
 - [x] Integração com GMapsFX
 - [x] Possibilidade de Utilizador se cadastrar no programa.
 - [ ] Possibilidade do Administrador visualizar informações extras sobre pedidos pendentes
-- [x] Possibilidade de utilizador adicionar localização do bar no mapa, adicionando um pin onde foi escolhido
+- [x] Possibilidade de utilizador adicionar localização do bar no mapa;
+- [ ] Possibilidade de adicionar o bar com um pin;
 - [ ] Utilização de paineis inferiores da tela inicial para mostrar informações de bares proximos
 - [ ] Adiçao de procura de bares por nome
-- [ ] Possibilidade de selecionar bar individualmente e ver suas informações 
+- [x] Possibilidade de selecionar bar individualmente e ver suas informações 
 - [ ] Adição de imagens representativas de cada bebida em nossa base de dados
 - [ ] Possibilidade de ver localização atual do utilizador em tempo real (OPCIONAL)
 - [ ] Estilização do Projeto conforme mockup do projeto
