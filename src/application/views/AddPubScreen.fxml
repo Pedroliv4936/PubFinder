@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="445.0" prefWidth="335.0" spacing="20.0" style="-fx-background-color: #353535;" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" prefHeight="445.0" prefWidth="335.0" spacing="20.0" style="-fx-background-color: #353535;" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField fx:id="barName" alignment="BOTTOM_LEFT" opacity="0.43" prefWidth="295.0" promptText="Nome do Bar...">
+      <TextField fx:id="barName" alignment="BOTTOM_LEFT" opacity="0.43" prefWidth="295.0" promptText="Nome do Bar">
          <VBox.margin>
             <Insets left="20.0" right="20.0" />
          </VBox.margin>
@@ -34,9 +34,9 @@
       </JFXTextField>
       <HBox alignment="TOP_CENTER" prefHeight="36.0" prefWidth="335.0">
          <children>
-            <JFXTextField fx:id="comprovativo" alignment="TOP_LEFT" focusColor="WHITE" opacity="0.43" prefHeight="33.0" prefWidth="189.0" promptText="Comprovativo" style="-fx-border-width: 2px; -fx-background-color: #353535; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white; -fx-background-radius: 8;" unFocusColor="#353535">
+            <JFXTextField fx:id="comprovativo" alignment="TOP_LEFT" editable="false" focusColor="WHITE" opacity="0.43" prefHeight="33.0" prefWidth="189.0" promptText="Comprovativo" style="-fx-border-width: 2px; -fx-background-color: #353535; -fx-border-color: white; -fx-border-radius: 5; -fx-text-fill: white; -fx-background-radius: 8;" unFocusColor="#353535">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Product Sans" size="14.0" />
                </font>
                <HBox.margin>
                   <Insets left="20.0" />
