@@ -22,6 +22,10 @@ public class Drink extends Entity{
 		System.out.println("Image path" + icon);
 	}
 	
+	
+	public String toString() {
+		return name;
+	}
 
 	public Image getIcon() {
 		return icon;

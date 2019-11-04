@@ -32,6 +32,10 @@ public class Pub extends Entity {
 		this.drinks = drinks;
 		this.images = images;
 	}
+	
+	public String getPubInfo() {
+		return name + " (" + type + ")" + " preco: " + price;
+	}
 
 	public double getPrice() {
 		return price;

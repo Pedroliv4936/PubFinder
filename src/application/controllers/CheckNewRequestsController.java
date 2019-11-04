@@ -7,6 +7,7 @@ import application.models.DAO.DrinkDAO;
 import application.models.DAO.PubDAO;
 import application.views.ScreenContainer;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 
@@ -23,6 +24,13 @@ public class CheckNewRequestsController {
 
 	@FXML
 	private void initialize() {
+		pubLV.setCellFactory(lv -> new ListCell<Pub>() {
+		    @Override
+		    protected void updateItem(Pub pub, boolean empty) {
+		        super.updateItem(pub, empty);
+		        setText(pub == null ? null : pub.getPubInfo());
+		    }
+		});
 		pubLV.setItems(PubDAO.getPendingPubs());
 		drinkLV.setItems(DrinkDAO.getPendingDrinkList());
 	}

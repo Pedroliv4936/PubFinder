@@ -88,7 +88,12 @@ public class DrinkDAO {
 				new DrinkForPub(Drink.CANECA_CERVEJA, PubDAO.getPubList().get(1), Math.random() * 5, Math.random() * 10),
 				new DrinkForPub(Drink.GIN, PubDAO.getPubList().get(1), Math.random() * 5, Math.random() * 10),
 				new DrinkForPub(Drink.SIDRA, PubDAO.getPubList().get(1), Math.random() * 5, Math.random() * 10));
-		drinksInPubs.addAll(pedroDrinks);
+		
+		PubDAO.getPubByName("Bar do Pedro").setDrinks(pedroDrinks);
+		PubDAO.getPubByName("Bar do Franco").setDrinks(francoDrinks);
+		
 		drinksInPubs.addAll(francoDrinks);
+		drinksInPubs.addAll(pedroDrinks);
+
 	}
 }
