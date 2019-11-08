@@ -54,12 +54,7 @@ public class AddDrinkController {
 
 	@FXML
 	private void sendInfo() {
-		String priceRegex = "[0-9]+";
-		if (!priceField.getText().matches(priceRegex)) {
-			priceField.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
-			priceField.setText("Preco invalido");
-			System.out.println("Invalid price");
-		} else {
+		if (allFieldsFilled()) {
 			DrinkForPub newDrink = new DrinkForPub(drinkType.getValue(), pubOptions.getValue(), 4,
 					Double.parseDouble(priceField.getText()));
 			System.out.println();
@@ -69,5 +64,27 @@ public class AddDrinkController {
 			DrinkDAO.addPendingDrink(newDrink);
 			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 		}
+	}
+
+	private boolean allFieldsFilled() {
+		String priceRegex = "[0-9]+";
+		if (pubOptions.getValue() == null) {
+			pubOptions.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
+			System.out.println("Pub Not Selected");
+			return false;
+		} else
+			if (drinkType.getValue() == null) {
+			drinkType.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
+			System.out.println("Drink Not Selected");
+			return false;
+		} else
+			if (!priceField.getText().matches(priceRegex)) {
+			priceField.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
+			priceField.clear();
+			priceField.setPromptText("Preco invalido");
+			System.out.println("Invalid price");
+			return false;
+		} else
+			return true;
 	}
 }
