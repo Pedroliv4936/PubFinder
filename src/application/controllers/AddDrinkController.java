@@ -67,24 +67,32 @@ public class AddDrinkController {
 	}
 
 	private boolean allFieldsFilled() {
+		boolean allFieldsFilled = true; 
 		String priceRegex = "[0-9]+";
 		if (pubOptions.getValue() == null) {
 			pubOptions.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
 			System.out.println("Pub Not Selected");
-			return false;
-		} else
+			allFieldsFilled = false;
+		}else {
+			pubOptions.getStylesheets().clear();
+		}
 			if (drinkType.getValue() == null) {
 			drinkType.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
 			System.out.println("Drink Not Selected");
-			return false;
-		} else
+			allFieldsFilled = false;
+		}else {
+			drinkType.getStylesheets().clear();
+		}
 			if (!priceField.getText().matches(priceRegex)) {
 			priceField.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
 			priceField.clear();
 			priceField.setPromptText("Preco invalido");
 			System.out.println("Invalid price");
-			return false;
-		} else
-			return true;
+			allFieldsFilled = false;
+		}else {
+			priceField.getStylesheets().clear();
+		}
+			System.out.println("All fields filled");
+			return allFieldsFilled;
 	}
 }
