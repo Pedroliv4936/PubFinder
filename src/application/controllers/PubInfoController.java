@@ -7,14 +7,16 @@ import javafx.scene.control.Label;
 public class PubInfoController {
 
 	@FXML
-	Label pubName, pubPrice, pubType;
+	Label pubName, pubPrice, pubType, open, close;
 	
-	private String name, price, type;
+	private String name, price, type,openTime,closeTime;
 	
 	public PubInfoController(Pub pub) {
 		name = pub.toString();
 		price = String.format("%.2f",pub.getPrice());
 		type = pub.getType();
+		openTime = pub.getOpenTime();
+		closeTime = pub.getCloseTime();
 	}
 	
 	@FXML
@@ -23,5 +25,7 @@ public class PubInfoController {
 		pubName.setText(name);
 		pubPrice.setText(price);
 		pubType.setText(type);
+		open.setText(openTime);
+		close.setText(closeTime);
 	}
 }

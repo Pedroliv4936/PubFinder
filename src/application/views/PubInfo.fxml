@@ -2,14 +2,20 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="150.0" stylesheets="@PubScreen.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="150.0" stylesheets="@PubScreen.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="pubName" text="NAME" />
       <Label fx:id="pubType" text="TYPE" />
       <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="pubPrice" text="PRICE" />
+      <HBox alignment="TOP_CENTER" prefHeight="18.0" prefWidth="150.0" spacing="30.0">
+         <children>
+            <Label fx:id="open" text="Open" />
+            <Label fx:id="close" text="Closes" />
+         </children>
+      </HBox>
    </children>
 </VBox>

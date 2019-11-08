@@ -78,8 +78,8 @@ public class AddPubController {
 			Double price = Double.parseDouble(priceField.getText());
 			Double pubXCoordinate = Double.parseDouble(pubXCoord.getText());
 			Double pubYCoordinate = Double.parseDouble(pubYCoord.getText());
-			openTime=(openHour+""+openMin);
-			closeTime=(closeHour+""+closeMin);
+			openTime=(openHour+":"+openMin);
+			closeTime=(closeHour+":"+closeMin);
 			PubDAO.addPendingPub(new Pub(0, name, type, price, 2, "Iade Building", pubXCoordinate, pubYCoordinate, openTime,closeTime, null));
 			System.out.println(name + " Adicionado � lista de espera");
 
