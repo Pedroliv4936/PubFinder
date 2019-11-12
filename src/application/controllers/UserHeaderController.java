@@ -26,4 +26,9 @@ public class UserHeaderController {
 		ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 	}
 	
+	@FXML
+	private void logOut() {
+		ScreenManager.setScreen(ScreenContainer.LOGIN);
+		LoginDAO.setLogedinUser(null);
+	}
 }

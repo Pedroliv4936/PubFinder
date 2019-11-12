@@ -9,6 +9,7 @@ import application.models.DAO.DrinkDAO;
 import application.models.DAO.LoginDAO;
 import application.views.ScreenContainer;
 import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
@@ -35,6 +36,10 @@ public class MenuBebidasController {
 	@FXML
 	HBox hBox;
 	
+	
+	
+	private FilteredList<DrinkForPub> filteredDrinks = new FilteredList<>(DrinkDAO.getDrinksInPubs());
+	
 	@FXML
 	private void initialize() {		
 		drinkColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDrinkName()));
@@ -45,6 +50,8 @@ public class MenuBebidasController {
 		publistTV.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 	        openBarInfo(newSelection);
 	});
+		
+		
 	}
 	private void setFavoriteDrinks() {
 		int columnIndex=0,rowIndex=0;

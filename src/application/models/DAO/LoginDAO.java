@@ -5,6 +5,7 @@ import java.sql.Date;
 import application.models.Admin;
 import application.models.Drink;
 import application.models.FavoriteDrinkList;
+import application.models.LoginType;
 import application.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,14 +44,14 @@ public class LoginDAO {
 	2 - wrong username
 	3 - wrong password
 	 */
-	public static int connect(String username, String password) {
+	public static LoginType connect(String username, String password) {
 		for(User user : userList) {
 			if(user.getUsername().equals(username)) {
 				if(user.getPassword().equals(password)) {
 					setLogedinUser(user);
-					return 0;
+					return LoginType.USER_LOGIN;
 				}else {
-					return 3;
+					return LoginType.WRONG_PASSWORD;
 				}
 			}
 		}
@@ -58,13 +59,13 @@ public class LoginDAO {
 			if(admin.getUsername().equals(username)) {
 				if(admin.getPassword().equals(password)) {
 					setLogedinUser(admin);
-					return 1;
+					return LoginType.ADMIN_LOGIN;
 				}else {
-					return 3;
+					return LoginType.WRONG_PASSWORD;
 				}
 			}
 		}
-		return 2;
+		return LoginType.WRONG_USERNAME;
 	}
 
 	static {

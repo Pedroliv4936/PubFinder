@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import application.ScreenManager;
+import application.models.LoginType;
 import application.models.DAO.LoginDAO;
 import application.views.ScreenContainer;
 import javafx.fxml.FXML;
@@ -59,17 +60,18 @@ public class LoginScreenController {
 		getSelections();
 		String username = usernameField.getText();
 		String password = passwordField.getText();
-		if(LoginDAO.connect(username, password) == 0) {
+		LoginType lt = LoginDAO.connect(username, password);		
+		if(lt == LoginType.USER_LOGIN) {
 			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 		}else
-			if(LoginDAO.connect(username, password) == 1) {
+			if(lt == LoginType.ADMIN_LOGIN) {
 				ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 			}else
 				loginFeedback.setTextFill(Color.RED);
-			if(LoginDAO.connect(username, password) == 2) {
+			if(lt == LoginType.WRONG_USERNAME) {
 				loginFeedback.setText("Wrong username");
 			}else
-				if(LoginDAO.connect(username, password) == 3) {
+				if(lt == LoginType.WRONG_PASSWORD) {
 					loginFeedback.setText("Wrong Password");
 				}
 			System.out.println("Usuario logado como: " + LoginDAO.getLogedinUser().getUsername());
