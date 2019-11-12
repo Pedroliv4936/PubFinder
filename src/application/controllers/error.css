@@ -1,8 +1,11 @@
-.text-field{
-	-fx-border-color: RED;
+.combo-box{
 	-fx-effect:dropshadow(three-pass-box, rgba(255,0,0,0.5), 10, 0, 0, 0);
 }
 
-.combo-box{
+.text-field{
+	-fx-effect:dropshadow(three-pass-box, rgba(255,0,0,0.5), 10, 0, 0, 0);
+}
+
+.cb{
 	-fx-effect:dropshadow(three-pass-box, rgba(255,0,0,0.5), 10, 0, 0, 0);
 }

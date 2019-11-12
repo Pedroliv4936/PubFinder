@@ -44,7 +44,6 @@ public class LoginDAO {
 	3 - wrong password
 	 */
 	public static int connect(String username, String password) {
-		int exception;
 		for(User user : userList) {
 			if(user.getUsername().equals(username)) {
 				if(user.getPassword().equals(password)) {

@@ -31,18 +31,15 @@ public class MenuBebidasController {
 	@FXML
 	TableColumn<DrinkForPub, Double> priceColumn;
 	@FXML
-	TableColumn<DrinkForPub, Double> ratingColumn;
-	@FXML
 	GridPane bebidasFavoritas;
 	@FXML
 	HBox hBox;
 	
 	@FXML
 	private void initialize() {		
-		drinkColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDrinkType().toString()));
+		drinkColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDrinkName()));
 		barColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getPub().toString()));
 		priceColumn.setCellValueFactory(new PropertyValueFactory<DrinkForPub, Double>("price"));
-		ratingColumn.setCellValueFactory(new PropertyValueFactory<DrinkForPub, Double>("rating"));
 		publistTV.setItems(DrinkDAO.getDrinksInPubs());
 		setFavoriteDrinks();
 		publistTV.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {

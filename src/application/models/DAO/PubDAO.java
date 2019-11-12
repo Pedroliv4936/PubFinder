@@ -60,6 +60,10 @@ public class PubDAO {
 		pubList.addAll(pubs);
 		pendingPubList.removeAll(pubs);
 	}
+	
+	public static void refusePubs(ObservableList<Pub> pubs) {
+		pendingPubList.removeAll(pubs);
+	}
 
 	static {		
 		Pub barDoPedro = new Pub(1, "Bar do Pedro", Pub.DISCOTECA, 10, 0, "Lar das laranjas", 38.728601, -9.136331, "9:00", "10:00", null);

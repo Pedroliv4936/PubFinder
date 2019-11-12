@@ -47,7 +47,7 @@ public class AddDrinkController {
 		ObservableList<Drink> drinkNames = FXCollections.observableArrayList();
 		for (Drink drink : DrinkDAO.getDrinkList()) {
 			drinkNames.add(drink);
-			System.out.println(drink.toString() + "Foi Adicionado");
+			System.out.println(drink.toString() + " foi adicionado a lista de beebidas disponiveis");
 		}
 		drinkType.setItems(drinkNames);
 	}
@@ -67,32 +67,32 @@ public class AddDrinkController {
 	}
 
 	private boolean allFieldsFilled() {
-		boolean allFieldsFilled = true; 
-		String priceRegex = "[0-9]+";
+		boolean allFieldsFilled = true;
+		String priceRegex = "^[0-9]+(,\\d{3})*([,.]\\d+)?$";
 		if (pubOptions.getValue() == null) {
 			pubOptions.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
 			System.out.println("Pub Not Selected");
 			allFieldsFilled = false;
-		}else {
+		} else {
 			pubOptions.getStylesheets().clear();
 		}
-			if (drinkType.getValue() == null) {
+		if (drinkType.getValue() == null) {
 			drinkType.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
 			System.out.println("Drink Not Selected");
 			allFieldsFilled = false;
-		}else {
+		} else {
 			drinkType.getStylesheets().clear();
 		}
-			if (!priceField.getText().matches(priceRegex)) {
+		if (!priceField.getText().matches(priceRegex)) {
 			priceField.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
 			priceField.clear();
 			priceField.setPromptText("Preco invalido");
 			System.out.println("Invalid price");
 			allFieldsFilled = false;
-		}else {
+		} else {
 			priceField.getStylesheets().clear();
 		}
-			System.out.println("All fields filled");
-			return allFieldsFilled;
+		System.out.println("All fields filled");
+		return allFieldsFilled;
 	}
 }
