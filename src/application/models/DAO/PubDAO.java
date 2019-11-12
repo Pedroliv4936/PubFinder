@@ -62,8 +62,8 @@ public class PubDAO {
 	}
 
 	static {		
-		Pub barDoPedro = new Pub(1, "Bar do Pedro", Pub.DISCOTECA, 10, 0, "Lar das laranjas", 38.728601, -9.136331, "9:00", "10:00", null);
-		Pub barDoFranco = new Pub(69, "Bar do Franco", Pub.BAR, 0, 0, "Casa do Franco", 38.707567, -9.152537, "9:00", "10:00", null);
+		Pub barDoPedro = new Pub(1, "Bar do Pedro", Pub.DISCOTECA, 10, 0, "Lar das laranjas", 38.728601, -9.136331, "9:00", "23:00", null);
+		Pub barDoFranco = new Pub(69, "Bar do Franco", Pub.BAR, 0, 0, "Casa do Franco", 38.707567, -9.152537, "9:00", "23:00", null);
 		
 		pubList.addAll(barDoPedro, barDoFranco);
 	}
