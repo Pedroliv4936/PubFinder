@@ -1,6 +1,7 @@
 package application.controllers;
 
 import application.models.Drink;
+import application.models.DAO.DrinkDAO;
 import application.models.DAO.LoginDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -31,12 +32,18 @@ public class UserScreenController {
 	private void setFavoriteDrinks() {
 		int row = 0, column=0;
 		System.out.println("Usuario Bebidas: " + LoginDAO.getLogedinUser().getFavoriteDrinkList().toString());
-		for(Drink drink : LoginDAO.getLogedinUser().getFavoriteDrinkList().getDrinks()) {
+		for(Drink drink : DrinkDAO.getDrinkList()) {
 			CheckBox newCheckBox = new CheckBox(drink.toString());
-			newCheckBox.setUserData(drink);
-			newCheckBox.setTextFill(Color.WHITE);
-			System.out.println(drink.toString() + " Adicionado");
+			newCheckBox.setStyle("-fx-text-fill: WHITE");
+			newCheckBox.setOnAction(e -> {
+				if(!LoginDAO.getLogedinUser().getFavoriteDrinkList().getDrinks().contains(drink))
+				LoginDAO.getLogedinUser().getFavoriteDrinkList().getDrinks().add(drink);
+			});
+			System.out.println(drink.toString());
 			bebidasFavoritasUser.add(newCheckBox, column, row);
+			if(LoginDAO.getLogedinUser().getFavoriteDrinkList().getDrinks().contains(drink)) {
+				newCheckBox.setSelected(true);
+			}
 			if(row<2) {
 				row++;
 			}else {

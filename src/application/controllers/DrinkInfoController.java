@@ -19,7 +19,7 @@ public class DrinkInfoController {
 	private Image image;
 
 	public DrinkInfoController(DrinkForPub drink) {
-		this.name = drink.getDrinkType().toString();
+		this.name = drink.getDrinkName();
 		this.image = drink.getDrinkType().getIcon();
 		this.price = String.format("%.2f" ,drink.getPrice());
 		this.rating = String.format("%.2f", drink.getRating());
@@ -34,7 +34,7 @@ public class DrinkInfoController {
 	}
 	
 	public void setShownDrink(DrinkForPub drink) {
-		this.name = drink.getDrinkType().toString();
+		this.name = drink.getDrinkName();
 		this.image = drink.getDrinkType().getIcon();
 		this.price = String.format("%.2f" ,drink.getPrice());
 		this.rating = String.format("%.2f", drink.getRating());

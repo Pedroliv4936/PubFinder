@@ -112,6 +112,7 @@ public class MainScreenContentController implements MapComponentInitializedListe
 		backStackPane.getChildren().addAll(mapView, vbox);
 		if(!LoginDAO.getLogedinUser().isAdmin())
 		buttonsVbox.getChildren().remove(checkNewRequests);
+		
 		backStackPane.setPickOnBounds(false);
 		vbox.setPickOnBounds(false);
 		mapView.addMapInitializedListener(this);

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="385.02" prefWidth="335.0" spacing="11.599" style="-fx-background-color: #353535;" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="395.0" prefWidth="335.0" spacing="11.599" style="-fx-background-color: #353535;" stylesheets="@layout.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label alignment="CENTER" style="-fx-text-fill: white; -fx-font-size: 21,311;" text="Username">
          <VBox.margin>
@@ -50,6 +50,6 @@
       </GridPane>
    </children>
    <padding>
-      <Insets bottom="24.817" left="24.817" right="24.817" top="24.817" />
+      <Insets bottom="10.0" left="24.817" right="24.817" top="10.0" />
    </padding>
 </VBox>

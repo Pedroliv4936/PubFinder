@@ -28,6 +28,10 @@ public class DrinkForPub {
 	public Drink getDrinkType() {
 		return drink;
 	}
+	
+	public String getDrinkName() {
+		return drink.toString();
+	}
 
 	public void setDrink(Drink drink) {
 		this.drink = drink;

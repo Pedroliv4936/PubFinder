@@ -61,18 +61,16 @@ public class DrinkDAO {
 		pendingDrinkList.add(drink);
 	}
 	
-	public static void aproveDrink(DrinkForPub drink) {
-		drinksInPubs.add(drink);
-		pendingDrinkList.remove(drink);
-		drink.getPub().getDrinks().add(drink);
-	}
-	
 	public static void aproveDrinks(ObservableList<DrinkForPub> drinks) {
 		drinksInPubs.addAll(drinks);
 		pendingDrinkList.removeAll(drinks);
 		for(DrinkForPub drink: drinks) {
 			drink.getPub().getDrinks().add(drink);
 		}
+	}
+	
+	public static void refuseDrinks(ObservableList<DrinkForPub> drinks) {
+		pendingDrinkList.removeAll(drinks);
 	}
 	
 	static {

@@ -106,13 +106,14 @@
 }
 
 
-.text-field {
+.text-field, .text-area{
 	-fx-border-width:2px;
 	-fx-background-color: transparent;
 	-fx-border-color:white;
 	-fx-border-radius:5px;
 	-fx-text-fill:white;
 	-fx-background-radius:8px;
+	-fx-opacity:0.4;
 }
 
 #editableButton{

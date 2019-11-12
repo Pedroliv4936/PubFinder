@@ -13,7 +13,7 @@ public class UserHeaderController {
 	
 	@FXML
 	private void initialize() {
-		user_name.setText(LoginDAO.getLogedinUser().toString());
+		user_name.setText(LoginDAO.getLogedinUser().getName());
 	}
 	
 	@FXML
@@ -26,4 +26,9 @@ public class UserHeaderController {
 		ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 	}
 	
+	@FXML
+	private void logOut() {
+		ScreenManager.setScreen(ScreenContainer.LOGIN);
+		LoginDAO.setLogedinUser(null);
+	}
 }
