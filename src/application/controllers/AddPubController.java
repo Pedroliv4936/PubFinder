@@ -93,7 +93,7 @@ public class AddPubController {
 	}
 
 	private boolean fieldsFilled() {
-		String nameRegex = "^.+";
+		String nameRegex = "^[a-zA-Z]{1}.{0,19}";
 		String priceRegex = "^[0-9]+(,\\\\d{3})*([,.]\\\\d+)?$";
 		String addressRegex = "\\w+(\\s\\w+[,]?)+";
 		fieldsFilled = true;

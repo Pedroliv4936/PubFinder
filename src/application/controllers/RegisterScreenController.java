@@ -4,7 +4,6 @@ import java.sql.Date;
 
 import application.ScreenManager;
 import application.models.Drink;
-import application.models.FavoriteDrinkList;
 import application.models.User;
 import application.models.DAO.LoginDAO;
 import application.views.ScreenContainer;
@@ -28,6 +27,7 @@ public class RegisterScreenController {
 	DatePicker birthday;
 	@FXML
 	CheckBox sidra, cerveja, vodka, gin, canecaCerveja;
+	
 	ObservableList<CheckBox> checkBoxes = FXCollections.observableArrayList();
 	
 	@FXML
@@ -44,8 +44,7 @@ public class RegisterScreenController {
 	private void submit() {
 		if(password1.getText().equals(password2.getText())) {
 			ObservableList<Drink> selectedDrinks= FXCollections.observableArrayList();
-			FavoriteDrinkList favoriteDrinks = new FavoriteDrinkList(username.getText(), selectedDrinks);
-		User user = new User(LoginDAO.getUserList().size(), username.getText(), username.getText(), password1.getText(), userMail.getText(), Date.valueOf(birthday.getValue()), favoriteDrinks, false);
+		User user = new User(LoginDAO.getUserList().size(), username.getText(), username.getText(), password1.getText(), userMail.getText(), Date.valueOf(birthday.getValue()), selectedDrinks);
 		for(CheckBox checkBox:checkBoxes) {
 			if (checkBox.isSelected()) {
 				selectedDrinks.addAll((Drink)checkBox.getUserData());

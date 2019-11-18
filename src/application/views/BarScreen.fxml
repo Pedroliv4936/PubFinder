@@ -6,57 +6,61 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="495.0" prefWidth="335.0" stylesheets="@PubScreen.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="bgStackPane" prefHeight="495.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <StackPane prefHeight="152.0" prefWidth="335.0">
-         <VBox.margin>
-            <Insets top="7.0" />
-         </VBox.margin>
+      <VBox fx:id="vbox" prefHeight="495.0" prefWidth="335.0" style="-fx-background-color: transparent;" stylesheets="@PubScreen.css">
          <children>
-            <Pane fx:id="drinkInfo3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #353535;">
-               <StackPane.margin>
-                  <Insets right="-210.0" />
-               </StackPane.margin>
-            </Pane>
-            <Pane fx:id="drinkInfo2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #353535;" />
-            <Pane fx:id="drinkInfo1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #353535;">
-               <StackPane.margin>
-                  <Insets left="-210.0" />
-               </StackPane.margin>
-            </Pane>
-            <Button mnemonicParsing="false" onAction="#changePubDrinksRight" prefHeight="31.0" prefWidth="34.0" style="-fx-background-color: White;" text="&gt;">
-               <StackPane.margin>
-                  <Insets right="-300.0" />
-               </StackPane.margin>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#changePubDrinksLeft" prefHeight="31.0" prefWidth="34.0" style="-fx-background-color: White;" text="&lt;">
-               <StackPane.margin>
-                  <Insets left="-300.0" />
-               </StackPane.margin>
-            </Button>
+            <StackPane prefHeight="106.0" prefWidth="335.0">
+               <VBox.margin>
+                  <Insets top="7.0" />
+               </VBox.margin>
+               <children>
+                  <Pane fx:id="drinkInfo3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #353535;">
+                     <StackPane.margin>
+                        <Insets right="-210.0" />
+                     </StackPane.margin>
+                  </Pane>
+                  <Pane fx:id="drinkInfo2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #353535;" />
+                  <Pane fx:id="drinkInfo1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #353535;">
+                     <StackPane.margin>
+                        <Insets left="-210.0" />
+                     </StackPane.margin>
+                  </Pane>
+                  <Button mnemonicParsing="false" onAction="#changePubDrinksRight" prefHeight="31.0" prefWidth="34.0" style="-fx-background-color: White;" text="&gt;">
+                     <StackPane.margin>
+                        <Insets right="-300.0" />
+                     </StackPane.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#changePubDrinksLeft" prefHeight="31.0" prefWidth="34.0" style="-fx-background-color: White;" text="&lt;">
+                     <StackPane.margin>
+                        <Insets left="-300.0" />
+                     </StackPane.margin>
+                  </Button>
+               </children>
+            </StackPane>
+            <StackPane prefHeight="152.0" prefWidth="335.0">
+               <children>
+                  <Pane fx:id="pubInfoRight" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="130.0" style="-fx-background-color: #353535;">
+                     <StackPane.margin>
+                        <Insets right="-150.0" />
+                     </StackPane.margin>
+                  </Pane>
+                  <Pane fx:id="pubInfoLeft" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="130.0" style="-fx-background-color: #353535;">
+                     <StackPane.margin>
+                        <Insets left="-150.0" />
+                     </StackPane.margin>
+                  </Pane>
+                  <Pane fx:id="pubInfoFront" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #353535;">
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                  </Pane>
+               </children>
+               <VBox.margin>
+                  <Insets top="235.0" />
+               </VBox.margin>
+            </StackPane>
          </children>
-      </StackPane>
-      <StackPane prefHeight="152.0" prefWidth="335.0">
-         <children>
-            <Pane fx:id="pubInfoRight" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="130.0" style="-fx-background-color: #353535;">
-               <StackPane.margin>
-                  <Insets right="-150.0" />
-               </StackPane.margin>
-            </Pane>
-            <Pane fx:id="pubInfoLeft" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="130.0" style="-fx-background-color: #353535;">
-               <StackPane.margin>
-                  <Insets left="-150.0" />
-               </StackPane.margin>
-            </Pane>
-            <Pane fx:id="pubInfoFront" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #353535;">
-               <StackPane.margin>
-                  <Insets />
-               </StackPane.margin>
-            </Pane>
-         </children>
-         <VBox.margin>
-            <Insets top="185.0" />
-         </VBox.margin>
-      </StackPane>
+      </VBox>
    </children>
-</VBox>
+</StackPane>

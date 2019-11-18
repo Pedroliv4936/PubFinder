@@ -4,7 +4,6 @@ import java.sql.Date;
 
 import application.models.Admin;
 import application.models.Drink;
-import application.models.FavoriteDrinkList;
 import application.models.LoginType;
 import application.models.User;
 import javafx.collections.FXCollections;
@@ -75,9 +74,8 @@ public class LoginDAO {
 		francoDrinks.add(Drink.CANECA_CERVEJA);
 		francoDrinks.add(Drink.COPO_CERVEJA);
 		francoDrinks.add(Drink.VODKA);
-		FavoriteDrinkList francoFavoriteList = new FavoriteDrinkList("Franco",francoDrinks);
-		adminList.add(new Admin(0, "Franco", "piriurna", "franco123", "francozalamena@gmail.com", new Date(10, 10, 10), francoFavoriteList));
-		userList.add(new User(0, "Pedro", "yuri", "rabanete", "pedro@gmail.com", new Date(11, 11, 11), francoFavoriteList, false));
+		adminList.add(new Admin(0, "Franco", "piriurna", "franco123", "francozalamena@gmail.com", new Date(10, 10, 10), francoDrinks));
+		userList.add(new User(0, "Pedro", "yuri", "rabanete", "pedro@gmail.com", new Date(11, 11, 11), francoDrinks));
 	}
 
 }

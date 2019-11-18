@@ -60,7 +60,9 @@ public class LoginScreenController {
 		getSelections();
 		String username = usernameField.getText();
 		String password = passwordField.getText();
-		LoginType lt = LoginDAO.connect(username, password);		
+		
+		LoginType lt = LoginDAO.connect(username, password);
+		
 		if(lt == LoginType.USER_LOGIN) {
 			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 		}else
