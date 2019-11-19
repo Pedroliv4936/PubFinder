@@ -11,7 +11,10 @@ public class PubInfoController {
 	
 	private String name, price, type,openTime,closeTime;
 	
+	private Pub pub;
+	
 	public PubInfoController(Pub pub) {
+		this.pub = pub;
 		name = pub.toString();
 		price = String.format("%.2f",pub.getPrice());
 		type = pub.getType();
@@ -27,5 +30,9 @@ public class PubInfoController {
 		pubType.setText(type);
 		open.setText(openTime);
 		close.setText(closeTime);
+	}
+
+	public Pub getPub() {
+		return pub;
 	}
 }

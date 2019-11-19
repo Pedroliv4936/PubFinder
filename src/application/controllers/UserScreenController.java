@@ -31,17 +31,22 @@ public class UserScreenController {
 
 	private void setFavoriteDrinks() {
 		int row = 0, column=0;
-		System.out.println("Usuario Bebidas: " + LoginDAO.getLogedinUser().getFavoriteDrinkList().toString());
+		System.out.println("Usuario Bebidas: " + LoginDAO.getLogedinUser().toString());
 		for(Drink drink : DrinkDAO.getDrinkList()) {
 			CheckBox newCheckBox = new CheckBox(drink.toString());
 			newCheckBox.setStyle("-fx-text-fill: WHITE");
+			
 			newCheckBox.setOnAction(e -> {
-				if(!LoginDAO.getLogedinUser().getFavoriteDrinkList().getDrinks().contains(drink))
-				LoginDAO.getLogedinUser().getFavoriteDrinkList().getDrinks().add(drink);
+				
+				if(newCheckBox.isSelected() && !LoginDAO.getLogedinUser().getFavoriteDrinks().contains(drink)) {
+				LoginDAO.getLogedinUser().addFavoriteDrink(drink);
+				}
+				
 			});
+			
 			System.out.println(drink.toString());
 			bebidasFavoritasUser.add(newCheckBox, column, row);
-			if(LoginDAO.getLogedinUser().getFavoriteDrinkList().getDrinks().contains(drink)) {
+			if(LoginDAO.getLogedinUser().getFavoriteDrinks().contains(drink)) {
 				newCheckBox.setSelected(true);
 			}
 			if(row<2) {
