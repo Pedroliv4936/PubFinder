@@ -44,7 +44,7 @@ public class RegisterScreenController {
 	private void submit() {
 		if(password1.getText().equals(password2.getText())) {
 			ObservableList<Drink> selectedDrinks= FXCollections.observableArrayList();
-		User user = new User(LoginDAO.getUserList().size(), username.getText(), username.getText(), password1.getText(), userMail.getText(), Date.valueOf(birthday.getValue()), selectedDrinks);
+		User user = new User(LoginDAO.getUserList().size(), username.getText(), username.getText(), password1.getText(), userMail.getText(), Date.valueOf(birthday.getValue()),777777777);
 		for(CheckBox checkBox:checkBoxes) {
 			if (checkBox.isSelected()) {
 				selectedDrinks.addAll((Drink)checkBox.getUserData());

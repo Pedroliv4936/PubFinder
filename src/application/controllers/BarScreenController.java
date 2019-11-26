@@ -45,6 +45,8 @@ public class BarScreenController implements MapComponentInitializedListener {
 
 	private Pub selectedPub;
 
+	private int index;
+	
 	private ObservableList<DrinkForSale> availableDrinks = FXCollections.observableArrayList();
 
 	public BarScreenController(Pub pub) {
