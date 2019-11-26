@@ -161,20 +161,19 @@ public class BarScreenController implements MapComponentInitializedListener {
 		MarkerOptions markerOptions = new MarkerOptions();
 		ObservableList<Marker> pubMarkers = FXCollections.observableArrayList();
 
-		LatLong latLong = new LatLong(selectedPub.getxCoord(), selectedPub.getyCoord());
+		LatLong latLong = new LatLong(selectedPub.getCoordinates().getLongitude(), selectedPub.getCoordinates().getLatitude());
 		markerOptions.position(latLong);
 		Marker newPubMarker = new Marker(markerOptions);
 		newPubMarker.setTitle(selectedPub.toString() + " Marker");
 		pubMarkers.add(newPubMarker);
 		System.out.println();
-		System.out.println("Pub with coordinates : " + selectedPub.getxCoord() + " and " + selectedPub.getyCoord()
-				+ " added to map");
+		System.out.println("Pub with coordinates : " + selectedPub.getCoordinates().getLongitude() + " and " + selectedPub.getCoordinates().getLatitude()+ " added to map");
 
 		// Set the initial properties of the map.
 
 		MapOptions mapOptions = new MapOptions();
 
-		mapOptions.center(new LatLong(selectedPub.getxCoord(), selectedPub.getyCoord()))
+		mapOptions.center(new LatLong(selectedPub.getCoordinates().getLongitude(), selectedPub.getCoordinates().getLatitude()))
 		.mapType(MapTypeIdEnum.ROADMAP)
 		.overviewMapControl(false)
 		.panControl(false)
