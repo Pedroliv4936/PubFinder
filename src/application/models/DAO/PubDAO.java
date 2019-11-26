@@ -91,20 +91,16 @@ public class PubDAO {
 
 	public static ObservableList<Pub> sortList(LatLong loc) {
 		ObservableList<Pub> sortedPubs = getActivePubs();
-		Collections.sort(sortedPubs, new Comparator<Pub>() {
+		Collections.sort(sortedPubs,(pub1,pub2)->((Double)pub2.distance(loc)).compareTo(pub1.distance(loc))); 
+				/*
+				
+				new Comparator<Pub>() {
 	        @Override
 	        public int compare(Pub pub2, Pub pub1)
 	        {
-	        	pub2.distance(loc).compareTo(pub1.distance(loc));
-	        	if(pub2.distance(loc) < pub2.distance(loc))
-	        		return 1;
-	        	else
-	        	if(pub2.distance(loc) > pub2.distance(loc))
-	        		return -1;
-	        	else
-	        		return 0;
+	        	return ((Double)pub2.distance(loc)).compareTo(pub1.distance(loc));
 	        }
-	    });
+	        });*/
 		return sortedPubs;
 	}
 	
