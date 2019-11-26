@@ -61,7 +61,6 @@ public class AddDrinkController {
 			System.out.println();
 			System.out.println("BEBIDA ENVIADA PARA APROVAÇÃO COM ATRIBUTOS:");
 			newDrink.showDrinkInfo();
-			DrinkDAO.addPendingDrink(newDrink);
 			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 		}
 	}

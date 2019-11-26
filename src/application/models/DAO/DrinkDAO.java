@@ -19,7 +19,7 @@ public class DrinkDAO {
 	public static ObservableList<DrinkForSale> getDrinksInPubs() {
 		 ObservableList<DrinkForSale> drinksInPubs = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
-		String sql = "SELECT * FROM drink_for_sale";
+		String sql = "SELECT * FROM drink_for_sale WHERE pending = 0";
 		try(Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery(sql)){
 			while(rs.next()) {
 				int drink = rs.getInt("drink_id");
@@ -27,19 +27,39 @@ public class DrinkDAO {
 				double rating = rs.getDouble("rating");
 				double price = rs.getDouble("price");
 				boolean pending = rs.getBoolean("pending");
-				drinksInPubs.add(new DrinkForSale(DrinkDAO.drinkList.get(drink), PubDAO.getPubList().get(pub), rating, price, pending));
+				drinksInPubs.add(new DrinkForSale(DrinkDAO.drinkList.get(drink), PubDAO.getActivePubs().get(pub), rating, price, pending));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return drinksInPubs;
 	}
+	
+	public static ObservableList<DrinkForSale> getPendingDrinks() {
+		 ObservableList<DrinkForSale> pendingDrinks = FXCollections.observableArrayList();
+		Connection conn = JDBC.getConnection();
+		String sql = "SELECT * FROM drink_for_sale WHERE pending = 1";
+		try(Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery(sql)){
+			while(rs.next()) {
+				int drink = rs.getInt("drink_id");
+				int pub = rs.getInt("pub_id");
+				double rating = rs.getDouble("rating");
+				double price = rs.getDouble("price");
+				boolean pending = rs.getBoolean("pending");
+				pendingDrinks.add(new DrinkForSale(DrinkDAO.drinkList.get(drink), PubDAO.getActivePubs().get(pub), rating, price, pending));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return pendingDrinks;
+	}
+
 
 	
 	public static void addDrinkFromPub(DrinkForSale drink) {
 		Connection conn = JDBC.getConnection();
 		int drink_id = drinkList.indexOf(drink.getDrinkType());
-		int pub = PubDAO.getPubList().indexOf(drink.getPub());
+		int pub = PubDAO.getActivePubs().indexOf(drink.getPub());
 		double rating = drink.getRating();
 		double price = drink.getPrice();
 		boolean pending = drink.isPending();
@@ -50,11 +70,6 @@ public class DrinkDAO {
 			e.printStackTrace();
 		}
 	}
-	
-	public static ObservableList<Drink> getDrinkList() {
-		return drinkList;
-	}
-
 	public static void setDrinkList(ObservableList<Drink> drinkList) {
 		DrinkDAO.drinkList = drinkList;
 	}

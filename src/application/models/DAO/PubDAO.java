@@ -20,10 +20,10 @@ public class PubDAO {
 	private final static double kmToCoord = 0.0095859326983177;
 	private final static double DISTANCIA_MINIMA = 5 * kmToCoord;
 
-	public static ObservableList<Pub> getPubList() {
+	public static ObservableList<Pub> getActivePubs() {
 		ObservableList<Pub> pubList = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
-		try (Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery("SELECT * FROM pub")) {
+		try (Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery("SELECT * FROM pub WHERE pending = 0")) {
 			while (rs.next()) {
 				String name = rs.getString("name");
 				String type = rs.getString("type");
@@ -35,6 +35,27 @@ public class PubDAO {
 				double yCoord = rs.getDouble("yCoord");
 				boolean pending = rs.getBoolean("pending");
 				pubList.add(new Pub(id, name, type, price, rating, address, new LatLong(xCoord, yCoord), pending));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return pubList;
+	}
+	
+	public static ObservableList<Pub> getPendingPubs(){
+		ObservableList<Pub> pubList = FXCollections.observableArrayList();
+		Connection conn = JDBC.getConnection();
+		try (Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 1")) {
+			while (rs.next()) {
+				String name = rs.getString("name");
+				String type = rs.getString("type");
+				int id = rs.getInt("id");
+				double price = rs.getDouble("price");
+				double rating = rs.getDouble("rating");
+				String address = rs.getString("address");
+				double xCoord = rs.getDouble("xCoord");
+				double yCoord = rs.getDouble("yCoord");
+				pubList.add(new Pub(id, name, type, price, rating, address, new LatLong(xCoord, yCoord)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -83,9 +104,10 @@ public class PubDAO {
 	}
 	
 	private static ObservableList<Pub> nearPubs = FXCollections.observableArrayList();
+	
 	public static ObservableList<Pub> getNearPubs(LatLong local) {
 		ObservableList<Pub>  nearPubs = FXCollections.observableArrayList();
-		for (Pub pub : getPubList()) {
+		for (Pub pub : getActivePubs()) {
 			double distance = pub.getCoordinates().distanceFrom(local);
 			System.out.println(pub.toString() + " Distancia: " + distance);
 			if (distance <= DISTANCIA_MINIMA && distance != 0) {
