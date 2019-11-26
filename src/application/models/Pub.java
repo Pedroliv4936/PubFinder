@@ -1,6 +1,7 @@
 package application.models;
 
-import application.models.DAO.PubDAO;
+import com.lynden.gmapsfx.javascript.object.LatLong;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
@@ -13,23 +14,34 @@ public class Pub extends Entity {
 	private double rating;
 	private double price;
 	private String type;
-	private double xCoord, yCoord;
+	private LatLong coordinates;
 	private String openTime, closeTime;
+	private boolean pending;
 	private ObservableList<Pub> nearPubs = FXCollections.observableArrayList();
 
 	public static final String DISCOTECA = "Discoteca";
 	public static final String BAR = "Bar";
 	public static final String SALAO_DE_JOGOS = "Salao de jogos";
 
-	public Pub(int id, String name, String type, double price, double rating, String address, double xCoord,
-			double yCoord) {
+	public Pub(int id, String name, String type, double price, double rating, String address, LatLong coordinates) {
 		super(id, name);
 		this.price = price;
 		this.type = type;
 		this.rating = rating;
 		this.address = address;
-		this.xCoord = xCoord;
-		this.yCoord = yCoord;
+		this.coordinates = coordinates;
+		this.pending = true;
+		drinks = FXCollections.observableArrayList();
+	}
+	
+	public Pub(int id, String name, String type, double price, double rating, String address, LatLong coordinates, boolean pending) {
+		super(id, name);
+		this.price = price;
+		this.type = type;
+		this.rating = rating;
+		this.address = address;
+		this.coordinates = coordinates;
+		this.pending = pending;
 		drinks = FXCollections.observableArrayList();
 	}	
 
@@ -42,9 +54,7 @@ public class Pub extends Entity {
 	}
 	
 	public double distance(Pub pub) {
-		return Math.sqrt(
-				Math.pow((pub.getxCoord() - this.xCoord), 2) 
-				+Math.pow(pub.getyCoord() - this.yCoord, 2));
+		return coordinates.distanceFrom(pub.getCoordinates());
 	}
 
 	public void setPrice(double price) {
@@ -89,16 +99,8 @@ public class Pub extends Entity {
 		this.images = images;
 	}
 
-	public double getxCoord() {
-		return xCoord;
-	}
-
-	public void setxCoord(double xCoord) {
-		this.xCoord = xCoord;
-	}
-
-	public double getyCoord() {
-		return yCoord;
+	public LatLong getCoordinates() {
+		return coordinates;
 	}
 
 	public String getOpenTime() {
@@ -117,9 +119,6 @@ public class Pub extends Entity {
 		this.closeTime = closeTime;
 	}
 
-	public void setyCoord(double yCoord) {
-		this.yCoord = yCoord;
-	}
 
 	public ObservableList<Pub> getNearPubs() {
 		return nearPubs;
@@ -128,6 +127,12 @@ public class Pub extends Entity {
 	public void setNearPubs(ObservableList<Pub> nearPubs) {
 		this.nearPubs = nearPubs;
 	}
-
 	
+	public boolean isPending() {
+		return pending;
+	}
+	
+	public void aprove() {
+		this.pending = false;
+	}
 }

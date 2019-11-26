@@ -1,5 +1,11 @@
 package application.models.DAO;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import application.JDBC;
 import application.models.Drink;
 import application.models.DrinkForSale;
 import application.models.Pub;
@@ -7,46 +13,42 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class DrinkDAO {
-
-	private static ObservableList<DrinkForSale> drinksInPubs = FXCollections.observableArrayList();
-	
 	private static ObservableList<Drink> drinkList = FXCollections.observableArrayList();
-
-	private static ObservableList<DrinkForSale> pendingDrinkList = FXCollections.observableArrayList();
 	
-
-	public static ObservableList<DrinkForSale> getPendingDrinkList() {
-		return pendingDrinkList;
-	}
 
 	public static ObservableList<DrinkForSale> getDrinksInPubs() {
+		 ObservableList<DrinkForSale> drinksInPubs = FXCollections.observableArrayList();
+		Connection conn = JDBC.getConnection();
+		String sql = "SELECT * FROM drink_for_sale";
+		try(Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery(sql)){
+			while(rs.next()) {
+				int drink = rs.getInt("drink_id");
+				int pub = rs.getInt("pub_id");
+				double rating = rs.getDouble("rating");
+				double price = rs.getDouble("price");
+				boolean pending = rs.getBoolean("pending");
+				drinksInPubs.add(new DrinkForSale(DrinkDAO.drinkList.get(drink), PubDAO.getPubList().get(pub), rating, price, pending));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 		return drinksInPubs;
 	}
-	
-	public static Drink getDrinkTypeByName(String drinkName) {
-		for(Drink drink : drinkList) {
-			if(drinkName.equals(drink.toString())) {
-				return drink;
-			}
-		}
-		return null;
-	}
-	
-	public static Drink getDrinkTypeById(int id) {
-		for(Drink drink : drinkList) {
-			if(id == drink.getId()) {
-				return drink;
-			}
-		}
-		return null;
-	}
+
 	
 	public static void addDrinkFromPub(DrinkForSale drink) {
-		drinksInPubs.add(drink);
-	}
-	
-	public static void removeDrinkFromPub(DrinkForSale drink) {
-		drinksInPubs.remove(drink);
+		Connection conn = JDBC.getConnection();
+		int drink_id = drinkList.indexOf(drink.getDrinkType());
+		int pub = PubDAO.getPubList().indexOf(drink.getPub());
+		double rating = drink.getRating();
+		double price = drink.getPrice();
+		boolean pending = drink.isPending();
+		String sql = "INSERT INTO "+"drinks_for_sale "+"(pub_id, drink_id, price, rating, pending) "+
+					 "VALUES "+"("+pub + ", " + drink_id + ", " + price + ", " + rating + ", " + pending + ");";
+		try(Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery(sql)){
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static ObservableList<Drink> getDrinkList() {
@@ -56,63 +58,12 @@ public class DrinkDAO {
 	public static void setDrinkList(ObservableList<Drink> drinkList) {
 		DrinkDAO.drinkList = drinkList;
 	}
-
-	public static void addPendingDrink(DrinkForSale drink) {
-		pendingDrinkList.add(drink);
-	}
 	
 	public static void aproveDrinks(DrinkForSale drink) {
-		drinksInPubs.add(drink);
-		pendingDrinkList.remove(drink);
-		drink.getPub().getDrinks().add(drink);
-			System.out.println();
-			System.out.println("TAMANHO DA LISTA DO " + drink.getPub().toString());
-			System.out.println(drink.getPub().getDrinks().size());
-	}
-	
-	public static void refuseDrinks(ObservableList<DrinkForSale> drinks) {
-		pendingDrinkList.removeAll(drinks);
-	}
-	
-	static {
-		drinkList.addAll(Drink.CANECA_CERVEJA, Drink.COPO_CERVEJA, Drink.VODKA, Drink.SIDRA, Drink.GIN);
-		
-		ObservableList<DrinkForSale> drinks = FXCollections.observableArrayList();
-
-		drinks.addAll(new DrinkForSale(Drink.VODKA, PubDAO.getPubList().get(0), Math.random() * 5, Math.random() * 10),
-				new DrinkForSale(Drink.COPO_CERVEJA, PubDAO.getPubList().get(0), Math.random() * 5, Math.random() * 10),
-				new DrinkForSale(Drink.CANECA_CERVEJA, PubDAO.getPubList().get(0), Math.random() * 5, Math.random() * 10),
-				new DrinkForSale(Drink.GIN, PubDAO.getPubList().get(0), Math.random() * 5, Math.random() * 10),
-				new DrinkForSale(Drink.SIDRA, PubDAO.getPubList().get(0), Math.random() * 5, Math.random() * 10));
-		PubDAO.getPubByName("Bar do Pedro").setDrinks(drinks);
-		
-		drinks =FXCollections.observableArrayList();
-		drinks.addAll(new DrinkForSale(Drink.VODKA, PubDAO.getPubList().get(1), Math.random() * 5, Math.random() * 10),
-				new DrinkForSale(Drink.COPO_CERVEJA, PubDAO.getPubList().get(1), Math.random() * 5, Math.random() * 10),
-				new DrinkForSale(Drink.CANECA_CERVEJA, PubDAO.getPubList().get(1), Math.random() * 5, Math.random() * 10),
-				new DrinkForSale(Drink.GIN, PubDAO.getPubList().get(1), Math.random() * 5, Math.random() * 10),
-				new DrinkForSale(Drink.SIDRA, PubDAO.getPubList().get(1), Math.random() * 5, Math.random() * 10));
-		PubDAO.getPubByName("Bar do Franco").setDrinks(drinks);
-		
-		drinks =FXCollections.observableArrayList();
-		drinks.addAll(new DrinkForSale(Drink.VODKA, PubDAO.getPubList().get(2), Math.random() * 5, Math.random() * 10),
-				new DrinkForSale(Drink.COPO_CERVEJA, PubDAO.getPubList().get(2), Math.random() * 5, Math.random() * 10),
-				new DrinkForSale(Drink.CANECA_CERVEJA, PubDAO.getPubList().get(2), Math.random() * 5, Math.random() * 10),
-				new DrinkForSale(Drink.GIN, PubDAO.getPubList().get(2), Math.random() * 5, Math.random() * 10),
-				new DrinkForSale(Drink.SIDRA, PubDAO.getPubList().get(2), Math.random() * 5, Math.random() * 10));
-		PubDAO.getPubList().get(2).setDrinks(drinks);
-		
-		drinks =FXCollections.observableArrayList();
-		drinks.addAll(new DrinkForSale(Drink.VODKA, PubDAO.getPubList().get(3), Math.random() * 5, Math.random() * 10),
-				new DrinkForSale(Drink.COPO_CERVEJA, PubDAO.getPubList().get(3), Math.random() * 5, Math.random() * 10),
-				new DrinkForSale(Drink.CANECA_CERVEJA, PubDAO.getPubList().get(3), Math.random() * 5, Math.random() * 10),
-				new DrinkForSale(Drink.GIN, PubDAO.getPubList().get(3), Math.random() * 5, Math.random() * 10),
-				new DrinkForSale(Drink.SIDRA, PubDAO.getPubList().get(3), Math.random() * 5, Math.random() * 10));
-		PubDAO.getPubList().get(3).setDrinks(drinks);
-		
-		for(Pub pub : PubDAO.getPubList()) {
-			drinksInPubs.addAll(pub.getDrinks());
-		}
-		
+		drink.aprove();
+		Connection conn = JDBC.getConnection();
+		String sql = "UPDATE drink_for_sale "+
+				 	 "SET pending = 0 "+
+				 	 "WHERE pub_name = " + "\'" + drink.toString() + "\'" +";";
 	}
 }

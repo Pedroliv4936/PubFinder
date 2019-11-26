@@ -32,7 +32,10 @@ public class CheckNewRequestsController {
 				setText(pub == null ? null : pub.getPubInfo());
 			}
 		});
-		pubLV.setItems(PubDAO.getPendingPubs());
+		for (Pub pub : PubDAO.getPubList()) {
+			if (!pub.isPending())
+				pubLV.getItems().add(pub);
+		}
 		drinkLV.setItems(DrinkDAO.getPendingDrinkList());
 		pubLV.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		drinkLV.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -48,50 +51,49 @@ public class CheckNewRequestsController {
 
 	@FXML
 	private void accept() {
-		
+
 		// Checa se esta na tab dos drinks
 		if (drinkTab.isSelected()) {
-			
-			//Cria variavel com o drink com mesmo tipo e pub
+
+			// Cria variavel com o drink com mesmo tipo e pub
 			DrinkForSale existingDrink = existingDrink(drinkLV.getSelectionModel().getSelectedItem());
-			
-			//Se nao for nulo quer dizer que existe um drink igual
+
+			// Se nao for nulo quer dizer que existe um drink igual
 			if (existingDrink != null) {
-				
-				//Cria janela de popUp informando do conflito
+
+				// Cria janela de popUp informando do conflito
 				String popUpMessage = "Bebida ja existente. Deseja sobrepor os dados existentes?";
 				PopUpWindowController controller = new PopUpWindowController(popUpMessage);
 				ScreenManager.createPopupWindow(controller);
-				
-				//Se for permitido o override, o drink antigo e` deletado e o novo aprovado
+
+				// Se for permitido o override, o drink antigo e` deletado e o novo aprovado
 				if (controller.isAproved()) {
-					
+
 					overrideDrink(existingDrink);
 					ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 				}
 
-				//Se nao existir, apenas aprovar o drink
+				// Se nao existir, apenas aprovar o drink
 			} else if (existingDrink == null) {
 				aproveDrink();
 			}
-		}else if (pubTab.isSelected()) {
-			
-			
+		} else if (pubTab.isSelected()) {
+
 			Pub existingPub = existingPub(pubLV.getSelectionModel().getSelectedItem());
-			
-			if(existingPub != null) {
-				
-				//Cria janela de popUp informando do conflito
+
+			if (existingPub != null) {
+
+				// Cria janela de popUp informando do conflito
 				String popUpMessage = "Bar ja existente. Deseja sobrepor os dados existentes?";
 				PopUpWindowController controller = new PopUpWindowController(popUpMessage);
 				ScreenManager.createPopupWindow(controller);
-				
+
 				if (controller.isAproved()) {
-					
+
 					overridePub(existingPub);
 					ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 				}
-			}else if(existingPub == null) {
+			} else if (existingPub == null) {
 				aprovePub();
 			}
 		}
@@ -108,30 +110,27 @@ public class CheckNewRequestsController {
 		}
 		return null;
 	}
-	
+
 	private void overrideDrink(DrinkForSale existingDrink) {
 		System.out.println("Dando override...");
 		DrinkDAO.removeDrinkFromPub(existingDrink);
 		aproveDrink();
-		
+
 	}
 
 	private Pub existingPub(Pub pub) {
 		for (Pub existingPub : PubDAO.getPubList()) {
-			if (pub.getyCoord() == existingPub.getyCoord()) {
-				if (pub.getxCoord() == existingPub.getxCoord()) {
-					return pub;
-				}
+			if (pub.getCoordinates() == existingPub.getCoordinates()) {
+				return pub;
 			}
 		}
 		return null;
 	}
-	
+
 	private void overridePub(Pub existingPub) {
 		System.out.println("Dando override...");
-		PubDAO.removePub(existingPub);
 		aprovePub();
-		
+
 	}
 
 	@FXML
@@ -148,7 +147,7 @@ public class CheckNewRequestsController {
 	}
 
 	private void refuseDrink() {
-		
+
 		DrinkDAO.refuseDrinks(drinkLV.getSelectionModel().getSelectedItems());
 		System.out.println("DRINK(s) REPROVADO(s):");
 		for (DrinkForSale drink : drinkLV.getSelectionModel().getSelectedItems()) {
@@ -174,10 +173,6 @@ public class CheckNewRequestsController {
 	}
 
 	private void aprovePub() {
-		PubDAO.aprovePubs(pubLV.getSelectionModel().getSelectedItems());
-		System.out.println("PUB(s) APROVADO(s):");
-		for (Pub pub : pubLV.getSelectionModel().getSelectedItems()) {
-			pub.showPubInfo();
-		}
+		PubDAO.aprovePub(pubLV.getSelectionModel().getSelectedItem());
 	}
 }

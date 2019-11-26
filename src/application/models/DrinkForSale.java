@@ -6,12 +6,22 @@ public class DrinkForSale {
 	private Pub pub;
 	private double rating;
 	private double price;
+	private boolean pending;
 
 	public DrinkForSale(Drink drink, Pub pub, double rating, double price) {
 		this.drink = drink;
 		this.pub = pub;
 		this.rating = rating;
 		this.price = price;
+		this.aprove();
+	}
+	
+	public DrinkForSale(Drink drink, Pub pub, double rating, double price, boolean pending) {
+		this.drink = drink;
+		this.pub = pub;
+		this.rating = rating;
+		this.price = price;
+		this.pending = pending;
 	}
 	
 	public void showDrinkInfo() {
@@ -59,5 +69,13 @@ public class DrinkForSale {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public boolean isPending() {
+		return pending;
+	}
+
+	public void aprove() {
+		this.pending = false;
 	}
 }

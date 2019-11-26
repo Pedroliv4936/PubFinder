@@ -161,8 +161,5 @@ public class MainScreenContentController implements MapComponentInitializedListe
 
 	@FXML
 	public void openPub() {
-		Pub searchenPub = PubDAO.getPubByName(searchField.getText());
-		ScreenManager.setScreen(new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml",
-				new DefaultHeaderController(), new BarScreenController(searchenPub)));
 	}
 }
