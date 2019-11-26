@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Collections;
+import java.util.Comparator;
 
 import com.lynden.gmapsfx.javascript.object.LatLong;
 
@@ -23,7 +25,7 @@ public class PubDAO {
 	public static ObservableList<Pub> getActivePubs() {
 		ObservableList<Pub> pubList = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
-		try (Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery("SELECT * FROM pub WHERE pending = 0")) {
+		try (Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 0;")) {
 			while (rs.next()) {
 				String name = rs.getString("name");
 				String type = rs.getString("type");
@@ -39,13 +41,13 @@ public class PubDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return pubList;
+		return sortList(new LatLong(38.707423, -9.152465));
 	}
 	
 	public static ObservableList<Pub> getPendingPubs(){
 		ObservableList<Pub> pubList = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
-		try (Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 1")) {
+		try (Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 1;")) {
 			while (rs.next()) {
 				String name = rs.getString("name");
 				String type = rs.getString("type");
@@ -66,7 +68,7 @@ public class PubDAO {
 	public static void aprovePub(Pub pub) {
 		pub.aprove();
 		Connection conn = JDBC.getConnection();
-		String sql = "UPDATE pub "+
+		String sql = "UPDATE pubs "+
 					 "SET pending = 0 "+
 					 "WHERE pub_name = " + "\'" + pub.toString() + "\'" +";";
 		try(Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery(sql)){
@@ -78,7 +80,7 @@ public class PubDAO {
 	
 	public static void addPub(Pub pub) {
 		Connection conn = JDBC.getConnection();
-		String sql = "INSERT INTO pub "+"(pub_name, entry_price, pub_type_id, ) "+
+		String sql = "INSERT INTO pubs "+"(pub_name, entry_price, pub_type_id, ) "+
 					 "WHERE pub_name = " + "\'" + pub.toString() + "\'" +";";
 		try(Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery(sql)){
 			System.out.println(pub.toString() + " Aprovado");
@@ -87,46 +89,49 @@ public class PubDAO {
 		}
 	}
 
-	public static ObservableList<Pub> sortList(ObservableList<Pub> list, Pub selectedPub) {
-		ObservableList<Pub> orderedList = FXCollections.observableArrayList();
-		double nearestDistance = 9999;
-		for (Pub pub : list) {
-			double distance = selectedPub.distance(pub);
-			if (distance < nearestDistance) {
-				orderedList.add(0, pub);
-			} else {
-				orderedList.add(pub);
-			}
-		}
-		System.out.println(orderedList);
-		return orderedList;
-
+	public static ObservableList<Pub> sortList(LatLong loc) {
+		ObservableList<Pub> sortedPubs = getActivePubs();
+		Collections.sort(sortedPubs, new Comparator<Pub>() {
+	        @Override
+	        public int compare(Pub pub2, Pub pub1)
+	        {
+	        	pub2.distance(loc).compareTo(pub1.distance(loc));
+	        	if(pub2.distance(loc) < pub2.distance(loc))
+	        		return 1;
+	        	else
+	        	if(pub2.distance(loc) > pub2.distance(loc))
+	        		return -1;
+	        	else
+	        		return 0;
+	        }
+	    });
+		return sortedPubs;
 	}
 	
-	private static ObservableList<Pub> nearPubs = FXCollections.observableArrayList();
-	
-	public static ObservableList<Pub> getNearPubs(LatLong local) {
-		ObservableList<Pub>  nearPubs = FXCollections.observableArrayList();
-		for (Pub pub : getActivePubs()) {
-			double distance = pub.getCoordinates().distanceFrom(local);
-			System.out.println(pub.toString() + " Distancia: " + distance);
-			if (distance <= DISTANCIA_MINIMA && distance != 0) {
-				System.out.println(pub.toString() + " Adicionado aos bares proximos");
-				nearPubs.add(pub);
-			}
-		}
-		PubDAO.nearPubs = nearPubs;
-		return nearPubs;
-	}
-	
-	public static ObservableList<Pub> next(LatLong local) {
-		ObservableList<Pub>  nearPubs = FXCollections.observableArrayList();
-		Pub first = PubDAO.nearPubs.get(0);
-		for(int i = 0; i< PubDAO.nearPubs.size()-1; i++) {
-			nearPubs.set(i, PubDAO.nearPubs.get(i+1));
-		}
-		nearPubs.add(first);
-		PubDAO.nearPubs = nearPubs;
-		return nearPubs;
-	}
+//	private static ObservableList<Pub> nearPubs = FXCollections.observableArrayList();
+//	
+//	public static ObservableList<Pub> getNearPubs(LatLong local) {
+//		ObservableList<Pub>  nearPubs = FXCollections.observableArrayList();
+//		for (Pub pub : getActivePubs()) {
+//			double distance = pub.getCoordinates().distanceFrom(local);
+//			System.out.println(pub.toString() + " Distancia: " + distance);
+//			if (distance <= DISTANCIA_MINIMA && distance != 0) {
+//				System.out.println(pub.toString() + " Adicionado aos bares proximos");
+//				nearPubs.add(pub);
+//			}
+//		}
+//		PubDAO.nearPubs = nearPubs;
+//		return nearPubs;
+//	}
+//	
+//	public static ObservableList<Pub> next(LatLong local) {
+//		ObservableList<Pub>  nearPubs = FXCollections.observableArrayList();
+//		Pub first = PubDAO.nearPubs.get(0);
+//		for(int i = 0; i< PubDAO.nearPubs.size()-1; i++) {
+//			nearPubs.set(i, PubDAO.nearPubs.get(i+1));
+//		}
+//		nearPubs.add(first);
+//		PubDAO.nearPubs = nearPubs;
+//		return nearPubs;
+//	}
 }

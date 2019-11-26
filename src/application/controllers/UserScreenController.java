@@ -32,7 +32,7 @@ public class UserScreenController {
 	private void setFavoriteDrinks() {
 		int row = 0, column=0;
 		System.out.println("Usuario Bebidas: " + LoginDAO.getLogedinUser().toString());
-		for(Drink drink : DrinkDAO.getDrinkList()) {
+		for(Drink drink : DrinkDAO.getDrinkTypes()) {
 			CheckBox newCheckBox = new CheckBox(drink.toString());
 			newCheckBox.setStyle("-fx-text-fill: WHITE");
 			

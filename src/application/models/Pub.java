@@ -57,6 +57,10 @@ public class Pub extends Entity {
 		return coordinates.distanceFrom(pub.getCoordinates());
 	}
 
+	public double distance(LatLong loc) {
+		return coordinates.distanceFrom(loc);
+	}
+	
 	public void setPrice(double price) {
 		this.price = price;
 	}

@@ -47,8 +47,6 @@ public class BarScreenController implements MapComponentInitializedListener {
 
 	private ObservableList<DrinkForSale> availableDrinks = FXCollections.observableArrayList();
 
-	private int index;
-
 	public BarScreenController(Pub pub) {
 		selectedPub = pub;
 	}
@@ -78,19 +76,16 @@ public class BarScreenController implements MapComponentInitializedListener {
 		FXMLLoader pubInfo2Loader = new FXMLLoader(Main.class.getResource("views/PubInfo.fxml"));
 		FXMLLoader pubInfo3Loader = new FXMLLoader(Main.class.getResource("views/PubInfo.fxml"));
 		
-		Pub anterior = PubDAO.nextNearPub(selectedPub);
-		
+		int index = PubDAO.getActivePubs().indexOf(selectedPub);
 		PubInfoController pubInfoFrontController = new PubInfoController(selectedPub);
-		PubInfoController pubInfoLeftController = new PubInfoController(anterior);
+		PubInfoController pubInfoLeftController;
+		if(PubDAO.getActivePubs().indexOf(selectedPub)<=0 && PubDAO.getActivePubs().size() > 1) {
+			pubInfoLeftController = new PubInfoController(PubDAO.getActivePubs().get(PubDAO.getActivePubs().size() - 1));
+		}
+		pubInfoLeftController = new PubInfoController(PubDAO.getActivePubs().get(index - 1));
 		PubInfoController pubInfoRightController;
-		if(PubDAO.getPubList().size() > 0) {
-			ObservableList<Pub> nearestPubs = PubDAO.sortList(PubDAO.getNearPubs(), selectedPub);
-			pubInfoRightController = new PubInfoController(nearestPubs.get(0));
-			pubInfo3Loader.setController(pubInfoRightController);
-			ScreenContainer screen = new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml", new DefaultHeaderController(), new BarScreenController(pubInfoRightController.getPub()));
-			pubInfoRight.setOnMouseClicked(e -> {
-				ScreenManager.setScreen(screen);
-			});
+		if(PubDAO.getActivePubs().size() > 1) {
+			pubInfoRightController = new PubInfoController(PubDAO.getActivePubs().get(index + 1));
 		}
 
 		pubInfo1Loader.setController(pubInfoFrontController);

@@ -11,7 +11,7 @@ public class Drink extends Entity{
 	public static final Drink SIDRA = new Drink(3, "Sidra", null);
 	public static final Drink GIN = new Drink(4, "Gin", null);
 	
-	private Drink(int id, String name, Image icon) {
+	public Drink(int id, String name, Image icon) {
 		super(id, name);
 		this.icon = icon;
 	}

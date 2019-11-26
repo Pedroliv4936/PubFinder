@@ -37,7 +37,7 @@ public class AddDrinkController {
 
 	private void showBarList() {
 		ObservableList<Pub> pubNames = FXCollections.observableArrayList();
-		for (Pub pub : PubDAO.getPubList()) {
+		for (Pub pub : PubDAO.getActivePubs()) {
 			pubNames.add(pub);
 		}
 		pubOptions.setItems(pubNames);
@@ -45,7 +45,7 @@ public class AddDrinkController {
 
 	private void showDrinkTypes() {
 		ObservableList<Drink> drinkNames = FXCollections.observableArrayList();
-		for (Drink drink : DrinkDAO.getDrinkList()) {
+		for (Drink drink : DrinkDAO.getDrinkTypes()) {
 			drinkNames.add(drink);
 			System.out.println(drink.toString() + " foi adicionado a lista de beebidas disponiveis");
 		}

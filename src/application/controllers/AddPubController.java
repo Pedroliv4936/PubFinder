@@ -83,7 +83,7 @@ public class AddPubController {
 			Double pubYCoordinate = Double.parseDouble(pubYCoord.getText());
 			String openTime = (openHour.getValue() + ":" + openMin.getValue());
 			String closeTime = (closeHour.getValue() + ":" + closeMin.getValue());
-			int id = PubDAO.getPubList().size();
+			int id = PubDAO.getActivePubs().size();
 			PubDAO.addPub(new Pub(id, name, type, price, 4, address, new LatLong(pubXCoordinate, pubYCoordinate)));
 			System.out.println(name + " Adicionado a lista de espera");
 
