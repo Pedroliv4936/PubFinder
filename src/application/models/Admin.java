@@ -6,8 +6,8 @@ import javafx.collections.ObservableList;
 
 public class Admin extends User{
 
-	public Admin(int id, String name, String username, String password, String email, Date birthday, ObservableList<Drink> favoriteDrinks) {
-		super(id, name, username, password, email, birthday, favoriteDrinks, true);
+	public Admin(int id,  String username, String password, String name, Date birthday, String email, int cellphone) {
+		super(id, username, password, name, birthday, email, cellphone, true);
 	}
 
 }
