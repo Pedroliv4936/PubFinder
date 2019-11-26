@@ -1,6 +1,6 @@
 package application.controllers;
 
-import application.models.DrinkForPub;
+import application.models.DrinkForSale;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -18,7 +18,7 @@ public class DrinkInfoController {
 	
 	private Image image;
 
-	public DrinkInfoController(DrinkForPub drink) {
+	public DrinkInfoController(DrinkForSale drink) {
 		this.name = drink.getDrinkName();
 		this.image = drink.getDrinkType().getIcon();
 		this.price = String.format("%.2f" ,drink.getPrice());
@@ -33,7 +33,7 @@ public class DrinkInfoController {
 		drinkRating.setText(rating);
 	}
 	
-	public void setShownDrink(DrinkForPub drink) {
+	public void setShownDrink(DrinkForSale drink) {
 		this.name = drink.getDrinkName();
 		this.image = drink.getDrinkType().getIcon();
 		this.price = String.format("%.2f" ,drink.getPrice());

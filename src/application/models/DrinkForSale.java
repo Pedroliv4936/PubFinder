@@ -1,13 +1,13 @@
 package application.models;
 
-public class DrinkForPub {
+public class DrinkForSale {
 
 	private Drink drink;
 	private Pub pub;
 	private double rating;
 	private double price;
 
-	public DrinkForPub(Drink drink, Pub pub, double rating, double price) {
+	public DrinkForSale(Drink drink, Pub pub, double rating, double price) {
 		this.drink = drink;
 		this.pub = pub;
 		this.rating = rating;

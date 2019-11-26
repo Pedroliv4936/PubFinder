@@ -4,7 +4,7 @@ import com.jfoenix.controls.JFXButton;
 
 import application.ScreenManager;
 import application.models.Drink;
-import application.models.DrinkForPub;
+import application.models.DrinkForSale;
 import application.models.DAO.DrinkDAO;
 import application.models.DAO.LoginDAO;
 import application.views.ScreenContainer;
@@ -24,13 +24,13 @@ public class MenuBebidasController {
 	@FXML
 	JFXButton bebidasButton, logoButton, userButton;
 	@FXML
-	TableView<DrinkForPub> publistTV;
+	TableView<DrinkForSale> publistTV;
 	@FXML
-	TableColumn<DrinkForPub, String> drinkColumn;
+	TableColumn<DrinkForSale, String> drinkColumn;
 	@FXML
-	TableColumn<DrinkForPub, String> barColumn;
+	TableColumn<DrinkForSale, String> barColumn;
 	@FXML
-	TableColumn<DrinkForPub, Double> priceColumn;
+	TableColumn<DrinkForSale, Double> priceColumn;
 	@FXML
 	GridPane bebidasFavoritas;
 	@FXML
@@ -38,13 +38,13 @@ public class MenuBebidasController {
 	
 	
 	
-	private FilteredList<DrinkForPub> filteredDrinks = new FilteredList<>(DrinkDAO.getDrinksInPubs());
+	private FilteredList<DrinkForSale> filteredDrinks = new FilteredList<>(DrinkDAO.getDrinksInPubs());
 	
 	@FXML
 	private void initialize() {		
 		drinkColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDrinkName()));
 		barColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getPub().toString()));
-		priceColumn.setCellValueFactory(new PropertyValueFactory<DrinkForPub, Double>("price"));
+		priceColumn.setCellValueFactory(new PropertyValueFactory<DrinkForSale, Double>("price"));
 		publistTV.setItems(DrinkDAO.getDrinksInPubs());
 		setFavoriteDrinks();
 		publistTV.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
@@ -70,7 +70,7 @@ public class MenuBebidasController {
 		}
 	}
 	
-	private void openBarInfo(DrinkForPub drink) {
+	private void openBarInfo(DrinkForSale drink) {
 		ScreenContainer screen = new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml", new DefaultHeaderController(), new BarScreenController(drink.getPub()));
 		ScreenManager.setScreen(screen);
 	}

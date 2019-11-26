@@ -1,6 +1,6 @@
 package application.controllers;
 
-import application.models.DrinkForPub;
+import application.models.DrinkForSale;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -13,11 +13,11 @@ public class DrinkRequestInfoController {
 	
 	private TextArea obsField;
 	
-	private DrinkForPub drink;
+	private DrinkForSale drink;
 	
 	private String observation;
 	
-	public DrinkRequestInfoController(DrinkForPub drink, String observation) {
+	public DrinkRequestInfoController(DrinkForSale drink, String observation) {
 		this.drink = drink;
 		this.observation = observation;
 	}

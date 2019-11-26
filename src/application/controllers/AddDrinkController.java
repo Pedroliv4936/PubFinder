@@ -6,7 +6,7 @@ import com.jfoenix.controls.JFXTextField;
 
 import application.ScreenManager;
 import application.models.Drink;
-import application.models.DrinkForPub;
+import application.models.DrinkForSale;
 import application.models.Pub;
 import application.models.DAO.DrinkDAO;
 import application.models.DAO.PubDAO;
@@ -55,7 +55,7 @@ public class AddDrinkController {
 	@FXML
 	private void sendInfo() {
 		if (allFieldsFilled()) {
-			DrinkForPub newDrink = new DrinkForPub(drinkType.getValue(), pubOptions.getValue(), 4,
+			DrinkForSale newDrink = new DrinkForSale(drinkType.getValue(), pubOptions.getValue(), 4,
 					Double.parseDouble(priceField.getText()));
 			System.out.println();
 			System.out.println();
