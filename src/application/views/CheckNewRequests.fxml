@@ -28,7 +28,7 @@
             </Label>
          </children>
       </StackPane>
-      <JFXTabPane prefHeight="312.0" prefWidth="295.0">
+      <JFXTabPane maxWidth="-Infinity" prefHeight="312.0" prefWidth="305.0" tabMaxHeight="312.0" tabMaxWidth="305.0" tabMinHeight="1.0" tabMinWidth="1.0">
          <tabs>
             <Tab fx:id="drinkTab" text="Bebidas Pendentes">
                <content>

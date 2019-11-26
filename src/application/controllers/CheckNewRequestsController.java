@@ -1,7 +1,7 @@
 package application.controllers;
 
 import application.ScreenManager;
-import application.models.DrinkForPub;
+import application.models.DrinkForSale;
 import application.models.Pub;
 import application.models.DAO.DrinkDAO;
 import application.models.DAO.PubDAO;
@@ -18,7 +18,7 @@ public class CheckNewRequestsController {
 	private ListView<Pub> pubLV;
 
 	@FXML
-	private ListView<DrinkForPub> drinkLV;
+	private ListView<DrinkForSale> drinkLV;
 
 	@FXML
 	private Tab drinkTab, pubTab;
@@ -53,7 +53,7 @@ public class CheckNewRequestsController {
 		if (drinkTab.isSelected()) {
 			
 			//Cria variavel com o drink com mesmo tipo e pub
-			DrinkForPub existingDrink = existingDrink(drinkLV.getSelectionModel().getSelectedItem());
+			DrinkForSale existingDrink = existingDrink(drinkLV.getSelectionModel().getSelectedItem());
 			
 			//Se nao for nulo quer dizer que existe um drink igual
 			if (existingDrink != null) {
@@ -97,8 +97,8 @@ public class CheckNewRequestsController {
 		}
 	}
 
-	private DrinkForPub existingDrink(DrinkForPub drink) {
-		for (DrinkForPub existingDrink : DrinkDAO.getDrinksInPubs()) {
+	private DrinkForSale existingDrink(DrinkForSale drink) {
+		for (DrinkForSale existingDrink : DrinkDAO.getDrinksInPubs()) {
 			if (drink.getDrinkName().equals(existingDrink.getDrinkName())) {
 				if (drink.getPub() == existingDrink.getPub()) {
 					System.out.println("Bebida ja existente");
@@ -109,7 +109,7 @@ public class CheckNewRequestsController {
 		return null;
 	}
 	
-	private void overrideDrink(DrinkForPub existingDrink) {
+	private void overrideDrink(DrinkForSale existingDrink) {
 		System.out.println("Dando override...");
 		DrinkDAO.removeDrinkFromPub(existingDrink);
 		aproveDrink();
@@ -148,9 +148,10 @@ public class CheckNewRequestsController {
 	}
 
 	private void refuseDrink() {
+		
 		DrinkDAO.refuseDrinks(drinkLV.getSelectionModel().getSelectedItems());
 		System.out.println("DRINK(s) REPROVADO(s):");
-		for (DrinkForPub drink : drinkLV.getSelectionModel().getSelectedItems()) {
+		for (DrinkForSale drink : drinkLV.getSelectionModel().getSelectedItems()) {
 			drink.showDrinkInfo();
 		}
 	}
@@ -164,9 +165,10 @@ public class CheckNewRequestsController {
 	}
 
 	private void aproveDrink() {
-		DrinkDAO.aproveDrinks(drinkLV.getSelectionModel().getSelectedItems());
+		System.out.println(drinkLV.getSelectionModel().getSelectedItem().toString());
+		DrinkDAO.aproveDrinks(drinkLV.getSelectionModel().getSelectedItem());
 		System.out.println("DRINK(s) APROVADO(s):");
-		for (DrinkForPub drink : drinkLV.getSelectionModel().getSelectedItems()) {
+		for (DrinkForSale drink : drinkLV.getSelectionModel().getSelectedItems()) {
 			drink.showDrinkInfo();
 		}
 	}

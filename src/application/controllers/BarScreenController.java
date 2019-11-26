@@ -13,9 +13,8 @@ import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 
 import application.Main;
 import application.ScreenManager;
-import application.models.DrinkForPub;
+import application.models.DrinkForSale;
 import application.models.Pub;
-import application.models.DAO.DrinkDAO;
 import application.models.DAO.PubDAO;
 import application.views.ScreenContainer;
 import javafx.collections.FXCollections;
@@ -46,9 +45,7 @@ public class BarScreenController implements MapComponentInitializedListener {
 
 	private Pub selectedPub;
 
-	private final float DISTANCIA_MINIMA = 15;
-
-	private ObservableList<DrinkForPub> availableDrinks = FXCollections.observableArrayList();
+	private ObservableList<DrinkForSale> availableDrinks = FXCollections.observableArrayList();
 
 	private int index;
 
@@ -73,20 +70,6 @@ public class BarScreenController implements MapComponentInitializedListener {
 	}
 
 	private void displaySelectedPubInfo() {
-		ObservableList<Pub> nearPubs = FXCollections.observableArrayList();
-		
-		for (Pub pub : PubDAO.getPubList()) {
-			double distance = Math.sqrt(Math.pow(selectedPub.getxCoord() - pub.getxCoord(), 2)
-					+ Math.pow(selectedPub.getyCoord() - pub.getyCoord(), 2));
-			System.out.println(pub.toString() +" Distancia: " + distance);
-			if (distance <= DISTANCIA_MINIMA && !selectedPub.toString().equals(pub.toString())) {
-				System.out.println(pub.toString() +" Adicionado aos bares proximos");
-				nearPubs.add(pub);
-			}
-		}
-		
-		System.out.println(nearPubs.size() + " Bares Proximos");
-
 		pubInfoFront.getChildren().clear();
 		pubInfoLeft.getChildren().clear();
 		pubInfoRight.getChildren().clear();
@@ -94,21 +77,25 @@ public class BarScreenController implements MapComponentInitializedListener {
 		FXMLLoader pubInfo1Loader = new FXMLLoader(Main.class.getResource("views/PubInfo.fxml"));
 		FXMLLoader pubInfo2Loader = new FXMLLoader(Main.class.getResource("views/PubInfo.fxml"));
 		FXMLLoader pubInfo3Loader = new FXMLLoader(Main.class.getResource("views/PubInfo.fxml"));
-
-		PubInfoController pubInfoFrontController = new PubInfoController(selectedPub);
-		PubInfoController pubInfoLeftController = new PubInfoController(selectedPub);
-		PubInfoController pubInfoRightController = new PubInfoController(selectedPub);
 		
-		if(nearPubs.size() > 0) {
-			pubInfoRightController = new PubInfoController(nearPubs.get(0));
-			if (nearPubs.size() > 1) {
-				pubInfoLeftController = new PubInfoController(nearPubs.get(1));
-			}
+		Pub anterior = PubDAO.nextNearPub(selectedPub);
+		
+		PubInfoController pubInfoFrontController = new PubInfoController(selectedPub);
+		PubInfoController pubInfoLeftController = new PubInfoController(anterior);
+		PubInfoController pubInfoRightController;
+		if(PubDAO.getPubList().size() > 0) {
+			ObservableList<Pub> nearestPubs = PubDAO.sortList(PubDAO.getNearPubs(), selectedPub);
+			pubInfoRightController = new PubInfoController(nearestPubs.get(0));
+			pubInfo3Loader.setController(pubInfoRightController);
+			ScreenContainer screen = new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml", new DefaultHeaderController(), new BarScreenController(pubInfoRightController.getPub()));
+			pubInfoRight.setOnMouseClicked(e -> {
+				ScreenManager.setScreen(screen);
+			});
 		}
 
 		pubInfo1Loader.setController(pubInfoFrontController);
 		pubInfo2Loader.setController(pubInfoLeftController);
-		pubInfo3Loader.setController(pubInfoRightController);
+
 		
 		System.out.println("FXMLS carregados" + " enviando " + selectedPub.toString());
 		try {
@@ -118,11 +105,7 @@ public class BarScreenController implements MapComponentInitializedListener {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		ScreenContainer screen = new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml", new DefaultHeaderController(), new BarScreenController(pubInfoRightController.getPub()));
-		pubInfoRight.setOnMouseClicked(e -> {
-			
-			ScreenManager.setScreen(screen);
-		});
+
 		ScreenContainer screen2 = new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml", new DefaultHeaderController(), new BarScreenController(pubInfoLeftController.getPub()));
 		pubInfoLeft.setOnMouseClicked(e -> {
 			

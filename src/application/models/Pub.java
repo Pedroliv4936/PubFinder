@@ -1,5 +1,6 @@
 package application.models;
 
+import application.models.DAO.PubDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
@@ -7,20 +8,21 @@ import javafx.scene.image.Image;
 public class Pub extends Entity {
 
 	private String address;
-	private ObservableList<DrinkForPub> drinks;
+	private ObservableList<DrinkForSale> drinks;
 	private ObservableList<Image> images;
 	private double rating;
 	private double price;
 	private String type;
 	private double xCoord, yCoord;
-	private String openTime,closeTime;
+	private String openTime, closeTime;
+	private ObservableList<Pub> nearPubs = FXCollections.observableArrayList();
 
 	public static final String DISCOTECA = "Discoteca";
 	public static final String BAR = "Bar";
 	public static final String SALAO_DE_JOGOS = "Salao de jogos";
 
 	public Pub(int id, String name, String type, double price, double rating, String address, double xCoord,
-			double yCoord, String openTime, String closeTime, ObservableList<Image> images) {
+			double yCoord) {
 		super(id, name);
 		this.price = price;
 		this.type = type;
@@ -28,12 +30,8 @@ public class Pub extends Entity {
 		this.address = address;
 		this.xCoord = xCoord;
 		this.yCoord = yCoord;
-		ObservableList<DrinkForPub> pubDrinks = FXCollections.observableArrayList();
-		drinks = pubDrinks;
-		this.openTime=openTime;
-		this.closeTime=closeTime;
-		this.images = images;
-	}
+		drinks = FXCollections.observableArrayList();
+	}	
 
 	public String getPubInfo() {
 		return name + " (" + type + ")" + " preco: " + price;
@@ -41,6 +39,12 @@ public class Pub extends Entity {
 
 	public double getPrice() {
 		return price;
+	}
+	
+	public double distance(Pub pub) {
+		return Math.sqrt(
+				Math.pow((pub.getxCoord() - this.xCoord), 2) 
+				+Math.pow(pub.getyCoord() - this.yCoord, 2));
 	}
 
 	public void setPrice(double price) {
@@ -69,11 +73,11 @@ public class Pub extends Entity {
 		this.address = address;
 	}
 
-	public ObservableList<DrinkForPub> getDrinks() {
+	public ObservableList<DrinkForSale> getDrinks() {
 		return drinks;
 	}
 
-	public void setDrinks(ObservableList<DrinkForPub> drinks) {
+	public void setDrinks(ObservableList<DrinkForSale> drinks) {
 		this.drinks = drinks;
 	}
 
@@ -117,4 +121,13 @@ public class Pub extends Entity {
 		this.yCoord = yCoord;
 	}
 
+	public ObservableList<Pub> getNearPubs() {
+		return nearPubs;
+	}
+
+	public void setNearPubs(ObservableList<Pub> nearPubs) {
+		this.nearPubs = nearPubs;
+	}
+
+	
 }
