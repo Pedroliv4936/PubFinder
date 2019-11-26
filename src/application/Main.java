@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	
 	private static Stage currentStage;
-	private static Scene currentScene;
 	
 	private static BorderPane borderPane;
 	
