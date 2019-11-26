@@ -79,12 +79,6 @@ public class MainScreenContentController implements MapComponentInitializedListe
 		ScreenManager.setScreen(ScreenContainer.CHECK_NEW_REQUESTS);
 	}
 
-//	private ArrayList<String> possiblePubs() {
-//		ArrayList<String> possiblePubNames = new ArrayList<>();
-//
-//		return possiblePubNames;
-//	}
-
 	@FXML
 	private void addInformation() {
 		ScreenManager.setScreen(ScreenContainer.ADD_INFO);
@@ -121,14 +115,14 @@ public class MainScreenContentController implements MapComponentInitializedListe
 		MarkerOptions markerOptions = new MarkerOptions();
 		ObservableList<Marker> pubMarkers = FXCollections.observableArrayList();
 		for (Pub pub : PubDAO.getPubList()) {
-			LatLong latLong = new LatLong(pub.getxCoord(), pub.getyCoord());
+			LatLong latLong =pub.getCoordinates();
 			markerOptions.position(latLong);
 			Marker newPubMarker = new Marker(markerOptions);
 			newPubMarker.setTitle(pub.toString() + " Marker");
 			pubMarkers.add(newPubMarker);
 			System.out.println();
 			System.out
-					.println("Pub with coordinates : " + pub.getxCoord() + " and " + pub.getyCoord() + " added to map");
+					.println("Pub with coordinates : " + pub.getCoordinates().getLongitude()+ " and " + pub.getCoordinates().getLatitude()+ " added to map");
 		}
 		// Set the initial properties of the map.
 

@@ -73,7 +73,6 @@ public class MenuBebidasController {
 			}
 		}
 	}
-<<<<<<< HEAD
 
 	private void selected() {
 
@@ -90,14 +89,9 @@ public class MenuBebidasController {
 		}
 	}
 
-	private void openBarInfo(DrinkForPub drink) {
-		ScreenContainer screen = new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml",
-				new DefaultHeaderController(), new BarScreenController(drink.getPub()));
-=======
-	
-	private void openBarInfo(DrinkForSale drink) {
+ void openBarInfo(DrinkForSale drink) {
 		ScreenContainer screen = new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml", new DefaultHeaderController(), new BarScreenController(drink.getPub()));
->>>>>>> refs/remotes/origin/master
+
 		ScreenManager.setScreen(screen);
 	}
 }
