@@ -56,7 +56,6 @@ public class MainScreenContentController implements MapComponentInitializedListe
 
 	private GeocodingService geocodingService;
 
-	
 	@FXML
 	public void initialize() {
 		address.bind(searchField.textProperty());
@@ -64,17 +63,17 @@ public class MainScreenContentController implements MapComponentInitializedListe
 		backStackPane.getChildren().clear();
 
 		mapView = new GoogleMapView("pt-BR", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
-		
+
 		backStackPane.getChildren().addAll(mapView, vbox);
-		
+
 		if (!LoginDAO.getLogedinUser().isAdmin())
 			buttonsVbox.getChildren().remove(checkNewRequests);
-		
+
 		backStackPane.setPickOnBounds(false);
 		vbox.setPickOnBounds(false);
 		mapView.addMapInitializedListener(this);
 	}
-	
+
 	@FXML
 	private void checkNewRequests() {
 		ScreenManager.setScreen(ScreenContainer.CHECK_NEW_REQUESTS);
@@ -90,8 +89,6 @@ public class MainScreenContentController implements MapComponentInitializedListe
 	private void addInformation() {
 		ScreenManager.setScreen(ScreenContainer.ADD_INFO);
 	}
-
-
 
 	@FXML
 	public void centerMap(ActionEvent event) {
@@ -130,30 +127,24 @@ public class MainScreenContentController implements MapComponentInitializedListe
 			newPubMarker.setTitle(pub.toString() + " Marker");
 			pubMarkers.add(newPubMarker);
 			System.out.println();
-			System.out.println("Pub with coordinates : " + pub.getxCoord() + " and " + pub.getyCoord() + " added to map");
+			System.out
+					.println("Pub with coordinates : " + pub.getxCoord() + " and " + pub.getyCoord() + " added to map");
 		}
 		// Set the initial properties of the map.
 
 		MapOptions mapOptions = new MapOptions();
 
-		mapOptions.center(new LatLong(38.707438, -9.152532))
-				.mapType(MapTypeIdEnum.ROADMAP)
-				.overviewMapControl(false)
-				.panControl(false)
-				.rotateControl(false)
-				.scaleControl(false)
-				.streetViewControl(false)
-				.zoomControl(false)
-				.zoom(15)
-				.mapTypeControl(false);
+		mapOptions.center(new LatLong(38.707438, -9.152532)).mapType(MapTypeIdEnum.ROADMAP).overviewMapControl(false)
+				.panControl(false).rotateControl(false).scaleControl(false).streetViewControl(false).zoomControl(false)
+				.zoom(15).mapTypeControl(false);
 
 		map = mapView.createMap(mapOptions);
-		
+
 		map.addMouseEventHandler(UIEventType.click, (GMapMouseEvent event) -> {
-			   LatLong latLong = event.getLatLong();
-			   System.out.println("Latitude: " + latLong.getLatitude());
-			   System.out.println("Longitude: " + latLong.getLongitude());
-			});
+			LatLong latLong = event.getLatLong();
+			System.out.println("Latitude: " + latLong.getLatitude());
+			System.out.println("Longitude: " + latLong.getLongitude());
+		});
 
 		// Add markers to the map
 		map.addMarkers(pubMarkers);
