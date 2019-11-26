@@ -16,7 +16,8 @@ public class User {
 	private ObservableList<Drink> favoriteDrinks;
 	private boolean admin;
 
-	public User(int id,  String username, String password, String name, Date birthday, String email, int cellphone, boolean admin) {
+	public User(int id, String username, String password, String name, Date birthday, String email, int cellphone,
+			boolean admin) {
 		this.id = id;
 		this.name = name;
 		this.username = username;

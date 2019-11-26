@@ -46,9 +46,9 @@ public class LoginDAO {
 				String email = rs.getString("email");
 				int cellphone = rs.getInt("cellphone");
 				boolean isAdmin = rs.getBoolean("isAdmin");
-				
-				userList.add(new User(userId,username,password,name,birthday,email,cellphone,isAdmin));
-				ObservableList<Drink> favDrinks = DrinkDAO.getFavDrinks(userList.get(userList.size()-1));
+
+				userList.add(new User(userId, username, password, name, birthday, email, cellphone, isAdmin));
+				ObservableList<Drink> favDrinks = DrinkDAO.getFavDrinks(userList.get(userList.size() - 1));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -115,14 +115,14 @@ public class MainScreenContentController implements MapComponentInitializedListe
 		MarkerOptions markerOptions = new MarkerOptions();
 		ObservableList<Marker> pubMarkers = FXCollections.observableArrayList();
 		for (Pub pub : PubDAO.getPubList()) {
-			LatLong latLong =pub.getCoordinates();
+			LatLong latLong = pub.getCoordinates();
 			markerOptions.position(latLong);
 			Marker newPubMarker = new Marker(markerOptions);
 			newPubMarker.setTitle(pub.toString() + " Marker");
 			pubMarkers.add(newPubMarker);
 			System.out.println();
-			System.out
-					.println("Pub with coordinates : " + pub.getCoordinates().getLongitude()+ " and " + pub.getCoordinates().getLatitude()+ " added to map");
+			System.out.println("Pub with coordinates : " + pub.getCoordinates().getLongitude() + " and "
+					+ pub.getCoordinates().getLatitude() + " added to map");
 		}
 		// Set the initial properties of the map.
 

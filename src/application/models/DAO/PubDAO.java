@@ -18,6 +18,7 @@ public class PubDAO {
 
 	private PubDAO() {
 	}
+
 	// 1 KM = 0,0095859326983177
 	private final static double kmToCoord = 0.0095859326983177;
 	private final static double DISTANCIA_MINIMA = 5 * kmToCoord;
@@ -25,7 +26,8 @@ public class PubDAO {
 	public static ObservableList<Pub> getActivePubs() {
 		ObservableList<Pub> pubList = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
-		try (Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 0;")) {
+		try (Statement stat = conn.createStatement();
+				ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 0;")) {
 			while (rs.next()) {
 				String name = rs.getString("name");
 				String type = rs.getString("type");
@@ -43,11 +45,12 @@ public class PubDAO {
 		}
 		return sortList(new LatLong(38.707423, -9.152465));
 	}
-	
-	public static ObservableList<Pub> getPendingPubs(){
+
+	public static ObservableList<Pub> getPendingPubs() {
 		ObservableList<Pub> pubList = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
-		try (Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 1;")) {
+		try (Statement stat = conn.createStatement();
+				ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 1;")) {
 			while (rs.next()) {
 				String name = rs.getString("name");
 				String type = rs.getString("type");
@@ -64,46 +67,42 @@ public class PubDAO {
 		}
 		return pubList;
 	}
-	
+
 	public static void aprovePub(Pub pub) {
 		pub.aprove();
 		Connection conn = JDBC.getConnection();
-		String sql = "UPDATE pubs "+
-					 "SET pending = 0 "+
-					 "WHERE pub_name = " + "\'" + pub.toString() + "\'" +";";
-		try(Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery(sql)){
+		String sql = "UPDATE pubs " + "SET pending = 0 " + "WHERE pub_name = " + "\'" + pub.toString() + "\'" + ";";
+		try (Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery(sql)) {
 			System.out.println(pub.toString() + " Aprovado");
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void addPub(Pub pub) {
 		Connection conn = JDBC.getConnection();
-		String sql = "INSERT INTO pubs "+"(pub_name, entry_price, pub_type_id, ) "+
-					 "WHERE pub_name = " + "\'" + pub.toString() + "\'" +";";
-		try(Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery(sql)){
+		String sql = "INSERT INTO pubs " + "(pub_name, entry_price, pub_type_id, ) " + "WHERE pub_name = " + "\'"
+				+ pub.toString() + "\'" + ";";
+		try (Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery(sql)) {
 			System.out.println(pub.toString() + " Aprovado");
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public static ObservableList<Pub> sortList(LatLong loc) {
 		ObservableList<Pub> sortedPubs = getActivePubs();
-		Collections.sort(sortedPubs,(pub1,pub2)->((Double)pub2.distance(loc)).compareTo(pub1.distance(loc))); 
-				/*
-				
-				new Comparator<Pub>() {
-	        @Override
-	        public int compare(Pub pub2, Pub pub1)
-	        {
-	        	return ((Double)pub2.distance(loc)).compareTo(pub1.distance(loc));
-	        }
-	        });*/
+		Collections.sort(sortedPubs, (pub1, pub2) -> ((Double) pub2.distance(loc)).compareTo(pub1.distance(loc)));
+		/*
+		 * 
+		 * new Comparator<Pub>() {
+		 * 
+		 * @Override public int compare(Pub pub2, Pub pub1) { return
+		 * ((Double)pub2.distance(loc)).compareTo(pub1.distance(loc)); } });
+		 */
 		return sortedPubs;
 	}
-	
+
 //	private static ObservableList<Pub> nearPubs = FXCollections.observableArrayList();
 //	
 //	public static ObservableList<Pub> getNearPubs(LatLong local) {

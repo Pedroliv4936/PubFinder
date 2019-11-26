@@ -56,14 +56,14 @@ public class MenuBebidasController {
 	}
 
 	private void filterList() {
-		for (Node node: bebidasFavoritas.getChildren()) {
-				CheckBox checkBox= (CheckBox) node;
-				if(checkBox.isSelected())
+		for (Node node : bebidasFavoritas.getChildren()) {
+			CheckBox checkBox = (CheckBox) node;
+			if (checkBox.isSelected())
 				drinkTypesSelected.add((Drink) checkBox.getUserData());
 		}
-		for(DrinkForSale drinkForSale: publistTV.getItems()) {
-			for(Drink drink : drinkTypesSelected) {
-				if(drinkForSale.getDrinkType() == drink)
+		for (DrinkForSale drinkForSale : publistTV.getItems()) {
+			for (Drink drink : drinkTypesSelected) {
+				if (drinkForSale.getDrinkType() == drink)
 					filteredDrinks.add(drinkForSale);
 			}
 		}
@@ -87,8 +87,9 @@ public class MenuBebidasController {
 		}
 	}
 
- void openBarInfo(DrinkForSale drink) {
-		ScreenContainer screen = new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml", new DefaultHeaderController(), new BarScreenController(drink.getPub()));
+	void openBarInfo(DrinkForSale drink) {
+		ScreenContainer screen = new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml",
+				new DefaultHeaderController(), new BarScreenController(drink.getPub()));
 
 		ScreenManager.setScreen(screen);
 	}
