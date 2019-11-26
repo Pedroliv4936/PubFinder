@@ -1,6 +1,8 @@
 package application.models.DAO;
 
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -8,13 +10,12 @@ import java.sql.Statement;
 import application.JDBC;
 import application.models.Drink;
 import application.models.DrinkForSale;
-import application.models.Pub;
+import application.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class DrinkDAO {
 	private static ObservableList<Drink> drinkList = FXCollections.observableArrayList();
-	
 
 	public static ObservableList<DrinkForSale> getDrinksInPubs() {
 		 ObservableList<DrinkForSale> drinksInPubs = FXCollections.observableArrayList();
@@ -53,8 +54,25 @@ public class DrinkDAO {
 		}
 		return pendingDrinks;
 	}
-
-
+	
+	
+	public static ObservableList<Drink> getFavDrinks(User user) {
+		ObservableList<Drink> favDrinkList = FXCollections.observableArrayList();
+		Connection con = JDBC.getConnection();
+		String sql = "SELECT drink_id FROM User_Favorite_Drink WHERE user_id is ?";
+		try (PreparedStatement stat = con.prepareStatement(sql)) {
+			stat.setInt(1, user.getId()+1);
+			ResultSet rs = stat.executeQuery();
+			while(rs.next()) {
+				int id=rs.getInt("drink_id");
+				String nome=rs.getString("drink_name");
+				favDrinkList.add(new Drink (id,nome,null));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+	}
+		return favDrinkList;
+	}
 	
 	public static void addDrinkFromPub(DrinkForSale drink) {
 		Connection conn = JDBC.getConnection();

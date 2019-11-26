@@ -12,6 +12,8 @@ import application.models.DAO.LoginDAO;
 import application.views.ScreenContainer;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
@@ -40,7 +42,8 @@ public class MenuBebidasController {
 	HBox hBox;
 
 	private ArrayList<CheckBox> allCheckBoxes = new ArrayList<CheckBox>();
-	private FilteredList<DrinkForPub> filteredDrinks = new FilteredList<>(DrinkDAO.getDrinksInPubs());
+	private FilteredList<DrinkForSale> filteredDrinks = new FilteredList(DrinkDAO.getDrinksInPubs());
+	private SortedList<DrinkForSale> sortedDrinks = new SortedList<>(filteredDrinks);
 
 	@FXML
 	private void initialize() {
@@ -60,6 +63,9 @@ public class MenuBebidasController {
 		int columnIndex = 0, rowIndex = 0;
 		for (Drink drink : LoginDAO.getLogedinUser().getFavoriteDrinks()) {
 			CheckBox newCheckBox = new CheckBox(drink.toString());
+			newCheckBox.setOnAction(e -> {
+				filterDrinks();
+				});
 			newCheckBox.setUserData(drink);
 			newCheckBox.setTextFill(Color.WHITE);
 			System.out.println(drink + " foi adicionado");
@@ -83,7 +89,7 @@ public class MenuBebidasController {
 			if (node instanceof CheckBox) {
 				CheckBox checkBox= (CheckBox) node;
 				if(checkBox.isSelected()) {
-					
+					filteredDrinks.setPredicate(x -> x.getDrinkName().contains(checkBox.getText()));
 				}
 			}
 		}
