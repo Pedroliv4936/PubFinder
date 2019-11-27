@@ -17,7 +17,7 @@ public class PubInfoController {
 		this.pub = pub;
 		name = pub.toString();
 		price = String.format("%.2f",pub.getPrice());
-		type = pub.getType();
+		type = pub.getType().toString();
 		openTime = pub.getOpenTime();
 		closeTime = pub.getCloseTime();
 	}

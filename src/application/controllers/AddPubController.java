@@ -7,6 +7,7 @@ import com.lynden.gmapsfx.javascript.object.LatLong;
 
 import application.ScreenManager;
 import application.models.Pub;
+import application.models.PubType;
 import application.models.DAO.PubDAO;
 import application.views.ScreenContainer;
 import javafx.collections.FXCollections;
@@ -18,7 +19,7 @@ import javafx.scene.control.TextField;
 public class AddPubController {
 
 	@FXML
-	JFXComboBox<String> pubType;
+	JFXComboBox<PubType> pubType;
 
 	@FXML
 	JFXTextArea observacoes;
@@ -42,11 +43,11 @@ public class AddPubController {
 	}
 
 	private void showPubTypes() {
-		ObservableList<String> pubNames = FXCollections.observableArrayList();
-		pubNames.add("Discoteca");
-		pubNames.add("Bar");
-		pubNames.add("Sala de Jogos");
-		pubType.setItems(pubNames);
+		ObservableList<PubType> pubTypes = FXCollections.observableArrayList();
+		for(PubType pubType : PubDAO.getPubTypes()) {
+			pubTypes.add(pubType);
+		}
+		pubType.setItems(pubTypes);
 	}
 
 	private void showHour() {
@@ -76,7 +77,7 @@ public class AddPubController {
 			fieldsFilled();
 		} else {
 			String name = barName.getText();
-			String type = pubType.getValue();
+			PubType type = pubType.getValue();
 			Double price = Double.parseDouble(priceField.getText());
 			String address = addressField.getText();
 			Double pubXCoordinate = Double.parseDouble(pubXCoord.getText());

@@ -9,7 +9,7 @@ public final class JDBC {
 
 	private static Connection con;
 	private static final String USER = "piriurna";
-	private static final String PASS = "123456789";
+	private static final String PASS = "Arm210526";
 
 	private JDBC() {
 	}
