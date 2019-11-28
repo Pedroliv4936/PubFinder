@@ -17,6 +17,7 @@ import com.lynden.gmapsfx.service.geocoding.GeocodingService;
 
 import application.ScreenManager;
 import application.models.Pub;
+import application.models.UserPrivilege;
 import application.models.DAO.LoginDAO;
 import application.models.DAO.PubDAO;
 import application.views.ScreenContainer;
@@ -66,7 +67,7 @@ public class MainScreenContentController implements MapComponentInitializedListe
 
 		backStackPane.getChildren().addAll(mapView, vbox);
 
-		if (!LoginDAO.getLogedinUser().isAdmin())
+		if (LoginDAO.getLogedinUser().getPrivilege() != UserPrivilege.ADMIN)
 			buttonsVbox.getChildren().remove(checkNewRequests);
 
 		backStackPane.setPickOnBounds(false);
@@ -134,13 +135,7 @@ public class MainScreenContentController implements MapComponentInitializedListe
 				.zoom(15).mapTypeControl(false);
 
 		map = mapView.createMap(mapOptions);
-
-		map.addMouseEventHandler(UIEventType.click, (GMapMouseEvent event) -> {
-			LatLong latLong = event.getLatLong();
-			System.out.println("Latitude: " + latLong.getLatitude());
-			System.out.println("Longitude: " + latLong.getLongitude());
-		});
-
+		System.out.println("Mapa criado");
 		// Add markers to the map
 		map.addMarkers(pubMarkers);
 	}

@@ -14,10 +14,10 @@ public class User {
 	private Date birthday;
 	private int cellphone;
 	private ObservableList<Drink> favoriteDrinks;
-	private boolean admin;
+	private UserPrivilege privilege;
 
-	public User(int id, String username, String password, String name, Date birthday, String email, int cellphone,
-			boolean admin) {
+
+	public User(int id, String name, String username, String password, String email, Date birthday, int cellphone, UserPrivilege privilege) {
 		this.id = id;
 		this.name = name;
 		this.username = username;
@@ -25,7 +25,7 @@ public class User {
 		this.email = email;
 		this.birthday = birthday;
 		this.cellphone = cellphone;
-		this.admin = admin;
+		this.setPrivilege(privilege);
 	}
 
 	public User(int id, String name, String username, String password, String email, Date birthday, int cellphone) {
@@ -36,12 +36,9 @@ public class User {
 		this.email = email;
 		this.birthday = birthday;
 		this.cellphone = cellphone;
-		this.admin = false;
+		this.setPrivilege(UserPrivilege.USER);
 	}
 
-	public boolean isAdmin() {
-		return admin;
-	}
 
 	public ObservableList<Drink> getFavoriteDrinks() {
 		return favoriteDrinks;
@@ -113,5 +110,13 @@ public class User {
 
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+
+	public UserPrivilege getPrivilege() {
+		return privilege;
+	}
+
+	public void setPrivilege(UserPrivilege privilege) {
+		this.privilege = privilege;
 	}
 }

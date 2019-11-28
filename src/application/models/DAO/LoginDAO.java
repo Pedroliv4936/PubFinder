@@ -2,40 +2,33 @@ package application.models.DAO;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import application.JDBC;
-import application.models.Admin;
 import application.models.Drink;
-import application.models.LoginType;
 import application.models.User;
+import application.models.UserPrivilege;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class LoginDAO {
-	private static ObservableList<User> userList = FXCollections.observableArrayList();
-
-	private static ObservableList<Admin> adminList = FXCollections.observableArrayList();
-
 	private static User logedinUser;
 
 	public static User getLogedinUser() {
 		return logedinUser;
 	}
 
-	public static void setLogedinUser(User logedinUser) {
-		LoginDAO.logedinUser = logedinUser;
+	public static void setLogedinUser(User user) {
+		LoginDAO.logedinUser = user;
 	}
 
-	public static ObservableList<Admin> getAdminList() {
-		return adminList;
-	}
-
-	public static ObservableList<User> getUserList() {
+	public static ObservableList<User> getAdminList() {
+		ObservableList<User> adminList = FXCollections.observableArrayList();
 		Connection con = JDBC.getConnection();
-		String sql = "SELECT * FROM User";
+		String sql = "SELECT * FROM users WHERE user_privilege_id = 0";
 		try (Statement stat = con.createStatement(); ResultSet rs = stat.executeQuery(sql)) {
 			while (rs.next()) {
 				int userId = rs.getInt("user_id");
@@ -44,11 +37,39 @@ public class LoginDAO {
 				String name = rs.getString("name");
 				Date birthday = rs.getDate("birthday");
 				String email = rs.getString("email");
-				int cellphone = rs.getInt("cellphone");
-				boolean isAdmin = rs.getBoolean("isAdmin");
+				int cellphone = rs.getInt("phone");
+				int privilegeId = rs.getInt("user_privilege_id");
+				UserPrivilege privilege = UserPrivilege.getPrivilege(privilegeId);
 
-				userList.add(new User(userId, username, password, name, birthday, email, cellphone, isAdmin));
+				adminList.add(new User(userId, name, username, password, email, birthday, cellphone, privilege));
+				ObservableList<Drink> favDrinks = DrinkDAO.getFavDrinks(adminList.get(adminList.size() - 1));
+				adminList.get(adminList.size() - 1).setFavoriteDrinks(favDrinks);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return adminList;
+	}
+
+	public static ObservableList<User> getUserList() {
+		ObservableList<User> userList = FXCollections.observableArrayList();
+		Connection con = JDBC.getConnection();
+		String sql = "SELECT * FROM users";
+		try (Statement stat = con.createStatement(); ResultSet rs = stat.executeQuery(sql)) {
+			while (rs.next()) {
+				int userId = rs.getInt("user_id");
+				String username = rs.getString("username");
+				String password = rs.getString("password");
+				String name = rs.getString("name");
+				Date birthday = rs.getDate("birthday");
+				String email = rs.getString("email");
+				int cellphone = rs.getInt("phone");
+				int privilegeId = rs.getInt("user_privilege_id");
+				UserPrivilege privilege = UserPrivilege.getPrivilege(privilegeId);
+
+				userList.add(new User(userId, name, username, password, email, birthday, cellphone, privilege));
 				ObservableList<Drink> favDrinks = DrinkDAO.getFavDrinks(userList.get(userList.size() - 1));
+				userList.get(userList.size() - 1).setFavoriteDrinks(favDrinks);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -57,34 +78,53 @@ public class LoginDAO {
 	}
 
 	public static void addUser(User user) {
-		userList.add(user);
+		Connection con = JDBC.getConnection();
+		String sql = "INSERT INTO users (username, password, name, birthday, email, phone, user_privilege)"
+				+ "VALUES(?,?,?,?,?,?,?)";
+		try (PreparedStatement stat = con.prepareStatement(sql)) {
+			stat.setString(1, user.getUsername());
+			stat.setString(2,user.getPassword());
+			stat.setString(3,user.getName());
+			stat.setDate(4, user.getBirthday());
+			stat.setString(5, user.getEmail());;
+			stat.setInt(6, user.getCellphone());
+			stat.setInt(7, user.getPrivilege().getId());
+			try(ResultSet rs = stat.executeQuery()){
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/*
 	 * 0 - logou como user 1 - logou como admin 2 - wrong username 3 - wrong
 	 * password
 	 */
-	public static LoginType connect(String username, String password) {
-		for (User user : userList) {
-			if (user.getUsername().equals(username)) {
-				if (user.getPassword().equals(password)) {
+	public static User connect(String username, String password) {
+		User user = null;
+		Connection conn = JDBC.getConnection();
+		String sql = "SELECT * FROM users WHERE username = ? AND password = MD5(?)";
+		try (PreparedStatement stat = conn.prepareStatement(sql)) {
+			stat.setString(1, username);
+			stat.setString(2, password);
+			try (ResultSet rs = stat.executeQuery()) {
+				if (rs.next()) {
+					int userId = rs.getInt("user_id");
+					String user_name = rs.getString("username");
+					String pass_word = rs.getString("password");
+					String name = rs.getString("name");
+					Date birthday = rs.getDate("birthday");
+					String email = rs.getString("email");
+					int cellphone = rs.getInt("phone");
+					int privilegeId = rs.getInt("user_privilege_id");
+					UserPrivilege privilege = UserPrivilege.getPrivilege(privilegeId);
+					user = new User(userId, name, user_name, pass_word, email, birthday, cellphone, privilege);
 					setLogedinUser(user);
-					return LoginType.USER_LOGIN;
-				} else {
-					return LoginType.WRONG_PASSWORD;
 				}
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		for (Admin admin : adminList) {
-			if (admin.getUsername().equals(username)) {
-				if (admin.getPassword().equals(password)) {
-					setLogedinUser(admin);
-					return LoginType.ADMIN_LOGIN;
-				} else {
-					return LoginType.WRONG_PASSWORD;
-				}
-			}
-		}
-		return LoginType.WRONG_USERNAME;
+		return user;
 	}
 }

@@ -13,7 +13,7 @@ public class Pub extends Entity {
 	private ObservableList<Image> images;
 	private double rating;
 	private double price;
-	private String type;
+	private PubType type;
 	private LatLong coordinates;
 	private String openTime, closeTime;
 	private boolean pending;
@@ -23,7 +23,7 @@ public class Pub extends Entity {
 	public static final String BAR = "Bar";
 	public static final String SALAO_DE_JOGOS = "Salao de jogos";
 
-	public Pub(int id, String name, String type, double price, double rating, String address, LatLong coordinates) {
+	public Pub(int id, String name, PubType type, double price, double rating, String address, LatLong coordinates) {
 		super(id, name);
 		this.price = price;
 		this.type = type;
@@ -34,7 +34,7 @@ public class Pub extends Entity {
 		drinks = FXCollections.observableArrayList();
 	}
 	
-	public Pub(int id, String name, String type, double price, double rating, String address, LatLong coordinates, boolean pending) {
+	public Pub(int id, String name, PubType type, double price, double rating, String address, LatLong coordinates, boolean pending) {
 		super(id, name);
 		this.price = price;
 		this.type = type;
@@ -65,11 +65,11 @@ public class Pub extends Entity {
 		this.price = price;
 	}
 
-	public String getType() {
+	public PubType getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(PubType type) {
 		this.type = type;
 	}
 

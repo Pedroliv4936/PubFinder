@@ -2,12 +2,22 @@ package application.models;
 
 public class DrinkForSale {
 
+	private int id;
 	private Drink drink;
 	private Pub pub;
 	private double rating;
 	private double price;
 	private boolean pending;
 
+	public DrinkForSale(int id, Drink drink, Pub pub, double rating, double price) {
+		this.id = id;
+		this.drink = drink;
+		this.pub = pub;
+		this.rating = rating;
+		this.price = price;
+		this.aprove();
+	}
+	
 	public DrinkForSale(Drink drink, Pub pub, double rating, double price) {
 		this.drink = drink;
 		this.pub = pub;
@@ -77,5 +87,13 @@ public class DrinkForSale {
 
 	public void aprove() {
 		this.pending = false;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
