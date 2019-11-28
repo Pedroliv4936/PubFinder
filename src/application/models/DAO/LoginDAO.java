@@ -89,8 +89,7 @@ public class LoginDAO {
 			stat.setString(5, user.getEmail());;
 			stat.setInt(6, user.getCellphone());
 			stat.setInt(7, user.getPrivilege().getId());
-			try(ResultSet rs = stat.executeQuery()){
-			}
+			stat.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
