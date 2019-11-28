@@ -9,21 +9,13 @@ public class DrinkForSale {
 	private double price;
 	private boolean pending;
 
-	public DrinkForSale(int id, Drink drink, Pub pub, double rating, double price) {
+	public DrinkForSale(int id, Drink drink, Pub pub, double rating, double price, boolean pending) {
 		this.id = id;
 		this.drink = drink;
 		this.pub = pub;
 		this.rating = rating;
 		this.price = price;
-		this.aprove();
-	}
-	
-	public DrinkForSale(Drink drink, Pub pub, double rating, double price) {
-		this.drink = drink;
-		this.pub = pub;
-		this.rating = rating;
-		this.price = price;
-		this.aprove();
+		this.pending = pending;
 	}
 	
 	public DrinkForSale(Drink drink, Pub pub, double rating, double price, boolean pending) {

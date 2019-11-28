@@ -14,8 +14,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class DrinkDAO {
-	private static ObservableList<Drink> drinkList = FXCollections.observableArrayList();
-
 	public static ObservableList<DrinkForSale> getDrinksInPubs() {
 		ObservableList<DrinkForSale> drinksInPubs = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
@@ -27,7 +25,7 @@ public class DrinkDAO {
 				double rating = rs.getDouble("rating");
 				double price = rs.getDouble("price");
 				boolean pending = rs.getBoolean("pending");
-				drinksInPubs.add(new DrinkForSale(DrinkDAO.drinkList.get(drink), PubDAO.getActivePubs().get(pub),
+				drinksInPubs.add(new DrinkForSale(DrinkDAO.getDrinkType(drink), PubDAO.getPub(pub),
 						rating, price, pending));
 			}
 		} catch (SQLException e) {
@@ -42,12 +40,13 @@ public class DrinkDAO {
 		String sql = "SELECT * FROM drinks_for_sale WHERE pending = 1";
 		try (Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery(sql)) {
 			while (rs.next()) {
+				int drinkId = rs.getInt("drink_sale_id");
 				int drink = rs.getInt("drink_id");
 				int pub = rs.getInt("pub_id");
 				double rating = rs.getDouble("rating");
 				double price = rs.getDouble("price");
 				boolean pending = rs.getBoolean("pending");
-				pendingDrinks.add(new DrinkForSale(DrinkDAO.drinkList.get(drink), PubDAO.getActivePubs().get(pub),
+				pendingDrinks.add(new DrinkForSale(drinkId,getDrinkType(drink), PubDAO.getPub(pub),
 						rating, price, pending));
 			}
 		} catch (SQLException e) {
@@ -60,9 +59,8 @@ public class DrinkDAO {
 		Connection conn = JDBC.getConnection();
 		String sql = "DELETE FROM drinks_for_sale WHERE drink_sale_id = ?";
 		try (PreparedStatement stat = conn.prepareStatement(sql)) {
-			try(ResultSet rs = stat.executeQuery()){
-				stat.setInt(1, drink.getId());
-			}
+			stat.setInt(1, drink.getId());
+			stat.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -87,23 +85,25 @@ public class DrinkDAO {
 		return favDrinkList;
 	}
 
-	public static void addDrinkFromPub(DrinkForSale drink) {
+	public static void addDrink(DrinkForSale drink) {
 		Connection conn = JDBC.getConnection();
-		int drink_id = drinkList.indexOf(drink.getDrinkType()) + 1;
-		int pub = PubDAO.getActivePubs().indexOf(drink.getPub()) + 1;
+		int drink_id = drink.getDrinkType().getId();
+		int pub = drink.getPub().getId();
 		double rating = drink.getRating();
 		double price = drink.getPrice();
 		boolean pending = drink.isPending();
 		String sql = "INSERT INTO " + "drinks_for_sale " + "(pub_id, drink_id, price, rating, pending) " + "VALUES "
-				+ "(" + pub + ", " + drink_id + ", " + price + ", " + rating + ", " + pending + ")";
-		try (Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery(sql)) {
+				+ "(?,?,?,?,?)";
+		try (PreparedStatement stat = conn.prepareStatement(sql)) {
+			stat.setInt(1, pub);
+			stat.setInt(2, drink_id);
+			stat.setDouble(3, price);
+			stat.setDouble(4, rating);
+			stat.setBoolean(5, pending);
+			stat.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public static void setDrinkList(ObservableList<Drink> drinkList) {
-		DrinkDAO.drinkList = drinkList;
 	}
 
 	public static ObservableList<Drink> getDrinkTypes() {
@@ -121,14 +121,24 @@ public class DrinkDAO {
 		}
 		return drinkTypes;
 	}
+	
+	public static Drink getDrinkType(int id) {
+		for(Drink drink:getDrinkTypes()) {
+			if(drink.getId() == id)
+				return drink;
+		}
+		return null;
+	}
+	
+	
 
-	public static void aproveDrinks(DrinkForSale drink) {
-		drink.aprove();
+	public static void aproveDrink(DrinkForSale drink) {
 		Connection conn = JDBC.getConnection();
-		String sql = "UPDATE drink_for_sale " + "SET pending = 0 " + "WHERE pub_name = ?";
+		String sql = "UPDATE drinks_for_sale SET pending = 0 WHERE drink_sale_id = ?";
 		try (PreparedStatement stat = conn.prepareStatement(sql)) {
-			stat.setString(1, drink.toString());
-			ResultSet rs = stat.executeQuery();
+			stat.setInt(1, drink.getId());
+			stat.executeUpdate();
+			System.out.println("APROVADO DRINK COM ID: " + drink.getId());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -56,11 +56,12 @@ public class AddDrinkController {
 	private void sendInfo() {
 		if (allFieldsFilled()) {
 			DrinkForSale newDrink = new DrinkForSale(drinkType.getValue(), pubOptions.getValue(), 4,
-					Double.parseDouble(priceField.getText()));
+					Double.parseDouble(priceField.getText()), true);
 			System.out.println();
 			System.out.println();
 			System.out.println("BEBIDA ENVIADA PARA APROVAÇÃO COM ATRIBUTOS:");
 			newDrink.showDrinkInfo();
+			DrinkDAO.addDrink(newDrink);
 			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 		}
 	}
