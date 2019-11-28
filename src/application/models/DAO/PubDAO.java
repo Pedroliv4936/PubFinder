@@ -27,12 +27,9 @@ public class PubDAO {
 	public static ObservableList<Pub> getActivePubs() {
 		ObservableList<Pub> pubList = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
-<<<<<<< HEAD
 		try (Statement stat = conn.createStatement();
 				ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 0;")) {
-=======
-		try (Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 0")) {
->>>>>>> b61a704cc189e81cb0ccee63ea9504f1e87bb24c
+
 			while (rs.next()) {
 				String name = rs.getString("pub_name");
 				int typeId = rs.getInt("pub_type_id");
@@ -86,12 +83,8 @@ public class PubDAO {
 	public static ObservableList<Pub> getPendingPubs() {
 		ObservableList<Pub> pubList = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
-<<<<<<< HEAD
 		try (Statement stat = conn.createStatement();
 				ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 1;")) {
-=======
-		try (Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 1")) {
->>>>>>> b61a704cc189e81cb0ccee63ea9504f1e87bb24c
 			while (rs.next()) {
 				String name = rs.getString("name");
 				int typeId = rs.getInt("pub_type_id");
@@ -112,12 +105,7 @@ public class PubDAO {
 
 	public static void aprovePub(Pub pub) {
 		Connection conn = JDBC.getConnection();
-<<<<<<< HEAD
-		String sql = "UPDATE pubs " + "SET pending = 0 " + "WHERE pub_name = " + "\'" + pub.toString() + "\'" + ";";
-		try (Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery(sql)) {
-			System.out.println(pub.toString() + " Aprovado");
-		} catch (SQLException e) {
-=======
+
 		String sql = "UPDATE pubs "+
 					 "SET pending = 0 "+
 					 "WHERE pub_id = ?";
@@ -143,7 +131,6 @@ public class PubDAO {
 				stat.setInt(1, pub.getId());
 			}
 		}catch(SQLException e) {
->>>>>>> b61a704cc189e81cb0ccee63ea9504f1e87bb24c
 			e.printStackTrace();
 		}
 	}
