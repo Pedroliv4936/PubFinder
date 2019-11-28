@@ -36,7 +36,7 @@ public class CheckNewRequestsController {
 			if (!pub.isPending())
 				pubLV.getItems().add(pub);
 		}
-		drinkLV.setItems(DrinkDAO.getPendingDrinkList());
+		drinkLV.setItems(DrinkDAO.getPendingDrinks());
 		pubLV.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		drinkLV.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 	}
