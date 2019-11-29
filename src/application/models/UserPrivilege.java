@@ -1,8 +1,8 @@
 package application.models;
 
 public enum UserPrivilege {
-	ADMIN(0, "Admininistrador"),
-	USER(1, "Utilizador comum");
+	ADMIN(1, "Admininistrador"),
+	USER(2, "Utilizador comum");
 	private String description;
 	private int id;
 	

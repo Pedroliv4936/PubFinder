@@ -1,13 +1,11 @@
 package application;
 
 import java.io.IOException;
-import java.sql.SQLException;
+
+import com.lynden.gmapsfx.javascript.object.LatLong;
+
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -24,6 +22,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		screenManager= new ScreenManager();
 		screenManager.start(primaryStage);
+
 
 	}
 	

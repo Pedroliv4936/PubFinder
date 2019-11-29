@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Collections;
 
+import com.lynden.gmapsfx.javascript.JavaFxWebEngine;
+import com.lynden.gmapsfx.javascript.JavascriptRuntime;
 import com.lynden.gmapsfx.javascript.object.LatLong;
 
 import application.JDBC;
@@ -14,6 +16,7 @@ import application.models.Pub;
 import application.models.PubType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.web.WebView;
 
 public class PubDAO {
 
@@ -37,9 +40,12 @@ public class PubDAO {
 				double price = rs.getDouble("entry_price");
 				String address = rs.getString("address");
 				double xCoord = rs.getDouble("xCoord");
+				System.out.println(xCoord);
 				double yCoord = rs.getDouble("yCoord");
+				System.out.println(yCoord);
+				LatLong latLong = new LatLong(xCoord,yCoord);
 				boolean pending = rs.getBoolean("pending");
-				pubList.add(new Pub(id, name, type, price, 5, address, new LatLong(xCoord, yCoord), pending));
+				pubList.add(new Pub(id, name, type, price, 5, address, latLong, pending));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -117,7 +117,8 @@ public class LoginDAO {
 					String email = rs.getString("email");
 					int cellphone = rs.getInt("phone");
 					int privilegeId = rs.getInt("user_privilege_id");
-					UserPrivilege privilege = UserPrivilege.getPrivilege(privilegeId);
+					System.out.println(privilegeId);
+					UserPrivilege privilege = UserPrivilege.getPrivilege(privilegeId - 1);
 					user = new User(userId, name, user_name, pass_word, email, birthday, cellphone, privilege);
 					setLogedinUser(user);
 				}

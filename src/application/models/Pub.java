@@ -15,6 +15,7 @@ public class Pub extends Entity {
 	private double price;
 	private PubType type;
 	private LatLong coordinates;
+	private double xCoord, yCoord;
 	private String openTime, closeTime;
 	private boolean pending;
 	private ObservableList<Pub> nearPubs = FXCollections.observableArrayList();

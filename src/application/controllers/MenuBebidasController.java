@@ -71,7 +71,7 @@ public class MenuBebidasController {
 
 	private void setFavoriteDrinks() {
 		int columnIndex = 0, rowIndex = 0;
-		for (Drink drink : LoginDAO.getLogedinUser().getFavoriteDrinks()) {
+		for (Drink drink : DrinkDAO.getDrinkTypes()) {
 			CheckBox newCheckBox = new CheckBox(drink.toString());
 			newCheckBox.setOnAction(e -> filterList());
 			newCheckBox.setUserData(drink);
