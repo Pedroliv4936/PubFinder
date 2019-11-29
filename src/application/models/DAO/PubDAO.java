@@ -57,7 +57,7 @@ public class PubDAO {
 		ObservableList<Pub> pubList = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
 		try (Statement stat = conn.createStatement();
-				ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 0")) {
+				ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 0;")) {
 			while (rs.next()) {
 				String name = rs.getString("pub_name");
 				int typeId = rs.getInt("pub_type_id");
@@ -120,7 +120,7 @@ public class PubDAO {
 		ObservableList<Pub> pubList = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
 		try (Statement stat = conn.createStatement();
-				ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 1")) {
+				ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 1;")) {
 			while (rs.next()) {
 				String name = rs.getString("pub_name");
 				int typeId = rs.getInt("pub_type_id");
@@ -141,11 +141,14 @@ public class PubDAO {
 
 	public static void aprovePub(Pub pub) {
 		Connection conn = JDBC.getConnection();
-		String sql = "UPDATE pubs " + "SET pending = 0 " + "WHERE pub_id = ?";
-		try (PreparedStatement stat = conn.prepareStatement(sql)) {
-			stat.setInt(1, pub.getId());
-			stat.executeUpdate();
-		} catch (SQLException e) {
+		String sql = "UPDATE pubs "+
+					 "SET pending = 0 "+
+					 "WHERE pub_id = ?";
+		try(PreparedStatement stat = conn.prepareStatement(sql)){
+			try(ResultSet rs = stat.executeQuery()){
+				stat.setInt(1, pub.getId());
+			}
+		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 	}
@@ -188,6 +191,40 @@ public class PubDAO {
 	public static ObservableList<Pub> sortList(LatLong loc) {
 		ObservableList<Pub> sortedPubs = getActivePubs();
 		Collections.sort(sortedPubs, (pub1, pub2) -> ((Double) pub2.distance(loc)).compareTo(pub1.distance(loc)));
+		/*
+		 * 
+		 * new Comparator<Pub>() {
+		 * 
+		 * @Override public int compare(Pub pub2, Pub pub1) { return
+		 * ((Double)pub2.distance(loc)).compareTo(pub1.distance(loc)); } });
+		 */
+
+//	private static ObservableList<Pub> nearPubs = FXCollections.observableArrayList();
+//	
+//	public static ObservableList<Pub> getNearPubs(LatLong local) {
+//		ObservableList<Pub>  nearPubs = FXCollections.observableArrayList();
+//		for (Pub pub : getActivePubs()) {
+//			double distance = pub.getCoordinates().distanceFrom(local);
+//			System.out.println(pub.toString() + " Distancia: " + distance);
+//			if (distance <= DISTANCIA_MINIMA && distance != 0) {
+//				System.out.println(pub.toString() + " Adicionado aos bares proximos");
+//				nearPubs.add(pub);
+//			}
+//		}
+//		PubDAO.nearPubs = nearPubs;
+//		return nearPubs;
+//	}
+//	
+//	public static ObservableList<Pub> next(LatLong local) {
+//		ObservableList<Pub>  nearPubs = FXCollections.observableArrayList();
+//		Pub first = PubDAO.nearPubs.get(0);
+//		for(int i = 0; i< PubDAO.nearPubs.size()-1; i++) {
+//			nearPubs.set(i, PubDAO.nearPubs.get(i+1));
+//		}
+//		nearPubs.add(first);
+//		PubDAO.nearPubs = nearPubs;
+//		return nearPubs;
+//	}
 		return sortedPubs;
 	}
 }

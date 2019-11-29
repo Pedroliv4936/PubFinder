@@ -16,6 +16,7 @@ public class User {
 	private ObservableList<Drink> favoriteDrinks;
 	private UserPrivilege privilege;
 
+
 	public User(int id, String name, String username, String password, String email, Date birthday, int cellphone, UserPrivilege privilege) {
 		this.id = id;
 		this.name = name;

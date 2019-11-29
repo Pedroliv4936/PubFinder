@@ -115,6 +115,7 @@ public class MainScreenContentController implements MapComponentInitializedListe
 		geocodingService = new GeocodingService();
 		MarkerOptions markerOptions = new MarkerOptions();
 		ObservableList<Marker> pubMarkers = FXCollections.observableArrayList();
+
 		for (Pub pub : PubDAO.getActivePubs()) {
 			LatLong latLong =pub.getCoordinates();
 			markerOptions.position(latLong);
@@ -122,8 +123,8 @@ public class MainScreenContentController implements MapComponentInitializedListe
 			newPubMarker.setTitle(pub.toString() + " Marker");
 			pubMarkers.add(newPubMarker);
 			System.out.println();
-			System.out
-					.println("Pub with coordinates : " + pub.getCoordinates().getLongitude()+ " and " + pub.getCoordinates().getLatitude()+ " added to map");
+			System.out.println("Pub with coordinates : " + pub.getCoordinates().getLongitude() + " and "
+					+ pub.getCoordinates().getLatitude() + " added to map");
 		}
 		// Set the initial properties of the map.
 
