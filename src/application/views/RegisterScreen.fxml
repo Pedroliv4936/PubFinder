@@ -50,6 +50,16 @@
                         <Insets left="20.0" right="20.0" />
                      </VBox.margin>
                   </JFXPasswordField>
+                  <JFXTextField fx:id="nome" focusColor="#353535" opacity="0.43" promptText="Nome" stylesheets="@layout.css" unFocusColor="#353535">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXTextField fx:id="cellphone" focusColor="#353535" opacity="0.43" promptText="Numero de telemovel" stylesheets="@layout.css" unFocusColor="#353535">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </JFXTextField>
                   <JFXTextField fx:id="userMail" focusColor="#353535" opacity="0.43" promptText="E-mail" stylesheets="@layout.css" unFocusColor="#353535">
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" />

@@ -20,7 +20,7 @@ import javafx.scene.paint.Color;
 
 public class RegisterScreenController {
 	@FXML
-	TextField username, userMail;
+	TextField username, userMail, nome, cellphone;
 	@FXML
 	PasswordField password1, password2;
 	@FXML
@@ -44,7 +44,7 @@ public class RegisterScreenController {
 	private void submit() {
 		if(password1.getText().equals(password2.getText())) {
 			ObservableList<Drink> selectedDrinks= FXCollections.observableArrayList();
-		User user = new User(LoginDAO.getUserList().size(), username.getText(), username.getText(), password1.getText(), userMail.getText(), Date.valueOf(birthday.getValue()),777777777);
+		User user = new User(LoginDAO.getUserList().size(), nome.getText(), username.getText(), password1.getText(), userMail.getText(), Date.valueOf(birthday.getValue()),Integer.valueOf(cellphone.getText()));
 		for(CheckBox checkBox:checkBoxes) {
 			if (checkBox.isSelected()) {
 				selectedDrinks.addAll((Drink)checkBox.getUserData());
