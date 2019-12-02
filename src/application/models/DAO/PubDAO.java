@@ -16,7 +16,6 @@ import application.models.Pub;
 import application.models.PubType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.web.WebView;
 
 public class PubDAO {
 
@@ -51,7 +50,7 @@ public class PubDAO {
 			e.printStackTrace();
 		}
 		return pubList;
-	}
+	}	
 	
 	public static ObservableList<Pub> getActivePubs() {
 		ObservableList<Pub> pubList = FXCollections.observableArrayList();
@@ -145,9 +144,8 @@ public class PubDAO {
 					 "SET pending = 0 "+
 					 "WHERE pub_id = ?";
 		try(PreparedStatement stat = conn.prepareStatement(sql)){
-			try(ResultSet rs = stat.executeQuery()){
-				stat.setInt(1, pub.getId());
-			}
+			stat.setInt(1, pub.getId());
+			stat.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
