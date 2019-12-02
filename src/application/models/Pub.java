@@ -14,7 +14,7 @@ public class Pub extends Entity {
 	private double rating;
 	private double price;
 	private PubType type;
-	private LatLong coordinates;
+	private Coordinates coordinates;
 	private double xCoord, yCoord;
 	private String openTime, closeTime;
 	private boolean pending;
@@ -24,7 +24,7 @@ public class Pub extends Entity {
 	public static final String BAR = "Bar";
 	public static final String SALAO_DE_JOGOS = "Salao de jogos";
 
-	public Pub(int id, String name, PubType type, double price, double rating, String address, LatLong coordinates, boolean pending) {
+	public Pub(int id, String name, PubType type, double price, double rating, String address, Coordinates coordinates, boolean pending) {
 		super(id, name);
 		this.price = price;
 		this.type = type;

@@ -18,7 +18,7 @@ public class UserHeaderController {
 	
 	@FXML
 	private void openDrinksScreen(){
-		//ScreenManager.setScreen(ScreenContainer.MENU_BEBIDAS);
+		ScreenManager.setScreen(ScreenContainer.MENU_BEBIDAS);
 	}
 	
 	@FXML
