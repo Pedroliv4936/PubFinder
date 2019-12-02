@@ -5,11 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public final class JDBC {
-	private static final String URL = "jdbc:mysql://localhost:3306/pub_finder";
+	private static final String URL = "jdbc:mysql://remotemysql.com:3306/Inr8NyMJYV";
 
 	private static Connection con;
-	private static final String USER = "root";
-	private static final String PASS = "rabanete";
+	private static final String USER = "Inr8NyMJYV";
+	private static final String PASS = "Gd1YhhXXL5";
 
 	private JDBC() {
 	}
