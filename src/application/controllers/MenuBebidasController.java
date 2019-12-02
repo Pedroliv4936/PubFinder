@@ -49,7 +49,6 @@ public class MenuBebidasController {
 		barColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getPub().toString()));
 		priceColumn.setCellValueFactory(new PropertyValueFactory<DrinkForSale, Double>("price"));
 		publistTV.setItems(filteredDrinks);
-		setFavoriteDrinks();
 		publistTV.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 			openBarInfo(newSelection);
 		});

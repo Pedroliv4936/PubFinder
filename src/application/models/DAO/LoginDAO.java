@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import application.JDBC;
 import application.models.Drink;
@@ -28,7 +30,7 @@ public class LoginDAO {
 	public static ObservableList<User> getAdminList() {
 		ObservableList<User> adminList = FXCollections.observableArrayList();
 		Connection con = JDBC.getConnection();
-		String sql = "SELECT * FROM users WHERE user_privilege_id = 0";
+		String sql = "call getAllFromUserType(1)";
 		try (Statement stat = con.createStatement(); ResultSet rs = stat.executeQuery(sql)) {
 			while (rs.next()) {
 				int userId = rs.getInt("user_id");
@@ -65,7 +67,7 @@ public class LoginDAO {
 				String email = rs.getString("email");
 				int cellphone = rs.getInt("phone");
 				int privilegeId = rs.getInt("user_privilege_id");
-				UserPrivilege privilege = UserPrivilege.getPrivilege(privilegeId);
+				UserPrivilege privilege = UserPrivilege.getPrivilege(1);
 
 				userList.add(new User(userId, name, username, password, email, birthday, cellphone, privilege));
 				ObservableList<Drink> favDrinks = DrinkDAO.getFavDrinks(userList.get(userList.size() - 1));
@@ -79,16 +81,18 @@ public class LoginDAO {
 
 	public static void addUser(User user) {
 		Connection con = JDBC.getConnection();
-		String sql = "INSERT INTO users (username, password, name, birthday, email, phone, user_privilege)"
-				+ "VALUES(?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO users (username, password, name, birthday, email, phone, user_privilege_id) "
+				+ "VALUES(?,MD5(?),?,?,?,?,?)";
 		try (PreparedStatement stat = con.prepareStatement(sql)) {
 			stat.setString(1, user.getUsername());
 			stat.setString(2,user.getPassword());
 			stat.setString(3,user.getName());
-			stat.setDate(4, user.getBirthday());
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			String format = formatter.format(user.getBirthday());
+			stat.setString(4, format);
 			stat.setString(5, user.getEmail());;
 			stat.setInt(6, user.getCellphone());
-			stat.setInt(7, user.getPrivilege().getId());
+			stat.setInt(7, 2);
 			stat.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

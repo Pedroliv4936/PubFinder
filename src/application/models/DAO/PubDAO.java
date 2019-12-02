@@ -56,7 +56,7 @@ public class PubDAO {
 		ObservableList<Pub> pubList = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
 		try (Statement stat = conn.createStatement();
-				ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 0;")) {
+				ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 0")) {
 			while (rs.next()) {
 				String name = rs.getString("pub_name");
 				int typeId = rs.getInt("pub_type_id");
@@ -119,7 +119,7 @@ public class PubDAO {
 		ObservableList<Pub> pubList = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
 		try (Statement stat = conn.createStatement();
-				ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 1;")) {
+				ResultSet rs = stat.executeQuery("SELECT * FROM pubs WHERE pending = 1")) {
 			while (rs.next()) {
 				String name = rs.getString("pub_name");
 				int typeId = rs.getInt("pub_type_id");

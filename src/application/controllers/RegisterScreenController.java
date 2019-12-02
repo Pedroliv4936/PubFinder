@@ -5,6 +5,7 @@ import java.sql.Date;
 import application.ScreenManager;
 import application.models.Drink;
 import application.models.User;
+import application.models.UserPrivilege;
 import application.models.DAO.LoginDAO;
 import application.views.ScreenContainer;
 import javafx.collections.FXCollections;
@@ -44,7 +45,7 @@ public class RegisterScreenController {
 	private void submit() {
 		if(password1.getText().equals(password2.getText())) {
 			ObservableList<Drink> selectedDrinks= FXCollections.observableArrayList();
-		User user = new User(LoginDAO.getUserList().size(), nome.getText(), username.getText(), password1.getText(), userMail.getText(), Date.valueOf(birthday.getValue()),Integer.valueOf(cellphone.getText()));
+		User user = new User(LoginDAO.getUserList().size(), nome.getText(), username.getText(), password1.getText(), userMail.getText(), Date.valueOf(birthday.getValue()),Integer.valueOf(cellphone.getText()), UserPrivilege.USER);
 		for(CheckBox checkBox:checkBoxes) {
 			if (checkBox.isSelected()) {
 				selectedDrinks.addAll((Drink)checkBox.getUserData());
