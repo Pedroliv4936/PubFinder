@@ -8,7 +8,7 @@ public class DefaultHeaderController {
 	
 	@FXML
 	private void openDrinksPage() {
-		ScreenManager.setScreen(ScreenContainer.MENU_BEBIDAS);
+		//ScreenManager.setScreen(ScreenContainer.MENU_BEBIDAS);
 	}
 
 	@FXML

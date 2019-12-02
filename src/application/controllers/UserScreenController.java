@@ -46,7 +46,7 @@ public class UserScreenController {
 			
 			System.out.println(drink.toString());
 			bebidasFavoritasUser.add(newCheckBox, column, row);
-			if(LoginDAO.getLogedinUser().getFavoriteDrinks().contains(drink)) {
+			if(DrinkDAO.getFavDrinks(LoginDAO.getLogedinUser()).contains(drink)) {
 				newCheckBox.setSelected(true);
 			}
 			if(row<2) {

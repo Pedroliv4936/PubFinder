@@ -18,7 +18,7 @@ public class ScreenContainer {
 	private Object headerController, contentController;
 	
 	public static final ScreenContainer MAIN_SCREEN = new ScreenContainer("views/DefaultHeader.fxml", "views/MainScreenContent.fxml", new DefaultHeaderController(), new MainScreenContentController());
-	public static final ScreenContainer MENU_BEBIDAS = new ScreenContainer("views/DefaultHeader.fxml", "views/BebidasScreen.fxml", new DefaultHeaderController(), new MenuBebidasController());
+	//public static final ScreenContainer MENU_BEBIDAS = new ScreenContainer("views/DefaultHeader.fxml", "views/BebidasScreen.fxml", new DefaultHeaderController(), new MenuBebidasController());
 	public static final ScreenContainer USER_SCREEN = new ScreenContainer("views/UserHeader.fxml", "views/UserScreen.fxml", new UserHeaderController(), new UserScreenController());
 	public static final ScreenContainer ADD_INFO = new ScreenContainer("views/DefaultHeader.fxml", "views/AddInfo.fxml", new DefaultHeaderController(), new AddInfoController());
 	public static final ScreenContainer CHECK_NEW_REQUESTS = new ScreenContainer("views/DefaultHeader.fxml", "views/CheckNewRequests.fxml", new DefaultHeaderController(), new CheckNewRequestsController());

@@ -3,8 +3,6 @@ package application.controllers;
 import com.jfoenix.controls.JFXButton;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
-import com.lynden.gmapsfx.javascript.event.GMapMouseEvent;
-import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.GoogleMap;
 import com.lynden.gmapsfx.javascript.object.LatLong;
 import com.lynden.gmapsfx.javascript.object.MapOptions;
@@ -15,6 +13,7 @@ import com.lynden.gmapsfx.service.geocoding.GeocoderStatus;
 import com.lynden.gmapsfx.service.geocoding.GeocodingResult;
 import com.lynden.gmapsfx.service.geocoding.GeocodingService;
 
+import application.MapManager;
 import application.ScreenManager;
 import application.models.Pub;
 import application.models.UserPrivilege;
@@ -28,6 +27,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Control;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -49,7 +49,7 @@ public class MainScreenContentController implements MapComponentInitializedListe
 	@FXML
 	JFXButton addInformation;
 
-	private GoogleMapView mapView;
+	private GoogleMapView mapView ;
 
 	private GoogleMap map;
 
@@ -63,7 +63,11 @@ public class MainScreenContentController implements MapComponentInitializedListe
 
 		backStackPane.getChildren().clear();
 
-		mapView = new GoogleMapView("pt-BR", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
+		mapView = MapManager.getMapView();
+		mapView.minHeight(Control.USE_COMPUTED_SIZE);
+		mapView.minWidth(Control.USE_COMPUTED_SIZE);
+		
+		
 
 		backStackPane.getChildren().addAll(mapView, vbox);
 
@@ -72,7 +76,6 @@ public class MainScreenContentController implements MapComponentInitializedListe
 
 		backStackPane.setPickOnBounds(false);
 		vbox.setPickOnBounds(false);
-		mapView.addMapInitializedListener(this);
 	}
 
 	@FXML

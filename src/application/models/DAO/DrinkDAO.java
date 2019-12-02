@@ -17,7 +17,7 @@ public class DrinkDAO {
 	public static ObservableList<DrinkForSale> getDrinksInPubs() {
 		ObservableList<DrinkForSale> drinksInPubs = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
-		String sql = "SELECT * FROM drinks_for_sale WHERE pending = 0";
+		String sql = "call verDrinksForSale()";
 		try (Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery(sql)) {
 			while (rs.next()) {
 				int drink = rs.getInt("drink_id");
