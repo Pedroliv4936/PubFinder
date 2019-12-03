@@ -25,6 +25,6 @@ public class Coordinates {
 	}
 	
 	public double distanceFrom(Coordinates other) {
-		return 0.0;
+		return Math.sqrt(Math.pow(other.getX() - getX(), 2) + Math.pow(other.getY() + getY(), 2));
 	}
 }

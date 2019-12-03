@@ -7,11 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Collections;
 
-import com.lynden.gmapsfx.javascript.JavaFxWebEngine;
-import com.lynden.gmapsfx.javascript.JavascriptRuntime;
-import com.lynden.gmapsfx.javascript.object.LatLong;
-
 import application.JDBC;
+import application.models.Coordinates;
 import application.models.Pub;
 import application.models.PubType;
 import javafx.collections.FXCollections;
@@ -42,7 +39,7 @@ public class PubDAO {
 				System.out.println(xCoord);
 				double yCoord = rs.getDouble("yCoord");
 				System.out.println(yCoord);
-				LatLong latLong = new LatLong(xCoord,yCoord);
+				Coordinates latLong = new Coordinates(xCoord,yCoord);
 				boolean pending = rs.getBoolean("pending");
 				pubList.add(new Pub(id, name, type, price, 5, address, latLong, pending));
 			}
@@ -67,7 +64,7 @@ public class PubDAO {
 				double xCoord = rs.getDouble("xCoord");
 				double yCoord = rs.getDouble("yCoord");
 				boolean pending = rs.getBoolean("pending");
-				pubList.add(new Pub(id, name, type, price, 5, address, new LatLong(xCoord, yCoord), pending));
+				pubList.add(new Pub(id, name, type, price, 5, address, new Coordinates(xCoord, yCoord), pending));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -130,7 +127,7 @@ public class PubDAO {
 				double xCoord = rs.getDouble("xCoord");
 				double yCoord = rs.getDouble("yCoord");
 				boolean pending = rs.getBoolean("pending");
-				pubList.add(new Pub(id, name, type, price, 5, address, new LatLong(xCoord, yCoord), pending));
+				pubList.add(new Pub(id, name, type, price, 5, address, new Coordinates(xCoord, yCoord), pending));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -175,8 +172,8 @@ public class PubDAO {
 				stat.setString(1, pub.toString());
 				stat.setDouble(2, pub.getPrice());
 				stat.setInt(3, pub.getType().getId());
-				stat.setDouble(4, pub.getCoordinates().getLongitude());
-				stat.setDouble(5, pub.getCoordinates().getLatitude());
+				stat.setDouble(4, pub.getCoordinates().getX());
+				stat.setDouble(5, pub.getCoordinates().getY());
 				stat.setString(6, pub.getAddress());
 				stat.setBoolean(7, true);
 				stat.executeUpdate();
@@ -186,7 +183,7 @@ public class PubDAO {
 		}
 	}
 
-	public static ObservableList<Pub> sortList(LatLong loc) {
+	public static ObservableList<Pub> sortList(Coordinates loc) {
 		ObservableList<Pub> sortedPubs = getActivePubs();
 		Collections.sort(sortedPubs, (pub1, pub2) -> ((Double) pub2.distance(loc)).compareTo(pub1.distance(loc)));
 		/*

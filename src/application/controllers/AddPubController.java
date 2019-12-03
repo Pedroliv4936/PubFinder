@@ -3,9 +3,9 @@ package application.controllers;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
-import com.lynden.gmapsfx.javascript.object.LatLong;
 
 import application.ScreenManager;
+import application.models.Coordinates;
 import application.models.Pub;
 import application.models.PubType;
 import application.models.DAO.PubDAO;
@@ -85,7 +85,7 @@ public class AddPubController {
 			String openTime = (openHour.getValue() + ":" + openMin.getValue());
 			String closeTime = (closeHour.getValue() + ":" + closeMin.getValue());
 			int id = PubDAO.getActivePubs().size();
-			PubDAO.addPub(new Pub(id, name, type, price, 4, address, new LatLong(pubXCoordinate, pubYCoordinate), true));
+			PubDAO.addPub(new Pub(id, name, type, price, 4, address, new Coordinates(pubXCoordinate, pubYCoordinate), true));
 			System.out.println(name + " Adicionado a lista de espera");
 
 			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);

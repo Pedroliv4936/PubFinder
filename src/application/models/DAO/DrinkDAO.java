@@ -25,8 +25,8 @@ public class DrinkDAO {
 				double rating = rs.getDouble("rating");
 				double price = rs.getDouble("price");
 				boolean pending = rs.getBoolean("pending");
-				drinksInPubs.add(new DrinkForSale(DrinkDAO.getDrinkType(drink), PubDAO.getPub(pub),
-						rating, price, pending));
+				drinksInPubs.add(
+						new DrinkForSale(DrinkDAO.getDrinkType(drink), PubDAO.getPub(pub), rating, price, pending));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -46,8 +46,8 @@ public class DrinkDAO {
 				double rating = rs.getDouble("rating");
 				double price = rs.getDouble("price");
 				boolean pending = rs.getBoolean("pending");
-				pendingDrinks.add(new DrinkForSale(drinkId,getDrinkType(drink), PubDAO.getPub(pub),
-						rating, price, pending));
+				pendingDrinks.add(
+						new DrinkForSale(drinkId, getDrinkType(drink), PubDAO.getPub(pub), rating, price, pending));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -69,9 +69,9 @@ public class DrinkDAO {
 	public static ObservableList<Drink> getFavDrinks(User user) {
 		ObservableList<Drink> favDrinkList = FXCollections.observableArrayList();
 		Connection con = JDBC.getConnection();
-		String sql = "SELECT drink_id FROM User_Favorite_Drink WHERE user_id is ?";
+		String sql = "SELECT drink_id FROM user_favorite_drinks WHERE user_id = ?";
 		try (PreparedStatement stat = con.prepareStatement(sql)) {
-			stat.setInt(1, user.getId() + 1);
+			stat.setInt(1, user.getId());
 			try (ResultSet rs = stat.executeQuery()) {
 				while (rs.next()) {
 					int id = rs.getInt("drink_id");
@@ -83,6 +83,18 @@ public class DrinkDAO {
 			e.printStackTrace();
 		}
 		return favDrinkList;
+	}
+
+	public static void addFavDrink(User user, Drink drink) {
+		Connection con = JDBC.getConnection();
+		String sql = "INSERT INTO user_favorite_drinks (user_id, drink_id) VALUES(?, ?)";
+		try (PreparedStatement stat = con.prepareStatement(sql)) {
+			stat.setInt(1, user.getId());
+			stat.setInt(2, drink.getId());
+			stat.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void addDrink(DrinkForSale drink) {
@@ -121,16 +133,14 @@ public class DrinkDAO {
 		}
 		return drinkTypes;
 	}
-	
+
 	public static Drink getDrinkType(int id) {
-		for(Drink drink:getDrinkTypes()) {
-			if(drink.getId() == id)
+		for (Drink drink : getDrinkTypes()) {
+			if (drink.getId() == id)
 				return drink;
 		}
 		return null;
 	}
-	
-	
 
 	public static void aproveDrink(DrinkForSale drink) {
 		Connection conn = JDBC.getConnection();
@@ -143,7 +153,7 @@ public class DrinkDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void refuseDrink(DrinkForSale drink) {
 		removeDrink(drink);
 	}

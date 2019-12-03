@@ -2,28 +2,19 @@ package application.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.lynden.gmapsfx.GoogleMapView;
-import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.object.GoogleMap;
 import com.lynden.gmapsfx.javascript.object.LatLong;
-import com.lynden.gmapsfx.javascript.object.MapOptions;
-import com.lynden.gmapsfx.javascript.object.MapTypeIdEnum;
-import com.lynden.gmapsfx.javascript.object.Marker;
-import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import com.lynden.gmapsfx.service.geocoding.GeocoderStatus;
 import com.lynden.gmapsfx.service.geocoding.GeocodingResult;
 import com.lynden.gmapsfx.service.geocoding.GeocodingService;
 
 import application.MapManager;
 import application.ScreenManager;
-import application.models.Pub;
 import application.models.UserPrivilege;
 import application.models.DAO.LoginDAO;
-import application.models.DAO.PubDAO;
 import application.views.ScreenContainer;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -32,7 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-public class MainScreenContentController implements MapComponentInitializedListener {
+public class MainScreenContentController{
 
 	@FXML
 	TextField searchField;
@@ -107,40 +98,8 @@ public class MainScreenContentController implements MapComponentInitializedListe
 				latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(),
 						results[0].getGeometry().getLocation().getLongitude());
 			}
-
 			map.setCenter(latLong);
-
 		});
-	}
-
-	@Override
-	public void mapInitialized() {
-		geocodingService = new GeocodingService();
-		MarkerOptions markerOptions = new MarkerOptions();
-		ObservableList<Marker> pubMarkers = FXCollections.observableArrayList();
-
-		for (Pub pub : PubDAO.getActivePubs()) {
-			LatLong latLong =pub.getCoordinates();
-			markerOptions.position(latLong);
-			Marker newPubMarker = new Marker(markerOptions);
-			newPubMarker.setTitle(pub.toString() + " Marker");
-			pubMarkers.add(newPubMarker);
-			System.out.println();
-			System.out.println("Pub with coordinates : " + pub.getCoordinates().getLongitude() + " and "
-					+ pub.getCoordinates().getLatitude() + " added to map");
-		}
-		// Set the initial properties of the map.
-
-		MapOptions mapOptions = new MapOptions();
-
-		mapOptions.center(new LatLong(38.707438, -9.152532)).mapType(MapTypeIdEnum.ROADMAP).overviewMapControl(false)
-				.panControl(false).rotateControl(false).scaleControl(false).streetViewControl(false).zoomControl(false)
-				.zoom(15).mapTypeControl(false);
-
-		map = mapView.createMap(mapOptions);
-		System.out.println("Mapa criado");
-		// Add markers to the map
-		map.addMarkers(pubMarkers);
 	}
 
 	@FXML
