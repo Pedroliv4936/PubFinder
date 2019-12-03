@@ -1,7 +1,5 @@
 package application.models;
 
-import com.lynden.gmapsfx.javascript.object.LatLong;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
@@ -47,7 +45,7 @@ public class Pub extends Entity {
 		return coordinates.distanceFrom(pub.getCoordinates());
 	}
 
-	public double distance(LatLong loc) {
+	public double distance(Coordinates loc) {
 		return coordinates.distanceFrom(loc);
 	}
 	
@@ -93,7 +91,7 @@ public class Pub extends Entity {
 		this.images = images;
 	}
 
-	public LatLong getCoordinates() {
+	public Coordinates getCoordinates() {
 		return coordinates;
 	}
 

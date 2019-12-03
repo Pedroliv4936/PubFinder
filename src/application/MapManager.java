@@ -31,13 +31,13 @@ public class MapManager implements MapComponentInitializedListener{
         MarkerOptions markerOptions = new MarkerOptions();
 		ObservableList<Marker> pubMarkers = FXCollections.observableArrayList();
 		for(Pub pub : PubDAO.getActivePubs()) {
-			LatLong latLong = new LatLong(pub.getCoordinates().getLatitude(), pub.getCoordinates().getLongitude());
+			LatLong latLong = new LatLong(pub.getCoordinates().getX(), pub.getCoordinates().getY());
 	        markerOptions.position(latLong);
 	        Marker newPubMarker = new Marker(markerOptions);
 	        newPubMarker.setTitle(pub.toString() + " Marker");
 	        pubMarkers.add(newPubMarker);
 	        System.out.println();
-			System.out.println("Pub with coordinates : " + pub.getCoordinates().getLatitude() + " and " + pub.getCoordinates().getLongitude() + " added to map");
+			System.out.println("Pub with coordinates : " + pub.getCoordinates().getX() + " and " + pub.getCoordinates().getY() + " added to map");
 		}
 		  //Set the initial properties of the map.
 		
