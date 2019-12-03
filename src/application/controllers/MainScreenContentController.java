@@ -106,3 +106,4 @@ public class MainScreenContentController{
 	public void openPub() {
 	}
 }
+

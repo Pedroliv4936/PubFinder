@@ -28,3 +28,4 @@ public class Coordinates {
 		return Math.sqrt(Math.pow(other.getX() - getX(), 2) + Math.pow(other.getY() + getY(), 2));
 	}
 }
+

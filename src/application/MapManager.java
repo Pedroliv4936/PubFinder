@@ -75,3 +75,4 @@ public class MapManager implements MapComponentInitializedListener{
 		MapManager.map = map;
 	}
 }
+
