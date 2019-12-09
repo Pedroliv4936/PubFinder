@@ -29,7 +29,7 @@ public class MainScreenContentController{
 	TextField searchField;
 
 	@FXML
-	VBox vbox, buttonsVbox;
+	VBox vbox, buttonsVbox, mapVB;
 
 	@FXML
 	StackPane backStackPane;
@@ -51,22 +51,11 @@ public class MainScreenContentController{
 	@FXML
 	public void initialize() {
 		address.bind(searchField.textProperty());
-
-		backStackPane.getChildren().clear();
-
-		mapView = MapManager.getMapView();
-		mapView.minHeight(Control.USE_COMPUTED_SIZE);
-		mapView.minWidth(Control.USE_COMPUTED_SIZE);
-		
-		
-
-		backStackPane.getChildren().addAll(mapView, vbox);
-
+		geocodingService = MapManager.getMapManager().getGeoService();
+		mapView = MapManager.getMapManager().getMapView();
+		mapVB.getChildren().add(mapView);
 		if (LoginDAO.getLogedinUser().getPrivilege() != UserPrivilege.ADMIN)
 			buttonsVbox.getChildren().remove(checkNewRequests);
-
-		backStackPane.setPickOnBounds(false);
-		vbox.setPickOnBounds(false);
 	}
 
 	@FXML

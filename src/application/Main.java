@@ -2,8 +2,6 @@ package application;
 
 import java.io.IOException;
 
-import com.lynden.gmapsfx.javascript.object.LatLong;
-
 import javafx.application.Application;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -20,6 +18,7 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
+		MapManager.createMap();
 		screenManager= new ScreenManager();
 		screenManager.start(primaryStage);
 

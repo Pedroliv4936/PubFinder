@@ -8,6 +8,7 @@ import com.lynden.gmapsfx.javascript.object.MapOptions;
 import com.lynden.gmapsfx.javascript.object.MapTypeIdEnum;
 import com.lynden.gmapsfx.javascript.object.Marker;
 import com.lynden.gmapsfx.javascript.object.MarkerOptions;
+import com.lynden.gmapsfx.service.geocoding.GeocodingService;
 
 import application.models.Pub;
 import application.models.DAO.PubDAO;
@@ -16,18 +17,22 @@ import javafx.collections.ObservableList;
 
 public class MapManager implements MapComponentInitializedListener{
 
-	private static GoogleMapView mapView = new GoogleMapView("pt-BR", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
+	private GoogleMapView mapView;
     
-    private static GoogleMap map;
+    private GoogleMap map;
     
-    public static MapManager mainMap = new MapManager();
+    private static MapManager mainMap;
+    
+	private GeocodingService geocodingService;
 
-	public MapManager() {
-		mapView.addMapInitializedListener(this);
+	private MapManager() {
+		mapView = new GoogleMapView("pt-BR", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
+		mapView.addMapInializedListener(this);
 	}
 
 	@Override
 	public void mapInitialized() {
+        geocodingService = new GeocodingService();
         MarkerOptions markerOptions = new MarkerOptions();
 		ObservableList<Marker> pubMarkers = FXCollections.observableArrayList();
 		for(Pub pub : PubDAO.getActivePubs()) {
@@ -51,20 +56,32 @@ public class MapManager implements MapComponentInitializedListener{
 	                .scaleControl(false)
 	                .streetViewControl(false)
 	                .zoomControl(false)
-	                .zoom(12);
+	                .zoom(12);	        
+	        map = mapView.createMap(mapOptions);
 	        //Add markers to the map
 	        map.addMarkers(pubMarkers);  
-	        
-	        map = mapView.createMap(mapOptions);
+	}
 	
+	public static void createMap() {
+		if (mainMap == null)
+			mainMap = new MapManager();
+	}
+	
+	public static MapManager getMapManager() {
+		createMap();
+		return mainMap;
+	}
+	
+	public GeocodingService getGeoService() {
+		return geocodingService;
 	}
 
-	public static GoogleMapView getMapView() {
+	public GoogleMapView getMapView() {
 		return mapView;
 	}
 
 	public void setMapView(GoogleMapView mapView) {
-		MapManager.mapView = mapView;
+		this.mapView = mapView;
 	}
 
 	public  GoogleMap getMap() {
@@ -72,7 +89,7 @@ public class MapManager implements MapComponentInitializedListener{
 	}
 
 	public void setMap(GoogleMap map) {
-		MapManager.map = map;
+		this.map = map;
 	}
 }
 

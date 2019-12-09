@@ -60,7 +60,7 @@ public class BarScreenController implements MapComponentInitializedListener {
 
 		mapView = new GoogleMapView("pt-BR", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
 
-		mapView.addMapInitializedListener(this);
+		mapView.addMapInializedListener(this);
 
 		bgStackPane.getChildren().addAll(mapView, vbox);
 
