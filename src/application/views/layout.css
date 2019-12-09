@@ -53,6 +53,37 @@
 	-fx-opacity:43%;
 }
 
+#publistTV {
+	-fx-background-color: transparent;	
+	-fx-opacity:43%;
+	-fx-border-radius:3px;
+}
+
+.table-view .scroll-bar:horizontal {
+-fx-background-color: null;
+  -fx-background-radius: 0;
+  -fx-background-insets: 0;
+  -fx-padding: 0;
+}
+	
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+.table-view .column-header-background{
+    -fx-background-color: transparent ;
+    -fx-border-color: white;
+    -fx-border-radius:3px;
+}
+.table-view .table-cell{
+    -fx-text-fill: white;
+    -fx-border-color: white;
+}
+
+.table-row-cell {
+	-fx-background-color: transparent;	
+	-fx-text-fill: white;
+}
+
 #scrollPane {
     -fx-background-color: #353535;
 }

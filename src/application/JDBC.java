@@ -20,7 +20,7 @@ public final class JDBC {
 				con = DriverManager.getConnection(URL, USER, PASS);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+	}
 		return con;
 	}
 }
