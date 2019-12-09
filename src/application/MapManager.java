@@ -27,6 +27,7 @@ import javafx.scene.control.Alert;
 
 public class MapManager implements MapComponentInitializedListener{
 
+
 	private GoogleMapView mapView;
     
     private GoogleMap map;
@@ -66,6 +67,7 @@ public class MapManager implements MapComponentInitializedListener{
 	                .scaleControl(false)
 	                .streetViewControl(false)
 	                .zoomControl(false)
+
 	                .zoom(12);	        
 	        map = mapView.createMap(mapOptions);
 	        //Add markers to the map
@@ -110,16 +112,9 @@ public class MapManager implements MapComponentInitializedListener{
 		return mapView;
 	}
 
-	public void setMapView(GoogleMapView mapView) {
-		this.mapView = mapView;
-	}
-
 	public  GoogleMap getMap() {
 		return map;
 	}
 
-	public void setMap(GoogleMap map) {
-		this.map = map;
-	}
 }
 

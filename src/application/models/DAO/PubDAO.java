@@ -114,6 +114,7 @@ public class PubDAO {
         pubsOrdered = pubList;
     }
 	
+
 	public static ObservableList<Pub> getActivePubs() {
 		ObservableList<Pub> pubList = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
@@ -136,6 +137,7 @@ public class PubDAO {
 		}
 		return pubList;
 	}
+	
 	
 	public static Pub getPub(int id) {
 		for(Pub pub: getPubs()) {
