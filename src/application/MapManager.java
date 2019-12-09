@@ -16,14 +16,19 @@ import javafx.collections.ObservableList;
 
 public class MapManager implements MapComponentInitializedListener{
 
-	private static GoogleMapView mapView = new GoogleMapView("pt-BR", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
+	private GoogleMapView mapView;    
+    private GoogleMap map;
     
-    private static GoogleMap map;
-    
-    public static MapManager mainMap = new MapManager();
+    public static MapManager mainMap;
 
+    public static MapManager getMainMap() {
+    	if (mainMap == null ) mainMap = new MapManager();
+    	return mainMap;
+    }
+    
 	public MapManager() {
-		mapView.addMapInitializedListener(this);
+		mapView = new GoogleMapView("pt-BR", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
+		mapView.addMapInializedListener(this);
 	}
 
 	@Override
@@ -52,27 +57,22 @@ public class MapManager implements MapComponentInitializedListener{
 	                .streetViewControl(false)
 	                .zoomControl(false)
 	                .zoom(12);
+	        map = mapView.createMap(mapOptions);
+	        
+	        
 	        //Add markers to the map
 	        map.addMarkers(pubMarkers);  
 	        
-	        map = mapView.createMap(mapOptions);
 	
 	}
 
-	public static GoogleMapView getMapView() {
+	public GoogleMapView getMapView() {
 		return mapView;
-	}
-
-	public void setMapView(GoogleMapView mapView) {
-		MapManager.mapView = mapView;
 	}
 
 	public  GoogleMap getMap() {
 		return map;
 	}
 
-	public void setMap(GoogleMap map) {
-		MapManager.map = map;
-	}
 }
 

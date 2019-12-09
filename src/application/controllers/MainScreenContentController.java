@@ -3,6 +3,7 @@ package application.controllers;
 import com.jfoenix.controls.JFXButton;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.javascript.object.GoogleMap;
+import com.lynden.gmapsfx.javascript.object.InfoWindowOptions;
 import com.lynden.gmapsfx.javascript.object.LatLong;
 import com.lynden.gmapsfx.service.geocoding.GeocoderStatus;
 import com.lynden.gmapsfx.service.geocoding.GeocodingResult;
@@ -52,14 +53,10 @@ public class MainScreenContentController{
 	public void initialize() {
 		address.bind(searchField.textProperty());
 
+		
 		backStackPane.getChildren().clear();
-
-		mapView = MapManager.getMapView();
-		mapView.minHeight(Control.USE_COMPUTED_SIZE);
-		mapView.minWidth(Control.USE_COMPUTED_SIZE);
+		mapView = MapManager.getMainMap().getMapView();
 		
-		
-
 		backStackPane.getChildren().addAll(mapView, vbox);
 
 		if (LoginDAO.getLogedinUser().getPrivilege() != UserPrivilege.ADMIN)

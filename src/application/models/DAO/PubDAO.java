@@ -49,6 +49,34 @@ public class PubDAO {
 		return pubList;
 	}	
 	
+	public static ObservableList<Pub> getPubsOrdered(double x,double y) {
+		ObservableList<Pub> pubList = FXCollections.observableArrayList();
+		Connection conn = JDBC.getConnection();
+		try (PreparedStatement stat = conn.prepareStatement("call getPubsByDistance(?,?)")){
+				stat.setDouble(1, x);
+				stat.setDouble(2, y);
+				try(ResultSet rs = stat.executeQuery()) {
+			while (rs.next()) {
+				String name = rs.getString("pub_name");
+				int typeId = rs.getInt("pub_type_id");
+				PubType type = getPubType(typeId);
+				int id = rs.getInt("pub_id");
+				double price = rs.getDouble("entry_price");
+				String address = rs.getString("address");
+				double xCoord = rs.getDouble("xCoord");
+				System.out.println(xCoord);
+				double yCoord = rs.getDouble("yCoord");
+				System.out.println(yCoord);
+				Coordinates latLong = new Coordinates(xCoord,yCoord);
+				boolean pending = rs.getBoolean("pending");
+				pubList.add(new Pub(id, name, type, price, 5, address, latLong, pending));
+			}}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return pubList;
+	}
+	
 	public static ObservableList<Pub> getActivePubs() {
 		ObservableList<Pub> pubList = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
@@ -71,6 +99,7 @@ public class PubDAO {
 		}
 		return pubList;
 	}
+	
 	
 	public static Pub getPub(int id) {
 		for(Pub pub: getPubs()) {
