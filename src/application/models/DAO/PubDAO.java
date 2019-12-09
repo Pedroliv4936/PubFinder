@@ -82,12 +82,11 @@ public class PubDAO {
 	}	
 	
 	public static ObservableList<Pub> getPubsOrdered(){
-		if(pubsOrdered.size() < 1) setPubsOrdered(0,0);
 		return pubsOrdered;
 	}
 	
 	public static void setPubsOrdered(double x,double y) {
-        ObservableList<Pub> pubList = FXCollections.observableArrayList();
+		pubsOrdered = FXCollections.observableArrayList();
         Connection conn = JDBC.getConnection();
         try (PreparedStatement stat = conn.prepareStatement("Select * from pubs ORDER BY SQRT(POW(? - pubs.xCoord,2) + POW(? - pubs.yCoord,2)) ASC")){
                 stat.setDouble(1, x);
@@ -106,12 +105,11 @@ public class PubDAO {
                 System.out.println(yCoord);
                 Coordinates latLong = new Coordinates(xCoord,yCoord);
                 boolean pending = rs.getBoolean("pending");
-                pubList.add(new Pub(id, name, type, price, 5, address, latLong, pending));
+                pubsOrdered.add(new Pub(id, name, type, price, 5, address, latLong, pending));
             }}
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        pubsOrdered = pubList;
     }
 	
 

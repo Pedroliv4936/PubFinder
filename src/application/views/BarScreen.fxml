@@ -40,12 +40,12 @@
             </StackPane>
             <StackPane prefHeight="152.0" prefWidth="335.0">
                <children>
-                  <Pane fx:id="pubInfoRight" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="130.0" style="-fx-background-color: #353535;">
+                  <Pane fx:id="pubInfoRight" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#next" prefHeight="130.0" prefWidth="130.0" style="-fx-background-color: #353535;">
                      <StackPane.margin>
                         <Insets right="-150.0" />
                      </StackPane.margin>
                   </Pane>
-                  <Pane fx:id="pubInfoLeft" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="130.0" style="-fx-background-color: #353535;">
+                  <Pane fx:id="pubInfoLeft" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#prev" prefHeight="130.0" prefWidth="130.0" style="-fx-background-color: #353535;">
                      <StackPane.margin>
                         <Insets left="-150.0" />
                      </StackPane.margin>

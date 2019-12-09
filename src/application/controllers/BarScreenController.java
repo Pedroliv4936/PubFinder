@@ -3,13 +3,6 @@ package application.controllers;
 import java.io.IOException;
 
 import com.lynden.gmapsfx.GoogleMapView;
-import com.lynden.gmapsfx.MapComponentInitializedListener;
-import com.lynden.gmapsfx.javascript.object.GoogleMap;
-import com.lynden.gmapsfx.javascript.object.LatLong;
-import com.lynden.gmapsfx.javascript.object.MapOptions;
-import com.lynden.gmapsfx.javascript.object.MapTypeIdEnum;
-import com.lynden.gmapsfx.javascript.object.Marker;
-import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 
 import application.Main;
 import application.MapManager;
@@ -47,13 +40,21 @@ public class BarScreenController{
 	private int drinksIndex;
 	
 	private ObservableList<DrinkForSale> availableDrinks = FXCollections.observableArrayList();
+	
+	private int index;
+	
+	FXMLLoader pubFrontLoader;
+	FXMLLoader pubLeftLoader;
+	FXMLLoader pubRightLoader;
 
 	public BarScreenController(Pub pub) {
 		selectedPub = pub;
+		index = PubDAO.getPubsOrdered().indexOf(selectedPub);
 	}
 
 	@FXML
 	private void initialize() {
+		System.out.println("Pub com index : " + index);
 		System.out.println("Adicionado bebidas de " + selectedPub.toString());
 		bgStackPane.getChildren().clear();
 
@@ -73,13 +74,21 @@ public class BarScreenController{
 		pubInfoLeft.getChildren().clear();
 		pubInfoRight.getChildren().clear();
 		
-		FXMLLoader pubFrontLoader = new FXMLLoader(Main.class.getResource("views/PubInfo.fxml"));
-		FXMLLoader pubLeftLoader = new FXMLLoader(Main.class.getResource("views/PubInfo.fxml"));
-		FXMLLoader pubRightLoader = new FXMLLoader(Main.class.getResource("views/PubInfo.fxml"));
+		pubFrontLoader = new FXMLLoader(Main.class.getResource("views/PubInfo.fxml"));
+		pubLeftLoader = new FXMLLoader(Main.class.getResource("views/PubInfo.fxml"));
+		pubRightLoader = new FXMLLoader(Main.class.getResource("views/PubInfo.fxml"));
 		
-		pubFrontLoader.setController(new PubInfoController(PubDAO.getPubsOrdered().get(0)));
-		pubLeftLoader.setController(new PubInfoController(PubDAO.getPubsOrdered().get(0)));
+		pubFrontLoader.setController(new PubInfoController(selectedPub));
+		if(index <= 0)
+		pubLeftLoader.setController(new PubInfoController(PubDAO.getPubsOrdered().get(PubDAO.getPubsOrdered().size() - 1)));
+		else {
+		pubLeftLoader.setController(new PubInfoController(PubDAO.getPubsOrdered().get(index - 1)));
+		}
+		if(index + 1 < PubDAO.getPubsOrdered().size())
+		pubRightLoader.setController(new PubInfoController(PubDAO.getPubsOrdered().get(index + 1)));
+		else {
 		pubRightLoader.setController(new PubInfoController(PubDAO.getPubsOrdered().get(0)));
+		}
 		
 		try {
 			pubInfoFront.getChildren().add((Pane) pubFrontLoader.load());
@@ -132,5 +141,17 @@ public class BarScreenController{
 		}
 
 		chooseDisplayedDrinks();
+	}
+	
+	@FXML 
+	private void next() {
+        ScreenManager.setScreen(new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml",
+		new DefaultHeaderController(), new BarScreenController(((PubInfoController)pubRightLoader.getController()).getPub())));
+	}
+	
+	@FXML
+	private void prev() {
+        ScreenManager.setScreen(new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml",
+		new DefaultHeaderController(), new BarScreenController(((PubInfoController)pubLeftLoader.getController()).getPub())));
 	}
 }

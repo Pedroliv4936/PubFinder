@@ -7,6 +7,7 @@ import application.models.Drink;
 import application.models.DrinkForSale;
 import application.models.DAO.DrinkDAO;
 import application.models.DAO.LoginDAO;
+import application.models.DAO.PubDAO;
 import application.views.ScreenContainer;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
@@ -87,7 +88,8 @@ public class MenuBebidasController {
 	}
 
 	void openBarInfo(DrinkForSale drink) {
-		System.out.println(drink.getPub().toString());
+		System.out.println(drink.getPub().toString() + "E O PUB DA BEBIDA");
+		PubDAO.setPubsOrdered(drink.getPub().getCoordinates().getX(), drink.getPub().getCoordinates().getY());
 		ScreenContainer screen = new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml",
 				new DefaultHeaderController(), new BarScreenController(drink.getPub()));
 

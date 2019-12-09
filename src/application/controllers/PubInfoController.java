@@ -24,7 +24,6 @@ public class PubInfoController {
 	
 	@FXML
 	private void initialize() {
-		System.out.println(name + " selecionado");
 		pubName.setText(name);
 		pubPrice.setText(price);
 		pubType.setText(type);
