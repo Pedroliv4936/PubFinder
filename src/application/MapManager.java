@@ -8,6 +8,7 @@ import com.lynden.gmapsfx.javascript.object.MapOptions;
 import com.lynden.gmapsfx.javascript.object.MapTypeIdEnum;
 import com.lynden.gmapsfx.javascript.object.Marker;
 import com.lynden.gmapsfx.javascript.object.MarkerOptions;
+import com.lynden.gmapsfx.service.geocoding.GeocodingService;
 
 import application.models.Pub;
 import application.models.DAO.PubDAO;
@@ -16,23 +17,23 @@ import javafx.collections.ObservableList;
 
 public class MapManager implements MapComponentInitializedListener{
 
-	private GoogleMapView mapView;    
+
+	private GoogleMapView mapView;
+    
     private GoogleMap map;
     
-    public static MapManager mainMap;
-
-    public static MapManager getMainMap() {
-    	if (mainMap == null ) mainMap = new MapManager();
-    	return mainMap;
-    }
+    private static MapManager mainMap;
     
-	public MapManager() {
+	private GeocodingService geocodingService;
+
+	private MapManager() {
 		mapView = new GoogleMapView("pt-BR", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
 		mapView.addMapInializedListener(this);
 	}
 
 	@Override
 	public void mapInitialized() {
+        geocodingService = new GeocodingService();
         MarkerOptions markerOptions = new MarkerOptions();
 		ObservableList<Marker> pubMarkers = FXCollections.observableArrayList();
 		for(Pub pub : PubDAO.getActivePubs()) {
@@ -56,14 +57,25 @@ public class MapManager implements MapComponentInitializedListener{
 	                .scaleControl(false)
 	                .streetViewControl(false)
 	                .zoomControl(false)
-	                .zoom(12);
+
+	                .zoom(12);	        
 	        map = mapView.createMap(mapOptions);
-	        
-	        
 	        //Add markers to the map
 	        map.addMarkers(pubMarkers);  
-	        
+	}
 	
+	public static void createMap() {
+		if (mainMap == null)
+			mainMap = new MapManager();
+	}
+	
+	public static MapManager getMapManager() {
+		createMap();
+		return mainMap;
+	}
+	
+	public GeocodingService getGeoService() {
+		return geocodingService;
 	}
 
 	public GoogleMapView getMapView() {
