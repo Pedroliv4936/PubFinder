@@ -12,6 +12,7 @@ import com.lynden.gmapsfx.javascript.object.Marker;
 import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 
 import application.Main;
+import application.MapManager;
 import application.ScreenManager;
 import application.models.DrinkForSale;
 import application.models.Pub;
@@ -25,7 +26,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-public class BarScreenController implements MapComponentInitializedListener {
+public class BarScreenController{
 
 	@FXML
 	Pane drinkInfo1, drinkInfo2, drinkInfo3;
@@ -41,11 +42,9 @@ public class BarScreenController implements MapComponentInitializedListener {
 
 	private GoogleMapView mapView;
 
-	private GoogleMap map;
-
 	private Pub selectedPub;
-
-	private int index;
+	
+	private int drinksIndex;
 	
 	private ObservableList<DrinkForSale> availableDrinks = FXCollections.observableArrayList();
 
@@ -60,7 +59,7 @@ public class BarScreenController implements MapComponentInitializedListener {
 
 		mapView = new GoogleMapView("pt-BR", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
 
-		mapView.addMapInializedListener(this);
+		mapView = MapManager.getMapManager().getMapView();
 
 		bgStackPane.getChildren().addAll(mapView, vbox);
 
@@ -73,54 +72,36 @@ public class BarScreenController implements MapComponentInitializedListener {
 		pubInfoFront.getChildren().clear();
 		pubInfoLeft.getChildren().clear();
 		pubInfoRight.getChildren().clear();
-
-		FXMLLoader pubInfo1Loader = new FXMLLoader(Main.class.getResource("views/PubInfo.fxml"));
-		FXMLLoader pubInfo2Loader = new FXMLLoader(Main.class.getResource("views/PubInfo.fxml"));
-		FXMLLoader pubInfo3Loader = new FXMLLoader(Main.class.getResource("views/PubInfo.fxml"));
 		
-		int index = PubDAO.getActivePubs().indexOf(selectedPub);
-		PubInfoController pubInfoFrontController = new PubInfoController(selectedPub);
-		PubInfoController pubInfoLeftController;
-		if(PubDAO.getActivePubs().indexOf(selectedPub)<=0 && PubDAO.getActivePubs().size() > 1) {
-			pubInfoLeftController = new PubInfoController(PubDAO.getActivePubs().get(PubDAO.getActivePubs().size() - 1));
-		}
-		pubInfoLeftController = new PubInfoController(PubDAO.getActivePubs().get(index - 1));
-		PubInfoController pubInfoRightController;
-		if(PubDAO.getActivePubs().size() > 1) {
-			pubInfoRightController = new PubInfoController(PubDAO.getActivePubs().get(index + 1));
-		}
-
-		pubInfo1Loader.setController(pubInfoFrontController);
-		pubInfo2Loader.setController(pubInfoLeftController);
-
+		FXMLLoader pubFrontLoader = new FXMLLoader(Main.class.getResource("views/PubInfo.fxml"));
+		FXMLLoader pubLeftLoader = new FXMLLoader(Main.class.getResource("views/PubInfo.fxml"));
+		FXMLLoader pubRightLoader = new FXMLLoader(Main.class.getResource("views/PubInfo.fxml"));
 		
-		System.out.println("FXMLS carregados" + " enviando " + selectedPub.toString());
+		pubFrontLoader.setController(new PubInfoController(PubDAO.getPubsOrdered().get(0)));
+		pubLeftLoader.setController(new PubInfoController(PubDAO.getPubsOrdered().get(0)));
+		pubRightLoader.setController(new PubInfoController(PubDAO.getPubsOrdered().get(0)));
+		
 		try {
-			pubInfoFront.getChildren().add((Pane) pubInfo1Loader.load());
-			pubInfoLeft.getChildren().add((Pane) pubInfo2Loader.load());
-			pubInfoRight.getChildren().add((Pane) pubInfo3Loader.load());
-		} catch (IOException e) {
+			pubInfoFront.getChildren().add((Pane) pubFrontLoader.load());
+			pubInfoLeft.getChildren().add((Pane) pubLeftLoader.load());
+			pubInfoRight.getChildren().add((Pane) pubRightLoader.load());
+		}catch(IOException e) {
 			e.printStackTrace();
 		}
-
-		ScreenContainer screen2 = new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml", new DefaultHeaderController(), new BarScreenController(pubInfoLeftController.getPub()));
-		pubInfoLeft.setOnMouseClicked(e -> {
-			
-			ScreenManager.setScreen(screen2);
-		});
 	}
 
 	private void chooseDisplayedDrinks() {
 		drinkInfo1.getChildren().clear();
 		drinkInfo2.getChildren().clear();
 		drinkInfo3.getChildren().clear();
+		System.out.println("SELECTED PUB IS: " + selectedPub.toString());
 		availableDrinks = selectedPub.getDrinks();
 		FXMLLoader drinkInfo1Loader = new FXMLLoader(Main.class.getResource("views/AvailableDrinks.fxml"));
 		FXMLLoader drinkInfo2Loader = new FXMLLoader(Main.class.getResource("views/AvailableDrinks.fxml"));
 		FXMLLoader drinkInfo3Loader = new FXMLLoader(Main.class.getResource("views/AvailableDrinks.fxml"));
-		drinkInfo1Loader.setController(new DrinkInfoController(selectedPub.getDrinks().get(index)));
-		drinkInfo2Loader.setController(new DrinkInfoController(selectedPub.getDrinks().get(index + 1)));
-		drinkInfo3Loader.setController(new DrinkInfoController(selectedPub.getDrinks().get(index + 2)));
+		drinkInfo1Loader.setController(new DrinkInfoController(availableDrinks.get(drinksIndex)));
+		drinkInfo2Loader.setController(new DrinkInfoController(availableDrinks.get(drinksIndex + 1)));
+		drinkInfo3Loader.setController(new DrinkInfoController(availableDrinks.get(drinksIndex + 2)));
 
 		try {
 			drinkInfo1.getChildren().add((Pane) drinkInfo1Loader.load());
@@ -133,10 +114,10 @@ public class BarScreenController implements MapComponentInitializedListener {
 
 	@FXML
 	private void changePubDrinksRight() {
-		if (index < availableDrinks.size() - 3) {
-			index++;
+		if (drinksIndex < availableDrinks.size() - 3) {
+			drinksIndex++;
 		} else {
-			index = 0;
+			drinksIndex = 0;
 		}
 
 		chooseDisplayedDrinks();
@@ -144,45 +125,12 @@ public class BarScreenController implements MapComponentInitializedListener {
 
 	@FXML
 	private void changePubDrinksLeft() {
-		if (index > 3) {
-			index--;
+		if (drinksIndex > 3) {
+			drinksIndex--;
 		} else {
-			index = 0;
+			drinksIndex = 0;
 		}
 
 		chooseDisplayedDrinks();
-	}
-
-	@Override
-	public void mapInitialized() {
-		MarkerOptions markerOptions = new MarkerOptions();
-		ObservableList<Marker> pubMarkers = FXCollections.observableArrayList();
-
-		LatLong latLong = new LatLong(selectedPub.getCoordinates().getX(), selectedPub.getCoordinates().getY());
-		markerOptions.position(latLong);
-		Marker newPubMarker = new Marker(markerOptions);
-		newPubMarker.setTitle(selectedPub.toString() + " Marker");
-		pubMarkers.add(newPubMarker);
-		System.out.println();
-		System.out.println("Pub with coordinates : " + selectedPub.getCoordinates().getX() + " and " + selectedPub.getCoordinates().getY() + " added to map");
-
-		// Set the initial properties of the map.
-
-		MapOptions mapOptions = new MapOptions();
-
-		mapOptions.center(new LatLong(selectedPub.getCoordinates().getX(), selectedPub.getCoordinates().getY()))
-		.mapType(MapTypeIdEnum.ROADMAP)
-		.overviewMapControl(false)
-		.panControl(false)
-		.rotateControl(false)
-		.scaleControl(false)
-		.streetViewControl(false)
-		.zoomControl(false)
-		.zoom(15)
-		.mapTypeControl(false);
-
-		map = mapView.createMap(mapOptions);
-		// Add markers to the map
-		map.addMarkers(pubMarkers);
 	}
 }

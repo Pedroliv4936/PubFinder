@@ -42,16 +42,10 @@ public class MainScreenContentController{
 
 	private GoogleMapView mapView ;
 
-	private GoogleMap map;
 
-	private StringProperty address = new SimpleStringProperty();
-
-	private GeocodingService geocodingService;
 
 	@FXML
 	public void initialize() {
-		address.bind(searchField.textProperty());
-		geocodingService = MapManager.getMapManager().getGeoService();
 		mapView = MapManager.getMapManager().getMapView();
 		mapVB.getChildren().add(mapView);
 		if (LoginDAO.getLogedinUser().getPrivilege() != UserPrivilege.ADMIN)
@@ -67,28 +61,10 @@ public class MainScreenContentController{
 	private void addInformation() {
 		ScreenManager.setScreen(ScreenContainer.ADD_INFO);
 	}
-
+	
 	@FXML
-	public void centerMap(ActionEvent event) {
-		geocodingService.geocode(address.get(), (GeocodingResult[] results, GeocoderStatus status) -> {
-
-			LatLong latLong = null;
-
-			if (status == GeocoderStatus.ZERO_RESULTS) {
-				Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
-				alert.show();
-				return;
-			} else if (results.length > 1) {
-				Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
-				alert.show();
-				latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(),
-						results[0].getGeometry().getLocation().getLongitude());
-			} else {
-				latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(),
-						results[0].getGeometry().getLocation().getLongitude());
-			}
-			map.setCenter(latLong);
-		});
+	private void centerMap() {
+		MapManager.getMapManager().centerMap(searchField.getText());
 	}
 
 	@FXML

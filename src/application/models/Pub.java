@@ -1,5 +1,6 @@
 package application.models;
 
+import application.models.DAO.DrinkDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
@@ -75,7 +76,7 @@ public class Pub extends Entity {
 	}
 
 	public ObservableList<DrinkForSale> getDrinks() {
-		return drinks;
+		return DrinkDAO.getDrinks(this);
 	}
 
 	public void setDrinks(ObservableList<DrinkForSale> drinks) {

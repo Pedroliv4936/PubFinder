@@ -9,6 +9,7 @@ import java.sql.Statement;
 import application.JDBC;
 import application.models.Drink;
 import application.models.DrinkForSale;
+import application.models.Pub;
 import application.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,6 +33,29 @@ public class DrinkDAO {
 			e.printStackTrace();
 		}
 		return drinksInPubs;
+	}
+	
+	public static ObservableList<DrinkForSale> getDrinks(Pub pub){
+		System.out.println("PUB ID = " + pub.getId());
+		ObservableList<DrinkForSale> drinks = FXCollections.observableArrayList();
+		Connection conn = JDBC.getConnection();
+		String sql = "SELECT * FROM drinks_for_sale WHERE pub_id = ?";
+		try (PreparedStatement stat = conn.prepareStatement(sql)) {
+			stat.setInt(1, pub.getId());
+			try(ResultSet rs = stat.executeQuery()){
+			while (rs.next()) {
+				int drink = rs.getInt("drink_id");
+				double rating = rs.getDouble("rating");
+				double price = rs.getDouble("price");
+				boolean pending = rs.getBoolean("pending");
+				drinks.add(
+						new DrinkForSale(DrinkDAO.getDrinkType(drink), pub, rating, price, pending));
+			}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return drinks;
 	}
 
 	public static ObservableList<DrinkForSale> getPendingDrinks() {

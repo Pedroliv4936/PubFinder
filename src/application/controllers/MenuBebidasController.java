@@ -87,6 +87,7 @@ public class MenuBebidasController {
 	}
 
 	void openBarInfo(DrinkForSale drink) {
+		System.out.println(drink.getPub().toString());
 		ScreenContainer screen = new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml",
 				new DefaultHeaderController(), new BarScreenController(drink.getPub()));
 

@@ -8,12 +8,22 @@ import com.lynden.gmapsfx.javascript.object.MapOptions;
 import com.lynden.gmapsfx.javascript.object.MapTypeIdEnum;
 import com.lynden.gmapsfx.javascript.object.Marker;
 import com.lynden.gmapsfx.javascript.object.MarkerOptions;
+import com.lynden.gmapsfx.service.geocoding.GeocoderStatus;
+import com.lynden.gmapsfx.service.geocoding.GeocodingResult;
 import com.lynden.gmapsfx.service.geocoding.GeocodingService;
 
+import application.controllers.BarScreenController;
+import application.controllers.DefaultHeaderController;
 import application.models.Pub;
 import application.models.DAO.PubDAO;
+import application.views.ScreenContainer;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 
 public class MapManager implements MapComponentInitializedListener{
 
@@ -32,7 +42,7 @@ public class MapManager implements MapComponentInitializedListener{
 
 	@Override
 	public void mapInitialized() {
-        geocodingService = new GeocodingService();
+		geocodingService = new GeocodingService();
         MarkerOptions markerOptions = new MarkerOptions();
 		ObservableList<Marker> pubMarkers = FXCollections.observableArrayList();
 		for(Pub pub : PubDAO.getActivePubs()) {
@@ -62,6 +72,30 @@ public class MapManager implements MapComponentInitializedListener{
 	        map.addMarkers(pubMarkers);  
 	}
 	
+	public void centerMap(String address) {
+	        geocodingService.geocode(address, (GeocodingResult[] results, GeocoderStatus status) -> {
+	            
+	            LatLong latLong = null;
+	            
+	            if( status == GeocoderStatus.ZERO_RESULTS) {
+	                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
+	                alert.show();
+	                return;
+	            } else if( results.length > 1 ) {
+	                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
+	                alert.show();
+	                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+	            } else {
+	                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+	            }
+	            
+	            map.setCenter(latLong);
+	            PubDAO.setPubsOrdered(latLong.getLatitude(), latLong.getLongitude());
+	            ScreenManager.setScreen(new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml",
+				new DefaultHeaderController(), new BarScreenController(PubDAO.getPubsOrdered().get(0))));
+	        });
+	}
+	
 	public static void createMap() {
 		if (mainMap == null)
 			mainMap = new MapManager();
@@ -72,10 +106,6 @@ public class MapManager implements MapComponentInitializedListener{
 		return mainMap;
 	}
 	
-	public GeocodingService getGeoService() {
-		return geocodingService;
-	}
-
 	public GoogleMapView getMapView() {
 		return mapView;
 	}
