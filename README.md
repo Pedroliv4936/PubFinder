@@ -50,4 +50,4 @@ Teremos 3 tipos de personas em nosso projeto:
 
 
 APRESENTAÇÃOÇ
-https://docs.google.com/presentation/d/1ZR3Ir2vvKw52w_Rg_0StCT4L0Na8XlMzrSs_Ycn2Iyg/edit#slide=id.p
+https://docs.google.com/presentation/d/1ZR3Ir2vvKw52w_Rg_0StCT4L0Na8XlMzrSs_Ycn2Iyg/edit?usp=sharing
