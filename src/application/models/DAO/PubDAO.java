@@ -16,7 +16,7 @@ import javafx.collections.ObservableList;
 
 public class PubDAO {
 	
-	static ObservableList<Pub> pubsOrdered = FXCollections.observableArrayList();
+	private static ObservableList<Pub> pubsOrdered = FXCollections.observableArrayList();
 
 	private PubDAO() {
 	}
@@ -40,9 +40,7 @@ public class PubDAO {
 					double price = rs.getDouble("entry_price");
 					String address = rs.getString("address");
 					double xCoord = rs.getDouble("xCoord");
-					System.out.println(xCoord);
 					double yCoord = rs.getDouble("yCoord");
-					System.out.println(yCoord);
 					Coordinates latLong = new Coordinates(xCoord,yCoord);
 					boolean pending = rs.getBoolean("pending");
 					return new Pub(id, name, type, price, 5, address, latLong, pending);
@@ -68,9 +66,7 @@ public class PubDAO {
 				double price = rs.getDouble("entry_price");
 				String address = rs.getString("address");
 				double xCoord = rs.getDouble("xCoord");
-				System.out.println(xCoord);
 				double yCoord = rs.getDouble("yCoord");
-				System.out.println(yCoord);
 				Coordinates latLong = new Coordinates(xCoord,yCoord);
 				boolean pending = rs.getBoolean("pending");
 				pubList.add(new Pub(id, name, type, price, 5, address, latLong, pending));
@@ -100,12 +96,9 @@ public class PubDAO {
                 double price = rs.getDouble("entry_price");
                 String address = rs.getString("address");
                 double xCoord = rs.getDouble("xCoord");
-                System.out.println(xCoord);
                 double yCoord = rs.getDouble("yCoord");
-                System.out.println(yCoord);
-                Coordinates latLong = new Coordinates(xCoord,yCoord);
                 boolean pending = rs.getBoolean("pending");
-                pubsOrdered.add(new Pub(id, name, type, price, 5, address, latLong, pending));
+                pubsOrdered.add(new Pub(id, name, type, price, 5, address, new Coordinates(xCoord,yCoord), pending));
             }}
         } catch (SQLException e) {
             e.printStackTrace();
@@ -153,7 +146,6 @@ public class PubDAO {
 				String name = rs.getString("pub_type_name");
 				int typeId = rs.getInt("pub_type_id");
 				pubTypes.add(new PubType(typeId, name));
-				System.out.println(name + "ADICIONADO AS OPCOES");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -246,45 +238,5 @@ public class PubDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public static ObservableList<Pub> sortList(Coordinates loc) {
-		ObservableList<Pub> sortedPubs = getActivePubs();
-		Collections.sort(sortedPubs, (pub1, pub2) -> ((Double) pub2.distance(loc)).compareTo(pub1.distance(loc)));
-		/*
-		 * 
-		 * new Comparator<Pub>() {
-		 * 
-		 * @Override public int compare(Pub pub2, Pub pub1) { return
-		 * ((Double)pub2.distance(loc)).compareTo(pub1.distance(loc)); } });
-		 */
-
-//	private static ObservableList<Pub> nearPubs = FXCollections.observableArrayList();
-//	
-//	public static ObservableList<Pub> getNearPubs(LatLong local) {
-//		ObservableList<Pub>  nearPubs = FXCollections.observableArrayList();
-//		for (Pub pub : getActivePubs()) {
-//			double distance = pub.getCoordinates().distanceFrom(local);
-//			System.out.println(pub.toString() + " Distancia: " + distance);
-//			if (distance <= DISTANCIA_MINIMA && distance != 0) {
-//				System.out.println(pub.toString() + " Adicionado aos bares proximos");
-//				nearPubs.add(pub);
-//			}
-//		}
-//		PubDAO.nearPubs = nearPubs;
-//		return nearPubs;
-//	}
-//	
-//	public static ObservableList<Pub> next(LatLong local) {
-//		ObservableList<Pub>  nearPubs = FXCollections.observableArrayList();
-//		Pub first = PubDAO.nearPubs.get(0);
-//		for(int i = 0; i< PubDAO.nearPubs.size()-1; i++) {
-//			nearPubs.set(i, PubDAO.nearPubs.get(i+1));
-//		}
-//		nearPubs.add(first);
-//		PubDAO.nearPubs = nearPubs;
-//		return nearPubs;
-//	}
-		return sortedPubs;
 	}
 }

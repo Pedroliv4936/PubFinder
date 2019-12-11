@@ -42,49 +42,57 @@ public class MapManager implements MapComponentInitializedListener{
 
 	@Override
 	public void mapInitialized() {
-		geocodingService = new GeocodingService();
-        MarkerOptions markerOptions = new MarkerOptions();
+		  //Set the initial properties of the map.
+		
+	        MapOptions mapOptions = new MapOptions();
+	        mapOptions.center(new LatLong(38.707438, -9.152532))
+            .mapType(MapTypeIdEnum.ROADMAP)
+            .overviewMapControl(false)
+            .panControl(false)
+            .rotateControl(false)
+            .scaleControl(false)
+            .streetViewControl(false)
+            .zoomControl(false)
+            .zoom(12);	      
+	        
+	        map = mapView.createMap(mapOptions);
+	}
+	
+	public void createMarkers() {
 		ObservableList<Marker> pubMarkers = FXCollections.observableArrayList();
+		
 		for(Pub pub : PubDAO.getActivePubs()) {
+			MarkerOptions markerOptions = new MarkerOptions();
 			LatLong latLong = new LatLong(pub.getCoordinates().getX(), pub.getCoordinates().getY());
 	        markerOptions.position(latLong);
 	        Marker newPubMarker = new Marker(markerOptions);
-	        newPubMarker.setTitle(pub.toString() + " Marker");
 	        pubMarkers.add(newPubMarker);
 	        System.out.println();
 			System.out.println("Pub with coordinates : " + pub.getCoordinates().getX() + " and " + pub.getCoordinates().getY() + " added to map");
 			
 		}
-		  //Set the initial properties of the map.
-		
-	        MapOptions mapOptions = new MapOptions();
-	        userLoc= new Marker(markerOptions);
-	        mapOptions.center(new LatLong(38.707438, -9.152532))
-	                .mapType(MapTypeIdEnum.ROADMAP)
-	                .overviewMapControl(true)
-	                .panControl(false)
-	                .rotateControl(false)
-	                .scaleControl(false)
-	                .streetViewControl(false)
-	                .zoomControl(false)
-
-	                .zoom(12);	        
-	        map = mapView.createMap(mapOptions);
-	        //Add markers to the map
-	        map.addMarkers(pubMarkers); 
-	        
-	        map.addMouseEventHandler(UIEventType.click, (GMapMouseEvent event) -> {
-	        	 map.removeMarker(userLoc);
-	        LatLong mouseLatLong = event.getLatLong();
-	        	   System.out.println("Latitude: " + mouseLatLong.getLatitude());
-	        	   System.out.println("Longitude: " + mouseLatLong.getLongitude());
-	        markerOptions.title("User Location");
-	        markerOptions.position(mouseLatLong);
-	        userLoc= new Marker(markerOptions);
-	        String iconstr = MarkerImageFactory.createMarkerImage("deufaultUserIcon.png", "png");
-	        userLoc.setOptions(markerOptions.icon(iconstr));
-	        map.addMarker(userLoc);
-	        });
+	        map.addMarkers(pubMarkers);
+	}
+	
+	public void userLocationMarker() {
+		MarkerOptions markerOptions = new MarkerOptions();
+        userLoc= new Marker(markerOptions);
+        map.addMouseEventHandler(UIEventType.click, (GMapMouseEvent event) -> {
+        	 map.removeMarker(userLoc);
+        LatLong mouseLatLong = event.getLatLong();
+        	   System.out.println("Latitude: " + mouseLatLong.getLatitude());
+        	   System.out.println("Longitude: " + mouseLatLong.getLongitude());
+        markerOptions.title("User Location");
+        markerOptions.position(mouseLatLong);
+        userLoc= new Marker(markerOptions);
+        String iconstr = MarkerImageFactory.createMarkerImage("deufaultUserIcon.png", "png");
+        userLoc.setOptions(markerOptions.icon(iconstr));
+        map.addMarker(userLoc);
+        });
+	}
+	
+	public void createGeocodingService() {
+		geocodingService = new GeocodingService();
 	}
 	
 	public void centerMap(String address) {

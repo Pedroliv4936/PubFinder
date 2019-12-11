@@ -17,6 +17,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Control;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -30,11 +31,12 @@ public class MenuBebidasController {
 	JFXButton bebidasButton, logoButton, userButton;
 	@FXML
 	TableView<DrinkForSale> publistTV;
-	@FXML
+	
+	
 	TableColumn<DrinkForSale, String> drinkColumn;
-	@FXML
+	
 	TableColumn<DrinkForSale, String> barColumn;
-	@FXML
+	
 	TableColumn<DrinkForSale, Double> priceColumn;
 	@FXML
 	GridPane bebidasFavoritas;
@@ -46,6 +48,12 @@ public class MenuBebidasController {
 
 	@FXML
 	private void initialize() {
+		filteredDrinks = DrinkDAO.getDrinksInPubs();
+		setFavoriteDrinks();
+		drinkColumn = new TableColumn<DrinkForSale, String>("Bebida");
+		barColumn = new TableColumn<DrinkForSale, String>("Bar");
+		priceColumn = new TableColumn<DrinkForSale, Double>("Preço");
+
 		drinkColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDrinkName()));
 		barColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getPub().toString()));
 		priceColumn.setCellValueFactory(new PropertyValueFactory<DrinkForSale, Double>("price"));
@@ -53,9 +61,14 @@ public class MenuBebidasController {
 		publistTV.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 			openBarInfo(newSelection);
 		});
+		drinkColumn.setPrefWidth(Control.USE_COMPUTED_SIZE);
+		barColumn.setPrefWidth(Control.USE_COMPUTED_SIZE);
+		priceColumn.setPrefWidth(Control.USE_COMPUTED_SIZE);
+		publistTV.getColumns().addAll(drinkColumn, barColumn, priceColumn);
 	}
 
 	private void filterList() {
+		filteredDrinks = FXCollections.observableArrayList();
 		for (Node node : bebidasFavoritas.getChildren()) {
 			CheckBox checkBox = (CheckBox) node;
 			if (checkBox.isSelected())
@@ -67,6 +80,7 @@ public class MenuBebidasController {
 					filteredDrinks.add(drinkForSale);
 			}
 		}
+		publistTV.refresh();
 	}
 
 	private void setFavoriteDrinks() {
@@ -76,9 +90,8 @@ public class MenuBebidasController {
 			newCheckBox.setOnAction(e -> filterList());
 			newCheckBox.setUserData(drink);
 			newCheckBox.setTextFill(Color.WHITE);
-			System.out.println(drink + " foi adicionado");
 			bebidasFavoritas.add(newCheckBox, columnIndex, rowIndex);
-			if (columnIndex < 1) {
+			if (columnIndex < 2) {
 				columnIndex++;
 			} else {
 				columnIndex = 0;
@@ -88,11 +101,9 @@ public class MenuBebidasController {
 	}
 
 	void openBarInfo(DrinkForSale drink) {
-		System.out.println(drink.getPub().toString() + "E O PUB DA BEBIDA");
 		PubDAO.setPubsOrdered(drink.getPub().getCoordinates().getX(), drink.getPub().getCoordinates().getY());
 		ScreenContainer screen = new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml",
-				new DefaultHeaderController(), new BarScreenController(drink.getPub()));
-
+				new DefaultHeaderController(), new BarScreenController(PubDAO.getPubsOrdered().get(0)));
 		ScreenManager.setScreen(screen);
 	}
 }

@@ -6,7 +6,32 @@
 	-fx-font-family: "Product Sans";
 }
 
+.check-box > .box {
+	-fx-padding: 0.166667em 0.166667em 0.25em 0.25em;
+	}
+	
+.check-box > .box > .mark {
+    /* ... */
+    -fx-padding: 0.416667em 0.416667em 0.5em 0.5em; /* 5 5 6 6 */
+    -fx-shape: "M-0.25,6.083c0.843-0.758,4.583,4.833,5.75,4.833S14.5-1.5,15.917-0.917c1.292,0.532-8.75,17.083-10.5,17.083C3,16.167-1.083,6.833-0.25,6.083z";
+}
 
+.table-view *.scroll-bar:vertical *.increment-button,
+.table-view *.scroll-bar:vertical *.decrement-button {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.table-view *.scroll-bar:vertical *.increment-arrow,
+.table-view *.scroll-bar:vertical *.decrement-arrow {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: null;
+}
 .text-field {
 	-fx-border-width:2px;
 	-fx-background-color: transparent;

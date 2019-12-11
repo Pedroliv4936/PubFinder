@@ -36,7 +36,6 @@ public class DrinkDAO {
 	}
 	
 	public static ObservableList<DrinkForSale> getDrinks(Pub pub){
-		System.out.println("PUB ID = " + pub.getId());
 		ObservableList<DrinkForSale> drinks = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
 		String sql = "SELECT * FROM drinks_for_sale WHERE pub_id = ?";
@@ -159,7 +158,8 @@ public class DrinkDAO {
 	}
 
 	public static Drink getDrinkType(int id) {
-		for (Drink drink : getDrinkTypes()) {
+		ObservableList<Drink> drinks =  getDrinkTypes();
+		for (Drink drink : drinks) {
 			if (drink.getId() == id)
 				return drink;
 		}
