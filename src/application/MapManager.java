@@ -43,7 +43,6 @@ public class MapManager implements MapComponentInitializedListener{
 	@Override
 	public void mapInitialized() {
 		  //Set the initial properties of the map.
-		
 	        MapOptions mapOptions = new MapOptions();
 	        mapOptions.center(new LatLong(38.707438, -9.152532))
             .mapType(MapTypeIdEnum.ROADMAP)
