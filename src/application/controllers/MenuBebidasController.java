@@ -44,11 +44,10 @@ public class MenuBebidasController {
 	HBox hBox;
 
 	private ObservableList<Drink> drinkTypesSelected = FXCollections.observableArrayList();
-	private ObservableList<DrinkForSale> filteredDrinks = FXCollections.observableArrayList();
+	private ObservableList<DrinkForSale> filteredDrinks = DrinkDAO.getDrinksInPubs();
 
 	@FXML
 	private void initialize() {
-		filteredDrinks = DrinkDAO.getDrinksInPubs();
 		setFavoriteDrinks();
 		drinkColumn = new TableColumn<DrinkForSale, String>("Bebida");
 		barColumn = new TableColumn<DrinkForSale, String>("Bar");
