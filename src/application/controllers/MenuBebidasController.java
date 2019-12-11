@@ -10,6 +10,8 @@ import application.models.DAO.LoginDAO;
 import application.models.DAO.PubDAO;
 import application.views.ScreenContainer;
 import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -52,7 +54,7 @@ public class MenuBebidasController {
 		setFavoriteDrinks();
 		drinkColumn = new TableColumn<DrinkForSale, String>("Bebida");
 		barColumn = new TableColumn<DrinkForSale, String>("Bar");
-		priceColumn = new TableColumn<DrinkForSale, Double>("Preço");
+		priceColumn = new TableColumn<DrinkForSale, Double>("Preï¿½o");
 
 		drinkColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDrinkName()));
 		barColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getPub().toString()));
@@ -68,18 +70,21 @@ public class MenuBebidasController {
 	}
 
 	private void filterList() {
+		drinkTypesSelected= FXCollections.observableArrayList();
 		filteredDrinks = FXCollections.observableArrayList();
 		for (Node node : bebidasFavoritas.getChildren()) {
 			CheckBox checkBox = (CheckBox) node;
-			if (checkBox.isSelected())
-				drinkTypesSelected.add((Drink) checkBox.getUserData());
+			if (checkBox.isSelected()) 
+				drinkTypesSelected.add((Drink)checkBox.getUserData());
 		}
-		for (DrinkForSale drinkForSale : publistTV.getItems()) {
+		for (DrinkForSale drinkForSale : DrinkDAO.getDrinksInPubs()) {
 			for (Drink drink : drinkTypesSelected) {
-				if (drinkForSale.getDrinkType() == drink)
+				if (drinkForSale.getDrinkType().getId() == drink.getId())
 					filteredDrinks.add(drinkForSale);
 			}
 		}
+		publistTV.getItems().clear();
+		publistTV.setItems(filteredDrinks);
 		publistTV.refresh();
 	}
 
@@ -87,7 +92,13 @@ public class MenuBebidasController {
 		int columnIndex = 0, rowIndex = 0;
 		for (Drink drink : DrinkDAO.getDrinkTypes()) {
 			CheckBox newCheckBox = new CheckBox(drink.toString());
-			newCheckBox.setOnAction(e -> filterList());
+			newCheckBox.setSelected(true);
+			newCheckBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
+				@Override
+				public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+					filterList();
+				}
+            });
 			newCheckBox.setUserData(drink);
 			newCheckBox.setTextFill(Color.WHITE);
 			bebidasFavoritas.add(newCheckBox, columnIndex, rowIndex);

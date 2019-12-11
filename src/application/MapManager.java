@@ -47,6 +47,7 @@ public class MapManager implements MapComponentInitializedListener{
 	        MapOptions mapOptions = new MapOptions();
 	        mapOptions.center(new LatLong(38.707438, -9.152532))
             .mapType(MapTypeIdEnum.ROADMAP)
+            .mapTypeControl(false)
             .overviewMapControl(false)
             .panControl(false)
             .rotateControl(false)
