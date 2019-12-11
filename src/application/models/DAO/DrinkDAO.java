@@ -158,7 +158,8 @@ public class DrinkDAO {
 	}
 
 	public static Drink getDrinkType(int id) {
-		for (Drink drink : getDrinkTypes()) {
+		ObservableList<Drink> drinks =  getDrinkTypes();
+		for (Drink drink : drinks) {
 			if (drink.getId() == id)
 				return drink;
 		}
