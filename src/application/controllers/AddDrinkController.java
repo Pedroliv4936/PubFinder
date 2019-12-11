@@ -27,7 +27,7 @@ public class AddDrinkController {
 	JFXButton enviar;
 
 	@FXML
-	JFXTextField priceField;
+	JFXTextField priceField, ratingField;
 
 	@FXML
 	private void initialize() {
@@ -69,6 +69,7 @@ public class AddDrinkController {
 	private boolean allFieldsFilled() {
 		boolean allFieldsFilled = true;
 		String priceRegex = "^[0-9]+(,\\d{3})*([,.]\\d+)?$";
+		String ratingRegex = "^[0-5]+(,\\d{3})*([,.][0-9])?$";
 		if (pubOptions.getValue() == null) {
 			pubOptions.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
 			System.out.println("Pub Not Selected");
@@ -82,6 +83,14 @@ public class AddDrinkController {
 			allFieldsFilled = false;
 		} else {
 			drinkType.getStylesheets().clear();
+		}if (!ratingField.getText().matches(ratingRegex)) {
+			priceField.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
+			priceField.clear();
+			priceField.setPromptText("Avaiaçao invalida");
+			System.out.println("Invalid rating");
+			allFieldsFilled = false;
+		} else {
+			priceField.getStylesheets().clear();
 		}
 		if (!priceField.getText().matches(priceRegex)) {
 			priceField.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
