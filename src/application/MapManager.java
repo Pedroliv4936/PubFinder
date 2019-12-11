@@ -43,7 +43,6 @@ public class MapManager implements MapComponentInitializedListener{
 
 	@Override
 	public void mapInitialized() {
-		geocodingService = new GeocodingService();
 		  //Set the initial properties of the map.
 		
 	        MapOptions mapOptions = new MapOptions();
@@ -72,6 +71,10 @@ public class MapManager implements MapComponentInitializedListener{
 			System.out.println("Pub with coordinates : " + pub.getCoordinates().getX() + " and " + pub.getCoordinates().getY() + " added to map");
 		}
 		map.addMarkers(pubMarkers);
+	}
+	
+	public void createGeocodingService() {
+		geocodingService = new GeocodingService();
 	}
 	
 	public void centerMap(String address) {

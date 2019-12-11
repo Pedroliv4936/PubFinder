@@ -39,6 +39,7 @@ public class MainScreenContentController{
 		mapView = MapManager.getMapManager().getMapView();
 		MapManager.getMapManager().createMarkers();
 		mapView.setZoom(12);
+		MapManager.getMapManager().createGeocodingService();
 		mapVB.getChildren().add(mapView);
 		if (LoginDAO.getLogedinUser().getPrivilege() != UserPrivilege.ADMIN)
 			buttonsVbox.getChildren().remove(checkNewRequests);

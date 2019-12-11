@@ -50,12 +50,12 @@ public class BarScreenController{
 	public BarScreenController(Pub pub) {
 		selectedPub = pub;
 		index = PubDAO.getPubsOrdered().indexOf(selectedPub);
+		System.out.println("Pub com index : " + index);
+		System.out.println("Nome do Pub: " + selectedPub.toString());
 	}
 
 	@FXML
 	private void initialize() {
-		System.out.println("Pub com index : " + index);
-		System.out.println("Adicionado bebidas de " + selectedPub.toString());
 		bgStackPane.getChildren().clear();
 
 		mapView = MapManager.getMapManager().getMapView();
@@ -103,7 +103,6 @@ public class BarScreenController{
 		drinkInfo1.getChildren().clear();
 		drinkInfo2.getChildren().clear();
 		drinkInfo3.getChildren().clear();
-		System.out.println("SELECTED PUB IS: " + selectedPub.toString());
 		availableDrinks = selectedPub.getDrinks();
 		FXMLLoader drinkInfo1Loader;
 		FXMLLoader drinkInfo2Loader;

@@ -42,10 +42,12 @@ public class MenuBebidasController {
 	HBox hBox;
 
 	private ObservableList<Drink> drinkTypesSelected = FXCollections.observableArrayList();
-	private ObservableList<DrinkForSale> filteredDrinks = DrinkDAO.getDrinksInPubs();
+	private ObservableList<DrinkForSale> filteredDrinks = FXCollections.observableArrayList();
 
 	@FXML
 	private void initialize() {
+		filteredDrinks = DrinkDAO.getDrinksInPubs();
+		setFavoriteDrinks();
 		drinkColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDrinkName()));
 		barColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getPub().toString()));
 		priceColumn.setCellValueFactory(new PropertyValueFactory<DrinkForSale, Double>("price"));
@@ -56,6 +58,7 @@ public class MenuBebidasController {
 	}
 
 	private void filterList() {
+		filteredDrinks = FXCollections.observableArrayList();
 		for (Node node : bebidasFavoritas.getChildren()) {
 			CheckBox checkBox = (CheckBox) node;
 			if (checkBox.isSelected())
@@ -67,6 +70,7 @@ public class MenuBebidasController {
 					filteredDrinks.add(drinkForSale);
 			}
 		}
+		publistTV.refresh();
 	}
 
 	private void setFavoriteDrinks() {
@@ -88,11 +92,9 @@ public class MenuBebidasController {
 	}
 
 	void openBarInfo(DrinkForSale drink) {
-		System.out.println(drink.getPub().toString() + "E O PUB DA BEBIDA");
 		PubDAO.setPubsOrdered(drink.getPub().getCoordinates().getX(), drink.getPub().getCoordinates().getY());
 		ScreenContainer screen = new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml",
-				new DefaultHeaderController(), new BarScreenController(drink.getPub()));
-
+				new DefaultHeaderController(), new BarScreenController(PubDAO.getPubsOrdered().get(0)));
 		ScreenManager.setScreen(screen);
 	}
 }
