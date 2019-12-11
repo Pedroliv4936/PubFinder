@@ -58,9 +58,9 @@ public class BarScreenController{
 		System.out.println("Adicionado bebidas de " + selectedPub.toString());
 		bgStackPane.getChildren().clear();
 
-		mapView = new GoogleMapView("pt-BR", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
-
 		mapView = MapManager.getMapManager().getMapView();
+		mapView.setZoom(15);
+		mapView.setCenter(selectedPub.getCoordinates().getX(), selectedPub.getCoordinates().getY());
 
 		bgStackPane.getChildren().addAll(mapView, vbox);
 
@@ -105,17 +105,25 @@ public class BarScreenController{
 		drinkInfo3.getChildren().clear();
 		System.out.println("SELECTED PUB IS: " + selectedPub.toString());
 		availableDrinks = selectedPub.getDrinks();
-		FXMLLoader drinkInfo1Loader = new FXMLLoader(Main.class.getResource("views/AvailableDrinks.fxml"));
-		FXMLLoader drinkInfo2Loader = new FXMLLoader(Main.class.getResource("views/AvailableDrinks.fxml"));
-		FXMLLoader drinkInfo3Loader = new FXMLLoader(Main.class.getResource("views/AvailableDrinks.fxml"));
-		drinkInfo1Loader.setController(new DrinkInfoController(availableDrinks.get(drinksIndex)));
-		drinkInfo2Loader.setController(new DrinkInfoController(availableDrinks.get(drinksIndex + 1)));
-		drinkInfo3Loader.setController(new DrinkInfoController(availableDrinks.get(drinksIndex + 2)));
-
+		FXMLLoader drinkInfo1Loader;
+		FXMLLoader drinkInfo2Loader;
+		FXMLLoader drinkInfo3Loader;
 		try {
-			drinkInfo1.getChildren().add((Pane) drinkInfo1Loader.load());
-			drinkInfo2.getChildren().add((Pane) drinkInfo2Loader.load());
-			drinkInfo3.getChildren().add((Pane) drinkInfo3Loader.load());
+		if(drinksIndex < availableDrinks.size()) {
+			drinkInfo1Loader = new FXMLLoader(Main.class.getResource("views/AvailableDrinks.fxml"));
+		drinkInfo1Loader.setController(new DrinkInfoController(availableDrinks.get(drinksIndex)));
+		drinkInfo1.getChildren().add((Pane) drinkInfo1Loader.load());
+		}
+		if(drinksIndex + 1 < availableDrinks.size()) {
+			drinkInfo2Loader = new FXMLLoader(Main.class.getResource("views/AvailableDrinks.fxml"));
+		drinkInfo2Loader.setController(new DrinkInfoController(availableDrinks.get(drinksIndex + 1)));
+		drinkInfo2.getChildren().add((Pane) drinkInfo2Loader.load());
+		}
+		if(drinksIndex + 2 < availableDrinks.size()) {
+		drinkInfo3Loader = new FXMLLoader(Main.class.getResource("views/AvailableDrinks.fxml"));
+		drinkInfo3Loader.setController(new DrinkInfoController(availableDrinks.get(drinksIndex + 2)));
+		drinkInfo3.getChildren().add((Pane) drinkInfo3Loader.load());
+		}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

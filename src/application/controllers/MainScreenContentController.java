@@ -37,9 +37,12 @@ public class MainScreenContentController{
 	@FXML
 	public void initialize() {
 		mapView = MapManager.getMapManager().getMapView();
+		MapManager.getMapManager().createMarkers();
+		mapView.setZoom(12);
 		mapVB.getChildren().add(mapView);
 		if (LoginDAO.getLogedinUser().getPrivilege() != UserPrivilege.ADMIN)
 			buttonsVbox.getChildren().remove(checkNewRequests);
+		vbox.setPickOnBounds(false);
 	}
 
 	@FXML

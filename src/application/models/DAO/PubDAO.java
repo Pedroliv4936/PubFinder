@@ -16,7 +16,7 @@ import javafx.collections.ObservableList;
 
 public class PubDAO {
 	
-	static ObservableList<Pub> pubsOrdered = FXCollections.observableArrayList();
+	private static ObservableList<Pub> pubsOrdered = FXCollections.observableArrayList();
 
 	private PubDAO() {
 	}
