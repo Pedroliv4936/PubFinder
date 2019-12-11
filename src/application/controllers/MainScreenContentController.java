@@ -41,9 +41,11 @@ public class MainScreenContentController{
 		mapView.setZoom(12);
 		MapManager.getMapManager().createGeocodingService();
 		mapVB.getChildren().add(mapView);
+		backStackPane.getChildren().remove(1);
 		if (LoginDAO.getLogedinUser().getPrivilege() != UserPrivilege.ADMIN)
 			buttonsVbox.getChildren().remove(checkNewRequests);
 		vbox.setPickOnBounds(false);
+		MapManager.getMapManager().userLocationMarker();
 	}
 
 	@FXML

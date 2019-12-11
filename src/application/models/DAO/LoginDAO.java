@@ -98,6 +98,7 @@ public class LoginDAO {
 			e.printStackTrace();
 		}
 	}
+	
 
 	/*
 	 * 0 - logou como user 1 - logou como admin 2 - wrong username 3 - wrong
