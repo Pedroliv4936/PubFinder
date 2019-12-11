@@ -38,6 +38,7 @@ public class MainScreenContentController{
 	public void initialize() {
 		mapView = MapManager.getMapManager().getMapView();
 		mapVB.getChildren().add(mapView);
+		backStackPane.getChildren().remove(1);
 		if (LoginDAO.getLogedinUser().getPrivilege() != UserPrivilege.ADMIN)
 			buttonsVbox.getChildren().remove(checkNewRequests);
 	}

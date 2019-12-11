@@ -2,6 +2,8 @@ package application;
 
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
+import com.lynden.gmapsfx.javascript.event.GMapMouseEvent;
+import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.GoogleMap;
 import com.lynden.gmapsfx.javascript.object.LatLong;
 import com.lynden.gmapsfx.javascript.object.MapOptions;
@@ -11,24 +13,21 @@ import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import com.lynden.gmapsfx.service.geocoding.GeocoderStatus;
 import com.lynden.gmapsfx.service.geocoding.GeocodingResult;
 import com.lynden.gmapsfx.service.geocoding.GeocodingService;
+import com.lynden.gmapsfx.util.MarkerImageFactory;
 
 import application.controllers.BarScreenController;
 import application.controllers.DefaultHeaderController;
 import application.models.Pub;
 import application.models.DAO.PubDAO;
 import application.views.ScreenContainer;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 
 public class MapManager implements MapComponentInitializedListener{
-
-
+	
 	private GoogleMapView mapView;
+	static Marker userLoc;
     
     private GoogleMap map;
     
@@ -54,11 +53,12 @@ public class MapManager implements MapComponentInitializedListener{
 	        pubMarkers.add(newPubMarker);
 	        System.out.println();
 			System.out.println("Pub with coordinates : " + pub.getCoordinates().getX() + " and " + pub.getCoordinates().getY() + " added to map");
+			
 		}
 		  //Set the initial properties of the map.
 		
 	        MapOptions mapOptions = new MapOptions();
-	        
+	        userLoc= new Marker(markerOptions);
 	        mapOptions.center(new LatLong(38.707438, -9.152532))
 	                .mapType(MapTypeIdEnum.ROADMAP)
 	                .overviewMapControl(true)
@@ -71,7 +71,20 @@ public class MapManager implements MapComponentInitializedListener{
 	                .zoom(12);	        
 	        map = mapView.createMap(mapOptions);
 	        //Add markers to the map
-	        map.addMarkers(pubMarkers);  
+	        map.addMarkers(pubMarkers); 
+	        
+	        map.addMouseEventHandler(UIEventType.click, (GMapMouseEvent event) -> {
+	        	 map.removeMarker(userLoc);
+	        LatLong mouseLatLong = event.getLatLong();
+	        	   System.out.println("Latitude: " + mouseLatLong.getLatitude());
+	        	   System.out.println("Longitude: " + mouseLatLong.getLongitude());
+	        markerOptions.title("User Location");
+	        markerOptions.position(mouseLatLong);
+	        userLoc= new Marker(markerOptions);
+	        String iconstr = MarkerImageFactory.createMarkerImage("deufaultUserIcon.png", "png");
+	        userLoc.setOptions(markerOptions.icon(iconstr));
+	        map.addMarker(userLoc);
+	        });
 	}
 	
 	public void centerMap(String address) {
