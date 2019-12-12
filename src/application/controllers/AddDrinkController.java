@@ -15,6 +15,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 
+/**
+ * Destinado a adicionar bebidas Ã  base de dados com as seguintes informacoes: bar, preco, tipo
+ * 
+ * @author Pedro Oliveira and Franco Zalamena
+ *
+ */
 public class AddDrinkController {
 
 	@FXML
@@ -34,7 +40,10 @@ public class AddDrinkController {
 		showDrinkTypes();
 		showBarList();
 	}
-
+	
+	/**
+	 * Apresenta ao utilizador todos os pubs disponiveis na base dados
+	 */
 	private void showBarList() {
 		ObservableList<Pub> pubNames = FXCollections.observableArrayList();
 		for (Pub pub : PubDAO.getActivePubs()) {
@@ -42,7 +51,9 @@ public class AddDrinkController {
 		}
 		pubOptions.setItems(pubNames);
 	}
-
+	/**
+	 * Apresenta ao utilizador todos os tipos de bebida na base de dados
+	 */
 	private void showDrinkTypes() {
 		ObservableList<Drink> drinkNames = FXCollections.observableArrayList();
 		for (Drink drink : DrinkDAO.getDrinkTypes()) {
@@ -51,7 +62,9 @@ public class AddDrinkController {
 		}
 		drinkType.setItems(drinkNames);
 	}
-
+	/**
+	 * Adiciona as informacoes colocadas pelo user Ã  lista de bebidas para esta depois ser aprovada por um administrador
+	 */
 	@FXML
 	private void sendInfo() {
 		if (allFieldsFilled()) {
@@ -59,13 +72,15 @@ public class AddDrinkController {
 					Double.parseDouble(priceField.getText()), true);
 			System.out.println();
 			System.out.println();
-			System.out.println("BEBIDA ENVIADA PARA APROVAÇÃO COM ATRIBUTOS:");
+			System.out.println("BEBIDA ENVIADA PARA APROVAï¿½ï¿½O COM ATRIBUTOS:");
 			newDrink.showDrinkInfo();
 			DrinkDAO.addDrink(newDrink);
 			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 		}
 	}
-
+	/*+
+	 * Certifica que todas as opcoes estao preenchidas, caso alguma opcao nao esteja preenchida Ã© apresentado qual a caixa que falta preencher.
+	 */
 	private boolean allFieldsFilled() {
 		boolean allFieldsFilled = true;
 		String priceRegex = "^[0-9]+(,\\d{3})*([,.]\\d+)?$";

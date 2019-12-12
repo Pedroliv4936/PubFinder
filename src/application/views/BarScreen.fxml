@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane fx:id="bgStackPane" prefHeight="495.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="bgStackPane" prefHeight="495.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox fx:id="vbox" prefHeight="495.0" prefWidth="335.0" style="-fx-background-color: transparent;" stylesheets="@PubScreen.css">
          <children>
@@ -40,14 +40,14 @@
             </StackPane>
             <StackPane prefHeight="152.0" prefWidth="335.0">
                <children>
-                  <Pane fx:id="pubInfoRight" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#next" prefHeight="130.0" prefWidth="130.0" style="-fx-background-color: #353535;">
+                  <Pane fx:id="pubInfoRight" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#next" prefHeight="140.0" prefWidth="130.0" style="-fx-background-color: #353535;">
                      <StackPane.margin>
-                        <Insets right="-150.0" />
+                        <Insets bottom="-5.0" right="-150.0" />
                      </StackPane.margin>
                   </Pane>
-                  <Pane fx:id="pubInfoLeft" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#prev" prefHeight="130.0" prefWidth="130.0" style="-fx-background-color: #353535;">
+                  <Pane fx:id="pubInfoLeft" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#prev" prefHeight="140.0" prefWidth="130.0" style="-fx-background-color: #353535;">
                      <StackPane.margin>
-                        <Insets left="-150.0" />
+                        <Insets bottom="-5.0" left="-150.0" />
                      </StackPane.margin>
                   </Pane>
                   <Pane fx:id="pubInfoFront" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #353535;">
