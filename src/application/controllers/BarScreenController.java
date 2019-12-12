@@ -18,7 +18,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-
+/**
+ * Controlador do FXML BarScreen que apresenta a informacao dos pubs
+ * 
+ * @author pedrooliveira
+ *
+ */
 public class BarScreenController{
 
 	@FXML
@@ -149,7 +154,6 @@ public class BarScreenController{
 
 		chooseDisplayedDrinks();
 	}
-	
 	@FXML 
 	private void next() {
         ScreenManager.setScreen(new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml",

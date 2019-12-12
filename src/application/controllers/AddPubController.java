@@ -16,6 +16,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
+
+/**
+ * Controlador do fxml destinado a preencher o formulario para adicionar bares à aplicação.
+ * 
+ * @author pedrooliveira e Franco Zalamena
+ *
+ */
 public class AddPubController {
 
 	@FXML
@@ -30,18 +37,20 @@ public class AddPubController {
 	@FXML
 	TextField pubXCoord, pubYCoord, barName, priceField, addressField;
 
-	@FXML
-	ChoiceBox<Integer> openHour, openMin, closeHour, closeMin;
+	//@FXML
+	//ChoiceBox<Integer> openHour, openMin, closeHour, closeMin;
 	
 	boolean fieldsFilled;
 
 	@FXML
 	private void initialize() {
 		showPubTypes();
-		showHour();
-		showMin();
+		//showHour();
+		//showMin();
 	}
-
+	/**
+	 * Define a lista de tipos de pubs para ser apresentado na ComboBox.
+	 */
 	private void showPubTypes() {
 		ObservableList<PubType> pubTypes = FXCollections.observableArrayList();
 		for(PubType pubType : PubDAO.getPubTypes()) {
@@ -49,8 +58,10 @@ public class AddPubController {
 		}
 		pubType.setItems(pubTypes);
 	}
-
-	private void showHour() {
+	/**
+	 * 
+	 */
+	/*private void showHour() {
 
 		ObservableList<Integer> hours = FXCollections.observableArrayList();
 		for (int h = 0; h < 24; h++) {
@@ -69,8 +80,11 @@ public class AddPubController {
 		}
 		openMin.setItems(min);
 		closeMin.setItems(min);
-	}
+	}*/
 
+	/**
+	 * Adiciona informação preenchida do pub à lista de pubs do PubDAO e muda o ecrã para o main screen.
+	 */
 	@FXML
 	private void sendInfo() {
 		if(!fieldsFilled) {
@@ -82,8 +96,8 @@ public class AddPubController {
 			String address = addressField.getText();
 			Double pubXCoordinate = Double.parseDouble(pubXCoord.getText());
 			Double pubYCoordinate = Double.parseDouble(pubYCoord.getText());
-			String openTime = (openHour.getValue() + ":" + openMin.getValue());
-			String closeTime = (closeHour.getValue() + ":" + closeMin.getValue());
+			//String openTime = (openHour.getValue() + ":" + openMin.getValue());
+			//String closeTime = (closeHour.getValue() + ":" + closeMin.getValue());
 			int id = PubDAO.getActivePubs().size();
 			PubDAO.addPub(new Pub(id, name, type, price, 4, address, new Coordinates(pubXCoordinate, pubYCoordinate), true));
 			System.out.println(name + " Adicionado a lista de espera");
@@ -91,7 +105,9 @@ public class AddPubController {
 			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 		}
 	}
-
+	/**
+	 * Certifica que todas as opcoes estao preenchidas, caso alguma opcao nao esteja preenchida é apresentado qual a caixa que falta preencher.
+	 */
 	private boolean fieldsFilled() {
 		String nameRegex = "^[a-zA-Z]{1}.{0,19}";
 		String priceRegex = "^[-]?[0-9]+([.][0-9]+)?$";
@@ -135,7 +151,7 @@ public class AddPubController {
 		} else {
 			pubYCoord.getStylesheets().clear();
 		}
-		if(openHour.getValue() == null || openMin.getValue() == null || closeHour.getValue() == null || closeMin.getValue() == null) {
+		/*if(openHour.getValue() == null || openMin.getValue() == null || closeHour.getValue() == null || closeMin.getValue() == null) {
 			openHour.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
 			openMin.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
 			closeHour.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
@@ -146,7 +162,7 @@ public class AddPubController {
 			openMin.getStylesheets().clear();
 			closeHour.getStylesheets().clear();
 			closeMin.getStylesheets().clear();
-		}
+		}*/
 		return fieldsFilled;
 	}
 }

@@ -16,7 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 
 /**
- * Destinado a adicionar bebidas à base de dados com as seguintes informacoes: bar, preco, tipo
+ * controlador do fxml destinado a preencher um formulario de adicao de bebidas.
  * 
  * @author Pedro Oliveira and Franco Zalamena
  *
@@ -42,7 +42,7 @@ public class AddDrinkController {
 	}
 	
 	/**
-	 * Apresenta ao utilizador todos os pubs disponiveis na base dados
+	 * Define lista de pubs como bares disponiveis, para estes serem apresentados depois na ComboBox.
 	 */
 	private void showBarList() {
 		ObservableList<Pub> pubNames = FXCollections.observableArrayList();
@@ -52,18 +52,18 @@ public class AddDrinkController {
 		pubOptions.setItems(pubNames);
 	}
 	/**
-	 * Apresenta ao utilizador todos os tipos de bebida na base de dados
+	 * Define lista de tipos de Bebidas para ser apresentada na ComboBox.
 	 */
 	private void showDrinkTypes() {
 		ObservableList<Drink> drinkNames = FXCollections.observableArrayList();
 		for (Drink drink : DrinkDAO.getDrinkTypes()) {
 			drinkNames.add(drink);
-			System.out.println(drink.toString() + " foi adicionado a lista de beebidas disponiveis");
+			System.out.println(drink.toString() + " foi adicionado a lista de bebidas disponiveis");
 		}
 		drinkType.setItems(drinkNames);
 	}
 	/**
-	 * Adiciona as informacoes colocadas pelo user à lista de bebidas para esta depois ser aprovada por um administrador
+	 * Adiciona a bebida preenchida à lista de bebidas da aplicação e muda o ecrã para o main screen.
 	 */
 	@FXML
 	private void sendInfo() {
@@ -78,7 +78,7 @@ public class AddDrinkController {
 			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 		}
 	}
-	/*+
+	/**
 	 * Certifica que todas as opcoes estao preenchidas, caso alguma opcao nao esteja preenchida é apresentado qual a caixa que falta preencher.
 	 */
 	private boolean allFieldsFilled() {
@@ -101,7 +101,7 @@ public class AddDrinkController {
 		}if (!ratingField.getText().matches(ratingRegex)) {
 			priceField.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
 			priceField.clear();
-			priceField.setPromptText("Avaia�ao invalida");
+			priceField.setPromptText("Avaia�ao invalida");
 			System.out.println("Invalid rating");
 			allFieldsFilled = false;
 		} else {

@@ -45,7 +45,7 @@ public class MenuBebidasController {
 	@FXML
 	HBox hBox;
 
-	private ObservableList<Drink> drinkTypesSelected = FXCollections.observableArrayList();
+	private static ObservableList<Drink> drinkTypesSelected = FXCollections.observableArrayList();
 	private ObservableList<DrinkForSale> filteredDrinks = DrinkDAO.getDrinksInPubs();
 
 	@FXML
@@ -76,17 +76,17 @@ public class MenuBebidasController {
 			if (checkBox.isSelected()) 
 				drinkTypesSelected.add((Drink)checkBox.getUserData());
 		}
-		for (DrinkForSale drinkForSale : DrinkDAO.getDrinksInPubs()) {
-			for (Drink drink : drinkTypesSelected) {
-				if (drinkForSale.getDrinkType().getId() == drink.getId())
-					filteredDrinks.add(drinkForSale);
-			}
+		ObservableList<Integer> ids =  FXCollections.observableArrayList();
+		ids.add(drinkTypesSelected.get(0).getId());
+		for(int i=1; i<drinkTypesSelected.size();i++) {
+			ids.add(drinkTypesSelected.get(i).getId());
 		}
+		System.out.println(drinkTypesSelected);
 		publistTV.getItems().clear();
-		publistTV.setItems(filteredDrinks);
+		publistTV.setItems(DrinkDAO.getDrinksFiltered(ids));
 		publistTV.refresh();
 	}
-
+	
 	private void setFavoriteDrinks() {
 		int columnIndex = 0, rowIndex = 0;
 		for (Drink drink : DrinkDAO.getDrinkTypes()) {

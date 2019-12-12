@@ -9,7 +9,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.VBox;
-
+/**
+ * Controlador do fxml AddInfo que contem os FXMLs addPub e addDrink.
+ * 
+ * @author pedrooliveira
+ *
+ */
 public class AddInfoController {
 
 	@FXML
