@@ -107,9 +107,11 @@ public class MapManager implements MapComponentInitializedListener{
         	            PubDAO.setPubsOrdered(latLong.getLatitude(), latLong.getLongitude());
         	            ScreenManager.setScreen(new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml",
         				new DefaultHeaderController(), new BarScreenController(PubDAO.getPubsOrdered().get(0))));
+        	            System.out.println("ENCONTROU!");
         	            return;
             		}
             	}
+            	
 	            if( status == GeocoderStatus.ZERO_RESULTS) {
 	                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
 	                alert.show();

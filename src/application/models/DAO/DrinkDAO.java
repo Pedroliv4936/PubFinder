@@ -7,12 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import application.JDBC;
-import application.controllers.MenuBebidasController;
-import application.models.Coordinates;
 import application.models.Drink;
 import application.models.DrinkForSale;
 import application.models.Pub;
-import application.models.PubType;
 import application.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,21 +34,22 @@ public class DrinkDAO {
 		}
 		return drinksInPubs;
 	}
-
-	public static ObservableList<DrinkForSale> getDrinks(Pub pub) {
+	
+	public static ObservableList<DrinkForSale> getDrinks(Pub pub){
 		ObservableList<DrinkForSale> drinks = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
 		String sql = "SELECT * FROM drinks_for_sale WHERE pub_id = ?";
 		try (PreparedStatement stat = conn.prepareStatement(sql)) {
 			stat.setInt(1, pub.getId());
-			try (ResultSet rs = stat.executeQuery()) {
-				while (rs.next()) {
-					int drink = rs.getInt("drink_id");
-					double rating = rs.getDouble("rating");
-					double price = rs.getDouble("price");
-					boolean pending = rs.getBoolean("pending");
-					drinks.add(new DrinkForSale(DrinkDAO.getDrinkType(drink), pub, rating, price, pending));
-				}
+			try(ResultSet rs = stat.executeQuery()){
+			while (rs.next()) {
+				int drink = rs.getInt("drink_id");
+				double rating = rs.getDouble("rating");
+				double price = rs.getDouble("price");
+				boolean pending = rs.getBoolean("pending");
+				drinks.add(
+						new DrinkForSale(DrinkDAO.getDrinkType(drink), pub, rating, price, pending));
+			}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -143,53 +141,6 @@ public class DrinkDAO {
 		}
 	}
 
-	public static ObservableList<DrinkForSale> getDrinksFiltered(ObservableList<Integer> ids) {
-		ObservableList<DrinkForSale> lista = FXCollections.observableArrayList();
-		Connection conn = JDBC.getConnection();
-		String iMarks = "?";
-		for(int i = 1; i < ids.size(); i++) {
-			iMarks += ",?";
-		}
-		System.out.println(iMarks);
-		String sql = "SELECT *" + 
-				"FROM drinks_for_sale" + 
-				"FULL OUTER JOIN drinks"
-				+"ON drinks_for_sale.drink_id = drinks.drink_id"
-				+"FULL OUTER JOIN pubs"
-				+"ON drinks_for_sale.pub_id = pubs.pub_id"
-				+"WHERE drink_id IN ("
-				+ iMarks + ") AND pending = 0;";
-		try (PreparedStatement stat = conn.prepareStatement(sql);){
-			for(int i=0;i<ids.size();i++) {
-				stat.setInt(i + 1, ids.get(i));
-			}
-			try(ResultSet rs = stat.executeQuery()){
-				while(rs.next()) {
-					int drink = rs.getInt("drink_id");
-					String drinkName = rs.getString("drink_name");
-					int pub = rs.getInt("pub_id");
-					String name = rs.getString("pub_name");
-					int typeId = rs.getInt("pub_type_id");
-					PubType type = getPubType(typeId);
-					int id = rs.getInt("pub_id");
-					double price = rs.getDouble("entry_price");
-					String address = rs.getString("address");
-					double xCoord = rs.getDouble("xCoord");
-					double yCoord = rs.getDouble("yCoord");
-					Coordinates latLong = new Coordinates(xCoord,yCoord);
-					boolean pending = rs.getBoolean("pending");
-					double rating = rs.getDouble("rating");
-					double price = rs.getDouble("price");
-					boolean pending = false;
-					lista.add(new DrinkForSale(DrinkDAO.getDrinkType(drink), PubDAO.getPub(pub), rating, price, pending));
-				}
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return lista;
-	}
-
 	public static ObservableList<Drink> getDrinkTypes() {
 		ObservableList<Drink> drinkTypes = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
@@ -207,7 +158,7 @@ public class DrinkDAO {
 	}
 
 	public static Drink getDrinkType(int id) {
-		ObservableList<Drink> drinks = getDrinkTypes();
+		ObservableList<Drink> drinks =  getDrinkTypes();
 		for (Drink drink : drinks) {
 			if (drink.getId() == id)
 				return drink;
