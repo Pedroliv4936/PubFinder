@@ -77,13 +77,15 @@ public class MenuBebidasController {
 				drinkTypesSelected.add((Drink)checkBox.getUserData());
 		}
 		ObservableList<Integer> ids =  FXCollections.observableArrayList();
+		if(drinkTypesSelected.size()<1) return ;
 		ids.add(drinkTypesSelected.get(0).getId());
 		for(int i=1; i<drinkTypesSelected.size();i++) {
 			ids.add(drinkTypesSelected.get(i).getId());
 		}
 		System.out.println(drinkTypesSelected);
+		filteredDrinks = DrinkDAO.getDrinksFiltered(ids);
 		publistTV.getItems().clear();
-		publistTV.setItems(DrinkDAO.getDrinksFiltered(ids));
+		publistTV.setItems(filteredDrinks);
 		publistTV.refresh();
 	}
 	

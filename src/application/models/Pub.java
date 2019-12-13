@@ -30,7 +30,7 @@ public class Pub extends Entity {
 		this.address = address;
 		this.coordinates = coordinates;
 		this.pending = pending;
-		drinks = FXCollections.observableArrayList();
+		drinks = DrinkDAO.getDrinks(this);
 	}	
 
 	public String getPubInfo() {
@@ -76,7 +76,7 @@ public class Pub extends Entity {
 	}
 
 	public ObservableList<DrinkForSale> getDrinks() {
-		return DrinkDAO.getDrinks(this);
+		return drinks;
 	}
 
 	public void setDrinks(ObservableList<DrinkForSale> drinks) {

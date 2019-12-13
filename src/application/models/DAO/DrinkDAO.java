@@ -7,35 +7,58 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import application.JDBC;
+import application.models.Coordinates;
 import application.models.Drink;
 import application.models.DrinkForSale;
 import application.models.Pub;
+import application.models.PubType;
 import application.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class DrinkDAO {
 	public static ObservableList<DrinkForSale> getDrinksInPubs() {
-		ObservableList<DrinkForSale> drinksInPubs = FXCollections.observableArrayList();
+		ObservableList<DrinkForSale> lista = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
-		String sql = "SELECT * FROM drinks_for_sale";
-		try (Statement stat = conn.createStatement(); ResultSet rs = stat.executeQuery(sql)) {
-			while (rs.next()) {
-				int drink = rs.getInt("drink_id");
-				int pub = rs.getInt("pub_id");
-				double rating = rs.getDouble("rating");
-				double price = rs.getDouble("price");
-				boolean pending = rs.getBoolean("pending");
-				drinksInPubs.add(
-						new DrinkForSale(DrinkDAO.getDrinkType(drink), PubDAO.getPub(pub), rating, price, pending));
+		
+		String sql = "SELECT * FROM drinks_for_sale \r\n" + 
+				"INNER JOIN drinks \r\n" + 
+				"ON drinks_for_sale.drink_id = drinks.drink_id \r\n" + 
+				"INNER JOIN pubs\r\n" + 
+				"ON drinks_for_sale.pub_id = pubs.pub_id \r\n" + 
+				"INNER JOIN pub_types \r\n"+
+				"ON pubs.pub_type_id = pub_types.pub_type_id ";
+				
+		try (Statement stat = conn.createStatement()){
+			try(ResultSet rs = stat.executeQuery(sql)){
+				while(rs.next()) {
+					System.out.println(rs.getRow());
+					int drinkId = rs.getInt("drink_id");
+					String drinkName = rs.getString("drink_name");
+					Drink drink = new Drink(drinkId, drinkName, null);
+					int pubId = rs.getInt("pub_id");
+					String pubName = rs.getString("pub_name");
+					String pubTypeName = rs.getString("pub_type_name");
+					int pubTypeId = rs.getInt("pub_type_id");
+					PubType pubType = new PubType(pubTypeId, pubTypeName);
+					double entryPrice = rs.getDouble("entry_price");
+					String address = rs.getString("address");
+					double xCoord = rs.getDouble("xCoord");
+					double yCoord = rs.getDouble("yCoord");
+					Coordinates latLong = new Coordinates(xCoord,yCoord);
+					Pub pub = new Pub(pubId, pubName, pubType, xCoord, yCoord, address, latLong, false);
+					double rating = rs.getDouble("rating");
+					double price = rs.getDouble("price");
+					boolean pending = false;
+					lista.add(new DrinkForSale(drink, pub , rating, price, pending));
+				}
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.printStackTrace();}
+		return lista;
 		}
-		return drinksInPubs;
-	}
-	
-	public static ObservableList<DrinkForSale> getDrinks(Pub pub){
+
+	public static ObservableList<DrinkForSale> getDrinks(Pub pub) {
 		ObservableList<DrinkForSale> drinks = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
 		String sql = "SELECT * FROM drinks_for_sale WHERE pub_id = ?";
@@ -92,7 +115,7 @@ public class DrinkDAO {
 	public static ObservableList<Drink> getFavDrinks(User user) {
 		ObservableList<Drink> favDrinkList = FXCollections.observableArrayList();
 		Connection con = JDBC.getConnection();
-		String sql = "SELECT drink_id FROM user_favorite_drinks WHERE user_id = ?";
+		String sql = "SELECT * FROM user_favorite_drinks WHERE user_id = ?";
 		try (PreparedStatement stat = con.prepareStatement(sql)) {
 			stat.setInt(1, user.getId());
 			try (ResultSet rs = stat.executeQuery()) {
@@ -140,6 +163,59 @@ public class DrinkDAO {
 			e.printStackTrace();
 		}
 	}
+
+	public static ObservableList<DrinkForSale> getDrinksFiltered(ObservableList<Integer> ids) {
+		ObservableList<DrinkForSale> lista = FXCollections.observableArrayList();
+		Connection conn = JDBC.getConnection();
+		String iMarks = "?";
+		for(int i = 1; i < ids.size(); i++) {
+			iMarks += ",?";
+		}
+		System.out.println(iMarks);
+		
+		String sql = "SELECT * FROM drinks_for_sale \r\n" + 
+				"INNER JOIN drinks \r\n" + 
+				"ON drinks_for_sale.drink_id = drinks.drink_id \r\n" + 
+				"INNER JOIN pubs\r\n" + 
+				"ON drinks_for_sale.pub_id = pubs.pub_id \r\n" + 
+				"INNER JOIN pub_types \r\n"+
+				"ON pubs.pub_type_id = pub_types.pub_type_id \r\n" + 
+				"WHERE drinks_for_sale.drink_id \r\n" + 
+				"IN ("+ iMarks + ") AND drinks_for_sale.pending = 0 ";
+				
+		try (PreparedStatement stat = conn.prepareStatement(sql);){
+			for(int i=0;i<ids.size();i++) {
+				stat.setInt(i + 1, ids.get(i));
+			}
+			try(ResultSet rs = stat.executeQuery()){
+				while(rs.next()) {
+					System.out.println(rs.getRow());
+					int drinkId = rs.getInt("drink_id");
+					String drinkName = rs.getString("drink_name");
+					Drink drink = new Drink(drinkId, drinkName, null);
+					int pubId = rs.getInt("pub_id");
+					String pubName = rs.getString("pub_name");
+					String pubTypeName = rs.getString("pub_type_name");
+					int pubTypeId = rs.getInt("pub_type_id");
+					PubType pubType = new PubType(pubTypeId, pubTypeName);
+					double entryPrice = rs.getDouble("entry_price");
+					String address = rs.getString("address");
+					double xCoord = rs.getDouble("xCoord");
+					double yCoord = rs.getDouble("yCoord");
+					Coordinates latLong = new Coordinates(xCoord,yCoord);
+					Pub pub = new Pub(pubId, pubName, pubType, xCoord, yCoord, address, latLong, false);
+					double rating = rs.getDouble("rating");
+					double price = rs.getDouble("price");
+					boolean pending = false;
+					lista.add(new DrinkForSale(drink, pub , rating, price, pending));
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lista;
+	}
+
 
 	public static ObservableList<Drink> getDrinkTypes() {
 		ObservableList<Drink> drinkTypes = FXCollections.observableArrayList();

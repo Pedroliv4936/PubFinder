@@ -12,6 +12,12 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.Tab;
 
+/**
+ * Apresenta ao administrador todos os bares e bebidas à espera de aprovacao.
+ * 
+ * @author pedrooliveira and Franco Zalamena
+ *
+ */
 public class CheckNewRequestsController {
 
 	@FXML
@@ -22,7 +28,9 @@ public class CheckNewRequestsController {
 
 	@FXML
 	private Tab drinkTab, pubTab;
-
+	/**
+	 * Preenche a ListView pubLV com os pubs que estao pending (espera de aprovacao de admin) e a ListView  drinkLV com as bebidas que estao pending. 
+	 */
 	@FXML
 	private void initialize() {
 		pubLV.setCellFactory(lv -> new ListCell<Pub>() {
@@ -37,7 +45,9 @@ public class CheckNewRequestsController {
 		pubLV.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		drinkLV.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 	}
-
+	/**
+	 * 
+	 */
 	@FXML
 	public void openInfo() {
 		ScreenManager.setScreen(new ScreenContainer("views/DefaultHeader.fxml", "views/DrinkRequestInfo.fxml",
@@ -45,10 +55,14 @@ public class CheckNewRequestsController {
 				new DrinkRequestInfoController(drinkLV.getSelectionModel().getSelectedItem(), "jfsldkfjslkdfjls")));
 		System.out.println("Vendo informacoes da bebida");
 	}
-
+	/**
+	 * Vê em que tab o utilizador se encontra e corre o respetivo método para aprovar cada entidade.
+	 * 
+	 * @see #aproveDrink()
+	 * @see #aprovePub()
+	 */
 	@FXML
 	private void accept() {
-		// Checa se esta na tab dos drinks
 		if (drinkTab.isSelected()) {
 			aproveDrink();
 		} else if (pubTab.isSelected()) {
@@ -91,7 +105,12 @@ public class CheckNewRequestsController {
 //		aprovePub();
 //
 //	}
-
+	/**
+	 * Vê a Tab que o utilizador tem selecionado e corre o respetivo método para recusar o item dessa Tab.
+	 * 
+	 * @see #refuseDrink()
+	 * @see #refusePub()
+	 */
 	@FXML
 	private void refuse() {
 		System.out.println();
@@ -104,7 +123,11 @@ public class CheckNewRequestsController {
 		}
 		ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 	}
-
+	/**
+	 * Retira a bebida recusada da lista na classe DrinkDAO e da ListView.
+	 * 
+	 * @see application.models.DAO.DrinkDAO#refuseDrink(DrinkForSale)
+	 */
 	private void refuseDrink() {
 		DrinkDAO.refuseDrink(drinkLV.getSelectionModel().getSelectedItem());
 		System.out.println("DRINK(s) REPROVADO(s):");
@@ -112,7 +135,11 @@ public class CheckNewRequestsController {
 			drink.showDrinkInfo();
 		}
 	}
-
+	/**
+	 * Retira o bar recusado da lista de bares no PubDAO e da ListView pubLV.
+	 * 
+	 * @see application.models.DAO.PubDAO#refusePub(Pub)
+	 */
 	private void refusePub() {
 		PubDAO.refusePub(pubLV.getSelectionModel().getSelectedItem());
 		System.out.println("PUB(s) REPROVADO(s):");
@@ -120,13 +147,21 @@ public class CheckNewRequestsController {
 			pub.showPubInfo();
 		}
 	}
-
+	/**
+	 * A bebida é aprovada e será visivel na lista de bebidas e na informacao do respetivo bar onde é vendida.
+	 * 
+	 * @see application.models.DAO.DrinkDAO#aproveDrink(DrinkForSale)
+	 */
 	private void aproveDrink() {
 		System.out.println(drinkLV.getSelectionModel().getSelectedItem().toString() + " Aprovado. ID: "
 				+ drinkLV.getSelectionModel().getSelectedItem().getId());
 		DrinkDAO.aproveDrink(drinkLV.getSelectionModel().getSelectedItem());
 	}
-
+	/**
+	 * O pub é aprovado e passará a ser possivel adicionar bebidas a esse bar.
+	 * 
+	 * @see application.models.DAO.PubDAO#aprovePub(Pub)
+	 */
 	private void aprovePub() {
 		PubDAO.aprovePub(pubLV.getSelectionModel().getSelectedItem());
 	}

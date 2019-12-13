@@ -19,9 +19,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 /**
- * Controlador do FXML BarScreen que apresenta a informacao dos pubs
+ * Controlador do FXML BarScreen que apresenta a informacao dos pubs ao utilizador.
  * 
- * @author pedrooliveira
+ * @author pedrooliveira e Franco Zalamena
  *
  */
 public class BarScreenController{
@@ -51,29 +51,40 @@ public class BarScreenController{
 	FXMLLoader pubFrontLoader;
 	FXMLLoader pubLeftLoader;
 	FXMLLoader pubRightLoader;
-
+	
+	/**
+	 * Construtor do controlador que define o Index do Pub selecionado, da lista dos Pubs Ordenados por Distancia e apresenta o index e o nome na consola.
+	 * 
+	 * @param pub Pub que o utilizador quer visualizar.
+	 */
 	public BarScreenController(Pub pub) {
 		selectedPub = pub;
 		index = PubDAO.getPubsOrdered().indexOf(selectedPub);
 		System.out.println("Pub com index : " + index);
 		System.out.println("Nome do Pub: " + selectedPub.toString());
 	}
-
+	/**
+	 * Busca o mapa e o centraliza no pub selecionado com mais zoom. Mostra as bebidas do pub selecionado e os mapas seguintes (em relaçao à distancia) nas respetivas panes.
+	 * 
+	 * @see application.MapManager#getMapView()
+	 * @see #chooseDisplayedDrinks()
+	 * @see #displaySelectedPubInfo()
+	 */
 	@FXML
 	private void initialize() {
-		bgStackPane.getChildren().clear();
-
 		mapView = MapManager.getMapManager().getMapView();
 		mapView.setZoom(15);
 		mapView.setCenter(selectedPub.getCoordinates().getX(), selectedPub.getCoordinates().getY());
 
-		bgStackPane.getChildren().addAll(mapView, vbox);
+		bgStackPane.getChildren().add(0, mapView);
 
 		vbox.setPickOnBounds(false);
 		displaySelectedPubInfo();
 		chooseDisplayedDrinks();
 	}
-
+	/**
+	 * Apaga a informação colocada anteriormente dentro das panes pubInfoFront,pubInfoLeft,pubInfoRight e preenche-as com a informacao do  pub selecionado. 
+	 */
 	private void displaySelectedPubInfo() {
 		pubInfoFront.getChildren().clear();
 		pubInfoLeft.getChildren().clear();
@@ -103,7 +114,9 @@ public class BarScreenController{
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * Apaga a informação colocada anteriormente dentro das panes drinkInfo1, drinkInfo2, drinkInfo3 e preenche-as com as bebidas do pub selecionado. 
+	 */
 	private void chooseDisplayedDrinks() {
 		drinkInfo1.getChildren().clear();
 		drinkInfo2.getChildren().clear();
@@ -132,7 +145,9 @@ public class BarScreenController{
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * 
+	 */
 	@FXML
 	private void changePubDrinksRight() {
 		if (drinksIndex < availableDrinks.size() - 3) {
@@ -143,7 +158,9 @@ public class BarScreenController{
 
 		chooseDisplayedDrinks();
 	}
-
+	/**
+	 * 
+	 */
 	@FXML
 	private void changePubDrinksLeft() {
 		if (drinksIndex > 3) {
@@ -154,6 +171,7 @@ public class BarScreenController{
 
 		chooseDisplayedDrinks();
 	}
+	
 	@FXML 
 	private void next() {
         ScreenManager.setScreen(new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml",
