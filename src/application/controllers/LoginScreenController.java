@@ -15,7 +15,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
-
+/**
+ * Controlador do FXML LoginScreen que pede ao utilizador que preencha as caixas apresentadas com o seu username e com a respetiva password
+ * Dá a possibilidade ao utilizador de deixar que a sua password e username sejam preenchidos automaticamente.
+ * 
+ * @author pedrooliveira
+ *
+ */
 public class LoginScreenController {
 
 	@FXML
