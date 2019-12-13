@@ -47,9 +47,13 @@ public class UserScreenController {
 			
 			System.out.println(drink.toString());
 			bebidasFavoritasUser.add(newCheckBox, column, row);
-			if(userFavoriteDrinks.contains(drink)) {
-				newCheckBox.setSelected(true);
+			for(Drink userDrink : userFavoriteDrinks) {
+				if(userDrink.getId() == drink.getId()) {
+					System.out.println(userDrink.getId() + " SELECIONADO");
+					newCheckBox.setSelected(true);
+				}
 			}
+
 			if(row<2) {
 				row++;
 			}else {
