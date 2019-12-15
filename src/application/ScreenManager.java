@@ -15,6 +15,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Classe responsavel pelo 
+ * @author franc
+ *
+ */
 public class ScreenManager {
 
 	private static VBox vBox;
