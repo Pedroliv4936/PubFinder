@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.nio.channels.SeekableByteChannel;
 import java.util.ArrayList;
 
 import application.controllers.LoginScreenController;
@@ -16,8 +17,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
- * Classe responsavel pelo 
- * @author franc
+ * Classe responsavel pelas trocas de ecrãs da aplicacao.
+ * 
+ * @author Franco Zalamena & Pedro Oliveira
  *
  */
 public class ScreenManager {
@@ -30,7 +32,16 @@ public class ScreenManager {
 
 	public ScreenManager() {
 	}
-
+	/**
+	 * Método que define a janela da aplicacao como PubFinder e com o logotipo da aplicacao.
+	 * Muda o ecrã para o LoginScreen.
+	 * 
+	 * @param primaryStage Janela da aplicacao
+	 * 
+	 * @see #setScreen(ScreenContainer)
+	 * 
+	 * @throws IOException
+	 */
 	public void start(Stage primaryStage) throws IOException {
 		mainWindow = primaryStage;
 		openStages.add(mainWindow);
@@ -46,7 +57,15 @@ public class ScreenManager {
 		mainWindow.show();
 
 	}
-	
+	/**
+	 * Define os controladores e os fxmldo header e do content do screenContainer.
+	 * 
+	 * @param screenContainer Ecrã que contem o header (se existir) e o content.
+	 * 
+	 * @see application.ScreenContainer
+	 * @see #setContent(String, Object)
+	 * @see #setHeader(String, Object)
+	 */
 	public static void setScreen(ScreenContainer screenContainer) {
 		vBox.getChildren().clear();
 		if (screenContainer.getHeaderFXML() != null) {
@@ -54,7 +73,11 @@ public class ScreenManager {
 		}
 		setContent(screenContainer.getContentFXML(), screenContainer.getContentController());
 	}
-
+	/**
+	 * Define o Content do ecra e o seu controlador.
+	 * @param contentFxmlLocation
+	 * @param contentController
+	 */
 	private static void setContent(String contentFxmlLocation, Object contentController) {
 		FXMLLoader loader = new FXMLLoader(ScreenManager.class.getResource(contentFxmlLocation));
 		try {
@@ -66,7 +89,11 @@ public class ScreenManager {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * Define o header do ecra e o seu controlador.
+	 * @param headerFxmlLocation
+	 * @param headerController
+	 */
 	private static void setHeader(String headerFxmlLocation, Object headerController) {
 		FXMLLoader loader = new FXMLLoader(Main.class.getResource(headerFxmlLocation));
 		loader.setController(headerController);

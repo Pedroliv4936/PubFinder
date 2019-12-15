@@ -13,7 +13,7 @@ import application.controllers.UserScreenController;
 import application.models.DAO.PubDAO;
 
 /**
- * Classe que contem iformacoes do header e do conteudo do stage.
+ * Classe que contem informacoes do header e do conteudo do stage.
  * @author Franco Zalamena & Pedro Oliveira
  *
  */
