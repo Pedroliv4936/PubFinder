@@ -9,7 +9,12 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-
+/**
+ * Controlador do Fxml UserScreen que apresenta a informacao do utilizador logado. (Password continua encriptada com MD5)
+ * 
+ * @author pedrooliveira
+ *
+ */
 public class UserScreenController {
 
 	@FXML
@@ -20,7 +25,9 @@ public class UserScreenController {
 	
 	@FXML
 	private PasswordField logedinPassword;
-	
+	/**
+	 * Define o texto TextFields e da passwordField com a respetiva informacao do utilizador e apresenta as bebidas favoritas do utilizador.
+	 */
 	@FXML
 	private void initialize() {
 		logedinUsername.setText(LoginDAO.getLogedinUser().getUsername());
@@ -28,7 +35,11 @@ public class UserScreenController {
 		logedinEmail.setText(LoginDAO.getLogedinUser().getEmail());
 		setFavoriteDrinks();
 	}
-
+	/**
+	 * Apresenta as bebidas da aplicacao na GridPane e as que se encontram selecionadas aparecem no menu bebidas.
+	 * @see application.models.DAO.DrinkDAO#getFavDrinks(application.models.User)
+	 * @see application.models.DAO.LoginDAO#getLogedinUser()
+	 */
 	private void setFavoriteDrinks() {
 		ObservableList<Drink> userFavoriteDrinks = DrinkDAO.getFavDrinks(LoginDAO.getLogedinUser());
 		int row = 0, column=0;

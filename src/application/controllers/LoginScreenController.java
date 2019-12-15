@@ -34,7 +34,13 @@ public class LoginScreenController {
 	CheckBox rememberChoice;
 	@FXML
 	CheckBox autoLogin;
-
+	/**
+	 * Caso o utilizador selecionar a checkbox "lembrar credenciais" a informacao que o utilizador preencheu vai ser
+	 *  guardada no loginInfo.properties, para essa informacao se preencher automaticamente para a proxima vez que o 
+	 *  utilizador deseje fazer login.
+	 *  
+	 *  @see #checkBoxes(Properties, String)
+	 */
 	@FXML
 	public void initialize() {
 		Properties p = new Properties();
@@ -51,7 +57,11 @@ public class LoginScreenController {
 			passwordField.setText(p.getProperty("password"));
 		}
 	}
-
+	/**
+	 * Serve para apresentar as checkboxes que estão selecionadas por default.
+	 * @param p Propriedade que contem a informacao necessario para o autologin
+	 * @param check	Opcao de login que o utilizador deseja (lembrar credenciais ou autologin)
+	 */
 	private void checkBoxes(Properties p, String check) {
 		if (check.equals(p.getProperty("option1"))) {
 			rememberChoice.setSelected(false);
@@ -64,7 +74,13 @@ public class LoginScreenController {
 			autoLogin.setSelected(true);
 		}
 	}
-
+	/**
+	 * Método que faz o login, em que conecta com a base de dados e apresenta a informcao que esta errada (caso exista),
+	 * busca o tipo de utilizador que deseja fazer login e muda a tela para o mainScreen.
+	 * 
+	 * @see application.models.DAO.LoginDAO#connect(String, String)
+	 * @see application.ScreenManager#setScreen(ScreenContainer)
+	 */
 	@FXML
 	public void login() {
 		String username = usernameField.getText();
@@ -87,7 +103,10 @@ public class LoginScreenController {
 		}
 		System.out.println("Usuario logado como: " + LoginDAO.getLogedinUser().getUsername());
 	}
-
+	/**
+	 * Muda a tela para a Register Screen
+	 * @see application.ScreenManager#setScreen(ScreenContainer)
+	 */
 	@FXML
 	public void register() {
 		ScreenManager.setScreen(ScreenContainer.REGISTER);

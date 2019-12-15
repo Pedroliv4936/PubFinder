@@ -3,7 +3,12 @@ package application.controllers;
 import application.models.Pub;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-
+/**
+ * Apresenta a informacao do Pub selecionado
+ * 
+ * @author pedrooliveira
+ *
+ */
 public class PubInfoController {
 
 	@FXML
@@ -12,7 +17,11 @@ public class PubInfoController {
 	private String name, price, type,openTime,closeTime;
 	
 	private Pub pub;
-	
+	/**
+	 * Construtor que recebe o bar que se deseja apresentar e passa a informacao deste para variaveis desta classe.
+	 * 
+	 * @param pub Pub do qual se vai buscar a informacao que se deseja apresentar.
+	 */
 	public PubInfoController(Pub pub) {
 		this.pub = pub;
 		name = pub.toString();
@@ -21,7 +30,9 @@ public class PubInfoController {
 		openTime = pub.getOpenTime();
 		closeTime = pub.getCloseTime();
 	}
-	
+	/**
+	 * Passa a informacao das variaveis para as Labels.
+	 */
 	@FXML
 	private void initialize() {
 		pubName.setText(name);

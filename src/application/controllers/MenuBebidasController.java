@@ -26,7 +26,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-
+/**
+ * Apresenta todas as bebidas da Base de Dados, em que o utilizador pode filtrar por tipo de bebida (selecionando pelos tipos de bebida apresentados no topo da tela), fazer sort por preco ou por bar.
+ * O utilizador pode ainda carregar numa bebida e é apresentado a tela com a informacao do bar(openBarInfo())
+ * 
+ * @author pedrooliveira
+ *@see #openBarInfo(DrinkForSale)
+ *@see application.models.DAO.DrinkDAO
+ */
 public class MenuBebidasController {
 
 	@FXML
@@ -47,7 +54,12 @@ public class MenuBebidasController {
 
 	private static ObservableList<Drink> drinkTypesSelected = FXCollections.observableArrayList();
 	private ObservableList<DrinkForSale> filteredDrinks = DrinkDAO.getDrinksInPubs();
-
+	/**
+	 * Chama o método setFavoriteDrinks. Apresenta numa tableView as bebidas com o respetivo tipo, preco e o seu bar.
+	 * 
+	 * 
+	 * @see #setFavoriteDrinks()
+	 */
 	@FXML
 	private void initialize() {
 		setFavoriteDrinks();
@@ -67,7 +79,10 @@ public class MenuBebidasController {
 		priceColumn.setPrefWidth(Control.USE_COMPUTED_SIZE);
 		publistTV.getColumns().addAll(drinkColumn, barColumn, priceColumn);
 	}
-
+	/**
+	 * Filtra a lista de bebidas em relacao ao tipo de bebidas selecionadas nas checkBoxes pelo utilizador.
+	 * @see application.models.DAO.DrinkDAO #getDrinksFiltered(ObservableList)
+	 */
 	private void filterList() {
 		drinkTypesSelected= FXCollections.observableArrayList();
 		filteredDrinks = FXCollections.observableArrayList();
@@ -88,7 +103,11 @@ public class MenuBebidasController {
 		publistTV.setItems(filteredDrinks);
 		publistTV.refresh();
 	}
-	
+	/**
+	 * Preenche a gridPane com checkBoxes dos tipos de bebida favoritas do user.
+	 * 
+	 * @see application.models.DAO.DrinkDAO#getDrinkTypes()
+	 */
 	private void setFavoriteDrinks() {
 		int columnIndex = 0, rowIndex = 0;
 		for (Drink drink : DrinkDAO.getDrinkTypes()) {
@@ -111,7 +130,12 @@ public class MenuBebidasController {
 			}
 		}
 	}
-
+	/**
+	 * Muda para o ecrã BarScreen de forma a apresentar o bar onde se encontra a bebida selecionada pelo utilizador.
+	 * 
+	 * @param drink Bebida selecionada pelo utilizador
+	 * @see application.models.DAO.PubDAO#getPubsOrdered()
+	 */
 	void openBarInfo(DrinkForSale drink) {
 		PubDAO.setPubsOrdered(drink.getPub().getCoordinates().getX(), drink.getPub().getCoordinates().getY());
 		ScreenContainer screen = new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml",

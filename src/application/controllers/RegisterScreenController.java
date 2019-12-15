@@ -18,7 +18,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-
+/**
+ * Controlador do FXML RegisterScreen que serve para se poder registar um novo utilizador a base de Dados com toda a sua informacao (nome, username, data de nascimento, bebidas favoritas, etc).
+ * 
+ * @author pedrooliveira
+ * @see application.models.DAO.LoginDAO
+ */
 public class RegisterScreenController {
 	@FXML
 	TextField username, userMail, nome, cellphone;
@@ -30,7 +35,10 @@ public class RegisterScreenController {
 	CheckBox sidra, cerveja, vodka, gin, canecaCerveja;
 	
 	ObservableList<CheckBox> checkBoxes = FXCollections.observableArrayList();
-	
+	/**
+	 * Adiciona os tipos de bebidas as respetivas checkboxes como userdata. Adiciona-se  os tipos de bebida à observableArrayList checkboxes.
+	 * @see application.models.Drink
+	 */
 	@FXML
 	private void initialize() {
 		sidra.setUserData(Drink.SIDRA);
@@ -40,7 +48,9 @@ public class RegisterScreenController {
 		canecaCerveja.setUserData(Drink.CANECA_CERVEJA);
 		checkBoxes.addAll(sidra,cerveja,vodka,gin,canecaCerveja);
 	}
-	
+	/**
+	 * Submete-se o utilizador que se deseja adicionar à base de dados, verificando antes se as passwords escritas são iguais. 
+	 */
 	@FXML
 	private void submit() {
 		if(password1.getText().equals(password2.getText())) {
