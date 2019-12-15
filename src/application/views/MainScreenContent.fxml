@@ -7,13 +7,19 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<StackPane fx:id="backStackPane" pickOnBounds="false" prefHeight="495.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="backStackPane" pickOnBounds="false" prefHeight="495.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox fx:id="mapVB" onScroll="#addVBox" prefHeight="200.0" prefWidth="100.0" />
+      <VBox fx:id="mapVB" alignment="TOP_CENTER" onScroll="#addVBox" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: RED;" />
       <VBox fx:id="vbox" alignment="TOP_CENTER" fillWidth="false" onScroll="#removeVBox" onSwipeDown="#removeVBox" onSwipeUp="#addVBox" style="-fx-background-color: transparent;" stylesheets="@layout.css" StackPane.alignment="CENTER">
          <children>
-            <TextField fx:id="searchField" onAction="#centerMap" prefHeight="43.0" prefWidth="262.0" />
+            <TextField fx:id="searchField" alignment="CENTER" onAction="#centerMap" prefHeight="43.0" prefWidth="262.0" promptText="Procure por bar ou Endereco" />
+            <TextField alignment="CENTER" disable="true" editable="false" prefHeight="35.0" prefWidth="296.0" style="-fx-opacity: 1; -fx-border-color: transparent; -fx-text-fill: black;" text="De scroll para interagir com o mapa">
+               <font>
+                  <Font name="Product Sans" size="15.0" />
+               </font>
+            </TextField>
             <Region disable="true" mouseTransparent="true" prefHeight="279.0" prefWidth="343.0" visible="false" VBox.vgrow="ALWAYS" />
             <VBox fx:id="buttonsVbox" alignment="CENTER" prefHeight="102.0" prefWidth="208.0">
                <children>

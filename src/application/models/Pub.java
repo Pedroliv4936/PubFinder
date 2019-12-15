@@ -8,31 +8,74 @@ import javafx.scene.image.Image;
 public class Pub extends Entity {
 
 	private String address;
-	private ObservableList<DrinkForSale> drinks;
+	private ObservableList<DrinkForSale> drinks = FXCollections.observableArrayList();
 	private ObservableList<Image> images;
 	private double rating;
 	private double price;
 	private PubType type;
-	private Coordinates coordinates;
+	private Coordinate coordinates;
 	private String openTime, closeTime;
 	private boolean pending;
-	private ObservableList<Pub> nearPubs = FXCollections.observableArrayList();
 
 	public static final String DISCOTECA = "Discoteca";
 	public static final String BAR = "Bar";
 	public static final String SALAO_DE_JOGOS = "Salao de jogos";
-
-	public Pub(int id, String name, PubType type, double price, double rating, String address, Coordinates coordinates, boolean pending) {
+	
+	/**
+	 * Construtor sem bebidas pre definidas
+	 * @param id id do pub
+	 * @param name nome do pub
+	 * @param type tipo de pub
+	 * @param price preco de entrada do pub
+	 * @param address endereco fisico do Pub
+	 * @param coordinates coordenadas do pub no Mapa
+	 * @param pending se esta pendente de aprovacao
+	 */
+	public Pub(int id, String name, PubType type, double price, String address, Coordinate coordinates, boolean pending) {
 		super(id, name);
 		this.price = price;
 		this.type = type;
-		this.rating = rating;
 		this.address = address;
 		this.coordinates = coordinates;
 		this.pending = pending;
-		drinks = DrinkDAO.getDrinks(this);
+		double rating = 0;
+		if(drinks.size()<1) {}
+		else	
+		for(DrinkForSale drink: drinks) {
+			rating += drink.getRating();
+		}
+		this.rating = rating/drinks.size();
+	}	
+	/**
+	 * Construtor com lista de bebidas
+	 * @param drinks lista de bebidas deste Pub
+	 * @param id id do pub
+	 * @param name nome do pub
+	 * @param type tipo de pub
+	 * @param price preco de entrada do pub
+	 * @param address endereco fisico do Pub
+	 * @param coordinates coordenadas do pub no Mapa
+	 * @param pending se esta pendente de aprovacao
+	 */
+	public Pub(int id, String name, PubType type, double price, String address, Coordinate coordinates, ObservableList<DrinkForSale> drinks, boolean pending) {
+		super(id, name);
+		this.price = price;
+		this.type = type;
+		this.address = address;
+		this.coordinates = coordinates;
+		this.pending = pending;
+		this.drinks = drinks;
+		double rating = 0;
+		for(DrinkForSale drink: drinks) {
+			rating += drink.getRating();
+		}
+		this.rating = rating/drinks.size();
 	}	
 
+	/**
+	 * Metodo para receber toda a informacao do pub em uma string.
+	 * @return String com toda informacao necessaria do Pub.
+	 */
 	public String getPubInfo() {
 		return name + " (" + type + ")" + " preco: " + price;
 	}
@@ -41,11 +84,21 @@ public class Pub extends Entity {
 		return price;
 	}
 	
+	/**
+	 * Metodo para receber a distancia para outro pub.
+	 * @param pub pub para calcular a distancia
+	 * @return distancia entre os 2 pubs
+	 */
 	public double distance(Pub pub) {
 		return coordinates.distanceFrom(pub.getCoordinates());
 	}
 
-	public double distance(Coordinates loc) {
+	/**
+	 * Metodo para receber a distancia para outra coordenada.
+	 * @param pub pub para calcular a distancia
+	 * @return distancia entre os 2 pubs
+	 */
+	public double distance(Coordinate loc) {
 		return coordinates.distanceFrom(loc);
 	}
 	
@@ -61,6 +114,9 @@ public class Pub extends Entity {
 		this.type = type;
 	}
 
+	/**
+	 * Escreve a informacao do Pub no console
+	 */
 	public void showPubInfo() {
 		System.out.println("Id: " + id);
 		System.out.println("Name: " + name);
@@ -76,6 +132,7 @@ public class Pub extends Entity {
 	}
 
 	public ObservableList<DrinkForSale> getDrinks() {
+		drinks = DrinkDAO.getDrinks(this);
 		return drinks;
 	}
 
@@ -91,7 +148,7 @@ public class Pub extends Entity {
 		this.images = images;
 	}
 
-	public Coordinates getCoordinates() {
+	public Coordinate getCoordinates() {
 		return coordinates;
 	}
 
@@ -110,16 +167,22 @@ public class Pub extends Entity {
 	public void setCloseTime(String closeTime) {
 		this.closeTime = closeTime;
 	}
-
-
-	public ObservableList<Pub> getNearPubs() {
-		return nearPubs;
-	}
-
-	public void setNearPubs(ObservableList<Pub> nearPubs) {
-		this.nearPubs = nearPubs;
-	}
 	
+	public double getRating() {
+		return rating;
+	}
+
+	/**
+	 * Define o raitng do pub como a media de todas as suas bebidas.
+	 */
+	public void setRating() {
+		double rating = 0;
+		for(DrinkForSale drink : getDrinks()) {
+			rating+=drink.getRating();
+		}
+		this.rating = rating / drinks.size();
+	}
+
 	public boolean isPending() {
 		return pending;
 	}

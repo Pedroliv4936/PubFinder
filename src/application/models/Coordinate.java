@@ -1,9 +1,14 @@
 package application.models;
 
-public class Coordinates {
+/**
+ * Serve para armazenar e utilizar coordenadas X e Y.
+ * @author franc
+ *
+ */
+public class Coordinate {
 	private double x, y;
 
-	public Coordinates(double x, double y) {
+	public Coordinate(double x, double y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -24,7 +29,12 @@ public class Coordinates {
 		this.y = y;
 	}
 	
-	public double distanceFrom(Coordinates other) {
+	/**
+	 * Recebe uma outra coordenada e devolve a distancia entre esta e a fornecida.
+	 * @param other outra coordenada para se fazer a distância
+	 * @return distancia medida
+	 */
+	public double distanceFrom(Coordinate other) {
 		return Math.sqrt(Math.pow(other.getX() - getX(), 2) + Math.pow(other.getY() + getY(), 2));
 	}
 }

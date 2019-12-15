@@ -1,5 +1,11 @@
 package application.models;
 
+/**
+ * É a bebida que está a venda. Está associada com um Pub e um Drink.
+ * 
+ * @author franc
+ *
+ */
 public class DrinkForSale {
 
 	private int id;
@@ -9,23 +15,27 @@ public class DrinkForSale {
 	private double price;
 	private boolean pending;
 
+
 	public DrinkForSale(int id, Drink drink, Pub pub, double rating, double price, boolean pending) {
 		this.id = id;
 		this.drink = drink;
 		this.pub = pub;
-		this.rating = rating;
+		if (rating >= 0) {
+			if (rating <= 5) {
+				this.rating = rating;
+			} else {
+				this.rating = 5;
+			}
+		} else {
+			this.rating = 0;
+		}
 		this.price = price;
 		this.pending = pending;
 	}
-	
-	public DrinkForSale(Drink drink, Pub pub, double rating, double price, boolean pending) {
-		this.drink = drink;
-		this.pub = pub;
-		this.rating = rating;
-		this.price = price;
-		this.pending = pending;
-	}
-	
+
+	/**
+	 * Escreve toda informacao da bebida no Console
+	 */
 	public void showDrinkInfo() {
 		System.out.println("Drink type " + drink.toString());
 		System.out.println("Pub selling " + pub.toString());
@@ -36,11 +46,15 @@ public class DrinkForSale {
 	public String toString() {
 		return drink.toString() + " €" + price + "(" + pub.toString() + ")";
 	}
-	
+
 	public Drink getDrinkType() {
 		return drink;
 	}
-	
+
+	/**
+	 * Serve para descobrir o nome do tipo da bebida
+	 * @return nome do Drink associado a esta bebida
+	 */
 	public String getDrinkName() {
 		return drink.toString();
 	}

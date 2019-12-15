@@ -4,16 +4,15 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 
+import application.ScreenContainer;
 import application.ScreenManager;
-import application.models.Coordinates;
+import application.models.Coordinate;
 import application.models.Pub;
 import application.models.PubType;
 import application.models.DAO.PubDAO;
-import application.views.ScreenContainer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
 
@@ -99,7 +98,7 @@ public class AddPubController {
 			//String openTime = (openHour.getValue() + ":" + openMin.getValue());
 			//String closeTime = (closeHour.getValue() + ":" + closeMin.getValue());
 			int id = PubDAO.getActivePubs().size();
-			PubDAO.addPub(new Pub(id, name, type, price, 4, address, new Coordinates(pubXCoordinate, pubYCoordinate), true));
+			PubDAO.addPub(new Pub(id, name, type, price, address, new Coordinate(pubXCoordinate, pubYCoordinate), true));
 			System.out.println(name + " Adicionado a lista de espera");
 
 			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);

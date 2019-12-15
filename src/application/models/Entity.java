@@ -1,5 +1,10 @@
 package application.models;
 
+/**
+ * Classe generica para entidades que possuam nome e ID.
+ * @author franc
+ *
+ */
 public abstract class Entity {
 	protected int id;
 	protected String name;
@@ -18,6 +23,6 @@ public abstract class Entity {
 	}
 	
 	public void setName(String name) {
-	
+	this.name = name;
 	}
 }

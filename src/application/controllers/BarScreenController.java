@@ -6,11 +6,11 @@ import com.lynden.gmapsfx.GoogleMapView;
 
 import application.Main;
 import application.MapManager;
+import application.ScreenContainer;
 import application.ScreenManager;
 import application.models.DrinkForSale;
 import application.models.Pub;
 import application.models.DAO.PubDAO;
-import application.views.ScreenContainer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

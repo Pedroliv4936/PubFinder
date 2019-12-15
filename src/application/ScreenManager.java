@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import application.controllers.LoginScreenController;
 import application.controllers.PopUpWindowController;
-import application.views.ScreenContainer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
