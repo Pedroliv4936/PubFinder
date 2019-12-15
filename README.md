@@ -13,7 +13,7 @@
 - [x] Possibilidade de utilizador adicionar localização do bar no mapa;
 - [ ] Possibilidade de adicionar o bar com um pin;
 - [ ] Utilização de paineis inferiores da tela inicial para mostrar informações de bares proximos
-- [ ] Adiçao de procura de bares por nome
+- [x] Adiçao de procura de bares por nome
 - [x] Possibilidade de selecionar bar individualmente e ver suas informações 
 - [ ] Adição de imagens representativas de cada bebida em nossa base de dados
 - [ ] Possibilidade de ver localização atual do utilizador em tempo real (OPCIONAL)
