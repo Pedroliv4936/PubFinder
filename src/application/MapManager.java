@@ -13,8 +13,6 @@ import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import com.lynden.gmapsfx.service.geocoding.GeocoderStatus;
 import com.lynden.gmapsfx.service.geocoding.GeocodingResult;
 import com.lynden.gmapsfx.service.geocoding.GeocodingService;
-import com.lynden.gmapsfx.util.MarkerImageFactory;
-
 import application.controllers.BarScreenController;
 import application.controllers.DefaultHeaderController;
 import application.models.Pub;
@@ -23,7 +21,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 /**
- * Classe responsavel por adicionar o Google maps à aplicacao
+ * Classe responsavel por gerir o Google Maps na aplicacao.
  * @author pedrooliveira
  *
  */
