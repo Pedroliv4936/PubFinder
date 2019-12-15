@@ -2,8 +2,7 @@ package application.models;
 
 /**
  * Serve para armazenar e utilizar coordenadas X e Y.
- * @author franc
- *
+ * @author Franco Zalamena & Pedro Oliveira
  */
 public class Coordinate {
 	private double x, y;

@@ -5,6 +5,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
+/**
+ * Classe que representa a Entidade Pub. Possui endereco, drinks, um rating, o preco de entrada,  tipo de pub, coordenadas e se esta pendente.
+ * @author Franco Zalamena & Pedro Oliveira
+ *
+ */
 public class Pub extends Entity {
 
 	private String address;

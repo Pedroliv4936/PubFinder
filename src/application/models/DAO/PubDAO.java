@@ -15,6 +15,11 @@ import application.models.PubType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * Classe que efetua queries relativas aos pubs na base de dados
+ * @author Franco Zalamena & Pedro Oliveira
+ *
+ */
 public class PubDAO {
 
 	private static ObservableList<Pub> pubsOrdered = FXCollections.observableArrayList();

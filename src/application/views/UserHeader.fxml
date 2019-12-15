@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="224.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox alignment="TOP_CENTER" prefHeight="224.9797680064742" prefWidth="335.0" spacing="39.65470731049366" style="-fx-background-color: #282828;">
+      <HBox alignment="TOP_CENTER" prefHeight="224.9797680064742" prefWidth="335.0" spacing="39.65470731049366" style="-fx-background-color: #282828;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <JFXButton fx:id="bebidasButtonUser" minWidth="30.0" onAction="#openDrinksScreen" prefHeight="33.0" prefWidth="33.0" style="-fx-min-width: 30;" stylesheets="@layout.css" text=" ">
                <HBox.margin>

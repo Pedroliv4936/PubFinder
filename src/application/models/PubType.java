@@ -1,8 +1,8 @@
 package application.models;
 
 /**
- * Tipos de pubs existentes na aplicacao
- * @author franco
+ * Tipos de pubs existentes na aplicacao. Possui um Id e um Nome
+ * @author Franco Zalamena & Pedro Oliveira
  *
  */
 public class PubType {

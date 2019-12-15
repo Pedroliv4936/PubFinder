@@ -2,7 +2,7 @@ package application.models;
 
 /**
  * Classe generica para entidades que possuam nome e ID.
- * @author franc
+ * @author Franco Zalamena & Pedro Oliveira
  *
  */
 public abstract class Entity {

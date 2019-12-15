@@ -16,7 +16,11 @@ import application.models.PubType;
 import application.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
+/**
+ * Classe que efetua queries relativas aos drinks na base de dados
+ * @author Franco Zalamena & Pedro Oliveira
+ *
+ */
 public class DrinkDAO {
 	/**
 	 * Metodo para receber todas as bebidas que estejam aprovadas e em pubs na aplicacao

@@ -4,6 +4,11 @@ import java.sql.Date;
 
 import javafx.collections.ObservableList;
 
+/**
+ * Classe que representa o Utilizador. possui id, nome username, password, email, data de nascimento, telemovel, bebidas favoritas e o tipo de proviligio.
+ * @author Franco Zalamena & Pedro Oliveira
+ *
+ */
 public class User {
 
 	private int id;

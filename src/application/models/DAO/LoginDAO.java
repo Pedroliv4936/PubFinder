@@ -16,6 +16,11 @@ import application.models.UserPrivilege;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * Classe que efetua queries relativas ao login e aos users na base de dados.
+ * @author Franco Zalamena & Pedro Oliveira
+ *
+ */
 public class LoginDAO {
 	private static User logedinUser;
 

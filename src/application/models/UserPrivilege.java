@@ -2,7 +2,7 @@ package application.models;
 
 /**
  * Tipos de utilizadores existentes na aplicacao.
- * @author franc
+ * @author Franco Zalamena & Pedro Oliveira
  *
  */
 public enum UserPrivilege {
