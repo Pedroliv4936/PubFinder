@@ -46,7 +46,7 @@ public class CheckNewRequestsController {
 		drinkLV.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 	}
 	/**
-	 * 
+	 * Muda o ecrã de forma a ver mais informacao sobre a bebida selecionada.
 	 */
 	@FXML
 	public void openInfo() {

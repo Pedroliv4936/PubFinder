@@ -22,7 +22,8 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 /**
  * Classe responsavel por gerir o Google Maps na aplicacao.
- * @author pedrooliveira
+ * 
+ * @author Franco Zalamena & Pedro Oliveira
  *
  */
 public class MapManager implements MapComponentInitializedListener{

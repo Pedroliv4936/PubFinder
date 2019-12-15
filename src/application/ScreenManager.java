@@ -105,7 +105,7 @@ public class ScreenManager {
 		}
 		vBox.getChildren().add(root);
 	}
-	
+
 	public static void createPopupWindow(PopUpWindowController controller) {
 		Stage popupWindow = new Stage();
 		controller.setStage(popupWindow);

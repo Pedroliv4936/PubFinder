@@ -25,7 +25,12 @@ public class DrinkInfoController {
 	private String name, price, rating;
 	
 	private Image image;
-	
+	/**
+	 * Coloca a informacao de cada bebida nas respetivas variaveis desta classe.
+	 * 
+	 * @param drink Bebida à venda do pub.
+	 * 
+	 */
 	public DrinkInfoController(DrinkForSale drink) {
 		this.name = drink.getDrinkName();
 		this.image = drink.getDrinkType().getIcon();
@@ -33,7 +38,7 @@ public class DrinkInfoController {
 		this.rating = String.format("%.2f", drink.getRating());
 	}
 	/**
-	 * Apresenta a informaçao da bebida
+	 * Insere a informacao da bebida nas respetivas labels
 	 */
 	@FXML
 	private void initialize() {
@@ -41,17 +46,5 @@ public class DrinkInfoController {
 		drinkImage.setImage(image);
 		drinkPrice.setText(price);
 		drinkRating.setText(rating);
-	}
-	/**
-	 * Coloca a informacao de cada bebida nas respetivas variaveis desta classe.
-	 * 
-	 * @param drink Bebida à venda do pub.
-	 * 
-	 */
-	public void setShownDrink(DrinkForSale drink) {
-		this.name = drink.getDrinkName();
-		this.image = drink.getDrinkType().getIcon();
-		this.price = String.format("%.2f" ,drink.getPrice());
-		this.rating = String.format("%.2f", drink.getRating());
 	}
 }

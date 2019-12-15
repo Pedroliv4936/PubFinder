@@ -146,7 +146,7 @@ public class BarScreenController{
 		}
 	}
 	/**
-	 * 
+	 * Aumenta o index da bebida mais por um de forma a apresentar a bebida seguinte.
 	 */
 	@FXML
 	private void changePubDrinksRight() {
@@ -159,7 +159,7 @@ public class BarScreenController{
 		chooseDisplayedDrinks();
 	}
 	/**
-	 * 
+	 * Diminui o index da bebida por um de forma a apresentar a bebida seguinte.
 	 */
 	@FXML
 	private void changePubDrinksLeft() {
@@ -171,13 +171,17 @@ public class BarScreenController{
 
 		chooseDisplayedDrinks();
 	}
-	
+	/**
+	 * Troca de pub para o segundo pub mais proximo.
+	 */
 	@FXML 
 	private void next() {
         ScreenManager.setScreen(new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml",
 		new DefaultHeaderController(), new BarScreenController(((PubInfoController)pubRightLoader.getController()).getPub())));
 	}
-	
+	/**
+	 * troca de pub para o pub visualizado antes.
+	 */
 	@FXML
 	private void prev() {
         ScreenManager.setScreen(new ScreenContainer("views/DefaultHeader.fxml", "views/BarScreen.fxml",
