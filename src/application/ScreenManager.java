@@ -17,7 +17,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
- * Classe responsavel pelas trocas de ecrãs da aplicacao.
+ * Classe responsavel por gerir as telas e scenes da aplicacao
  * 
  * @author Franco Zalamena & Pedro Oliveira
  *
@@ -33,8 +33,7 @@ public class ScreenManager {
 	public ScreenManager() {
 	}
 	/**
-	 * Método que define a janela da aplicacao como PubFinder e com o logotipo da aplicacao.
-	 * Muda o ecrã para o LoginScreen.
+	 * Metodo que inicia o stage inicial (Login Screen).
 	 * 
 	 * @param primaryStage Janela da aplicacao
 	 * 
@@ -58,7 +57,7 @@ public class ScreenManager {
 
 	}
 	/**
-	 * Define os controladores e os fxmldo header e do content do screenContainer.
+	 * Define qual o conteudo do scene principal
 	 * 
 	 * @param screenContainer Ecrã que contem o header (se existir) e o content.
 	 * 
@@ -106,6 +105,10 @@ public class ScreenManager {
 		vBox.getChildren().add(root);
 	}
 
+	/**
+	 * Cria uma janela de pop up modal linkada com a janela principal. O conteudo e definido pelo controlador do Pop up Window
+	 * @param controller controlador do Pop up Window que possui o texto e acoes necessarias da janela
+	 */
 	public static void createPopupWindow(PopUpWindowController controller) {
 		Stage popupWindow = new Stage();
 		controller.setStage(popupWindow);
