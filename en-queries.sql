@@ -30,7 +30,7 @@ SELECT * FROM drinks_for_sale
 INNER JOIN drinks ON drinks_for_sale.drink_id = drinks.drink_id 
 INNER JOIN pubs ON drinks_for_sale.pub_id = pubs.pub_id 
 INNER JOIN pub_types ON pubs.pub_type_id = pub_types.pub_type_id 
-WHERE drinks_for_sale.drink_id IN ("+ iMarks + ") AND drinks_for_sale.pending = 0 ;
+WHERE drinks_for_sale.drink_id IN (?) AND drinks_for_sale.pending = 0 ;
 
 SELECT * FROM drinks;
 
