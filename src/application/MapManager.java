@@ -22,7 +22,11 @@ import application.models.DAO.PubDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
-
+/**
+ * Classe responsavel por adicionar o Google maps à aplicacao
+ * @author pedrooliveira
+ *
+ */
 public class MapManager implements MapComponentInitializedListener{
 	
 	private GoogleMapView mapView;
@@ -38,10 +42,11 @@ public class MapManager implements MapComponentInitializedListener{
 		mapView = new GoogleMapView("pt-BR", "AIzaSyDxUrIiTvQ6FSgAUULl9JF4AS6Jfz-35gc");
 		mapView.addMapInializedListener(this);
 	}
-
+	/**
+	 * Inicia o mapa com as definiçoes/propriedades.
+	 */
 	@Override
 	public void mapInitialized() {
-		  //Set the initial properties of the map.
 	        MapOptions mapOptions = new MapOptions();
 	        mapOptions.center(new LatLong(38.707438, -9.152532))
             .mapType(MapTypeIdEnum.ROADMAP)
@@ -56,7 +61,9 @@ public class MapManager implements MapComponentInitializedListener{
 	        
 	        map = mapView.createMap(mapOptions);
 	}
-	
+	/**
+	 * Cria os markers de todos os Pubs (disponiveis) da base de Dados.
+	 */
 	public void createMarkers() {
 		ObservableList<Marker> pubMarkers = FXCollections.observableArrayList();
 		
@@ -72,7 +79,9 @@ public class MapManager implements MapComponentInitializedListener{
 		}
 	        map.addMarkers(pubMarkers);
 	}
-	
+	/**
+	 * Cria o marker e envia as coordenadas do marker para a consola da posiçao que o utilizador carregou com o rato, de forma a simular a posicao do utilizador.
+	 */
 	public void userLocationMarker() {
 		MarkerOptions markerOptions = new MarkerOptions();
         userLoc= new Marker(markerOptions);
@@ -89,11 +98,20 @@ public class MapManager implements MapComponentInitializedListener{
         map.addMarker(userLoc);
         });
 	}
-	
+	/**
+	 * Cria o servico de Geocoding que é utilizado para pesquisar bares pela morada.
+	 */
 	public void createGeocodingService() {
 		geocodingService = new GeocodingService();
 	}
-	
+	/**
+	 * Centraliza o mapa no Pub mais proximo da morada que o utilizador introduziu.E muda a tela para o barScreen
+	 * 
+	 * @param address Morada que o utilizador introduziu na barra de pesquisa.
+	 * 
+	 * @see application.models.DAO.PubDAO#getPubsOrdered()
+	 * @see application.controllers.BarScreenController
+	 */
 	public void centerMap(String address) {
 	        geocodingService.geocode(address, (GeocodingResult[] results, GeocoderStatus status) -> {
 	            
@@ -129,12 +147,13 @@ public class MapManager implements MapComponentInitializedListener{
 				new DefaultHeaderController(), new BarScreenController(PubDAO.getPubsOrdered().get(0))));
 	        });
 	}
-	
+	/**
+	 * Cria um novo mainMap caso não exista já.
+	 */
 	public static void createMap() {
 		if (mainMap == null)
 			mainMap = new MapManager();
 	}
-	
 	public static MapManager getMapManager() {
 		createMap();
 		return mainMap;
