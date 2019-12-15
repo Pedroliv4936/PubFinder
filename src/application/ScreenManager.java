@@ -104,7 +104,6 @@ public class ScreenManager {
 		}
 		vBox.getChildren().add(root);
 	}
-
 	/**
 	 * Cria uma janela de pop up modal linkada com a janela principal. O conteudo e definido pelo controlador do Pop up Window
 	 * @param controller controlador do Pop up Window que possui o texto e acoes necessarias da janela
