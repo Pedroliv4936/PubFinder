@@ -18,7 +18,7 @@ import javafx.fxml.FXML;
 /**
  * controlador do fxml destinado a preencher um formulario de adicao de bebidas.
  * 
- * @author Pedro Oliveira and Franco Zalamena
+ * @author Franco Zalamena & Pedro Oliveira
  *
  */
 public class AddDrinkController {

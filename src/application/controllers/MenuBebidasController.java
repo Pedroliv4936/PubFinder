@@ -30,7 +30,7 @@ import javafx.scene.paint.Color;
  * Apresenta todas as bebidas da Base de Dados, em que o utilizador pode filtrar por tipo de bebida (selecionando pelos tipos de bebida apresentados no topo da tela), fazer sort por preco ou por bar.
  * O utilizador pode ainda carregar numa bebida e é apresentado a tela com a informacao do bar(openBarInfo())
  * 
- * @author pedrooliveira
+ * @author Franco Zalamena & Pedro Oliveira
  *@see #openBarInfo(DrinkForSale)
  *@see application.models.DAO.DrinkDAO
  */

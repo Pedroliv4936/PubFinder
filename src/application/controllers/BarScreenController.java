@@ -21,7 +21,7 @@ import javafx.scene.layout.VBox;
 /**
  * Controlador do FXML BarScreen que apresenta a informacao dos pubs ao utilizador.
  * 
- * @author pedrooliveira e Franco Zalamena
+ * @author Franco Zalamena & Pedro Oliveira
  *
  */
 public class BarScreenController{

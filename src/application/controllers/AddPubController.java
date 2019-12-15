@@ -19,7 +19,7 @@ import javafx.scene.control.TextField;
 /**
  * Controlador do fxml destinado a preencher o formulario para adicionar bares à aplicação.
  * 
- * @author pedrooliveira e Franco Zalamena
+ * @author Franco Zalamena & Pedro Oliveira
  *
  */
 public class AddPubController {

@@ -12,7 +12,7 @@ import javafx.scene.layout.GridPane;
 /**
  * Controlador do Fxml UserScreen que apresenta a informacao do utilizador logado. (Password continua encriptada com MD5)
  * 
- * @author pedrooliveira
+ * @author Franco Zalamena & Pedro Oliveira
  *
  */
 public class UserScreenController {

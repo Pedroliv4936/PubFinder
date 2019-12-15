@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 /**
  * Controlador do FXML UserHeader que serve para apresentar o nome do User logado e para se poder mudar de ecra(menu bebidas,logout ou para o mainScreen).
- * @author pedrooliveira
+ * @author Franco Zalamena & Pedro Oliveira
  *
  */
 public class UserHeaderController {

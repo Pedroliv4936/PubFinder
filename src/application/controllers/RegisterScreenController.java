@@ -21,7 +21,7 @@ import javafx.scene.paint.Color;
 /**
  * Controlador do FXML RegisterScreen que serve para se poder registar um novo utilizador a base de Dados com toda a sua informacao (nome, username, data de nascimento, bebidas favoritas, etc).
  * 
- * @author pedrooliveira
+ * @author Franco Zalamena & Pedro Oliveira
  * @see application.models.DAO.LoginDAO
  */
 public class RegisterScreenController {

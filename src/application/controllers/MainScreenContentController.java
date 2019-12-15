@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
  * Controlador do Fxml MainScreenContent que apresenta o mapa, um botao para adicionar informacao, um para aprovar informacao (caso o utilizador seja administrador) 
  * e uma barra de pesquisas para se pesquisar os bares pelo nome ou então colocar uma morada e é apresentado ao utilizador o bar mais próximo dessa morada.
  * 
- * @author pedrooliveira and Franco Zalamena
+ * @author Franco Zalamena & Pedro Oliveira
  *
  */
 public class MainScreenContentController{

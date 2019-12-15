@@ -15,7 +15,7 @@ import javafx.scene.control.Tab;
 /**
  * Apresenta ao administrador todos os bares e bebidas à espera de aprovacao.
  * 
- * @author pedrooliveira and Franco Zalamena
+ * @author Franco Zalamena & Pedro Oliveira
  *
  */
 public class CheckNewRequestsController {
