@@ -4,13 +4,13 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 
+import application.ScreenContainer;
 import application.ScreenManager;
 import application.models.Drink;
 import application.models.DrinkForSale;
 import application.models.Pub;
 import application.models.DAO.DrinkDAO;
 import application.models.DAO.PubDAO;
-import application.views.ScreenContainer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -68,13 +68,13 @@ public class AddDrinkController {
 	@FXML
 	private void sendInfo() {
 		if (allFieldsFilled()) {
-			DrinkForSale newDrink = new DrinkForSale(drinkType.getValue(), pubOptions.getValue(), 4,
+			DrinkForSale newDrink = new DrinkForSale(0, drinkType.getValue(), pubOptions.getValue(), 4,
 					Double.parseDouble(priceField.getText()), true);
 			System.out.println();
 			System.out.println();
 			System.out.println("BEBIDA ENVIADA PARA APROVA��O COM ATRIBUTOS:");
 			newDrink.showDrinkInfo();
-			DrinkDAO.addDrink(newDrink);
+			DrinkDAO.addDrinkForSale(newDrink);
 			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 		}
 	}

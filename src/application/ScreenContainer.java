@@ -1,4 +1,4 @@
-package application.views;
+package application;
 
 import application.controllers.AddInfoController;
 import application.controllers.BarScreenController;

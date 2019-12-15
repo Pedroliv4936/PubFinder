@@ -2,6 +2,11 @@ package application.models;
 
 import javafx.scene.image.Image;
 
+/**
+ * É uma Entity que serve como um tipo de bebida para uma DrinkForSale. 
+ * @author franc
+ *
+ */
 public class Drink extends Entity{
 	private Image icon;
 	
@@ -16,7 +21,10 @@ public class Drink extends Entity{
 		this.icon = icon;
 	}
 	
-	public void showDrinkInfo() {
+	/*
+	 * Escreve no Console as informacoes deste Drink
+	 */
+	public void printDrinkInfo() {
 		System.out.println("Id: " + id);
 		System.out.println("Name" + name);
 		System.out.println("Image path" + icon);

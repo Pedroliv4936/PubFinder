@@ -1,8 +1,8 @@
 package application.controllers;
 
+import application.ScreenContainer;
 import application.ScreenManager;
 import application.models.DAO.LoginDAO;
-import application.views.ScreenContainer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 

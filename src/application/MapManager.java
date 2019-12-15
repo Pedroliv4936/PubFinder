@@ -19,7 +19,6 @@ import application.controllers.BarScreenController;
 import application.controllers.DefaultHeaderController;
 import application.models.Pub;
 import application.models.DAO.PubDAO;
-import application.views.ScreenContainer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;

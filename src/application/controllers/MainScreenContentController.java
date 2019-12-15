@@ -4,10 +4,10 @@ import com.jfoenix.controls.JFXButton;
 import com.lynden.gmapsfx.GoogleMapView;
 
 import application.MapManager;
+import application.ScreenContainer;
 import application.ScreenManager;
 import application.models.UserPrivilege;
 import application.models.DAO.LoginDAO;
-import application.views.ScreenContainer;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;

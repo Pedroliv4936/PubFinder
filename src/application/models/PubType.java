@@ -1,5 +1,10 @@
 package application.models;
 
+/**
+ * Tipos de pubs existentes na aplicacao
+ * @author franco
+ *
+ */
 public class PubType {
 	
 	private int id;

@@ -1,7 +1,7 @@
 package application.controllers;
 
+import application.ScreenContainer;
 import application.ScreenManager;
-import application.views.ScreenContainer;
 import javafx.fxml.FXML;
 
 public class DefaultHeaderController {

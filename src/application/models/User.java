@@ -16,8 +16,19 @@ public class User {
 	private ObservableList<Drink> favoriteDrinks;
 	private UserPrivilege privilege;
 
-
-	public User(int id, String name, String username, String password, String email, Date birthday, int cellphone, UserPrivilege privilege) {
+	/**
+	 * Construtor para criar qualquer tipo de utilizador
+	 * @param id id do user
+	 * @param name nome do user
+	 * @param username username do user
+	 * @param password password do user
+	 * @param email email do user
+	 * @param birthday data de nascimento do user
+	 * @param cellphone telemovel do user
+	 * @param privilege qual o tipo de privilegio do utilizador.
+	 */
+	public User(int id, String name, String username, String password, String email, Date birthday, int cellphone,
+			UserPrivilege privilege) {
 		this.id = id;
 		this.name = name;
 		this.username = username;
@@ -28,6 +39,16 @@ public class User {
 		this.setPrivilege(privilege);
 	}
 
+	/**
+	 * Contrutor para criar um utilizador com permissoes basicas de USER
+	 * @param id id do user
+	 * @param name nome do user
+	 * @param username username do user
+	 * @param password password do user
+	 * @param email email do user
+	 * @param birthday data de nascimento do user
+	 * @param cellphone telemovel do user
+	 */
 	public User(int id, String name, String username, String password, String email, Date birthday, int cellphone) {
 		this.id = id;
 		this.name = name;
@@ -38,7 +59,6 @@ public class User {
 		this.cellphone = cellphone;
 		this.setPrivilege(UserPrivilege.USER);
 	}
-
 
 	public ObservableList<Drink> getFavoriteDrinks() {
 		return favoriteDrinks;
