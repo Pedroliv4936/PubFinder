@@ -66,7 +66,6 @@ public class MapManager implements MapComponentInitializedListener{
 	 */
 	public void createMarkers() {
 		ObservableList<Marker> pubMarkers = FXCollections.observableArrayList();
-		
 		for(Pub pub : PubDAO.getActivePubs()) {
 			MarkerOptions markerOptions = new MarkerOptions();
 			LatLong latLong = new LatLong(pub.getCoordinates().getX(), pub.getCoordinates().getY());
@@ -84,7 +83,7 @@ public class MapManager implements MapComponentInitializedListener{
 	 */
 	public void userLocationMarker() {
 		MarkerOptions markerOptions = new MarkerOptions();
-        userLoc= new Marker(markerOptions);
+		userLoc= new Marker(markerOptions);
         map.addMouseEventHandler(UIEventType.click, (GMapMouseEvent event) -> {
         	 map.removeMarker(userLoc);
         LatLong mouseLatLong = event.getLatLong();
@@ -93,8 +92,6 @@ public class MapManager implements MapComponentInitializedListener{
         markerOptions.title("User Location");
         markerOptions.position(mouseLatLong);
         userLoc= new Marker(markerOptions);
-        String iconstr = MarkerImageFactory.createMarkerImage("deufaultUserIcon.png", "png");
-        userLoc.setOptions(markerOptions.icon(iconstr));
         map.addMarker(userLoc);
         });
 	}
