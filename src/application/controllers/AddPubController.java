@@ -19,7 +19,7 @@ import javafx.scene.control.TextField;
 /**
  * Controlador do fxml destinado a preencher o formulario para adicionar bares à aplicação.
  * 
- * @author Franco Zalamena & Pedro Oliveira
+ * @author Franco Zalamena e Pedro Oliveira
  *
  */
 public class AddPubController {
@@ -104,9 +104,10 @@ public class AddPubController {
 			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 		}
 	}
-	/**
-	 * Certifica que todas as opcoes estao preenchidas, caso alguma opcao nao esteja preenchida é apresentado qual a caixa que falta preencher.
-	 */
+/**
+ * Certifica que todas as opcoes estao preenchidas, caso alguma opcao nao esteja preenchida é apresentado qual a caixa que falta preencher.
+ * @return se todos campos estao preenchidos
+ */
 	private boolean fieldsFilled() {
 		String nameRegex = "^[a-zA-Z]{1}.{0,19}";
 		String priceRegex = "^[-]?[0-9]+([.][0-9]+)?$";

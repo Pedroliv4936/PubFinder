@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 /**
  * Apresenta a informacao do Pub selecionado
  * 
- * @author Franco Zalamena & Pedro Oliveira
+ * @author Franco Zalamena e Pedro Oliveira
  *
  */
 public class PubInfoController {

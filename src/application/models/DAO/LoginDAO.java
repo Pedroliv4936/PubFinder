@@ -18,7 +18,7 @@ import javafx.collections.ObservableList;
 
 /**
  * Classe que efetua queries relativas ao login e aos users na base de dados.
- * @author Franco Zalamena & Pedro Oliveira
+ * @author Franco Zalamena e Pedro Oliveira
  *
  */
 public class LoginDAO {

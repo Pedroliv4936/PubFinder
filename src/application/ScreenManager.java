@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 /**
  * Classe responsavel por gerir as telas e scenes da aplicacao
  * 
- * @author Franco Zalamena & Pedro Oliveira
+ * @author Franco Zalamena e Pedro Oliveira
  *
  */
 public class ScreenManager {
@@ -39,7 +39,7 @@ public class ScreenManager {
 	 * 
 	 * @see #setScreen(ScreenContainer)
 	 * 
-	 * @throws IOException
+	 * @throws IOException a
 	 */
 	public void start(Stage primaryStage) throws IOException {
 		mainWindow = primaryStage;
@@ -74,8 +74,8 @@ public class ScreenManager {
 	}
 	/**
 	 * Define o Content do ecra e o seu controlador.
-	 * @param contentFxmlLocation
-	 * @param contentController
+	 * @param contentFxmlLocation Localizacao do fxml
+	 * @param contentController Localizacao do fxml do  controlador
 	 */
 	private static void setContent(String contentFxmlLocation, Object contentController) {
 		FXMLLoader loader = new FXMLLoader(ScreenManager.class.getResource(contentFxmlLocation));
@@ -90,8 +90,8 @@ public class ScreenManager {
 	}
 	/**
 	 * Define o header do ecra e o seu controlador.
-	 * @param headerFxmlLocation
-	 * @param headerController
+	 * @param headerFxmlLocation Localizacao do fxml
+	 * @param headerController Localizacao do fxml do  controlador
 	 */
 	private static void setHeader(String headerFxmlLocation, Object headerController) {
 		FXMLLoader loader = new FXMLLoader(Main.class.getResource(headerFxmlLocation));

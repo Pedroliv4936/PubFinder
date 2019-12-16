@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 
 /**
  * Classe que representa a Entidade Pub. Possui endereco, drinks, um rating, o preco de entrada,  tipo de pub, coordenadas e se esta pendente.
- * @author Franco Zalamena & Pedro Oliveira
+ * @author Franco Zalamena e Pedro Oliveira
  *
  */
 public class Pub extends Entity {
@@ -100,7 +100,7 @@ public class Pub extends Entity {
 
 	/**
 	 * Metodo para receber a distancia para outra coordenada.
-	 * @param pub pub para calcular a distancia
+	 * @param loc localizacao para calcular a distancia
 	 * @return distancia entre os 2 pubs
 	 */
 	public double distance(Coordinate loc) {

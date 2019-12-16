@@ -18,7 +18,7 @@ import javafx.fxml.FXML;
 /**
  * controlador do fxml destinado a preencher um formulario de adicao de bebidas.
  * 
- * @author Franco Zalamena & Pedro Oliveira
+ * @author Franco Zalamena e Pedro Oliveira
  *
  */
 public class AddDrinkController {
@@ -79,7 +79,9 @@ public class AddDrinkController {
 		}
 	}
 	/**
-	 * Certifica que todas as opcoes estao preenchidas, caso alguma opcao nao esteja preenchida é apresentado qual a caixa que falta preencher.
+	 * Certifica que todas as opcoes estao preenchidas, caso alguma opcao nao esteja preenchida apresenta qual a caixa que falta preencher.
+	 * 
+	 * @return se todos os campos estao preenchidos
 	 */
 	private boolean allFieldsFilled() {
 		boolean allFieldsFilled = true;
