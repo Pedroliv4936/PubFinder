@@ -14,7 +14,7 @@ import application.models.DAO.PubDAO;
 
 /**
  * Classe que contem informacoes do header e do conteudo do stage.
- * @author Franco Zalamena & Pedro Oliveira
+ * @author Franco Zalamena e Pedro Oliveira
  *
  */
 public class ScreenContainer {

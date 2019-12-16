@@ -17,7 +17,7 @@ import javafx.collections.ObservableList;
 
 /**
  * Classe que efetua queries relativas aos pubs na base de dados
- * @author Franco Zalamena & Pedro Oliveira
+ * @author Franco Zalamena e Pedro Oliveira
  *
  */
 public class PubDAO {
@@ -68,7 +68,7 @@ public class PubDAO {
 	/**
 	 * Metodo para receber todos os pubs na base de dados
 	 * 
-	 * @return
+	 * @return Lista com todos pubs
 	 */
 	public static ObservableList<Pub> getPubs() {
 		ObservableList<Pub> pubList = FXCollections.observableArrayList();

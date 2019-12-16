@@ -6,7 +6,7 @@ import javafx.collections.ObservableList;
 
 /**
  * Classe que representa o Utilizador. possui id, nome username, password, email, data de nascimento, telemovel, bebidas favoritas e o tipo de proviligio.
- * @author Franco Zalamena & Pedro Oliveira
+ * @author Franco Zalamena e Pedro Oliveira
  *
  */
 public class User {

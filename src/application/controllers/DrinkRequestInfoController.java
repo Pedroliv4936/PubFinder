@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 /**
  * Controlador do FXML DrinkRequestInfo que apresenta a informacao completa que um utilizador preencheu quando quis adicionar uma bebida.
  * 
- * @author Franco Zalamena & Pedro Oliveira
+ * @author Franco Zalamena e Pedro Oliveira
  */
 public class DrinkRequestInfoController {
 

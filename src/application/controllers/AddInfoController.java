@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 /**
  * Controlador do fxml AddInfo que contem os FXMLs addPub e addDrink.
  * 
- * @author Franco Zalamena & Pedro Oliveira
+ * @author Franco Zalamena e Pedro Oliveira
  *
  */
 public class AddInfoController {

@@ -3,7 +3,7 @@ package application.models;
 /**
  * É a bebida que está a venda. Está associada com um Pub e um Drink.
  * 
- * @author Franco Zalamena & Pedro Oliveira
+ * @author Franco Zalamena e Pedro Oliveira
  *
  */
 public class DrinkForSale {

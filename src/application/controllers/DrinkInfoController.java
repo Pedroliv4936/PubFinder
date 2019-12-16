@@ -12,7 +12,7 @@ import javafx.scene.image.ImageView;
  * @see application.controllers.PubInfoController
  * 
  * 
- * @author Franco Zalamena & Pedro Oliveira
+ * @author Franco Zalamena e Pedro Oliveira
  */
 public class DrinkInfoController {
 

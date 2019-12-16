@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 
 /**
  * É uma Entity que serve como um tipo de bebida para uma DrinkForSale. 
- * @author Franco Zalamena & Pedro Oliveira
+ * @author Franco Zalamena e Pedro Oliveira
  *
  */
 public class Drink extends Entity{

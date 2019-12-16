@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 /**
  * Classe de ligacao com a base de dados.
- * @author Franco Zalamena & Pedro Oliveira
+ * @author Franco Zalamena e Pedro Oliveira
  *
  */
 public final class JDBC {
