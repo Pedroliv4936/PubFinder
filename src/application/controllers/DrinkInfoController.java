@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
- * Controlador do FXML AvailableDrinks que apresenta a informação das bebidas vendidas em cada pub.
+ * Controlador do FXML AvailableDrinks que apresenta a informaÃ§Ã£o das bebidas vendidas em cada pub.
  * 
  * @see application.controllers.PubInfoController
  * 
@@ -28,7 +28,7 @@ public class DrinkInfoController {
 	/**
 	 * Coloca a informacao de cada bebida nas respetivas variaveis desta classe.
 	 * 
-	 * @param drink Bebida à venda do pub.
+	 * @param drink Bebida Ã  venda do pub.
 	 * 
 	 */
 	public DrinkInfoController(DrinkForSale drink) {
@@ -44,7 +44,7 @@ public class DrinkInfoController {
 	private void initialize() {
 		drinkName.setText(name);
 		drinkImage.setImage(image);
-		drinkPrice.setText(price);
-		drinkRating.setText(rating);
+		drinkPrice.setText("€ " + price);
+		drinkRating.setText("☆ " + rating);
 	}
 }

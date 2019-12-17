@@ -142,6 +142,27 @@ public class MapManager implements MapComponentInitializedListener{
 				new DefaultHeaderController(), new BarScreenController(PubDAO.getPubsOrdered().get(0))));
 	        });
 	}
+	
+    static LatLong latLong;
+	public static LatLong getLatLong(String address) {
+		GeocodingService geocodingService = new GeocodingService();
+        geocodingService.geocode(address, (GeocodingResult[] results, GeocoderStatus status) -> {
+            LatLong geocode = new LatLong(0,0);
+            if(status == GeocoderStatus.ZERO_RESULTS) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
+                alert.show();
+            }
+            else if( results.length > 1 ) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
+            alert.show();
+            geocode = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+        } else {
+            geocode = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+        }
+            latLong = geocode;
+        });
+		return latLong;
+	}
 	/**
 	 * Cria um novo mainMap caso não exista já.
 	 */
@@ -149,6 +170,7 @@ public class MapManager implements MapComponentInitializedListener{
 		if (mainMap == null)
 			mainMap = new MapManager();
 	}
+	
 	public static MapManager getMapManager() {
 		createMap();
 		return mainMap;

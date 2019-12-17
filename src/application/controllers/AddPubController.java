@@ -3,7 +3,12 @@ package application.controllers;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
+import com.lynden.gmapsfx.javascript.object.LatLong;
+import com.lynden.gmapsfx.service.geocoding.GeocoderStatus;
+import com.lynden.gmapsfx.service.geocoding.GeocodingResult;
+import com.lynden.gmapsfx.service.geocoding.GeocodingService;
 
+import application.MapManager;
 import application.ScreenContainer;
 import application.ScreenManager;
 import application.models.Coordinate;
@@ -13,6 +18,7 @@ import application.models.DAO.PubDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
 
@@ -41,8 +47,37 @@ public class AddPubController {
 	
 	boolean fieldsFilled;
 
+	boolean focused = false;
+	LatLong latLong;
+	GeocodingService geocodingService = new GeocodingService();
 	@FXML
 	private void initialize() {
+
+		addressField.focusedProperty().addListener((obs, oldVal, newVal) -> {
+			if(!newVal) {
+					GeocodingService geocodingService = new GeocodingService();
+			        geocodingService.geocode(addressField.getText(), (GeocodingResult[] results, GeocoderStatus status) -> {
+			            LatLong geocode = new LatLong(0,0);
+			            if(status == GeocoderStatus.ZERO_RESULTS) {
+			                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
+			                alert.show();
+			            }
+			            else if( results.length > 1 ) {
+			            Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
+			            alert.show();
+			            geocode = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+			        } else {
+			            geocode = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+			        }
+			            pubXCoord.setText(String.valueOf(geocode.getLatitude()));
+			            pubYCoord.setText(String.valueOf(geocode.getLongitude()));
+			        });
+			}
+				focused = newVal;
+			System.out.println(oldVal);
+			System.out.println(newVal);
+		});
+
 		showPubTypes();
 		//showHour();
 		//showMin();
@@ -57,6 +92,7 @@ public class AddPubController {
 		}
 		pubType.setItems(pubTypes);
 	}
+	
 	/**
 	 * 
 	 */
@@ -104,6 +140,7 @@ public class AddPubController {
 			ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 		}
 	}
+	String addressRegex = "\\w+(\\s\\w+[,]?)+";
 /**
  * Certifica que todas as opcoes estao preenchidas, caso alguma opcao nao esteja preenchida é apresentado qual a caixa que falta preencher.
  * @return se todos campos estao preenchidos
@@ -111,7 +148,6 @@ public class AddPubController {
 	private boolean fieldsFilled() {
 		String nameRegex = "^[a-zA-Z]{1}.{0,19}";
 		String priceRegex = "^[-]?[0-9]+([.][0-9]+)?$";
-		String addressRegex = "\\w+(\\s\\w+[,]?)+";
 		fieldsFilled = true;
 
 		if (!barName.getText().matches(nameRegex)) {

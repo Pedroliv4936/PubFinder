@@ -36,7 +36,7 @@ public class PubInfoController {
 	@FXML
 	private void initialize() {
 		pubName.setText(name);
-		pubPrice.setText(price);
+		pubPrice.setText("€ " + price);
 		pubType.setText(type);
 		open.setText(openTime);
 		close.setText(closeTime);
