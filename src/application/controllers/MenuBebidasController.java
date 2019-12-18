@@ -65,7 +65,7 @@ public class MenuBebidasController {
 		setFavoriteDrinks();
 		drinkColumn = new TableColumn<DrinkForSale, String>("Bebida");
 		barColumn = new TableColumn<DrinkForSale, String>("Bar");
-		priceColumn = new TableColumn<DrinkForSale, Double>("Pre�o");
+		priceColumn = new TableColumn<DrinkForSale, Double>("Preco");
 
 		drinkColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDrinkName()));
 		barColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getPub().toString()));
