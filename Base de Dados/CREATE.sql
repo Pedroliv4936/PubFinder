@@ -51,7 +51,7 @@ CREATE TABLE `drinks_for_sale` (
   `drink_id` int(11) NOT NULL,
   `price` double NOT NULL,
   `rating` double NOT NULL,
-  `n_rating` int(4),
+  `n_rating` int(4) NOT NULL DEFAULT 1,
   `pending` tinyint(1) NOT NULL,
    PRIMARY KEY(`drink_sale_id`),
    CONSTRAINT `drink_id` FOREIGN KEY (`drink_id`)
