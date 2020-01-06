@@ -161,7 +161,36 @@ public class DrinkDAO {
 			e.printStackTrace();
 		}
 	}
-
+	public static double getRating(DrinkForSale drink) {
+		double rating = 0;
+		Connection con = JDBC.getConnection();
+		String sql = "SELECT rating FROM drinks_for_sale "
+					+ "WHERE drinks_for_sale_id = ?";
+		try (PreparedStatement stat = con.prepareStatement(sql)) {
+			stat.setInt(1, drink.getId());
+			try (ResultSet rs = stat.executeQuery()) {
+				rating = rs.getDouble("rating");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rating;
+	}
+	public static int getNRating(DrinkForSale drink) {
+		int nRating = 0;
+		Connection con = JDBC.getConnection();
+		String sql = "SELECT n_rating FROM drinks_for_sale "
+					+ "WHERE drinks_for_sale_id = ?";
+		try (PreparedStatement stat = con.prepareStatement(sql)) {
+			stat.setInt(1, drink.getId());
+			try (ResultSet rs = stat.executeQuery()) {
+				nRating = rs.getInt("n_rating");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return nRating;
+	}
 	/**
 	 * Metodo para receber todas as Drinks que o user definiu como favoritas
 	 * @param user o utilizador no qual se deseja saber as bebidas

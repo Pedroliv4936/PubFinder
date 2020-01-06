@@ -1,7 +1,9 @@
 package application.models;
 
+import application.models.DAO.DrinkDAO;
+
 /**
- * É a bebida que está a venda. Está associada com um Pub e um Drink.
+ * ï¿½ a bebida que estï¿½ a venda. Estï¿½ associada com um Pub e um Drink.
  * 
  * @author Franco Zalamena e Pedro Oliveira
  *
@@ -32,7 +34,13 @@ public class DrinkForSale {
 		this.price = price;
 		this.pending = pending;
 	}
-
+	public void rate(double newRating) {
+		double avgRating = DrinkDAO.getRating(this);
+		int nRating=DrinkDAO.getNRating(this);
+		avgRating= avgRating * nRating+newRating;
+		nRating++;
+		avgRating/=nRating;
+	}
 	/**
 	 * Escreve toda informacao da bebida no Console
 	 */
@@ -44,7 +52,7 @@ public class DrinkForSale {
 	}
 
 	public String toString() {
-		return drink.toString() + " €" + price + "(" + pub.toString() + ")";
+		return drink.toString() + " ï¿½" + price + "(" + pub.toString() + ")";
 	}
 
 	public Drink getDrinkType() {
