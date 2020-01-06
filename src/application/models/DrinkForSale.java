@@ -13,6 +13,7 @@ public class DrinkForSale {
 	private int id;
 	private Drink drink;
 	private Pub pub;
+	private int nRating;
 	private double rating;
 	private double price;
 	private boolean pending;
@@ -36,10 +37,12 @@ public class DrinkForSale {
 	}
 	public void rate(double newRating) {
 		double avgRating = DrinkDAO.getRating(this);
-		int nRating=DrinkDAO.getNRating(this);
-		avgRating= avgRating * nRating+newRating;
+		nRating=DrinkDAO.getNRating(this);
+		avgRating= avgRating * nRating + newRating;
 		nRating++;
 		avgRating/=nRating;
+		rating = avgRating;
+		DrinkDAO.defineRating(rating, nRating);
 	}
 	/**
 	 * Escreve toda informacao da bebida no Console

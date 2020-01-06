@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSlider?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: transparent;" stylesheets="@PubScreen.css">
          <children>
@@ -16,6 +17,7 @@
             <Label fx:id="drinkRating" style="-fx-font-size: 12;" text="RATING" />
          </children>
       </VBox>
-      <JFXButton style="-fx-background-color: #353535;" text="Rate" textFill="#ffe400" />
+      <JFXSlider fx:id="rateSlider" blockIncrement="0.5" majorTickUnit="1.0" max="5.0" minorTickCount="1" prefWidth="100.0" snapToTicks="true" value="2.0" />
+      <JFXButton onAction="#rate" style="-fx-background-color: #353535;" text="Rate" textFill="#ffe400" />
    </children>
 </VBox>
