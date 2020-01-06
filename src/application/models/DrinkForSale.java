@@ -42,7 +42,8 @@ public class DrinkForSale {
 		nRating++;
 		avgRating/=nRating;
 		rating = avgRating;
-		DrinkDAO.defineRating(rating, nRating, id);
+		
+		DrinkDAO.defineRating(rating, nRating, this.id);
 	}
 	/**
 	 * Escreve toda informacao da bebida no Console
