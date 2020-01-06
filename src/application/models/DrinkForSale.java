@@ -42,6 +42,7 @@ public class DrinkForSale {
 		nRating++;
 		avgRating/=nRating;
 		rating = avgRating;
+		
 		DrinkDAO.defineRating(rating, nRating, this.id);
 	}
 	/**
