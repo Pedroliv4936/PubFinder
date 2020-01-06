@@ -83,8 +83,11 @@ public class DrinkForSale {
 		return rating;
 	}
 
-	public void setRating(double rating) {
-		this.rating = rating;
+	/**
+	 * Busca a base de dados o rating da bebida
+	 */
+	public void refreshRating() {
+		this.rating = DrinkDAO.getRating(this);
 	}
 
 	public double getPrice() {
