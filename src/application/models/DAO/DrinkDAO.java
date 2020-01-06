@@ -165,7 +165,7 @@ public class DrinkDAO {
 		double rating = 0;
 		Connection con = JDBC.getConnection();
 		String sql = "SELECT rating FROM drinks_for_sale "
-					+ "WHERE drinks_for_sale_id = ?";
+					+ "WHERE drink_sale_id = ?";
 		try (PreparedStatement stat = con.prepareStatement(sql)) {
 			stat.setInt(1, drink.getId());
 			try (ResultSet rs = stat.executeQuery()) {
@@ -180,7 +180,7 @@ public class DrinkDAO {
 		int nRating = 0;
 		Connection con = JDBC.getConnection();
 		String sql = "SELECT n_rating FROM drinks_for_sale "
-					+ "WHERE drinks_for_sale_id = ?";
+					+ "WHERE drink_sale_id = ?";
 		try (PreparedStatement stat = con.prepareStatement(sql)) {
 			stat.setInt(1, drink.getId());
 			try (ResultSet rs = stat.executeQuery()) {
