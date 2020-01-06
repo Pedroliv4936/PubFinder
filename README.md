@@ -15,6 +15,7 @@
 - [ ] Utilização de paineis inferiores da tela inicial para mostrar informações de bares proximos
 - [x] Adiçao de procura de bares por nome
 - [x] Possibilidade de selecionar bar individualmente e ver suas informações 
+- [x] Possibilidade de avaliar as bebidas de um bar no tela do bar.
 - [ ] Adição de imagens representativas de cada bebida em nossa base de dados
 - [ ] Possibilidade de ver localização atual do utilizador em tempo real (OPCIONAL)
 - [ ] Estilização do Projeto conforme mockup do projeto
