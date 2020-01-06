@@ -9,7 +9,7 @@
 - [x] Possibilidade do Administrador ver e aprovar bebidas e bares submetidos
 - [x] Integração com GMapsFX
 - [x] Possibilidade de Utilizador se cadastrar no programa.
-- [ ] Possibilidade do Administrador visualizar informações extras sobre pedidos pendentes
+- [x] Possibilidade do Administrador visualizar informações extras sobre pedidos pendentes
 - [x] Possibilidade de utilizador adicionar localização do bar no mapa;
 - [ ] Possibilidade de adicionar o bar com um pin;
 - [ ] Utilização de paineis inferiores da tela inicial para mostrar informações de bares proximos
