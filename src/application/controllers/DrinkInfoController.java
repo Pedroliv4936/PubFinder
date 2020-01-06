@@ -2,6 +2,7 @@ package application.controllers;
 
 import application.models.DrinkForSale;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,6 +26,8 @@ public class DrinkInfoController {
 	private String name, price, rating;
 	
 	private Image image;
+	
+	private DrinkForSale drink;
 	/**
 	 * Coloca a informacao de cada bebida nas respetivas variaveis desta classe.
 	 * 
@@ -32,7 +35,9 @@ public class DrinkInfoController {
 	 * 
 	 */
 	public DrinkInfoController(DrinkForSale drink) {
+		this.drink = drink;
 		this.name = drink.getDrinkName();
+		drink.refreshRating();
 		this.image = drink.getDrinkType().getIcon();
 		this.price = String.format("%.2f" ,drink.getPrice());
 		this.rating = String.format("%.2f", drink.getRating());
@@ -46,5 +51,10 @@ public class DrinkInfoController {
 		drinkImage.setImage(image);
 		drinkPrice.setText("€ " + price);
 		drinkRating.setText("☆ " + rating);
+	}
+	
+	@FXML
+	private void rate() {
+		//this.drink.rate();
 	}
 }
