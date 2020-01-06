@@ -200,7 +200,7 @@ public class DrinkDAO {
 			stat.setInt(1, drink.getId());
 			try (ResultSet rs = stat.executeQuery()) {
 				if(rs.next())
-				nRating = rs.getInt("n_rating");
+				nRating = rs.getInt("n_ratings");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
