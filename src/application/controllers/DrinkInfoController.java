@@ -1,5 +1,7 @@
 package application.controllers;
 
+import com.jfoenix.controls.JFXSlider;
+
 import application.models.DrinkForSale;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -28,6 +30,9 @@ public class DrinkInfoController {
 	private Image image;
 	
 	private DrinkForSale drink;
+	
+	@FXML
+	private JFXSlider rateSlider;
 	/**
 	 * Coloca a informacao de cada bebida nas respetivas variaveis desta classe.
 	 * 
@@ -55,6 +60,6 @@ public class DrinkInfoController {
 	
 	@FXML
 	private void rate() {
-		//this.drink.rate();
+		this.drink.rate(rateSlider.getValue());
 	}
 }
