@@ -59,7 +59,6 @@ public class BarScreenController{
 	 */
 	public BarScreenController(Pub pub) {
 		selectedPub = pub;
-		pub.setRating();
 		index = PubDAO.getPubsOrdered().indexOf(selectedPub);
 		System.out.println("Pub com index : " + index);
 		System.out.println("Nome do Pub: " + selectedPub.toString());
@@ -83,6 +82,7 @@ public class BarScreenController{
 		displaySelectedPubInfo();
 		chooseDisplayedDrinks();
 	}
+	
 	/**
 	 * Apaga a informação colocada anteriormente dentro das panes pubInfoFront,pubInfoLeft,pubInfoRight e preenche-as com a informacao do  pub selecionado. 
 	 */
