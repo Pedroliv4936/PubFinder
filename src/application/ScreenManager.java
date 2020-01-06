@@ -17,7 +17,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
- * Classe responsavel por gerir as telas e scenes da aplicacao
+ * Classe responsavel por gerir as telas e scenes da aplicacao junto com seus controladores.
  * 
  * @author Franco Zalamena e Pedro Oliveira
  *

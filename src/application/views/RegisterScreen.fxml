@@ -16,9 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="335.0" stylesheets="@layout.css" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" prefWidth="335.0" stylesheets="@layout.css" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <VBox alignment="TOP_CENTER" prefHeight="783.0" prefWidth="335.0" spacing="22.0" style="-fx-background-color: #353535;" stylesheets="@layout.css">
+      <VBox alignment="TOP_CENTER" prefWidth="335.0" spacing="22.0" style="-fx-background-color: #353535;" stylesheets="@layout.css">
          <children>
             <ImageView fitHeight="195.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
@@ -75,6 +75,11 @@
                   <Insets />
                </VBox.margin>
             </VBox>
+            <Label style="-fx-text-fill: ffe400;" text="Quais suas bebidas Favoritas?">
+               <VBox.margin>
+                  <Insets bottom="-15.0" />
+               </VBox.margin>
+            </Label>
             <GridPane fx:id="favoriteDrinksSelection" alignment="CENTER" gridLinesVisible="true" hgap="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="134.0" prefWidth="292.0" style="-fx-font-size: 13px; -fx-border-color: transparent;" vgap="3.0">
               <columnConstraints>
                 <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
