@@ -1,3 +1,5 @@
+use pub_finder;
+
 INSERT INTO `drinks` (`drink_name`, `drink_image_url`) VALUES
 ('Copo de Cerveja', 'https://imgur.com/vdR49Ku'),
 ('Caneca de Cerveja', NULL),

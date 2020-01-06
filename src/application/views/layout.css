@@ -65,7 +65,25 @@
   -fx-background-insets: 0;
   -fx-padding: 0;
 }
-	
+
+#rate {
+	-fx-background-color:#353535;
+	-fx-border-color: #ffe400;
+	-fx-border-width:2px;
+	-fx-text-fill:#ffe400;
+}
+#rate1 {
+	-fx-background-color:#353535;
+	-fx-border-color: #ffe400;
+	-fx-border-width:2px;
+	-fx-text-fill:#ffe400;
+}
+#rate2 {
+	-fx-background-color:#353535;
+	-fx-border-color: #ffe400;
+	-fx-border-width:2px;
+	-fx-text-fill:#353535;
+}
 .table-view .column-header {
     -fx-background-color: transparent;
 }
@@ -275,7 +293,7 @@
 	-fx-background-radius: 20px;
 	-fx-opacity:75%;
 	-fx-text-fill: #282828;
-	-fx-effect: dropshadow(three-pass-box,black, 10, 0.5, 0, 0);
+	
 }
 
 #addInformation, #checkNewRequests{

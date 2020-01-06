@@ -69,7 +69,7 @@ public class DrinkDAO {
 		}
 
 	/**
-	 * Metodo para receber a lista de bebidas do pub que é passado como parametro
+	 * Metodo para receber a lista de bebidas do pub que ï¿½ passado como parametro
 	 * @param pub pub o qual se deseja receber as bebidas
 	 * @return Lista com as DrinksForSale do pub especificado
 	 */
@@ -116,7 +116,7 @@ public class DrinkDAO {
 				"ON drinks_for_sale.pub_id = pubs.pub_id \r\n" + 
 				"INNER JOIN pub_types \r\n"+
 				"ON pubs.pub_type_id = pub_types.pub_type_id "
-				+ "WHERE pending = 1";
+				+ "WHERE drinks_for_sale.pending = 1";
 				
 		try (Statement stat = conn.createStatement()){
 			try(ResultSet rs = stat.executeQuery(sql)){

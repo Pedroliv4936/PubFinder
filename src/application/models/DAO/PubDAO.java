@@ -108,6 +108,7 @@ public class PubDAO {
 	 * @param y Coordenada Y
 	 */
 	public static void setPubsOrdered(double x, double y) {
+		
 		pubsOrdered = FXCollections.observableArrayList();
 		Connection conn = JDBC.getConnection();
 		try (PreparedStatement stat = conn.prepareStatement(
@@ -138,7 +139,7 @@ public class PubDAO {
 	}
 
 	/**
-	 * Metodo para reveber todos os pubs que nao estejam pendentes na base de dados
+	 * Metodo para receber todos os pubs que nao estejam pendentes na base de dados
 	 * @return Lista com Pubs que estejam com pending = 0
 	 */
 	public static ObservableList<Pub> getActivePubs() {
