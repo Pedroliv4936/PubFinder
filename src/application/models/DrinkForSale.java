@@ -3,7 +3,7 @@ package application.models;
 import application.models.DAO.DrinkDAO;
 
 /**
- * ï¿½ a bebida que estï¿½ a venda. Estï¿½ associada com um Pub e um Drink.
+ * É a bebida que esta a venda. Esta associada com um Pub e um Drink.
  * 
  * @author Franco Zalamena e Pedro Oliveira
  *
@@ -35,6 +35,11 @@ public class DrinkForSale {
 		this.price = price;
 		this.pending = pending;
 	}
+	
+	/**
+	 * Metodo utilizado para avaliar uma bebida. Este ira utilizador a avaliacao do parametro e fara o calculo para descobrir a nova avaliacao.
+	 * @param newRating nova avaliacao do utilizador
+	 */
 	public void rate(double newRating) {
 		double avgRating = DrinkDAO.getRating(this);
 		nRating=DrinkDAO.getNRating(this);

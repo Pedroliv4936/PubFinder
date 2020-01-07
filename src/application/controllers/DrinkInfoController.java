@@ -8,6 +8,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 /**
  * Controlador do FXML AvailableDrinks que apresenta a informaÃ§Ã£o das bebidas vendidas em cada pub.
@@ -33,6 +36,13 @@ public class DrinkInfoController {
 	
 	@FXML
 	private JFXSlider rateSlider;
+	
+	@FXML
+	private Button rateButton;
+	
+	@FXML
+	private VBox vbox;
+	
 	/**
 	 * Coloca a informacao de cada bebida nas respetivas variaveis desta classe.
 	 * 
@@ -61,5 +71,9 @@ public class DrinkInfoController {
 	@FXML
 	private void rate() {
 		this.drink.rate(rateSlider.getValue());
+		vbox.getChildren().removeAll(rateButton, rateSlider);
+		Label thxMsg = new Label("Obrigado!");
+		thxMsg.setTextFill(Color.BLACK);
+		vbox.getChildren().add(thxMsg);
 	}
 }
