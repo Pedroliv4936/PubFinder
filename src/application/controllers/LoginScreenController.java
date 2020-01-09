@@ -44,19 +44,19 @@ public class LoginScreenController {
 	 */
 	@FXML
 	public void initialize() {
-		Properties p = new Properties();
-		try {
-			p.load(new FileReader("src/application/models/DAO/loginInfo.properties"));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		checkBoxes(p, "0");
-		if (rememberChoice.isSelected()) {
-			usernameField.setText(p.getProperty("username"));
-			passwordField.setText(p.getProperty("password"));
-		}
+//		Properties p = new Properties();
+//		try {
+//			p.load(new FileReader("src/application/models/DAO/loginInfo.properties"));
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		checkBoxes(p, "0");
+//		if (rememberChoice.isSelected()) {
+//			usernameField.setText(p.getProperty("username"));
+//			passwordField.setText(p.getProperty("password"));
+//		}
 	}
 	/**
 	 * Serve para apresentar as checkboxes que estão selecionadas por default.

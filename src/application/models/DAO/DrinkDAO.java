@@ -161,16 +161,16 @@ public class DrinkDAO {
 			e.printStackTrace();
 		}
 	}
-	public static void defineRating(double rating, int nRating,int drink_id) {
+	public static void defineRating(double rating, int nRating, DrinkForSale drink) {
 		Connection conn = JDBC.getConnection();
 		String sql = "UPDATE drinks_for_sale SET rating=?, n_ratings=? WHERE drink_sale_id = ?";
 		try (PreparedStatement stat = conn.prepareStatement(sql)) {
 			stat.setDouble(1, rating);
 			stat.setDouble(2, nRating);
-			stat.setDouble(3, drink_id);
+			stat.setDouble(3, drink.getId());
 			stat.executeUpdate();
-			System.out.println("Rating: " + rating);
-			System.out.println("Rating: " + nRating);
+			System.out.println("Rating Final: " + drink.getRating());
+			System.out.println("Numero de Ratings: " + nRating);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
