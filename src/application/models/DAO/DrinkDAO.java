@@ -161,6 +161,13 @@ public class DrinkDAO {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * faz o update do rating da bebida a base de dados.
+	 * 
+	 * @param rating nova rating da bebida
+	 * @param nRating numero de avaliacoes feitas
+	 * @param drink bebida que foi avaliada.
+	 */
 	public static void defineRating(double rating, int nRating, DrinkForSale drink) {
 		Connection conn = JDBC.getConnection();
 		String sql = "UPDATE drinks_for_sale SET rating=?, n_ratings=? WHERE drink_sale_id = ?";
@@ -175,6 +182,11 @@ public class DrinkDAO {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * vai buscar o rating da bebida a base de dados.
+	 * @param drink bebida que se deseja a rating.
+	 * @return a media das avaliacoes feitas dessa bebida.
+	 */
 	public static double getRating(DrinkForSale drink) {
 		double rating = 0;
 		Connection con = JDBC.getConnection();
@@ -191,6 +203,11 @@ public class DrinkDAO {
 		}
 		return rating;
 	}
+	/**
+	 * Busca o numero de avaliacoes que uma bebida tem.
+	 * @param drink bebida que se deseja saber quantas ratings tem.
+	 * @return numero de todas as avaliacoes que a bebida ja teve
+	 */
 	public static int getNRating(DrinkForSale drink) {
 		int nRating = 0;
 		Connection con = JDBC.getConnection();
