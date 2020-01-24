@@ -23,7 +23,7 @@ import javafx.scene.control.TextField;
 
 
 /**
- * Controlador do fxml destinado a preencher o formulario para adicionar bares à aplicação.
+ * Controlador do fxml destinado a preencher o formulario para adicionar bares a� aplicacao.
  * 
  * @author Franco Zalamena e Pedro Oliveira
  *
@@ -93,32 +93,10 @@ public class AddPubController {
 		pubType.setItems(pubTypes);
 	}
 	
-	/**
-	 * 
-	 */
-	/*private void showHour() {
-
-		ObservableList<Integer> hours = FXCollections.observableArrayList();
-		for (int h = 0; h < 24; h++) {
-			hours.add(h);
-		}
-		openHour.setItems(hours);
-		closeHour.setItems(hours);
-		openHour.setValue(0);
-		closeHour.setValue(0);
-	}
-
-	private void showMin() {
-		ObservableList<Integer> min = FXCollections.observableArrayList();
-		for (int m = 0; m < 60; m++) {
-			min.add(m);
-		}
-		openMin.setItems(min);
-		closeMin.setItems(min);
-	}*/
+	
 
 	/**
-	 * Adiciona informação preenchida do pub à lista de pubs do PubDAO e muda o ecrã para o main screen.
+	 * Adiciona informacao preenchida do pub a� lista de pubs do PubDAO e muda o ecra para o main screen.
 	 */
 	@FXML
 	private void sendInfo() {
@@ -131,8 +109,6 @@ public class AddPubController {
 			String address = addressField.getText();
 			Double pubXCoordinate = Double.parseDouble(pubXCoord.getText());
 			Double pubYCoordinate = Double.parseDouble(pubYCoord.getText());
-			//String openTime = (openHour.getValue() + ":" + openMin.getValue());
-			//String closeTime = (closeHour.getValue() + ":" + closeMin.getValue());
 			int id = PubDAO.getActivePubs().size();
 			PubDAO.addPub(new Pub(id, name, type, price, address, new Coordinate(pubXCoordinate, pubYCoordinate), true));
 			System.out.println(name + " Adicionado a lista de espera");
@@ -187,18 +163,6 @@ public class AddPubController {
 		} else {
 			pubYCoord.getStylesheets().clear();
 		}
-		/*if(openHour.getValue() == null || openMin.getValue() == null || closeHour.getValue() == null || closeMin.getValue() == null) {
-			openHour.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
-			openMin.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
-			closeHour.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
-			closeMin.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
-			fieldsFilled = false;
-		}else {
-			openHour.getStylesheets().clear();
-			openMin.getStylesheets().clear();
-			closeHour.getStylesheets().clear();
-			closeMin.getStylesheets().clear();
-		}*/
 		return fieldsFilled;
 	}
 }

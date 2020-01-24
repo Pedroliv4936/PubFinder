@@ -41,7 +41,7 @@ public class MapManager implements MapComponentInitializedListener{
 		mapView.addMapInializedListener(this);
 	}
 	/**
-	 * Inicia o mapa com as definiçoes/propriedades.
+	 * Inicia o mapa com as definicoes/propriedades.
 	 */
 	@Override
 	public void mapInitialized() {
@@ -77,7 +77,7 @@ public class MapManager implements MapComponentInitializedListener{
 	        map.addMarkers(pubMarkers);
 	}
 	/**
-	 * Cria o marker e envia as coordenadas do marker para a consola da posiçao que o utilizador carregou com o rato, de forma a simular a posicao do utilizador.
+	 * Cria o marker e envia as coordenadas do marker para a consola da posicao que o utilizador carregou com o rato, de forma a simular a posicao do utilizador.
 	 */
 	public void userLocationMarker() {
 		MarkerOptions markerOptions = new MarkerOptions();
@@ -94,7 +94,7 @@ public class MapManager implements MapComponentInitializedListener{
         });
 	}
 	/**
-	 * Cria o servico de Geocoding que é utilizado para pesquisar bares pela morada.
+	 * Cria o servico de Geocoding que e utilizado para pesquisar bares pela morada.
 	 */
 	public void createGeocodingService() {
 		geocodingService = new GeocodingService();
@@ -144,6 +144,12 @@ public class MapManager implements MapComponentInitializedListener{
 	}
 	
     static LatLong latLong;
+    
+    /**
+     * Retorna a latitude e longitude do endereco provido
+     * @param address endereco para conversao
+     * @return um latlong com a longitude e latitude
+     */
 	public static LatLong getLatLong(String address) {
 		GeocodingService geocodingService = new GeocodingService();
         geocodingService.geocode(address, (GeocodingResult[] results, GeocoderStatus status) -> {
@@ -164,7 +170,7 @@ public class MapManager implements MapComponentInitializedListener{
 		return latLong;
 	}
 	/**
-	 * Cria um novo mainMap caso não exista já.
+	 * Cria um novo mainMap caso nao exista ja.
 	 */
 	public static void createMap() {
 		if (mainMap == null)

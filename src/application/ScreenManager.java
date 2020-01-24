@@ -59,7 +59,7 @@ public class ScreenManager {
 	/**
 	 * Define qual o conteudo do scene principal
 	 * 
-	 * @param screenContainer Ecrã que contem o header (se existir) e o content.
+	 * @param screenContainer Ecra que contem o header (se existir) e o content.
 	 * 
 	 * @see application.ScreenContainer
 	 * @see #setContent(String, Object)

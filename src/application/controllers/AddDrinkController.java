@@ -63,13 +63,16 @@ public class AddDrinkController {
 		drinkType.setItems(drinkNames);
 	}
 	/**
-	 * Adiciona a bebida preenchida à lista de bebidas da aplicação e muda o ecrã para o main screen.
+	 * Adiciona a bebida preenchida a� lista de bebidas da aplicacao e muda o ecra para o main screen.
 	 */
 	@FXML
 	private void sendInfo() {
+		System.out.println("Preco antes " + priceField.getText());
+		String price = priceField.getText().replace(",", ".");
+		System.out.println("Preco modificado " + price);
 		if (allFieldsFilled()) {
 			DrinkForSale newDrink = new DrinkForSale(0, drinkType.getValue(), pubOptions.getValue(), 4,
-					Double.parseDouble(priceField.getText()), true);
+					Double.parseDouble(price), true);
 			System.out.println();
 			System.out.println();
 			System.out.println("BEBIDA ENVIADA PARA APROVA��O COM ATRIBUTOS:");

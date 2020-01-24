@@ -64,7 +64,7 @@ public class BarScreenController{
 		System.out.println("Nome do Pub: " + selectedPub.toString());
 	}
 	/**
-	 * Busca o mapa e o centraliza no pub selecionado com mais zoom. Mostra as bebidas do pub selecionado e os mapas seguintes (em relaçao à distancia) nas respetivas panes.
+	 * Busca o mapa e o centraliza no pub selecionado com mais zoom. Mostra as bebidas do pub selecionado e os mapas seguintes (em relacao a distancia) nas respetivas panes.
 	 * 
 	 * @see application.MapManager#getMapView()
 	 * @see #chooseDisplayedDrinks()
@@ -84,7 +84,7 @@ public class BarScreenController{
 	}
 	
 	/**
-	 * Apaga a informação colocada anteriormente dentro das panes pubInfoFront,pubInfoLeft,pubInfoRight e preenche-as com a informacao do  pub selecionado. 
+	 * Apaga a informacao colocada anteriormente dentro das panes pubInfoFront,pubInfoLeft,pubInfoRight e preenche-as com a informacao do  pub selecionado. 
 	 */
 	private void displaySelectedPubInfo() {
 		pubInfoFront.getChildren().clear();
@@ -116,7 +116,7 @@ public class BarScreenController{
 		}
 	}
 	/**
-	 * Apaga a informação colocada anteriormente dentro das panes drinkInfo1, drinkInfo2, drinkInfo3 e preenche-as com as bebidas do pub selecionado. 
+	 * Apaga a informacao colocada anteriormente dentro das panes drinkInfo1, drinkInfo2, drinkInfo3 e preenche-as com as bebidas do pub selecionado. 
 	 */
 	private void chooseDisplayedDrinks() {
 		drinkInfo1.getChildren().clear();

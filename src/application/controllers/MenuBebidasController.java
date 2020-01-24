@@ -28,7 +28,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 /**
  * Apresenta todas as bebidas da Base de Dados, em que o utilizador pode filtrar por tipo de bebida (selecionando pelos tipos de bebida apresentados no topo da tela), fazer sort por preco ou por bar.
- * O utilizador pode ainda carregar numa bebida e é apresentado a tela com a informacao do bar(openBarInfo())
+ * O utilizador pode ainda carregar numa bebida e e apresentado a tela com a informacao do bar(openBarInfo())
  * 
  * @author Franco Zalamena e Pedro Oliveira
  *@see #openBarInfo(DrinkForSale)
@@ -55,7 +55,7 @@ public class MenuBebidasController {
 	private static ObservableList<Drink> drinkTypesSelected = FXCollections.observableArrayList();
 	private ObservableList<DrinkForSale> filteredDrinks = DrinkDAO.getDrinksInPubs();
 	/**
-	 * Chama o método setFavoriteDrinks. Apresenta numa tableView as bebidas com o respetivo tipo, preco e o seu bar.
+	 * Chama o metodo setFavoriteDrinks. Apresenta numa tableView as bebidas com o respetivo tipo, preco e o seu bar.
 	 * 
 	 * 
 	 * @see #setFavoriteDrinks()
@@ -131,7 +131,7 @@ public class MenuBebidasController {
 		}
 	}
 	/**
-	 * Muda para o ecrã BarScreen de forma a apresentar o bar onde se encontra a bebida selecionada pelo utilizador.
+	 * Muda para o ecra BarScreen de forma a apresentar o bar onde se encontra a bebida selecionada pelo utilizador.
 	 * 
 	 * @param drink Bebida selecionada pelo utilizador
 	 * @see application.models.DAO.PubDAO#getPubsOrdered()

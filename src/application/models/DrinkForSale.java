@@ -3,7 +3,7 @@ package application.models;
 import application.models.DAO.DrinkDAO;
 
 /**
- * � a bebida que esta a venda. Esta associada com um Pub e um Drink.
+ * E a bebida que esta a venda. Esta associada com um Pub e um Drink.
  * 
  * @author Franco Zalamena e Pedro Oliveira
  *
@@ -65,7 +65,7 @@ public class DrinkForSale {
 	}
 
 	public String toString() {
-		return drink.toString() + " �" + price + "(" + pub.toString() + ")";
+		return drink.toString() + " E" + price + "(" + pub.toString() + ")";
 	}
 
 	public Drink getDrinkType() {

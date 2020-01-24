@@ -1,6 +1,5 @@
 package application.controllers;
 
-import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -40,7 +39,7 @@ public class RegisterScreenController {
 
 	/**
 	 * Adiciona os tipos de bebidas as respetivas checkboxes como userdata.
-	 * Adiciona-se os tipos de bebida √† observableArrayList checkboxes.
+	 * Adiciona-se os tipos de bebida a† observableArrayList checkboxes.
 	 * 
 	 * @see application.models.Drink
 	 */
@@ -55,8 +54,8 @@ public class RegisterScreenController {
 	}
 
 	/**
-	 * Submete-se o utilizador que se deseja adicionar √† base de dados, verificando
-	 * antes se as passwords escritas s√£o iguais.
+	 * Submete-se o utilizador que se deseja adicionar a† base de dados, verificando
+	 * antes se as passwords escritas sao iguais.
 	 */
 	@FXML
 	private void submit() {
@@ -79,8 +78,12 @@ public class RegisterScreenController {
 		}
 	}
 	
+	/**
+	 * Verifica se todos os campos do formulario estao preenchidos e, se caso nao estiver, coloca o text field com a borda vermelha. 
+	 * @return se os campos estao todos preenchidos
+	 */
 	private boolean fieldsFilled() {
-		boolean filled = false;
+		boolean filled = true;
 		try{
 		if(username.getText().isEmpty()) {
 			filled = false;
