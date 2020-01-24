@@ -39,7 +39,7 @@ public class RegisterScreenController {
 
 	/**
 	 * Adiciona os tipos de bebidas as respetivas checkboxes como userdata.
-	 * Adiciona-se os tipos de bebida √† observableArrayList checkboxes.
+	 * Adiciona-se os tipos de bebida a† observableArrayList checkboxes.
 	 * 
 	 * @see application.models.Drink
 	 */
@@ -54,8 +54,8 @@ public class RegisterScreenController {
 	}
 
 	/**
-	 * Submete-se o utilizador que se deseja adicionar √† base de dados, verificando
-	 * antes se as passwords escritas s√£o iguais.
+	 * Submete-se o utilizador que se deseja adicionar a† base de dados, verificando
+	 * antes se as passwords escritas sao iguais.
 	 */
 	@FXML
 	private void submit() {

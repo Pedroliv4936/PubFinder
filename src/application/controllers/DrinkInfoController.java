@@ -13,7 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 /**
- * Controlador do FXML AvailableDrinks que apresenta a informaÃ§Ã£o das bebidas vendidas em cada pub.
+ * Controlador do FXML AvailableDrinks que apresenta a informacao das bebidas vendidas em cada pub.
  * 
  * @see application.controllers.PubInfoController
  * 

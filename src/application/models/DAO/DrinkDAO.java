@@ -69,7 +69,7 @@ public class DrinkDAO {
 		}
 
 	/**
-	 * Metodo para receber a lista de bebidas do pub que � passado como parametro
+	 * Metodo para receber a lista de bebidas do pub que e passado como parametro
 	 * @param pub pub o qual se deseja receber as bebidas
 	 * @return Lista com as DrinksForSale do pub especificado
 	 */

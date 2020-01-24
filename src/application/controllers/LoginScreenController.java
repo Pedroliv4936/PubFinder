@@ -59,7 +59,7 @@ public class LoginScreenController {
 //		}
 	}
 	/**
-	 * Serve para apresentar as checkboxes que estão selecionadas por default.
+	 * Serve para apresentar as checkboxes que estao selecionadas por default.
 	 * @param p Propriedade que contem a informacao necessario para o autologin
 	 * @param check	Opcao de login que o utilizador deseja (lembrar credenciais ou autologin)
 	 */
@@ -78,7 +78,7 @@ public class LoginScreenController {
 		}
 	}
 	/**
-	 * Método que faz o login, em que conecta com a base de dados e apresenta a informcao que esta errada (caso exista),
+	 * Metodo que faz o login, em que conecta com a base de dados e apresenta a informcao que esta errada (caso exista),
 	 * busca o tipo de utilizador que deseja fazer login e muda a tela para o mainScreen.
 	 * 
 	 * @see application.models.DAO.LoginDAO#connect(String, String)

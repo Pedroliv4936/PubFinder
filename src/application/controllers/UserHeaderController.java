@@ -22,7 +22,7 @@ public class UserHeaderController {
 		user_name.setText(LoginDAO.getLogedinUser().getName());
 	}
 	/**
-	 * Mudar o ecrã para o menu Bebidas.
+	 * Mudar o ecra para o menu Bebidas.
 	 */
 	@FXML
 	private void openDrinksScreen(){
@@ -36,7 +36,7 @@ public class UserHeaderController {
 		ScreenManager.setScreen(ScreenContainer.MAIN_SCREEN);
 	}
 	/**
-	 * Mudar para o ecrã Login de forma a se poder fazer login de outro utilizador(fazendo logout do utilizador logado).
+	 * Mudar para o ecra Login de forma a se poder fazer login de outro utilizador(fazendo logout do utilizador logado).
 	 */
 	@FXML
 	private void logOut() {

@@ -14,7 +14,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 /**
  * Controlador do Fxml MainScreenContent que apresenta o mapa, um botao para adicionar informacao, um para aprovar informacao (caso o utilizador seja administrador) 
- * e uma barra de pesquisas para se pesquisar os bares pelo nome ou então colocar uma morada e é apresentado ao utilizador o bar mais próximo dessa morada.
+ * e uma barra de pesquisas para se pesquisar os bares pelo nome ou entao colocar uma morada e e apresentado ao utilizador o bar mais proximo dessa morada.
  * 
  * @author Franco Zalamena e Pedro Oliveira
  *
@@ -40,8 +40,8 @@ public class MainScreenContentController{
 
 
 	/**
-	 * Busca o mapView à classe MapManager e depois criado os markers dos bares dentro do mapa, é adicionado o botao de check new requests caso o utilizador seja administrador.
-	 * É também buscado o método da localizacao do utilizador à classe MapManger.
+	 * Busca o mapView a� classe MapManager e depois criado os markers dos bares dentro do mapa, e adicionado o botao de check new requests caso o utilizador seja administrador.
+	 * a� tambem buscado o metodo da localizacao do utilizador a� classe MapManger.
 	 * 
 	 * @see application.MapManager#getMapView()
 	 * @see application.MapManager#createGeocodingService()
@@ -60,7 +60,7 @@ public class MainScreenContentController{
 		MapManager.getMapManager().userLocationMarker();
 	}
 	/**
-	 * Remove a vBox que contém o botao para adicionar informacao e a searchField, para o utilizador conseguir manipular o mapa apresentado (fazer zoom, mexer o mapa para os lados, etc).
+	 * Remove a vBox que contem o botao para adicionar informacao e a searchField, para o utilizador conseguir manipular o mapa apresentado (fazer zoom, mexer o mapa para os lados, etc).
 	 */
 	@FXML
 	private void removeVBox() {
@@ -68,28 +68,28 @@ public class MainScreenContentController{
 		
 	}
 	/**
-	 * Adiciona a vBox que contém o botao para adicionar informacao e a searchField ao StackPane.
+	 * Adiciona a vBox que contem o botao para adicionar informacao e a searchField ao StackPane.
 	 */
 	@FXML
 	private void addVBox() {
 		backStackPane.getChildren().add(vbox);
 	}
 	/**
-	 * Método para quando o utilizador clica no botao Check new Requests, que altera o ecrã para o ecrã que apresenta os bares e as bebidas por apresentar.
+	 * Metodo para quando o utilizador clica no botao Check new Requests, que altera o ecra para o ecra que apresenta os bares e as bebidas por apresentar.
 	 */
 	@FXML
 	private void checkNewRequests() {
 		ScreenManager.setScreen(ScreenContainer.CHECK_NEW_REQUESTS);
 	}
 	/**
-	 * Método para quando o utilizador clica no botao Adicionar Informacao, que altera o ecrã para o Adicionar Informacao.
+	 * Metodo para quando o utilizador clica no botao Adicionar Informacao, que altera o ecra para o Adicionar Informacao.
 	 */
 	@FXML
 	private void addInformation() {
 		ScreenManager.setScreen(ScreenContainer.ADD_INFO);
 	}
 	/**
-	 * Busca à classe MapManager o método centerMap com o que o utilizador desejou pesquisar na searchField.
+	 * Busca a� classe MapManager o metodo centerMap com o que o utilizador desejou pesquisar na searchField.
 	 * 
 	 * @see application.MapManager#centerMap(String)
 	 */
