@@ -28,7 +28,7 @@ import javafx.scene.control.Alert;
 public class MapManager implements MapComponentInitializedListener{
 	
 	private GoogleMapView mapView;
-	static Marker userLoc;
+	private static Marker userLoc;
     
     private GoogleMap map;
     

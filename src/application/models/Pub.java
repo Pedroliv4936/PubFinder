@@ -43,13 +43,7 @@ public class Pub extends Entity {
 		this.address = address;
 		this.coordinates = coordinates;
 		this.pending = pending;
-		double rating = 0;
-		if(drinks.size()<1) {}
-		else	
-		for(DrinkForSale drink: drinks) {
-			rating += drink.getRating();
-		}
-		this.rating = rating/drinks.size();
+		this.rating = 0;
 	}	
 	/**
 	 * Construtor com lista de bebidas
@@ -63,13 +57,7 @@ public class Pub extends Entity {
 	 * @param pending se esta pendente de aprovacao
 	 */
 	public Pub(int id, String name, PubType type, double price, String address, Coordinate coordinates, ObservableList<DrinkForSale> drinks, boolean pending) {
-		super(id, name);
-		this.price = price;
-		this.type = type;
-		this.address = address;
-		this.coordinates = coordinates;
-		this.pending = pending;
-		this.drinks = drinks;
+		this(id,name,type,price,address,coordinates,pending);
 		double rating = 0;
 		for(DrinkForSale drink: drinks) {
 			rating += drink.getRating();

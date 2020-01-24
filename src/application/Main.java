@@ -19,8 +19,6 @@ public class Main extends Application {
 		MapManager.createMap();
 		screenManager= new ScreenManager();
 		screenManager.start(primaryStage);
-
-
 	}
 	
 	public static BorderPane getBorderPane() {

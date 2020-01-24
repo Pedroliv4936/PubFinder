@@ -136,7 +136,6 @@
 	-fx-border-radius:5px;
 	-fx-text-fill:white;
 	-fx-background-radius:8px;
-	-jfx-default-color:#ffe400;
 }
 
 #rememberChoice, #autoLogin {
