@@ -1,6 +1,5 @@
 package application.controllers;
 
-import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -79,8 +78,12 @@ public class RegisterScreenController {
 		}
 	}
 	
+	/**
+	 * Verifica se todos os campos do formulario estao preenchidos e, se caso nao estiver, coloca o text field com a borda vermelha. 
+	 * @return se os campos estao todos preenchidos
+	 */
 	private boolean fieldsFilled() {
-		boolean filled = false;
+		boolean filled = true;
 		try{
 		if(username.getText().isEmpty()) {
 			filled = false;
