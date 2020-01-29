@@ -116,7 +116,7 @@ public class RegisterScreenController {
 			cellphone.getStylesheets().clear();
 	}
 		if(!userMail.getText().isEmpty()) {
-			if(userMail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z](?:[a-zA-Z]{0,61}[a-zA-Z])?)*$")) {
+			if(!userMail.getText().matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z](?:[a-zA-Z]{0,61}[a-zA-Z])?)*$")) {
 				filled = false;
 				userMail.getStylesheets().add(getClass().getResource("error.css").toExternalForm());
 			}else {
